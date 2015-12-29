@@ -4,11 +4,11 @@ namespace KickassSeries.Champions.Xerath.Modes
 {
     public abstract class ModeBase
     {
-        protected static Spell.Skillshot Q
+        protected static Spell.Chargeable Q
         {
             get { return SpellManager.Q; }
         }
-        protected static Spell.Active W
+        protected static Spell.Skillshot W
         {
             get { return SpellManager.W; }
         }

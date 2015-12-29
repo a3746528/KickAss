@@ -712,6 +712,7 @@ namespace KickassSeries.Activator
 
                 static Settings()
                 {
+                    //Ty to fluxys original damage handler
                     SettingsMenu.AddLabel("HP Tracking");
 
                     HPDanger = SettingsMenu.Add("HPDanger", new CheckBox("HP For Danger"));

@@ -21,6 +21,21 @@ namespace KickassSeries.Champions.Xerath.Modes
 
             if (jgminion == null)return;
 
+            if (jgminion.IsValidTarget(Q.MaximumRange) && Q.IsReady() && !Q.IsCharging && Settings.UseQ)
+            {
+                Q.StartCharging();
+            }
+
+            if (Q.IsCharging)
+            {
+                if (jgminion.IsValidTarget(Q.Range + 30))
+                {
+                    Q.Cast(jgminion);
+                }
+            }
+
+            if (Q.IsCharging) return;
+
             if (E.IsReady() && jgminion.IsValidTarget(E.Range) && Settings.UseE)
             {
                 E.Cast(jgminion);
@@ -28,12 +43,7 @@ namespace KickassSeries.Champions.Xerath.Modes
 
             if (W.IsReady() && jgminion.IsValidTarget(W.Range) && Settings.UseW)
             {
-                W.Cast();
-            }
-
-            if (Q.IsReady() && jgminion.IsValidTarget(Q.Range) && Settings.UseQ)
-            {
-                Q.Cast(jgminion);
+                W.Cast(jgminion);
             }
         }
     }

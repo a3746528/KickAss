@@ -59,7 +59,6 @@ namespace KickassSeries.Champions.Xerath
             public static class Combo
             {
                 private static readonly CheckBox _useQ;
-                private static readonly CheckBox _useQE;
                 private static readonly CheckBox _useW;
                 private static readonly CheckBox _useE;
                 private static readonly CheckBox _useR;
@@ -67,11 +66,6 @@ namespace KickassSeries.Champions.Xerath
                 public static bool UseQ
                 {
                     get { return _useQ.CurrentValue; }
-                }
-
-                public static bool UseQE
-                {
-                    get { return _useQE.CurrentValue; }
                 }
 
                 public static bool UseW
@@ -94,7 +88,6 @@ namespace KickassSeries.Champions.Xerath
                     // Initialize the menu values
                     ModesMenu.AddGroupLabel("Combo");
                     _useQ = ModesMenu.Add("comboQ", new CheckBox("Use Q"));
-                    _useQE = ModesMenu.Add("comboQE", new CheckBox("Only cast Q if E was casted before"));
                     _useW = ModesMenu.Add("comboW", new CheckBox("Use W"));
                     _useE = ModesMenu.Add("comboE", new CheckBox("Use E"));
                     _useR = ModesMenu.Add("comboR", new CheckBox("Use R", false)); // Default false

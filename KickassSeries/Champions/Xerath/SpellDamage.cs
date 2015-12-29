@@ -60,22 +60,22 @@ namespace KickassSeries.Champions.Xerath
             {
                 case SpellSlot.Q:
 
-                    damage = new float[] { 0, 0, 0, 0, 0 }[spellLevel] + 0.0f * Player.Instance.FlatMagicDamageMod;
+                    damage = new float[] { 80, 120, 160, 200, 240 }[spellLevel] + 0.75f * Player.Instance.TotalMagicalDamage;
                     break;
 
                 case SpellSlot.W:
 
-                    damage = new float[] { 0, 0, 0, 0, 0 }[spellLevel] + 0.0f * Player.Instance.FlatMagicDamageMod;
+                    damage = new float[] { 60, 90, 120, 150, 180 }[spellLevel] + 0.6f * Player.Instance.TotalMagicalDamage;
                     break;
 
                 case SpellSlot.E:
 
-                    damage = new float[] { 0, 0, 0, 0, 0 }[spellLevel] + 0.0f * Player.Instance.FlatMagicDamageMod;
+                    damage = new float[] { 80, 110, 140, 170, 200 }[spellLevel] + 0.45f * Player.Instance.TotalMagicalDamage;
                     break;
 
                 case SpellSlot.R:
 
-                    damage = new float[] { 0, 0, 0 }[spellLevel] + 0.0f * Player.Instance.FlatMagicDamageMod;
+                    damage = new float[] { 190, 245, 300 }[spellLevel] + 0.43f * Player.Instance.TotalMagicalDamage * 2.8f;
                     break;
             }
 

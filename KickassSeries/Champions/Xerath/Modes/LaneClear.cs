@@ -21,6 +21,21 @@ namespace KickassSeries.Champions.Xerath.Modes
 
             if (minion == null) return;
 
+            if (minion.IsValidTarget(Q.MaximumRange) && Q.IsReady() && !Q.IsCharging && Settings.UseQ)
+            {
+                Q.StartCharging();
+            }
+
+            if (Q.IsCharging)
+            {
+                if (minion.IsValidTarget(Q.Range + 30))
+                {
+                    Q.Cast(minion);
+                }
+            }
+
+            if (Q.IsCharging) return;
+
             if (E.IsReady() && minion.IsValidTarget(E.Range) && Settings.UseE)
             {
                 E.Cast(minion);
@@ -28,12 +43,7 @@ namespace KickassSeries.Champions.Xerath.Modes
 
             if (W.IsReady() && minion.IsValidTarget(W.Range) && Settings.UseW)
             {
-                W.Cast();
-            }
-
-            if (Q.IsReady() && minion.IsValidTarget(Q.Range) && Settings.UseQ)
-            {
-                Q.Cast(minion);
+                W.Cast(minion);
             }
         }
     }
