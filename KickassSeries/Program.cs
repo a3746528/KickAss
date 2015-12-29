@@ -458,6 +458,9 @@ Champions.Twitch.Twitch.Initialize();
                 {
                     Ultilities.SkinHack.Initialize();
                     Console.WriteLine("SkinHack Loaded");
+
+                    Ultilities.Initialize.Init();
+                    Console.WriteLine("Ultilities Loaded");
                 }
                 catch (Exception exp)
                 {

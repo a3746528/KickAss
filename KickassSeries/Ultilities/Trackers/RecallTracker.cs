@@ -73,17 +73,18 @@ namespace KickassSeries.Ultilities.Trackers
             var x = (int) (Drawing.Width*0.846875);
             var y = (int) (Drawing.Height*0.5555555555555556);
 
-            TopSprite.Draw(new Vector2(x + 1, y));
-            int bonus = 0;
+            
+            var bonus = 0;
             foreach (var recall in Recalls.ToList())
             {
+                TopSprite.Draw(new Vector2(x + 1, y));
                 BackSprite.Draw(new Vector2(x, y + 18 + bonus));
                 Text.Draw(Truncate(recall.Unit.ChampionName, 10), Color.White, x + 15, y + bonus + 27);
                 Text.Draw(recall.PercentComplete() + "%", Color.White, new Vector2(x + 258, y + bonus + 26));
 
                 Line.DrawLine(Color.White, 10, new Vector2(x + 80, y + bonus + 33), new Vector2(x + 250, y + bonus + 33));
 
-                Line.DrawLine(recall.IsAborted ? Color.OrangeRed : BarColor(recall.PercentComplete()), 10,
+                Line.DrawLine(recall.IsAborted ? Color.Blue : BarColor(recall.PercentComplete()), 10,
                     new Vector2(x + 80, y + bonus + 33),
                     new Vector2(x + 80 + (170*(recall.PercentComplete()/100)), y + bonus + 33));
                 bonus += 31;
@@ -92,33 +93,32 @@ namespace KickassSeries.Ultilities.Trackers
                 {
                     Recalls.Remove(recall);
                 }
+                BottomSprite.Draw(new Vector2(x + 1, y + bonus + 18));
             }
-
-            BottomSprite.Draw(new Vector2(x + 1, y + bonus + 18));
         }
 
         private static Color BarColor(float percent)
         {
             if (percent > 80)
             {
-                return Color.LimeGreen;
+                return Color.Red;
             }
             if (percent > 60)
             {
-                return Color.LightGreen;
+                return Color.OrangeRed;
             }
 
             if (percent > 40)
             {
-                return Color.YellowGreen;
+                return Color.Orange;
             }
             if (percent > 20)
             {
-                return Color.Red;
+                return Color.YellowGreen;
             }
-            if (percent > 10)
+            if (percent > 1)
             {
-                return Color.DarkRed;
+                return Color.LimeGreen;
             }
             return Color.White;
         }
