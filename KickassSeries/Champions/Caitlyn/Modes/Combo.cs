@@ -20,7 +20,7 @@ namespace KickassSeries.Champions.Caitlyn.Modes
             var target = TargetSelector.GetTarget(Q.Range, DamageType.Physical);
             if (target == null) return;
 
-            if (Settings.UseE && E.IsReady() && target.IsInRange(Player.Instance, 390) &&
+            if (Settings.UseE && E.IsReady() && target.IsInRange(Player.Instance, 490) &&
                 target.IsValidTarget(E.Range) && target.IsFacing(Player.Instance))
             {
                 E.Cast(target);

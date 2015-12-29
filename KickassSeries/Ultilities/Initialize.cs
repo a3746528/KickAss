@@ -5,6 +5,9 @@
         public static void Init()
         {
             Trackers.RecallTracker.Initialize();
+
+            Trackers.SpellsTracker.Initialize();
+
             Trackers.WardTracker.Initialize();
         }
     }

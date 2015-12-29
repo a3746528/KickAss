@@ -10,6 +10,8 @@ using KickassSeries.Properties;
 using SharpDX;
 using Color = System.Drawing.Color;
 
+using Settings = KickassSeries.Ultilities.Config.Types.RecallTracker;
+
 namespace KickassSeries.Ultilities.Trackers
 {
     internal class RecallTracker
@@ -18,6 +20,7 @@ namespace KickassSeries.Ultilities.Trackers
         private static Sprite BottomSprite { get; set; }
         private static Sprite BackSprite { get; set; }
         private static Text Text { get; set; }
+        // ReSharper disable once UnusedAutoPropertyAccessor.Local
         private static Text TextTwo { get; set; }
 
         public static List<Recall> Recalls = new List<Recall>();
@@ -26,9 +29,9 @@ namespace KickassSeries.Ultilities.Trackers
 
         public static void Initialize()
         {
-            TextureLoader.Load("top", Resources.TopHUD);
-            TextureLoader.Load("bottom", Resources.BottomHUD);
-            TextureLoader.Load("back", Resources.Back);
+            TextureLoader.Load("top", Resources.RTTopHUD);
+            TextureLoader.Load("bottom", Resources.RTBottomHUD);
+            TextureLoader.Load("back", Resources.RTBack);
 
             TopSprite = new Sprite(() => TextureLoader["top"]);
             BottomSprite = new Sprite(() => TextureLoader["bottom"]);
@@ -46,6 +49,8 @@ namespace KickassSeries.Ultilities.Trackers
 
         private static void Teleport_OnTeleport(Obj_AI_Base sender, Teleport.TeleportEventArgs args)
         {
+            if (Settings.TurnOff) return;
+
             if (args.Type != TeleportType.Recall || !(sender is AIHeroClient) || sender.IsAlly && !sender.IsMe) return;
 
             switch (args.Status)
@@ -70,6 +75,8 @@ namespace KickassSeries.Ultilities.Trackers
 
         private static void Drawing_OnEndScene(EventArgs args)
         {
+            if(Settings.TurnOff) return;
+
             var x = (int) (Drawing.Width*0.846875);
             var y = (int) (Drawing.Height*0.5555555555555556);
 
@@ -84,7 +91,7 @@ namespace KickassSeries.Ultilities.Trackers
 
                 Line.DrawLine(Color.White, 10, new Vector2(x + 80, y + bonus + 33), new Vector2(x + 250, y + bonus + 33));
 
-                Line.DrawLine(recall.IsAborted ? Color.Blue : BarColor(recall.PercentComplete()), 10,
+                Line.DrawLine(recall.IsAborted ? Color.DodgerBlue : BarColor(recall.PercentComplete()), 10,
                     new Vector2(x + 80, y + bonus + 33),
                     new Vector2(x + 80 + (170*(recall.PercentComplete()/100)), y + bonus + 33));
                 bonus += 31;

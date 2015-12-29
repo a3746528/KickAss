@@ -969,8 +969,33 @@
     <None Include="Resources\BottomHUD.png" />
     <None Include="Resources\TempBar.png" />
     <None Include="Resources\TopHUD.png" />
+    <None Include="Resources\Image1.bmp" />
+    <None Include="Resources\CD_Bar_Black_Empty.png" />
+    <None Include="Resources\hud.png" />
+    <None Include="Resources\hud2.png" />
+    <None Include="Resources\IsReady.png" />
+    <None Include="Resources\teste.png" />
+    <None Include="Resources\itemsmiteaoe.jpg" />
+    <None Include="Resources\s5_summonersmiteduel.jpg" />
+    <None Include="Resources\s5_summonersmiteplayerganker.jpg" />
+    <None Include="Resources\s5_summonersmitequick.jpg" />
+    <None Include="Resources\summonerbarrier.jpg" />
+    <None Include="Resources\summonerboost.jpg" />
+    <None Include="Resources\summonerclairvoyance.jpg" />
+    <None Include="Resources\summonerdot.jpg" />
+    <None Include="Resources\summonerexhaust.jpg" />
+    <None Include="Resources\summonerflash.jpg" />
+    <None Include="Resources\summonerhaste.jpg" />
+    <None Include="Resources\summonerheal.jpg" />
+    <None Include="Resources\summonermana.jpg" />
+    <None Include="Resources\summonerodingarrison.jpg" />
+    <None Include="Resources\summonerrevive.jpg" />
+    <None Include="Resources\summonersmite.jpg" />
+    <None Include="Resources\summonersnowball.jpg" />
+    <None Include="Resources\summonerteleport.jpg" />
     <Content Include="Ultilities\ToDo.txt" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

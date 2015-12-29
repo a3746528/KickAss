@@ -118,19 +118,70 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="Back" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="RTBack" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Back.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="BottomHUD" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="RTBottomHUD" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\BottomHUD.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="RecallTracker" xml:space="preserve">
-    <value />
-  </data>
-  <data name="TempBar" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="RTTempBar" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\TempBar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="TopHUD" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="RTTopHUD" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\TopHUD.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="s5_summonersmiteduel" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\s5_summonersmiteduel.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="s5_summonersmiteplayerganker" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\s5_summonersmiteplayerganker.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="STempy" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\CD_Bar_Black_Empty.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="SThud" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\hud2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="summonerbarrier" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\summonerbarrier.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="summonerboost" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\summonerboost.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="summonerclairvoyance" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\summonerclairvoyance.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="summonerdot" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\summonerdot.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="summonerexhaust" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\summonerexhaust.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="summonerflash" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\summonerflash.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="summonerhaste" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\summonerhaste.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="summonerheal" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\summonerheal.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="summonermana" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\summonermana.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="summonerodingarrison" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\summonerodingarrison.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="summonerrevive" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\summonerrevive.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="summonersmite" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\summonersmite.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="summonersnowball" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\summonersnowball.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="summonerteleport" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\summonerteleport.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

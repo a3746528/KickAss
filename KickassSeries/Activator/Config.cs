@@ -712,8 +712,6 @@ namespace KickassSeries.Activator
 
                 static Settings()
                 {
-
-                    SettingsMenu.AddGroupLabel("Danger Settings(Ty to fluxy :D)");
                     SettingsMenu.AddLabel("HP Tracking");
 
                     HPDanger = SettingsMenu.Add("HPDanger", new CheckBox("HP For Danger"));
@@ -740,8 +738,6 @@ namespace KickassSeries.Activator
                             new CheckBox(dangerousSpell.Champion + ": " + dangerousSpell.Slot +
                                          (dangerousSpell.IsCleanseable ? " (Cleanseable)" : "")));
                     }
-
-                    SettingsMenu.AddLabel("Ty to fluxy :D");
                 }
 
                 public static void Initialize()
