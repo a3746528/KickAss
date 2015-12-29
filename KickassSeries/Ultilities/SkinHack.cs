@@ -103,10 +103,10 @@ namespace KickassSeries.Ultilities
                         skinSliderAlly = AlliesMenu.Add("kaally" + ally.ChampionName,
                             new Slider("Select a skin for " + ally.ChampionName, 0, 0, 15));
                         AlliesMenu.AddSeparator();
-
-                        if (TurnOffSkinHack) return;
+                        
                         skinSliderAlly.OnValueChange += delegate (ValueBase<int> sender, ValueBase<int>.ValueChangeArgs args)
                         {
+                            if (TurnOffSkinHack) return;
                             Skins[ally.Name] = args.NewValue;
                             ally.SetSkin(ally.ChampionName, Skins[ally.Name]);
                         };
@@ -128,9 +128,9 @@ namespace KickassSeries.Ultilities
                             new Slider("Select a skin for " + enemy.ChampionName, 0, 0, 15));
                         EnemiesMenu.AddSeparator();
 
-                        if (TurnOffSkinHack) return;
                         skinSliderEnemy.OnValueChange += delegate (ValueBase<int> sender, ValueBase<int>.ValueChangeArgs args)
                         {
+                            if (TurnOffSkinHack) return;
                             Skins[enemy.Name] = args.NewValue;
                             enemy.SetSkin(enemy.ChampionName, Skins[enemy.Name]);
                         };
