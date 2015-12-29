@@ -338,14 +338,14 @@ namespace KickassSeries.Activator
                     DefensiveMenu.AddLabel("Please configure if the player is in danger in the settings menu");
                     // Initialize the menu values
                     DefensiveMenu.AddGroupLabel("Zhonyas");
-                    UseZhonyas = OffensiveMenu.Add("useZhonyas", new CheckBox("Use Zhonyas ?"));
-                    HpZhonyas = OffensiveMenu.Add("useZhonyasrMyHP",
+                    UseZhonyas = DefensiveMenu.Add("useZhonyas", new CheckBox("Use Zhonyas ?"));
+                    HpZhonyas = DefensiveMenu.Add("useZhonyasrMyHP",
                         new Slider("Use Zhonyas When My Health hits X%", 20));
                     DefensiveMenu.AddSeparator();
 
                     DefensiveMenu.AddGroupLabel("ArchengelStaff");
-                    UseArchengelStaff = OffensiveMenu.Add("useArchengelStaff", new CheckBox("Use ArchengelStaff ?"));
-                    MyHPArchengelStaff = OffensiveMenu.Add("useArchengelStaffMyHP",
+                    UseArchengelStaff = DefensiveMenu.Add("useArchengelStaff", new CheckBox("Use ArchengelStaff ?"));
+                    MyHPArchengelStaff = DefensiveMenu.Add("useArchengelStaffMyHP",
                         new Slider("Use ArchengelStaff When My Health hits X%", 80));
                     DefensiveMenu.AddSeparator();
                 }

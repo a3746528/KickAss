@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace KickassSeries.Ultilities
+namespace KickassSeries.Ultilities.Trackers
 {
-    class Initialize
+    class SpellsTracker
     {
     }
 }

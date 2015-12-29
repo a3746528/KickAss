@@ -28,3 +28,5 @@ C:\Users\Mario\Documents\GitHub\Kickass\KickassSeries\KickassSeries\bin\Debug\El
 C:\Users\Mario\Documents\GitHub\Kickass\KickassSeries\KickassSeries\bin\Debug\SharpDX.Direct3D9.dll
 C:\Users\Mario\Documents\GitHub\Kickass\KickassSeries\KickassSeries\bin\Debug\SharpDX.dll
 C:\Users\Mario\Documents\GitHub\Kickass\KickassSeries\KickassSeries\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Mario\Documents\GitHub\Kickass\KickassSeries\KickassSeries\obj\Debug\KickassSeries.Properties.Resources.resources
+C:\Users\Mario\Documents\GitHub\Kickass\KickassSeries\KickassSeries\obj\Debug\KickassSeries.csproj.GenerateResource.Cache

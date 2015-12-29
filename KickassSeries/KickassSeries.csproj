@@ -942,22 +942,33 @@
     <Compile Include="MenuSettings\Width.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Ultilities\Config.cs" />
-    <Compile Include="Ultilities\Drawings%28Will Be Deleted%29\AntiJuke.cs" />
-    <Compile Include="Ultilities\Drawings%28Will Be Deleted%29\SpellTracker.cs" />
-    <Compile Include="Ultilities\Drawings%28Will Be Deleted%29\WardTracker.cs" />
     <Compile Include="Ultilities\Extensions.cs" />
-    <Compile Include="Ultilities\Drawings%28Will Be Deleted%29\Initialize.cs" />
     <Compile Include="Ultilities\Initialize.cs" />
     <Compile Include="Ultilities\SkinHack.cs" />
+    <Compile Include="Ultilities\Trackers\RecallTracker.cs" />
+    <Compile Include="Ultilities\Trackers\SpellsTracker.cs" />
+    <Compile Include="Ultilities\Trackers\WardTracker.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Ultilities\Tracker\" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Activator\ToDo.txt" />
     <Content Include="Champions\ToDo.txt" />
     <Content Include="Evade\ToDo.txt" />
+    <None Include="Resources\Back.png" />
+    <None Include="Resources\BottomHUD.png" />
+    <None Include="Resources\TempBar.png" />
+    <None Include="Resources\TopHUD.png" />
     <Content Include="Ultilities\ToDo.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
