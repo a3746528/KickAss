@@ -402,8 +402,6 @@ namespace KickassSeries
                     case Champion.Zyra:
                         Champions.Zyra.Zyra.Initialize();
                         break;
-                    default:
-                        throw new ArgumentOutOfRangeException();
                 }
 
                 #endregion Champion`s Swith

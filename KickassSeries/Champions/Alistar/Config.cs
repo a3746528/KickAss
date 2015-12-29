@@ -59,8 +59,7 @@ namespace KickassSeries.Champions.Alistar
             public static class Combo
             {
                 private static readonly CheckBox _useQ;
-                private static readonly CheckBox _useQE;
-                private static readonly CheckBox _useW;
+                private static readonly CheckBox _useWQ;
                 private static readonly CheckBox _useE;
                 private static readonly CheckBox _useR;
 
@@ -69,14 +68,9 @@ namespace KickassSeries.Champions.Alistar
                     get { return _useQ.CurrentValue; }
                 }
 
-                public static bool UseQE
+                public static bool UseWQ
                 {
-                    get { return _useQE.CurrentValue; }
-                }
-
-                public static bool UseW
-                {
-                    get { return _useW.CurrentValue; }
+                    get { return _useWQ.CurrentValue; }
                 }
 
                 public static bool UseE
@@ -93,11 +87,10 @@ namespace KickassSeries.Champions.Alistar
                 {
                     // Initialize the menu values
                     ModesMenu.AddGroupLabel("Combo");
-                    _useQ = ModesMenu.Add("comboQ", new CheckBox("Use Q"));
-                    _useQE = ModesMenu.Add("comboQE", new CheckBox("Only cast Q if E was casted before"));
-                    _useW = ModesMenu.Add("comboW", new CheckBox("Use W"));
-                    _useE = ModesMenu.Add("comboE", new CheckBox("Use E"));
-                    _useR = ModesMenu.Add("comboR", new CheckBox("Use R", false)); // Default false
+                    _useQ = ModesMenu.Add("comboQ", new CheckBox("Use Q ?"));
+                    _useWQ = ModesMenu.Add("comboW", new CheckBox("Use W + Q Combo ?"));
+                    _useE = ModesMenu.Add("comboE", new CheckBox("Use E ?"));
+                    _useR = ModesMenu.Add("comboR", new CheckBox("Use R ?", false)); // Default false
                 }
 
                 public static void Initialize()
@@ -109,8 +102,6 @@ namespace KickassSeries.Champions.Alistar
             {
                 private static readonly CheckBox _useQ;
                 private static readonly CheckBox _useW;
-                private static readonly CheckBox _useE;
-                private static readonly CheckBox _useR;
 
                 public static bool UseQ
                 {
@@ -122,24 +113,12 @@ namespace KickassSeries.Champions.Alistar
                     get { return _useW.CurrentValue; }
                 }
 
-                public static bool UseE
-                {
-                    get { return _useE.CurrentValue; }
-                }
-
-                public static bool UseR
-                {
-                    get { return _useR.CurrentValue; }
-                }
-
                 static Harass()
                 {
                     // Initialize the menu values
                     ModesMenu.AddGroupLabel("Harass");
-                    _useQ = ModesMenu.Add("harassQ", new CheckBox("Use Q"));
-                    _useW = ModesMenu.Add("harassW", new CheckBox("Use W"));
-                    _useE = ModesMenu.Add("harassE", new CheckBox("Use E"));
-                    _useR = ModesMenu.Add("harassR", new CheckBox("Use R", false)); // Default false
+                    _useQ = ModesMenu.Add("harassQ", new CheckBox("Use Q ?"));
+                    _useW = ModesMenu.Add("harassW", new CheckBox("Use W ?"));
                 }
 
                 public static void Initialize()
@@ -152,7 +131,6 @@ namespace KickassSeries.Champions.Alistar
                 private static readonly CheckBox _useQ;
                 private static readonly CheckBox _useW;
                 private static readonly CheckBox _useE;
-                private static readonly CheckBox _useR;
 
                 public static bool UseQ
                 {
@@ -169,11 +147,6 @@ namespace KickassSeries.Champions.Alistar
                     get { return _useE.CurrentValue; }
                 }
 
-                public static bool UseR
-                {
-                    get { return _useR.CurrentValue; }
-                }
-
                 static LaneClear()
                 {
                     // Initialize the menu values
@@ -181,7 +154,6 @@ namespace KickassSeries.Champions.Alistar
                     _useQ = ModesMenu.Add("laneQ", new CheckBox("Use Q"));
                     _useW = ModesMenu.Add("laneW", new CheckBox("Use W"));
                     _useE = ModesMenu.Add("laneE", new CheckBox("Use E"));
-                    _useR = ModesMenu.Add("laneR", new CheckBox("Use R", false)); // Default false
                 }
 
                 public static void Initialize()
@@ -193,8 +165,6 @@ namespace KickassSeries.Champions.Alistar
             {
                 private static readonly CheckBox _useQ;
                 private static readonly CheckBox _useW;
-                private static readonly CheckBox _useE;
-                private static readonly CheckBox _useR;
 
                 public static bool UseQ
                 {
@@ -206,24 +176,12 @@ namespace KickassSeries.Champions.Alistar
                     get { return _useW.CurrentValue; }
                 }
 
-                public static bool UseE
-                {
-                    get { return _useE.CurrentValue; }
-                }
-
-                public static bool UseR
-                {
-                    get { return _useR.CurrentValue; }
-                }
-
                 static LastHit()
                 {
                     // Initialize the menu values
                     ModesMenu.AddGroupLabel("LastHit");
                     _useQ = ModesMenu.Add("lastQ", new CheckBox("Use Q"));
                     _useW = ModesMenu.Add("lastW", new CheckBox("Use W"));
-                    _useE = ModesMenu.Add("lastE", new CheckBox("Use E"));
-                    _useR = ModesMenu.Add("lastR", new CheckBox("Use R", false)); // Default false
                 }
 
                 public static void Initialize()

@@ -35,7 +35,7 @@ namespace KickassSeries.Champions.Zilean.Modes
 
             if (R.IsReady() && Settings.UseR)
             {
-                var ally = EntityManager.Heroes.Allies.FirstOrDefault(a => a.HealthPercent <= 15 && a.InDanger());
+                var ally = EntityManager.Heroes.Allies.FirstOrDefault(a => a.HealthPercent <= 15);
                 if (ally == null) return;
                 R.Cast(ally);
             }

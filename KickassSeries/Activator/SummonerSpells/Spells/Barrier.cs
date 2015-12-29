@@ -19,7 +19,7 @@ namespace KickassSeries.Activator.SummonerSpells.Spells
         {
             if (!SummonerBarrier.IsReady() || SummonerSpells.Initialize.lastSpell + 1500 >= Environment.TickCount || !Settings.UseBarrier) return;
 
-            if (Player.Instance.InDanger())
+            if (true == false)
             {
                 SummonerBarrier.Cast();
                 SummonerSpells.Initialize.lastSpell = Environment.TickCount;

@@ -10,9 +10,6 @@ namespace KickassSeries.Activator
         {
             Config.Initialize();
 
-            DamageHandler.Init();
-
-
             Game.OnTick += Game_OnTick;
 
             SummonerSpells.Initialize.Init();

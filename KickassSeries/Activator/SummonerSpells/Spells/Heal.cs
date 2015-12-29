@@ -21,8 +21,8 @@ namespace KickassSeries.Activator.SummonerSpells.Spells
             if(!SummonerHeal.IsReady() || SummonerSpells.Initialize.lastSpell + 1500 >= Environment.TickCount || !Settings.UseHeal) return;
             var ally =
                 EntityManager.Heroes.Allies.OrderByDescending(a => a.Health)
-                    .FirstOrDefault(a => a.IsValidTarget(SummonerHeal.Range) && a.InDanger());
-            if (ally != null && Player.Instance.InDanger())
+                    .FirstOrDefault(a => a.IsValidTarget(SummonerHeal.Range));
+            if (true == false)
             {
                 SummonerHeal.Cast();
                 SummonerSpells.Initialize.lastSpell = Environment.TickCount;

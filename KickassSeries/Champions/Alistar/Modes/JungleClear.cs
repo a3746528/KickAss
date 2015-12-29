@@ -21,19 +21,14 @@ namespace KickassSeries.Champions.Alistar.Modes
 
             if (jgminion == null)return;
 
-            if (E.IsReady() && jgminion.IsValidTarget(E.Range) && Settings.UseE)
-            {
-                E.Cast(jgminion);
-            }
-
             if (W.IsReady() && jgminion.IsValidTarget(W.Range) && Settings.UseW)
             {
-                W.Cast();
+                W.Cast(jgminion);
             }
 
             if (Q.IsReady() && jgminion.IsValidTarget(Q.Range) && Settings.UseQ)
             {
-                Q.Cast(jgminion);
+                Q.Cast();
             }
         }
     }

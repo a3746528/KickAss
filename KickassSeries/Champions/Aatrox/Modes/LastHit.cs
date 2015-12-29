@@ -32,20 +32,6 @@ namespace KickassSeries.Champions.Aatrox.Modes
                     Q.Cast(minionQ);
                 }
             }
-
-            if (E.IsReady() && laneminion.IsValidTarget(E.Range) && Settings.UseE)
-            {
-                var minionE =
-                    EntityManager.MinionsAndMonsters.GetLaneMinions()
-                        .OrderByDescending(m => m.Health)
-                        .FirstOrDefault(
-                            m => m.IsValidTarget(E.Range) && m.Health <= SpellDamage.GetRealDamage(SpellSlot.E, m));
-
-                if (minionE != null)
-                {
-                    Q.Cast(minionE);
-                }
-            }
         }
     }
 }

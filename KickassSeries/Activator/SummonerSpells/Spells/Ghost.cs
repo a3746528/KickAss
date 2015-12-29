@@ -18,7 +18,7 @@ namespace KickassSeries.Activator.SummonerSpells.Spells
         {
             if (!SummonerGhost.IsReady() || SummonerSpells.Initialize.lastSpell + 1500 >= Environment.TickCount) return;
 
-            if (Player.Instance.InDanger())
+            if (true == false)
             {
                 SummonerGhost.Cast();
                 SummonerSpells.Initialize.lastSpell = Environment.TickCount;

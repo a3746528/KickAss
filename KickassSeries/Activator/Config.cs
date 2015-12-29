@@ -712,33 +712,6 @@ namespace KickassSeries.Activator
 
                 static Settings()
                 {
-                    //Ty to fluxys original damage handler
-                    SettingsMenu.AddLabel("HP Tracking");
-
-                    HPDanger = SettingsMenu.Add("HPDanger", new CheckBox("HP For Danger"));
-                    HPDangerSlider = SettingsMenu.Add("HPDangerSlider", new Slider("HP % For Danger", 20));
-                    RequireEnemy = SettingsMenu.Add("EnemiesDanger", new CheckBox("Require Enemies"));
-                    EnemySlider = SettingsMenu.Add("EnemiesDangerSlider", new Slider("Enemies Around", 1, 1, 5));
-                    EnemyRange = SettingsMenu.Add("EnemiesDangerRange", new Slider("Range", 850, 1, 2000));
-                    SettingsMenu.AddGroupLabel("Handler Settings");
-                    Spells = SettingsMenu.Add("ConsiderSpells", new CheckBox("Consider Spells"));
-                    Skillshots = SettingsMenu.Add("ConsiderSkillshots", new CheckBox("Consider Skillshots"));
-                    Targeted = SettingsMenu.Add("ConsiderTargeted", new CheckBox("Consider Targeted"));
-                    Attacks = SettingsMenu.Add("ConsiderAttacks", new CheckBox("Consider Basic Attacks"));
-                    Minions = SettingsMenu.Add("ConsiderMinions", new CheckBox("Consider Non-Champions", false));
-                    SettingsMenu.AddLabel("Dont uncheck the setting below if you dont know what it is.");
-                    DisableExecuteCheck = SettingsMenu.Add("DisableExecuteCheck", new CheckBox("Disable Execute Check", false));
-
-                    SettingsMenu.AddGroupLabel("Dangerous Spells");
-                    foreach (
-                        var dangerousSpell in
-                            DangerousSpells.Spells.Where(
-                                a => EntityManager.Heroes.Enemies.Any(b => b.Hero == a.Champion)))
-                    {
-                        SettingsMenu.Add(dangerousSpell.Champion.ToString() + dangerousSpell.Slot,
-                            new CheckBox(dangerousSpell.Champion + ": " + dangerousSpell.Slot +
-                                         (dangerousSpell.IsCleanseable ? " (Cleanseable)" : "")));
-                    }
                 }
 
                 public static void Initialize()
