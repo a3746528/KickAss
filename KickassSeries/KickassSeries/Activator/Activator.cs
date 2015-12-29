@@ -14,6 +14,8 @@ namespace KickassSeries.Activator
 
 
             Game.OnTick += Game_OnTick;
+
+            SummonerSpells.Initialize.Init();
         }
 
         private static void Game_OnTick(EventArgs args)
