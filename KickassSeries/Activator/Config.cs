@@ -715,7 +715,7 @@ namespace KickassSeries.Activator
                     SettingsMenu.AddLabel("HP Tracking");
 
                     HPDanger = SettingsMenu.Add("HPDanger", new CheckBox("HP For Danger"));
-                    HPDangerSlider = SettingsMenu.Add("HPDangerSlider", new Slider("HP % For Danger", 15));
+                    HPDangerSlider = SettingsMenu.Add("HPDangerSlider", new Slider("HP % For Danger", 20));
                     RequireEnemy = SettingsMenu.Add("EnemiesDanger", new CheckBox("Require Enemies"));
                     EnemySlider = SettingsMenu.Add("EnemiesDangerSlider", new Slider("Enemies Around", 1, 1, 5));
                     EnemyRange = SettingsMenu.Add("EnemiesDangerRange", new Slider("Range", 850, 1, 2000));
