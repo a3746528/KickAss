@@ -18,7 +18,6 @@ namespace KickassSeries
                 #region Champion`s Swith
                 switch (ObjectManager.Player.Hero)
                 {
-                    //TODO ADD CHAMPIONS HERE
                     case Champion.Aatrox:
                         Champions.Aatrox.Aatrox.Initialize();
                         break;
@@ -71,7 +70,7 @@ namespace KickassSeries
                         Champions.Corki.Corki.Initialize();
                         break;
                     case Champion.Darius:
-                        //Champions.Darius.Darius.Initialize();
+                        Champions.Darius.Darius.Initialize();
                         break;
                     case Champion.Diana:
                         Champions.Diana.Diana.Initialize();
@@ -86,16 +85,16 @@ namespace KickassSeries
                         Champions.Ekko.Ekko.Initialize();
                         break;
                     case Champion.Elise:
-
+                        Champions.Elise.Elise.Initialize();
                         break;
                     case Champion.Evelynn:
-
+                        Champions.Evelynn.Evelynn.Initialize();
                         break;
                     case Champion.Ezreal:
                         Champions.Ezreal.Ezreal.Initialize();
                         break;
                     case Champion.FiddleSticks:
-
+                        Champions.FiddleSticks.FiddleSticks.Initialize();
                         break;
                     case Champion.Fiora:
 
@@ -149,13 +148,13 @@ namespace KickassSeries
                         Champions.Jinx.Jinx.Initialize();
                         break;
                     case Champion.Kalista:
-                        //Champions.Kalista.Kalista.Initialize();
+                        Champions.Kalista.Kalista.Initialize();
                         break;
                     case Champion.Karma:
 
                         break;
                     case Champion.Karthus:
-                        Champions.Karthus.Karthus.Initialize();
+                        //Champions.Karthus.Karthus.Initialize();
                         break;
                     case Champion.Kassadin:
 
@@ -275,7 +274,7 @@ namespace KickassSeries
 
                         break;
                     case Champion.Ryze:
-                        Champions.Ryze.Ryze.Initialize();
+                        //Champions.Ryze.Ryze.Initialize();
                         break;
                     case Champion.Sejuani:
 
@@ -329,7 +328,7 @@ namespace KickassSeries
                         Champions.Thresh.Thresh.Initialize();
                         break;
                     case Champion.Tristana:
-                        Champions.Tristana.Tristana.Initialize();
+                        //Champions.Tristana.Tristana.Initialize();
                         break;
                     case Champion.Trundle:
 
@@ -341,8 +340,7 @@ namespace KickassSeries
 
                         break;
                     case Champion.Twitch:
-
-Champions.Twitch.Twitch.Initialize();
+                        //Champions.Twitch.Twitch.Initialize();
                         break;
                     case Champion.Udyr:
 
@@ -363,7 +361,7 @@ Champions.Twitch.Twitch.Initialize();
 
                         break;
                     case Champion.Vi:
-
+                        Champions.Vi.Vi.Initialize();
                         break;
                     case Champion.Viktor:
                         Champions.Viktor.Viktor.Initialize();
