@@ -473,6 +473,7 @@ namespace KickassSeries
                     Console.Write(exp);
                 }
                 #endregion LoadingDrawings
+
             }
             catch (Exception exp)
             {

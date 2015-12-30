@@ -119,7 +119,7 @@ namespace KickassSeries.Ultilities
                 static SkinHack()
                 {
                     SkinHackMenu.AddGroupLabel("Skin Hack");
-                    _turnOff = SkinHackMenu.Add("turnoffskinhack", new CheckBox("Turn Off Skin Hack?", false));
+                    _turnOff = SkinHackMenu.Add("turnoffskinhack", new CheckBox("Turn Off Skin Hack?"));
                     SkinHackMenu.AddGroupLabel("Allies");
 
                     foreach (var ally in EntityManager.Heroes.Allies)
