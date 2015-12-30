@@ -15,7 +15,7 @@ namespace KickassSeries.Champions.Vayne
     {
         private static readonly string MenuName = "KA " + Player.Instance.ChampionName;
 
-        private static readonly EloBuddy.SDK.Menu.Menu Menu;
+        private static readonly Menu Menu;
 
         static Config()
         {
@@ -34,7 +34,7 @@ namespace KickassSeries.Champions.Vayne
 
         public static class Modes
         {
-            private static readonly EloBuddy.SDK.Menu.Menu ModesMenu, DrawMenu;
+            private static readonly Menu ModesMenu, DrawMenu;
 
             static Modes()
             {

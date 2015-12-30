@@ -1,11 +1,11 @@
 ﻿using System;
 using EloBuddy;
 using EloBuddy.SDK.Rendering;
-using Settings = KickassSeries.Champions.Zilean.Config.Modes.Draw;
+using Settings = KickassSeries.Champions.Vayne.Config.Modes.Draw;
 
 namespace KickassSeries.Champions.Vayne
 {
-    internal static class Zilean
+    internal static class Vayne
     {
         public static void Initialize()
         {

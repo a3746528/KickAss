@@ -9,6 +9,8 @@
             Trackers.SpellsTracker.Initialize();
 
             Trackers.WardTracker.Initialize();
+
+            SkinHack.Initialize();
         }
     }
 }

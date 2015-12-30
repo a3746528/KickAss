@@ -6,7 +6,7 @@ using Settings = KickassSeries.Champions.Zilean.Config.Modes.Draw;
 
 namespace KickassSeries.Champions.Zilean
 {
-     class Zilean
+    internal class Zilean
     {
         public static void Initialize()
         {

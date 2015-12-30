@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using EloBuddy;
 using EloBuddy.SDK.Enumerations;
 using EloBuddy.SDK.Utils;
-using KickassSeries.Champions.Zilean.Modes;
+using KickassSeries.Champions.Vayne.Modes;
 
 namespace KickassSeries.Champions.Vayne
 {
