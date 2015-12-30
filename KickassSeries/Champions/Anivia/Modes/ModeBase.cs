@@ -8,11 +8,11 @@ namespace KickassSeries.Champions.Anivia.Modes
         {
             get { return SpellManager.Q; }
         }
-        protected static Spell.Active W
+        protected static Spell.Skillshot W
         {
             get { return SpellManager.W; }
         }
-        protected static Spell.Skillshot E
+        protected static Spell.Targeted E
         {
             get { return SpellManager.E; }
         }

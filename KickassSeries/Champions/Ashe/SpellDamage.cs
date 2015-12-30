@@ -59,15 +59,15 @@ namespace KickassSeries.Champions.Ashe
             switch (slot)
             {
                 case SpellSlot.Q:
-
+                    var AA = Player.Instance.GetAutoAttackDamage(target);
                     damage = new[]
                     {
-                        Player.Instance.GetAutoAttackDamage(target) + 0.23f*Player.Instance.FlatPhysicalDamageMod,
-                        Player.Instance.GetAutoAttackDamage(target) + 0.24f*Player.Instance.FlatPhysicalDamageMod,
-                        Player.Instance.GetAutoAttackDamage(target) + 0.25f*Player.Instance.FlatPhysicalDamageMod,
-                        Player.Instance.GetAutoAttackDamage(target) + 0.26f*Player.Instance.FlatPhysicalDamageMod,
-                        Player.Instance.GetAutoAttackDamage(target) + 0.27f*Player.Instance.FlatPhysicalDamageMod
-                    }[spellLevel];
+                        AA + 0.23f*Player.Instance.FlatPhysicalDamageMod,
+                        AA + 0.24f*Player.Instance.FlatPhysicalDamageMod,
+                        AA + 0.25f*Player.Instance.FlatPhysicalDamageMod,
+                        AA + 0.26f*Player.Instance.FlatPhysicalDamageMod,
+                        AA + 0.27f*Player.Instance.FlatPhysicalDamageMod
+                    }[spellLevel] * 1.5f;
                     break;
 
                 case SpellSlot.W:

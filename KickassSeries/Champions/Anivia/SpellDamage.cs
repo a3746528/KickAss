@@ -60,7 +60,7 @@ namespace KickassSeries.Champions.Anivia
             {
                 case SpellSlot.Q:
 
-                    damage = new float[] { 0, 0, 0, 0, 0 }[spellLevel] + 0.0f * Player.Instance.FlatMagicDamageMod;
+                    damage = new float[] { 60, 90, 120, 150, 180 }[spellLevel] + 0.5f * Player.Instance.FlatMagicDamageMod;
                     break;
 
                 case SpellSlot.W:
@@ -70,12 +70,12 @@ namespace KickassSeries.Champions.Anivia
 
                 case SpellSlot.E:
 
-                    damage = new float[] { 0, 0, 0, 0, 0 }[spellLevel] + 0.0f * Player.Instance.FlatMagicDamageMod;
+                    damage = new float[] { 55, 85, 115, 145, 175 }[spellLevel] + 0.5f * Player.Instance.FlatMagicDamageMod;
                     break;
 
                 case SpellSlot.R:
 
-                    damage = new float[] { 0, 0, 0 }[spellLevel] + 0.0f * Player.Instance.FlatMagicDamageMod;
+                    damage = new float[] { 80, 120, 160 }[spellLevel] + 0.25f * Player.Instance.FlatMagicDamageMod * 2.5f;
                     break;
             }
 

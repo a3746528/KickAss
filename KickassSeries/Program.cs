@@ -97,34 +97,34 @@ namespace KickassSeries
                         Champions.FiddleSticks.FiddleSticks.Initialize();
                         break;
                     case Champion.Fiora:
-
+                        Champions.Fiora.Fiora.Initialize();
                         break;
                     case Champion.Fizz:
-
+                        Champions.Fizz.Fizz.Initialize();
                         break;
                     case Champion.Galio:
-
+                        Champions.Galio.Galio.Initialize();
                         break;
                     case Champion.Gangplank:
-
+                        Champions.Gangplank.Gangplank.Initialize();
                         break;
                     case Champion.Garen:
-
+                        Champions.Garen.Garen.Initialize();
                         break;
                     case Champion.Gnar:
-
+                        Champions.Gnar.Gnar.Initialize();
                         break;
                     case Champion.Gragas:
-
+                        Champions.Gragas.Gragas.Initialize();
                         break;
                     case Champion.Graves:
-
+                        Champions.Graves.Graves.Initialize();
                         break;
                     case Champion.Hecarim:
-
+                        Champions.Hecarim.Hecarim.Initialize();
                         break;
                     case Champion.Heimerdinger:
-
+                        Champions.Heimerdinger.Heimerdinger.Initialize();
                         break;
                     case Champion.Illaoi:
                         Champions.Illaoi.Illaoi.Initialize();
@@ -133,16 +133,16 @@ namespace KickassSeries
                         Champions.Irelia.Irelia.Initialize();
                         break;
                     case Champion.Janna:
-
+                        Champions.Janna.Janna.Initialize();
                         break;
                     case Champion.JarvanIV:
-
+                        Champions.JarvanIV.JarvanIV.Initialize();
                         break;
                     case Champion.Jax:
                         Champions.Jax.Jax.Initialize();
                         break;
                     case Champion.Jayce:
-
+                        Champions.Jayce.Jayce.Initialize();
                         break;
                     case Champion.Jinx:
                         Champions.Jinx.Jinx.Initialize();
@@ -151,37 +151,37 @@ namespace KickassSeries
                         Champions.Kalista.Kalista.Initialize();
                         break;
                     case Champion.Karma:
-
+                        Champions.Karma.Karma.Initialize();
                         break;
                     case Champion.Karthus:
-                        //Champions.Karthus.Karthus.Initialize();
+                        Champions.Karthus.Karthus.Initialize();
                         break;
                     case Champion.Kassadin:
-
+                        Champions.Kassadin.Kassadin.Initialize();
                         break;
                     case Champion.Katarina:
                         Champions.Katarina.Katarina.Initialize();
                         break;
                     case Champion.Kayle:
-                        //Champions.Kayle.Kayle.Initialize();
+                        Champions.Kayle.Kayle.Initialize();
                         break;
                     case Champion.Kennen:
                         Champions.Kennen.Kennen.Initialize();
                         break;
                     case Champion.Khazix:
-
+                        Champions.Khazix.Khazix.Initialize();
                         break;
                     case Champion.Kindred:
-
+                        Champions.Kindred.Kindred.Initialize();
                         break;
                     case Champion.KogMaw:
                         Champions.KogMaw.KogMaw.Initialize();
                         break;
                     case Champion.Leblanc:
-
+                        Champions.Leblanc.Leblanc.Initialize();
                         break;
                     case Champion.LeeSin:
-
+                        Champions.LeeSin.LeeSin.Initialize();
                         break;
                     case Champion.Leona:
 

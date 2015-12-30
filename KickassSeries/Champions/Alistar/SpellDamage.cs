@@ -60,12 +60,12 @@ namespace KickassSeries.Champions.Alistar
             {
                 case SpellSlot.Q:
 
-                    damage = new float[] { 0, 0, 0, 0, 0 }[spellLevel] + 0.0f * Player.Instance.FlatMagicDamageMod;
+                    damage = new float[] { 60, 105, 150, 195, 240 }[spellLevel] + 0.5f * Player.Instance.FlatMagicDamageMod;
                     break;
 
                 case SpellSlot.W:
 
-                    damage = new float[] { 0, 0, 0, 0, 0 }[spellLevel] + 0.0f * Player.Instance.FlatMagicDamageMod;
+                    damage = new float[] { 55, 110, 165, 220, 275 }[spellLevel] + 0.7f * Player.Instance.FlatMagicDamageMod;
                     break;
 
                 case SpellSlot.E:
