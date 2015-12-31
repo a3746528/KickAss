@@ -4,7 +4,7 @@ namespace KickassSeries.Champions.Darius.Modes
 {
     public abstract class ModeBase
     {
-        protected static Spell.Skillshot Q
+        protected static Spell.Active Q
         {
             get { return SpellManager.Q; }
         }
@@ -16,7 +16,7 @@ namespace KickassSeries.Champions.Darius.Modes
         {
             get { return SpellManager.E; }
         }
-        protected static Spell.Skillshot R
+        protected static Spell.Targeted R
         {
             get { return SpellManager.R; }
         }

@@ -60,7 +60,7 @@ namespace KickassSeries.Champions.DrMundo
             {
                 case SpellSlot.Q:
 
-                    damage = new float[] { 80, 130, 180, 230, 280 }[spellLevel] + new [] { 15, 17.5f, 21, 22.5f, 25 }[spellLevel] * target.Health;
+                    damage = new float[] { 80, 130, 180, 230, 280 }[spellLevel] + new [] { 0.15f, 0.175f, 0.21f, 0.225f, 0.25f }[spellLevel] * target.Health;
                     break;
 
                 case SpellSlot.W:

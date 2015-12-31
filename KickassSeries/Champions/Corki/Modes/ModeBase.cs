@@ -4,11 +4,11 @@ namespace KickassSeries.Champions.Corki.Modes
 {
     public abstract class ModeBase
     {
-        protected Spell.Active Q
+        protected Spell.Skillshot Q
         {
             get { return SpellManager.Q; }
         }
-        protected static Spell.Active W
+        protected static Spell.Skillshot W
         {
             get { return SpellManager.W; }
         }
@@ -16,7 +16,7 @@ namespace KickassSeries.Champions.Corki.Modes
         {
             get { return SpellManager.E; }
         }
-        protected Spell.Targeted R
+        protected Spell.Skillshot R
         {
             get { return SpellManager.R; }
         }

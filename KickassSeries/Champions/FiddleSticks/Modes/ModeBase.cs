@@ -4,15 +4,15 @@ namespace KickassSeries.Champions.FiddleSticks.Modes
 {
     public abstract class ModeBase
     {
-        protected static Spell.Skillshot Q
+        protected static Spell.Targeted Q
         {
             get { return SpellManager.Q; }
         }
-        protected static Spell.Skillshot W
+        protected static Spell.Targeted W
         {
             get { return SpellManager.W; }
         }
-        protected static Spell.Skillshot E
+        protected static Spell.Targeted E
         {
             get { return SpellManager.E; }
         }

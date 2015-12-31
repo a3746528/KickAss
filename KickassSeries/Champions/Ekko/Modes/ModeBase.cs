@@ -12,11 +12,11 @@ namespace KickassSeries.Champions.Ekko.Modes
         {
             get { return SpellManager.W; }
         }
-        protected static Spell.Skillshot E
+        protected static Spell.Active E
         {
             get { return SpellManager.E; }
         }
-        protected static Spell.Skillshot R
+        protected static Spell.Active R
         {
             get { return SpellManager.R; }
         }
