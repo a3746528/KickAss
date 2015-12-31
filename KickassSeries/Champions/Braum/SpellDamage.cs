@@ -60,7 +60,7 @@ namespace KickassSeries.Champions.Braum
             {
                 case SpellSlot.Q:
 
-                    damage = new float[] { 0, 0, 0, 0, 0 }[spellLevel] + 0.0f * Player.Instance.FlatMagicDamageMod;
+                    damage = new float[] { 70, 115, 160, 205, 250 }[spellLevel] + 0.025f * Player.Instance.MaxHealth;
                     break;
 
                 case SpellSlot.W:
@@ -75,7 +75,7 @@ namespace KickassSeries.Champions.Braum
 
                 case SpellSlot.R:
 
-                    damage = new float[] { 0, 0, 0 }[spellLevel] + 0.0f * Player.Instance.FlatMagicDamageMod;
+                    damage = new float[] { 150, 250, 350 }[spellLevel] + 0.6f * Player.Instance.FlatMagicDamageMod;
                     break;
             }
 

@@ -60,22 +60,22 @@ namespace KickassSeries.Champions.Cassiopeia
             {
                 case SpellSlot.Q:
 
-                    damage = new float[] { 0, 0, 0, 0, 0 }[spellLevel] + 0.0f * Player.Instance.FlatMagicDamageMod;
+                    damage = new float[] { 75, 115, 155, 195, 235 }[spellLevel] + 0.45f * Player.Instance.FlatMagicDamageMod;
                     break;
 
                 case SpellSlot.W:
 
-                    damage = new float[] { 0, 0, 0, 0, 0 }[spellLevel] + 0.0f * Player.Instance.FlatMagicDamageMod;
+                    damage = new float[] { 10, 15, 20, 25, 30 }[spellLevel] + 0.1f * Player.Instance.FlatMagicDamageMod * 3.5f;
                     break;
 
                 case SpellSlot.E:
 
-                    damage = new float[] { 0, 0, 0, 0, 0 }[spellLevel] + 0.0f * Player.Instance.FlatMagicDamageMod;
+                    damage = new float[] { 55, 80, 105, 130, 155 }[spellLevel] + 0.55f * Player.Instance.FlatMagicDamageMod;
                     break;
 
                 case SpellSlot.R:
 
-                    damage = new float[] { 0, 0, 0 }[spellLevel] + 0.0f * Player.Instance.FlatMagicDamageMod;
+                    damage = new float[] { 150, 250, 350 }[spellLevel] + 0.5f * Player.Instance.FlatMagicDamageMod;
                     break;
             }
 

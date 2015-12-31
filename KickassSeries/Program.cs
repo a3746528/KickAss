@@ -6,6 +6,7 @@ namespace KickassSeries
 {
     internal static class Program
     {
+        // ReSharper disable once UnusedParameter.Local
         private static void Main(string[] args)
         {
             Loading.OnLoadingComplete += Loading_OnLoadingComplete;

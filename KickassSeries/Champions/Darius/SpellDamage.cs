@@ -56,16 +56,21 @@ namespace KickassSeries.Champions.Darius
             }
             spellLevel--;
 
+            var AD = Player.Instance.FlatPhysicalDamageMod;
             switch (slot)
             {
                 case SpellSlot.Q:
 
-                    damage = new float[] { 0, 0, 0, 0, 0 }[spellLevel] + 0.0f * Player.Instance.FlatMagicDamageMod;
+                    damage = new [] { 20 + 0.50f * AD,
+                                      35 + 0.55f * AD,
+                                      50 + 0.6f * AD,
+                                      65 + 0.65f * AD,
+                                      80 + 0.7f * AD }[spellLevel];
                     break;
 
                 case SpellSlot.W:
 
-                    damage = new float[] { 0, 0, 0, 0, 0 }[spellLevel] + 0.0f * Player.Instance.FlatMagicDamageMod;
+                    damage = Player.Instance.GetAutoAttackDamage(target) + 0.4f * AD;
                     break;
 
                 case SpellSlot.E:
@@ -75,7 +80,7 @@ namespace KickassSeries.Champions.Darius
 
                 case SpellSlot.R:
 
-                    damage = new float[] { 0, 0, 0 }[spellLevel] + 0.0f * Player.Instance.FlatMagicDamageMod;
+                    damage = new float[] { 100, 200, 300 }[spellLevel] + 0.75f * Player.Instance.FlatMagicDamageMod;
                     break;
             }
 

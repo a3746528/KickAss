@@ -13,13 +13,10 @@ namespace KickassSeries.Champions.Braum
 
         static SpellManager()
         {
-            Q = new Spell.Skillshot(SpellSlot.Q, 980, SkillShotType.Linear, 250, 2000, 50)
-            {
-                AllowedCollisionCount = int.MaxValue
-            };
-            W = new Spell.Active(SpellSlot.W, 700);
-            E = new Spell.Skillshot(SpellSlot.E, 1000, SkillShotType.Linear, 250, 1530, 60);
-            R = new Spell.Skillshot(SpellSlot.R, 410, SkillShotType.Circular, 250, 1200, 30);
+            Q = new Spell.Skillshot(SpellSlot.Q, 1000, SkillShotType.Linear, 250, 1700, 60);
+            W = new Spell.Active(SpellSlot.W, 650);
+            E = new Spell.Skillshot(SpellSlot.E, 1000, SkillShotType.Linear, 250, int.MaxValue, 60);
+            R = new Spell.Skillshot(SpellSlot.R, 1200, SkillShotType.Circular, 500, 1400, 115);
         }
 
         public static void Initialize()

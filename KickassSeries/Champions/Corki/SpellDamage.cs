@@ -56,26 +56,23 @@ namespace KickassSeries.Champions.Corki
             }
             spellLevel--;
 
+            var AD = Player.Instance.FlatPhysicalDamageMod;
             switch (slot)
             {
                 case SpellSlot.Q:
-
-                    damage = new float[] { 0, 0, 0, 0, 0 }[spellLevel] + 0.0f * Player.Instance.FlatMagicDamageMod;
+                    damage = new float[] { 80, 130, 180, 230, 280 }[spellLevel] + 0.5f * Player.Instance.TotalMagicalDamage + 0.5f * Player.Instance.FlatPhysicalDamageMod;
                     break;
 
                 case SpellSlot.W:
-
-                    damage = new float[] { 0, 0, 0, 0, 0 }[spellLevel] + 0.0f * Player.Instance.FlatMagicDamageMod;
+                    damage = new float[] { 60, 90, 120, 150, 180 }[spellLevel] + 0.2f * Player.Instance.TotalMagicalDamage;
                     break;
 
                 case SpellSlot.E:
-
-                    damage = new float[] { 0, 0, 0, 0, 0 }[spellLevel] + 0.0f * Player.Instance.FlatMagicDamageMod;
+                    damage = new float[] { 20, 32, 44, 56, 78 }[spellLevel] + 0.4f * Player.Instance.FlatPhysicalDamageMod;
                     break;
 
                 case SpellSlot.R:
-
-                    damage = new float[] { 0, 0, 0 }[spellLevel] + 0.0f * Player.Instance.FlatMagicDamageMod;
+                    damage = new [] { 100 * 0.2f + AD, 130 * 0.5f + AD, 160 * 0.8f + AD }[spellLevel] + 0.3f * Player.Instance.TotalMagicalDamage;
                     break;
             }
 

@@ -60,22 +60,22 @@ namespace KickassSeries.Champions.ChoGath
             {
                 case SpellSlot.Q:
 
-                    damage = new float[] { 0, 0, 0, 0, 0 }[spellLevel] + 0.0f * Player.Instance.FlatMagicDamageMod;
+                    damage = new float[] { 80, 135, 190, 245, 305 }[spellLevel] + 1.0f * Player.Instance.FlatMagicDamageMod;
                     break;
 
                 case SpellSlot.W:
 
-                    damage = new float[] { 0, 0, 0, 0, 0 }[spellLevel] + 0.0f * Player.Instance.FlatMagicDamageMod;
+                    damage = new float[] { 75, 125, 175, 225, 275 }[spellLevel] + 0.7f * Player.Instance.FlatMagicDamageMod;
                     break;
 
                 case SpellSlot.E:
 
-                    damage = new float[] { 0, 0, 0, 0, 0 }[spellLevel] + 0.0f * Player.Instance.FlatMagicDamageMod;
+                    damage = new float[] { 20, 35, 50, 65, 80 }[spellLevel] + 0.3f * Player.Instance.FlatMagicDamageMod + Player.Instance.GetAutoAttackDamage(target);
                     break;
 
                 case SpellSlot.R:
 
-                    damage = new float[] { 0, 0, 0 }[spellLevel] + 0.0f * Player.Instance.FlatMagicDamageMod;
+                    damage = new float[] { 300, 475, 650 }[spellLevel] + 0.7f * Player.Instance.FlatMagicDamageMod;
                     break;
             }
 

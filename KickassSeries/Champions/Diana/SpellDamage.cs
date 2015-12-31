@@ -60,12 +60,12 @@ namespace KickassSeries.Champions.Diana
             {
                 case SpellSlot.Q:
 
-                    damage = new float[] { 70, 105, 140, 175, 210 }[spellLevel] + 0.65f * Player.Instance.FlatMagicDamageMod;
+                    damage = new float[] { 60, 95, 130, 165, 200 }[spellLevel] + 0.7f * Player.Instance.FlatMagicDamageMod;
                     break;
 
                 case SpellSlot.W:
 
-                    damage = new float[] { 0, 0, 0, 0, 0 }[spellLevel] + 0.0f * Player.Instance.FlatMagicDamageMod;
+                    damage = new float[] { 44, 68, 92, 116, 140 }[spellLevel] + 0.2f * Player.Instance.FlatMagicDamageMod;
                     break;
 
                 case SpellSlot.E:
@@ -75,7 +75,7 @@ namespace KickassSeries.Champions.Diana
 
                 case SpellSlot.R:
 
-                    damage = new float[] { 180, 265, 350 }[spellLevel] + 0.7f * Player.Instance.FlatMagicDamageMod;
+                    damage = new float[] { 100, 160, 220 }[spellLevel] + 0.6f * Player.Instance.FlatMagicDamageMod;
                     break;
             }
 
