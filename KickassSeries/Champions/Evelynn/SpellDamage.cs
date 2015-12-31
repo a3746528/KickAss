@@ -60,7 +60,9 @@ namespace KickassSeries.Champions.Evelynn
             {
                 case SpellSlot.Q:
 
-                    damage = new float[] { 70, 105, 140, 175, 210 }[spellLevel] + 0.65f * Player.Instance.FlatMagicDamageMod;
+                    damage = new float[] {40, 50, 60, 70, 80}[spellLevel] +
+                             new[] {0.35f, 0.40f, 0.45f, 0.50f, 0.55f}[spellLevel]*Player.Instance.FlatMagicDamageMod +
+                             new[] {0.5f, 0.55f, 0.60f, 0.65f, 0.70f}[spellLevel]*Player.Instance.FlatPhysicalDamageMod;
                     break;
 
                 case SpellSlot.W:
@@ -70,12 +72,13 @@ namespace KickassSeries.Champions.Evelynn
 
                 case SpellSlot.E:
 
-                    damage = new float[] { 60, 95, 130, 165, 200 }[spellLevel] + 0.5f * Player.Instance.FlatMagicDamageMod;
+                    damage = new float[] {35, 55, 75, 95, 115}[spellLevel] + 0.5f*Player.Instance.FlatMagicDamageMod +
+                             0.5f*Player.Instance.FlatPhysicalDamageMod;
                     break;
 
                 case SpellSlot.R:
 
-                    damage = new float[] { 180, 265, 350 }[spellLevel] + 0.7f * Player.Instance.FlatMagicDamageMod;
+                    damage = (new [] { 0.15f, 0.20f, 0.25f }[spellLevel] + 0.01f/100 * Player.Instance.FlatMagicDamageMod) * target.Health;
                     break;
             }
 

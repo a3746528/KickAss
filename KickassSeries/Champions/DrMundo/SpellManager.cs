@@ -8,18 +8,15 @@ namespace KickassSeries.Champions.DrMundo
     {
         public static Spell.Skillshot Q { get; private set; }
         public static Spell.Active W { get; private set; }
-        public static Spell.Skillshot E { get; private set; }
-        public static Spell.Skillshot R { get; private set; }
+        public static Spell.Active E { get; private set; }
+        public static Spell.Active R { get; private set; }
 
         static SpellManager()
         {
-            Q = new Spell.Skillshot(SpellSlot.Q, 980, SkillShotType.Linear, 250, 2000, 50)
-            {
-                AllowedCollisionCount = int.MaxValue
-            };
-            W = new Spell.Active(SpellSlot.W, 700);
-            E = new Spell.Skillshot(SpellSlot.E, 1000, SkillShotType.Linear, 250, 1530, 60);
-            R = new Spell.Skillshot(SpellSlot.R, 410, SkillShotType.Circular, 250, 1200, 30);
+            Q = new Spell.Skillshot(SpellSlot.Q, 1000, SkillShotType.Linear, 250, 1850, 60);
+            W = new Spell.Active(SpellSlot.W, 160);
+            E = new Spell.Active(SpellSlot.E, (uint)Player.Instance.GetAutoAttackRange());
+            R = new Spell.Active(SpellSlot.R);
         }
 
         public static void Initialize()

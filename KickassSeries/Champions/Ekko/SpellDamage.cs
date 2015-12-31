@@ -60,7 +60,7 @@ namespace KickassSeries.Champions.Ekko
             {
                 case SpellSlot.Q:
 
-                    damage = new float[] { 70, 105, 140, 175, 210 }[spellLevel] + 0.65f * Player.Instance.FlatMagicDamageMod;
+                    damage = new float[] { 60, 75, 90, 105, 120 }[spellLevel] + 0.1f * Player.Instance.FlatMagicDamageMod + new float[] { 60, 85, 110, 135, 160 }[spellLevel] + 0.6f * Player.Instance.FlatMagicDamageMod;
                     break;
 
                 case SpellSlot.W:
@@ -70,12 +70,12 @@ namespace KickassSeries.Champions.Ekko
 
                 case SpellSlot.E:
 
-                    damage = new float[] { 60, 95, 130, 165, 200 }[spellLevel] + 0.5f * Player.Instance.FlatMagicDamageMod;
+                    damage = new float[] { 50, 80, 110, 140, 170 }[spellLevel] + 0.2f * Player.Instance.FlatMagicDamageMod + Player.Instance.GetAutoAttackDamage(target);
                     break;
 
                 case SpellSlot.R:
 
-                    damage = new float[] { 180, 265, 350 }[spellLevel] + 0.7f * Player.Instance.FlatMagicDamageMod;
+                    damage = new float[] { 200, 350, 500 }[spellLevel] + 1.3f * Player.Instance.FlatMagicDamageMod;
                     break;
             }
 

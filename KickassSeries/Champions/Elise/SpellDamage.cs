@@ -10,26 +10,50 @@ namespace KickassSeries.Champions.Elise
             // Auto attack
             var damage = Player.Instance.GetAutoAttackDamage(target);
 
-            // Q
-            if (SpellManager.Q.IsReady())
+            //Human
+            if (Player.Instance.Spellbook.GetSpell(SpellSlot.R).ToggleState == 1)
             {
-                damage += SpellManager.Q.GetRealDamage(target);
-            }
+                // Q
+                if (SpellManager.Q1.IsReady())
+                {
+                    damage += SpellManager.Q1.GetRealDamage(target);
+                }
 
-            // W
-            if (SpellManager.W.IsReady())
-            {
-                damage += SpellManager.W.GetRealDamage(target);
-            }
+                // W
+                if (SpellManager.W1.IsReady())
+                {
+                    damage += SpellManager.W1.GetRealDamage(target);
+                }
 
-            // E
-            if (SpellManager.E.IsReady())
+                // E
+                if (SpellManager.E1.IsReady())
+                {
+                    damage += SpellManager.E1.GetRealDamage(target);
+                }
+            }
+            if (Player.Instance.Spellbook.GetSpell(SpellSlot.R).ToggleState == 2)
             {
-                damage += SpellManager.E.GetRealDamage(target);
+                // Q
+                if (SpellManager.Q2.IsReady())
+                {
+                    damage += SpellManager.Q2.GetRealDamage(target);
+                }
+
+                // W
+                if (SpellManager.W1.IsReady())
+                {
+                    damage += SpellManager.W2.GetRealDamage(target);
+                }
+
+                // E
+                if (SpellManager.E1.IsReady())
+                {
+                    damage += SpellManager.E2.GetRealDamage(target);
+                }
             }
 
             // R
-            if (SpellManager.R.IsReady())
+                if (SpellManager.R.IsReady())
             {
                 damage += SpellManager.R.GetRealDamage(target);
             }
@@ -55,28 +79,56 @@ namespace KickassSeries.Champions.Elise
                 return 0;
             }
             spellLevel--;
-
-            switch (slot)
+            if (Player.Instance.Spellbook.GetSpell(SpellSlot.R).ToggleState == 1)
             {
-                case SpellSlot.Q:
+                switch (slot)
+                {
+                    case SpellSlot.Q:
 
-                    damage = new float[] { 70, 105, 140, 175, 210 }[spellLevel] + 0.65f * Player.Instance.FlatMagicDamageMod;
-                    break;
+                        damage = new float[] {40, 75, 110, 145, 180}[spellLevel] + 0.04f + 0.03f /100 * Player.Instance.FlatMagicDamageMod* target.Health;
+                        break;
 
-                case SpellSlot.W:
+                    case SpellSlot.W:
 
-                    damage = new float[] { 0, 0, 0, 0, 0 }[spellLevel] + 0.0f * Player.Instance.FlatMagicDamageMod;
-                    break;
+                        damage = new float[] {75, 125, 175, 225, 275}[spellLevel] + 0.8f*Player.Instance.FlatMagicDamageMod;
+                        break;
 
-                case SpellSlot.E:
+                    case SpellSlot.E:
 
-                    damage = new float[] { 60, 95, 130, 165, 200 }[spellLevel] + 0.5f * Player.Instance.FlatMagicDamageMod;
-                    break;
+                        damage = new float[] {0, 0, 0, 0, 0}[spellLevel] + 0.0f*Player.Instance.FlatMagicDamageMod;
+                        break;
 
-                case SpellSlot.R:
+                    case SpellSlot.R:
 
-                    damage = new float[] { 180, 265, 350 }[spellLevel] + 0.7f * Player.Instance.FlatMagicDamageMod;
-                    break;
+                        damage = new float[] {0, 0, 0}[spellLevel] + 0.0f*Player.Instance.FlatMagicDamageMod;
+                        break;
+                }
+            }
+
+            if (Player.Instance.Spellbook.GetSpell(SpellSlot.R).ToggleState == 2)
+            {
+                switch (slot)
+                {
+                    case SpellSlot.Q:
+
+                        damage = new float[] { 60, 100, 140, 180, 220 }[spellLevel] + 0.08f + 0.03f / 100 * Player.Instance.FlatMagicDamageMod * target.Health;
+                        break;
+
+                    case SpellSlot.W:
+
+                        damage = new float[] { 0, 0, 0, 0, 0 }[spellLevel] + 0.0f * Player.Instance.FlatMagicDamageMod;
+                        break;
+
+                    case SpellSlot.E:
+
+                        damage = new float[] { 0, 0, 0, 0, 0 }[spellLevel] + 0.0f * Player.Instance.FlatMagicDamageMod;
+                        break;
+
+                    case SpellSlot.R:
+
+                        damage = new float[] { 0, 0, 0 }[spellLevel] + 0.0f * Player.Instance.FlatMagicDamageMod;
+                        break;
+                }
             }
 
             if (damage <= 0)

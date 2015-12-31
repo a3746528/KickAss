@@ -20,7 +20,7 @@ namespace KickassSeries.Champions
             }
 
             // Poppy R
-            if (target.ChampionName == "Poppy")
+            if (target.ChampionName != "Poppy") return target.IsInvulnerable;
             {
                 if (EntityManager.Heroes.Allies.Any(o => !o.IsMe && o.Buffs.Any(b => b.Caster.NetworkId == target.NetworkId && b.IsValid() && b.DisplayName == "PoppyDITarget")))
                 {

@@ -1,8 +1,6 @@
-﻿using System.Collections.Generic;
-using EloBuddy;
+﻿using EloBuddy;
 using EloBuddy.SDK;
 using KickassSeries.Ultilities;
-using SharpDX;
 
 namespace KickassSeries.Champions.Bard
 {

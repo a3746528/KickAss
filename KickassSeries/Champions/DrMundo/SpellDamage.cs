@@ -60,17 +60,17 @@ namespace KickassSeries.Champions.DrMundo
             {
                 case SpellSlot.Q:
 
-                    damage = new float[] { 0, 0, 0, 0, 0 }[spellLevel] + 0.0f * Player.Instance.FlatMagicDamageMod;
+                    damage = new float[] { 80, 130, 180, 230, 280 }[spellLevel] + new [] { 15, 17.5f, 21, 22.5f, 25 }[spellLevel] * target.Health;
                     break;
 
                 case SpellSlot.W:
 
-                    damage = new float[] { 0, 0, 0, 0, 0 }[spellLevel] + 0.0f * Player.Instance.FlatMagicDamageMod;
+                    damage = new float[] { 35, 50, 65, 80, 95 }[spellLevel] + 0.1f * Player.Instance.FlatMagicDamageMod;
                     break;
 
                 case SpellSlot.E:
 
-                    damage = new float[] { 0, 0, 0, 0, 0 }[spellLevel] + 0.0f * Player.Instance.FlatMagicDamageMod;
+                    damage = Player.Instance.GetAutoAttackDamage(target) + new [] { 3, 3.5f, 4, 4.5f, 5 }[spellLevel] * Player.Instance.MaxHealth;
                     break;
 
                 case SpellSlot.R:
