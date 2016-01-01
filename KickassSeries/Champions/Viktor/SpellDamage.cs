@@ -60,22 +60,22 @@ namespace KickassSeries.Champions.Viktor
             {
                 case SpellSlot.Q:
 
-                    damage = new float[] { 30, 60, 90, 120, 150 }[spellLevel] + 0.3f * Player.Instance.FlatPhysicalDamageMod + Player.Instance.GetAutoAttackDamage(target);
+                    damage = new float[] { 40, 60, 80, 100, 120 }[spellLevel] + 0.2f * Player.Instance.FlatMagicDamageMod;
                     break;
 
                 case SpellSlot.W:
 
-                    damage = new float[] { 60, 110, 160, 210, 260 }[spellLevel] + 0.6f * Player.Instance.FlatPhysicalDamageMod;
+                    damage = new float[] { 0, 0, 0, 0, 0 }[spellLevel] + 0f * Player.Instance.FlatMagicDamageMod;
                     break;
 
                 case SpellSlot.E:
 
-                    damage = new float[] { 0, 0, 0, 0, 0 }[spellLevel] + 0.0f * Player.Instance.FlatMagicDamageMod;
+                    damage = new float[] { 70, 115, 160, 205, 250 }[spellLevel] + 0.7f * Player.Instance.FlatMagicDamageMod;
                     break;
 
                 case SpellSlot.R:
 
-                    damage = new float[] { 120, 170, 220 }[spellLevel] + 0.75f * Player.Instance.FlatPhysicalDamageMod;
+                    damage = new float[] { 150, 250, 350 }[spellLevel] + 0.55f * Player.Instance.FlatMagicDamageMod;
                     break;
 
                     }

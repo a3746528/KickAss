@@ -6,15 +6,15 @@ namespace KickassSeries.Champions.Gnar.Modes
     {
         protected static Spell.Skillshot Q
         {
-            get { return SpellManager.Q; }
+            get { return SpellManager.Q1; }
         }
         protected static Spell.Skillshot W
         {
-            get { return SpellManager.W; }
+            get { return SpellManager.W2; }
         }
         protected static Spell.Skillshot E
         {
-            get { return SpellManager.E; }
+            get { return SpellManager.E1; }
         }
         protected static Spell.Skillshot R
         {

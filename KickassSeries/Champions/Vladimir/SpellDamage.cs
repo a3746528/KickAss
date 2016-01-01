@@ -69,10 +69,8 @@ namespace KickassSeries.Champions.Vladimir
                     break;
 
                 case SpellSlot.E:
-                    //TODO BuffName
-                    var buff = Player.Instance.GetBuffCount("");
-                    damage = new float[] {60*buff, 85*buff, 110*buff, 135*buff, 160*buff}[spellLevel] +
-                             0.45f*Player.Instance.FlatMagicDamageMod;
+                    var buff = Player.Instance.GetBuffCount("VladimirTidesofBloodCost");
+                    damage = new float[] {60, 85, 110, 135, 160}[spellLevel] + 0.45f*Player.Instance.FlatMagicDamageMod + 0.25f * buff;
                     break;
 
                 case SpellSlot.R:

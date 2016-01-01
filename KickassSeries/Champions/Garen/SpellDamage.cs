@@ -70,12 +70,12 @@ namespace KickassSeries.Champions.Garen
 
                 case SpellSlot.E:
 
-                    damage = new float[] { 60, 95, 130, 165, 200 }[spellLevel] + 0.5f * Player.Instance.FlatMagicDamageMod;
+                    damage = new [] { 15, 18.8f, 22.5f, 26.3f, 30 }[spellLevel] + new[] { 0.345f, 0.353f, 0.36f, 0.368f, 0.375f }[spellLevel] * Player.Instance.FlatPhysicalDamageMod;
                     break;
 
                 case SpellSlot.R:
 
-                    damage = new float[] { 180, 265, 350 }[spellLevel] + 0.7f * Player.Instance.FlatMagicDamageMod;
+                    damage = new float[] { 175, 350, 525 }[spellLevel] + new [] { 0.286f, 0.333f, 0.40f }[spellLevel] * (target.Health - target.MaxHealth);
                     break;
             }
 

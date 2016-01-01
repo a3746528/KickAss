@@ -60,22 +60,22 @@ namespace KickassSeries.Champions.Volibear
             {
                 case SpellSlot.Q:
 
-                    damage = new float[] { 0, 0, 0, 0, 0 }[spellLevel] + 0.0f * Player.Instance.FlatMagicDamageMod;
+                    damage = new float[] {30, 60, 90, 120, 150}[spellLevel] + Player.Instance.GetAutoAttackDamage(target);
                     break;
 
                 case SpellSlot.W:
 
-                    damage = new float[] { 0, 0, 0, 0, 0 }[spellLevel] + 0.0f * Player.Instance.FlatMagicDamageMod;
+                    damage = new float[] { 80, 125, 170, 215, 260 }[spellLevel] + (Player.Instance.MaxHealth - (498.48f + 86f * (Player.Instance.Level - 1))) * 0.15f * ((target.MaxHealth - target.Health) / target.MaxHealth + 1f);
                     break;
 
                 case SpellSlot.E:
 
-                    damage = new float[] { 0, 0, 0, 0, 0 }[spellLevel] + 0.0f * Player.Instance.FlatMagicDamageMod;
+                    damage = new float[] { 60, 105, 150, 195, 240 }[spellLevel] + 0.6f * Player.Instance.FlatMagicDamageMod;
                     break;
 
                 case SpellSlot.R:
 
-                    damage = new float[] { 0, 0, 0 }[spellLevel] + 0.0f * Player.Instance.FlatMagicDamageMod;
+                    damage = new float[] { 75, 115, 155 }[spellLevel] + 0.3f * Player.Instance.FlatMagicDamageMod;
                     break;
             }
 

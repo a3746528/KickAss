@@ -60,22 +60,22 @@ namespace KickassSeries.Champions.FiddleSticks
             {
                 case SpellSlot.Q:
 
-                    damage = new float[] { 70, 105, 140, 175, 210 }[spellLevel] + 0.65f * Player.Instance.FlatMagicDamageMod;
+                    damage = new float[] { 0, 0, 0, 0, 0 }[spellLevel] + 0f * Player.Instance.FlatMagicDamageMod;
                     break;
 
                 case SpellSlot.W:
 
-                    damage = new float[] { 0, 0, 0, 0, 0 }[spellLevel] + 0.0f * Player.Instance.FlatMagicDamageMod;
+                    damage = (new float[] { 60, 90, 120, 150, 180 }[spellLevel] + 0.45f * Player.Instance.FlatMagicDamageMod) * 2.8f;
                     break;
 
                 case SpellSlot.E:
 
-                    damage = new float[] { 60, 95, 130, 165, 200 }[spellLevel] + 0.5f * Player.Instance.FlatMagicDamageMod;
+                    damage = new float[] { 65, 85, 105, 125, 145 }[spellLevel] + 0.45f * Player.Instance.FlatMagicDamageMod;
                     break;
 
                 case SpellSlot.R:
 
-                    damage = new float[] { 180, 265, 350 }[spellLevel] + 0.7f * Player.Instance.FlatMagicDamageMod;
+                    damage = (new float[] { 125, 225, 325 }[spellLevel] + 0.45f * Player.Instance.FlatMagicDamageMod) * 2.8f;
                     break;
             }
 

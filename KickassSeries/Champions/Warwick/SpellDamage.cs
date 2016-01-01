@@ -60,7 +60,7 @@ namespace KickassSeries.Champions.Warwick
             {
                 case SpellSlot.Q:
 
-                    damage = new float[] { 0, 0, 0, 0, 0 }[spellLevel] + 0.0f * Player.Instance.FlatMagicDamageMod;
+                    damage = new float[] { 75, 125, 175, 225, 275 }[spellLevel] + 1f * Player.Instance.FlatMagicDamageMod;
                     break;
 
                 case SpellSlot.W:
@@ -75,7 +75,7 @@ namespace KickassSeries.Champions.Warwick
 
                 case SpellSlot.R:
 
-                    damage = new float[] { 0, 0, 0 }[spellLevel] + 0.0f * Player.Instance.FlatMagicDamageMod;
+                    damage = (new float[] { 30, 50, 70 }[spellLevel] + 0.4f * Player.Instance.FlatPhysicalDamageMod) * 5;
                     break;
             }
 

@@ -4,19 +4,19 @@ namespace KickassSeries.Champions.Yorick.Modes
 {
     public abstract class ModeBase
     {
-        protected static Spell.Skillshot Q
+        protected static Spell.Active Q
         {
             get { return SpellManager.Q; }
         }
-        protected static Spell.Active W
+        protected static Spell.Skillshot W
         {
             get { return SpellManager.W; }
         }
-        protected static Spell.Skillshot E
+        protected static Spell.Targeted E
         {
             get { return SpellManager.E; }
         }
-        protected static Spell.Skillshot R
+        protected static Spell.Targeted R
         {
             get { return SpellManager.R; }
         }

@@ -17,9 +17,9 @@ namespace KickassSeries.Champions.Gnar
         {
             if (!sender.IsEnemy) return;
 
-            if (sender.IsValidTarget(SpellManager.E.Range))
+            if (sender.IsValidTarget(SpellManager.E1.Range))
             {
-                SpellManager.E.Cast(sender);
+                SpellManager.E1.Cast(sender);
             }
         }
 
@@ -29,7 +29,7 @@ namespace KickassSeries.Champions.Gnar
 
             if (e.DangerLevel == DangerLevel.High)
             {
-                SpellManager.E.Cast(sender);
+                SpellManager.E1.Cast(sender);
             }
         }
     }

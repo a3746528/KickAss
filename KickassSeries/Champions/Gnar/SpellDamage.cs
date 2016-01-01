@@ -11,21 +11,15 @@ namespace KickassSeries.Champions.Gnar
             var damage = Player.Instance.GetAutoAttackDamage(target);
 
             // Q
-            if (SpellManager.Q.IsReady())
+            if (SpellManager.Q1.IsReady())
             {
-                damage += SpellManager.Q.GetRealDamage(target);
-            }
-
-            // W
-            if (SpellManager.W.IsReady())
-            {
-                damage += SpellManager.W.GetRealDamage(target);
+                damage += SpellManager.Q1.GetRealDamage(target);
             }
 
             // E
-            if (SpellManager.E.IsReady())
+            if (SpellManager.E1.IsReady())
             {
-                damage += SpellManager.E.GetRealDamage(target);
+                damage += SpellManager.E1.GetRealDamage(target);
             }
 
             // R
@@ -56,27 +50,55 @@ namespace KickassSeries.Champions.Gnar
             }
             spellLevel--;
 
-            switch (slot)
+            if (Player.HasBuff(""))
             {
-                case SpellSlot.Q:
+                switch (slot)
+                {
+                    case SpellSlot.Q:
 
-                    damage = new float[] { 70, 105, 140, 175, 210 }[spellLevel] + 0.65f * Player.Instance.FlatMagicDamageMod;
-                    break;
+                        damage = new float[] { 70, 105, 140, 175, 210 }[spellLevel] + 0.65f * Player.Instance.FlatMagicDamageMod;
+                        break;
 
-                case SpellSlot.W:
+                    case SpellSlot.W:
 
-                    damage = new float[] { 0, 0, 0, 0, 0 }[spellLevel] + 0.0f * Player.Instance.FlatMagicDamageMod;
-                    break;
+                        damage = new float[] { 0, 0, 0, 0, 0 }[spellLevel] + 0.0f * Player.Instance.FlatMagicDamageMod;
+                        break;
 
-                case SpellSlot.E:
+                    case SpellSlot.E:
 
-                    damage = new float[] { 60, 95, 130, 165, 200 }[spellLevel] + 0.5f * Player.Instance.FlatMagicDamageMod;
-                    break;
+                        damage = new float[] { 60, 95, 130, 165, 200 }[spellLevel] + 0.5f * Player.Instance.FlatMagicDamageMod;
+                        break;
 
-                case SpellSlot.R:
+                    case SpellSlot.R:
 
-                    damage = new float[] { 180, 265, 350 }[spellLevel] + 0.7f * Player.Instance.FlatMagicDamageMod;
-                    break;
+                        damage = new float[] { 180, 265, 350 }[spellLevel] + 0.7f * Player.Instance.FlatMagicDamageMod;
+                        break;
+                }
+            }
+            else
+            {
+                switch (slot)
+                {
+                    case SpellSlot.Q:
+
+                        damage = new float[] { 70, 105, 140, 175, 210 }[spellLevel] + 0.65f * Player.Instance.FlatMagicDamageMod;
+                        break;
+
+                    case SpellSlot.W:
+
+                        damage = new float[] { 0, 0, 0, 0, 0 }[spellLevel] + 0.0f * Player.Instance.FlatMagicDamageMod;
+                        break;
+
+                    case SpellSlot.E:
+
+                        damage = new float[] { 60, 95, 130, 165, 200 }[spellLevel] + 0.5f * Player.Instance.FlatMagicDamageMod;
+                        break;
+
+                    case SpellSlot.R:
+
+                        damage = new float[] { 180, 265, 350 }[spellLevel] + 0.7f * Player.Instance.FlatMagicDamageMod;
+                        break;
+                }
             }
 
             if (damage <= 0)

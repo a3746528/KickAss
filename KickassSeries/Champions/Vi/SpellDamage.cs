@@ -60,7 +60,7 @@ namespace KickassSeries.Champions.Vi
             {
                 case SpellSlot.Q:
 
-                    damage = new float[] { 70, 105, 140, 175, 210 }[spellLevel] + 0.65f * Player.Instance.FlatMagicDamageMod;
+                    damage = new float[] { 50, 75, 100, 125, 150 }[spellLevel] + 0.8f * Player.Instance.FlatPhysicalDamageMod;
                     break;
 
                 case SpellSlot.W:
@@ -70,12 +70,12 @@ namespace KickassSeries.Champions.Vi
 
                 case SpellSlot.E:
 
-                    damage = new float[] { 60, 95, 130, 165, 200 }[spellLevel] + 0.5f * Player.Instance.FlatMagicDamageMod;
+                    damage = new float[] { 5, 20, 35, 50, 65 }[spellLevel] + 1.15f * Player.Instance.FlatPhysicalDamageMod+ 0.7f * Player.Instance.FlatMagicDamageMod;
                     break;
 
                 case SpellSlot.R:
 
-                    damage = new float[] { 180, 265, 350 }[spellLevel] + 0.7f * Player.Instance.FlatMagicDamageMod;
+                    damage = new float[] { 150, 300, 450 }[spellLevel] + 1.4f * Player.Instance.FlatPhysicalDamageMod;
                     break;
             }
 

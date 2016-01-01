@@ -60,22 +60,22 @@ namespace KickassSeries.Champions.Fizz
             {
                 case SpellSlot.Q:
 
-                    damage = new float[] { 70, 105, 140, 175, 210 }[spellLevel] + 0.65f * Player.Instance.FlatMagicDamageMod;
+                    damage = new float[] { 10, 25, 40, 55, 70 }[spellLevel] + 0.35f * Player.Instance.FlatMagicDamageMod + Player.Instance.GetAutoAttackDamage(target);
                     break;
 
                 case SpellSlot.W:
 
-                    damage = new float[] { 0, 0, 0, 0, 0 }[spellLevel] + 0.0f * Player.Instance.FlatMagicDamageMod;
+                    damage = (new float[] { 20, 30, 40, 50, 60 }[spellLevel] + 0.45f * Player.Instance.FlatMagicDamageMod) * 3f;
                     break;
 
                 case SpellSlot.E:
 
-                    damage = new float[] { 60, 95, 130, 165, 200 }[spellLevel] + 0.5f * Player.Instance.FlatMagicDamageMod;
+                    damage = new float[] { 70, 120, 170, 220, 270 }[spellLevel] + 0.75f * Player.Instance.FlatMagicDamageMod;
                     break;
 
                 case SpellSlot.R:
 
-                    damage = new float[] { 180, 265, 350 }[spellLevel] + 0.7f * Player.Instance.FlatMagicDamageMod;
+                    damage = new float[] { 200, 325, 450 }[spellLevel] + 1f * Player.Instance.FlatMagicDamageMod;
                     break;
             }
 

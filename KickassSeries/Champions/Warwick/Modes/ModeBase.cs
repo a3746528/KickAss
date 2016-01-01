@@ -4,7 +4,7 @@ namespace KickassSeries.Champions.Warwick.Modes
 {
     public abstract class ModeBase
     {
-        protected static Spell.Skillshot Q
+        protected static Spell.Targeted Q
         {
             get { return SpellManager.Q; }
         }
@@ -12,11 +12,11 @@ namespace KickassSeries.Champions.Warwick.Modes
         {
             get { return SpellManager.W; }
         }
-        protected static Spell.Skillshot E
+        protected static Spell.Active E
         {
             get { return SpellManager.E; }
         }
-        protected static Spell.Skillshot R
+        protected static Spell.Targeted R
         {
             get { return SpellManager.R; }
         }

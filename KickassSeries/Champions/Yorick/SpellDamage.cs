@@ -60,17 +60,17 @@ namespace KickassSeries.Champions.Yorick
             {
                 case SpellSlot.Q:
 
-                    damage = new float[] { 0, 0, 0, 0, 0 }[spellLevel] + 0.0f * Player.Instance.FlatMagicDamageMod;
+                    damage = new float[] { 30, 60, 90, 120, 150 }[spellLevel] + 0.2f * Player.Instance.FlatPhysicalDamageMod;
                     break;
 
                 case SpellSlot.W:
 
-                    damage = new float[] { 0, 0, 0, 0, 0 }[spellLevel] + 0.0f * Player.Instance.FlatMagicDamageMod;
+                    damage = new float[] { 60, 95, 130, 165, 200 }[spellLevel] + 1f * Player.Instance.FlatMagicDamageMod;
                     break;
 
                 case SpellSlot.E:
 
-                    damage = new float[] { 0, 0, 0, 0, 0 }[spellLevel] + 0.0f * Player.Instance.FlatMagicDamageMod;
+                    damage = new float[] { 55, 85, 115, 145, 175 }[spellLevel] + 1f * Player.Instance.FlatPhysicalDamageMod;
                     break;
 
                 case SpellSlot.R:
