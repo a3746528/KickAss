@@ -27,11 +27,6 @@ namespace KickassSeries.Champions.Vayne.Modes
                 Q.Cast(target);
             }
 
-            if (W.IsReady() && target.IsValidTarget(W.Range) && Settings.UseW)
-            {
-                W.Cast();
-            }
-
             if (R.IsReady() && Settings.UseR)
             {
                 var targetR = TargetSelector.GetTarget(Q.Range + R.Range + 50, DamageType.Magical);

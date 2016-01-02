@@ -450,7 +450,7 @@ namespace KickassSeries
 
                 Console.WriteLine(" ");
 
-                #region LoadingSkinHack
+                #region LoadingUltilities
                 try
                 {
                     Ultilities.Initialize.Init();

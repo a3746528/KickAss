@@ -31,5 +31,13 @@
                 //TODO EXHAUST
             }
         }
+
+        public static void Execute()
+        {
+            if (HasSpell("summonerheal"))
+            {
+                Spells.Heal.Execute();
+            }
+        }
     }
 }

@@ -60,12 +60,12 @@ namespace KickassSeries.Champions.Veigar
             {
                 case SpellSlot.Q:
 
-                    damage = new float[] { 0, 0, 0, 0, 0 }[spellLevel] + 0.0f * Player.Instance.FlatMagicDamageMod;
+                    damage = new float[] { 70, 110, 150, 190, 230 }[spellLevel] + 0.60f * Player.Instance.FlatMagicDamageMod;
                     break;
 
                 case SpellSlot.W:
 
-                    damage = new float[] { 0, 0, 0, 0, 0 }[spellLevel] + 0.0f * Player.Instance.FlatMagicDamageMod;
+                    damage = new float[] { 100, 150, 200, 250, 300 }[spellLevel] + 1f * Player.Instance.FlatMagicDamageMod;
                     break;
 
                 case SpellSlot.E:
@@ -75,7 +75,7 @@ namespace KickassSeries.Champions.Veigar
 
                 case SpellSlot.R:
 
-                    damage = new float[] { 0, 0, 0 }[spellLevel] + 0.0f * Player.Instance.FlatMagicDamageMod;
+                    damage = new float[] { 250, 375, 500 }[spellLevel] + 1f * Player.Instance.FlatMagicDamageMod + 0.8f * target.FlatMagicDamageMod;
                     break;
             }
 

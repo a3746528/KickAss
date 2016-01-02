@@ -25,11 +25,6 @@ namespace KickassSeries.Champions.Vayne
                 new Circle { Color = Settings.colorQ, BorderWidth = Settings._widthQ, Radius = SpellManager.Q.Range }.Draw(Player.Instance.Position);
             }
 
-            if (Settings.DrawReady ? SpellManager.W.IsReady() : Settings.DrawW)
-            {
-                new Circle { Color = Settings.colorW, BorderWidth = Settings._widthW, Radius = SpellManager.W.Range }.Draw(Player.Instance.Position);
-            }
-
             if (Settings.DrawReady ? SpellManager.E.IsReady() : Settings.DrawE)
             {
                 new Circle { Color = Settings.colorE, BorderWidth = Settings._widthE, Radius = SpellManager.E.Range }.Draw(Player.Instance.Position);

@@ -60,17 +60,17 @@ namespace KickassSeries.Champions.Velkoz
             {
                 case SpellSlot.Q:
 
-                    damage = new float[] { 70, 105, 140, 175, 210 }[spellLevel] + 0.65f * Player.Instance.FlatMagicDamageMod;
+                    damage = new float[] { 80, 120, 160, 200, 240 }[spellLevel] + 0.6f * Player.Instance.FlatMagicDamageMod;
                     break;
 
                 case SpellSlot.W:
 
-                    damage = new float[] { 0, 0, 0, 0, 0 }[spellLevel] + 0.0f * Player.Instance.FlatMagicDamageMod;
+                    damage = new float[] { 75, 125, 175, 225, 275 }[spellLevel] + 0.6f * Player.Instance.FlatMagicDamageMod;
                     break;
 
                 case SpellSlot.E:
 
-                    damage = new float[] { 60, 95, 130, 165, 200 }[spellLevel] + 0.5f * Player.Instance.FlatMagicDamageMod;
+                    damage = new float[] { 70, 100, 130, 160, 190 }[spellLevel] + 0.5f * Player.Instance.FlatMagicDamageMod;
                     break;
 
                 case SpellSlot.R:

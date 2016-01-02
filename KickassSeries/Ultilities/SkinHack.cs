@@ -16,17 +16,14 @@ namespace KickassSeries.Ultilities
 
         private static int lastCheck;
 
-        public static void Initialize()
+        public static void Execute()
         {
-            Game.OnTick += delegate
-            {
-                if (lastCheck + 5000 > Environment.TickCount || Settings.TurnOff) return;
-                CheckSkin();
-                lastCheck = Environment.TickCount;
-            };
+            if (lastCheck + 5000 > Environment.TickCount || Settings.TurnOff) return;
+            CheckSkin();
+            lastCheck = Environment.TickCount;
         }
 
-        public static void CheckSkin()
+        private static void CheckSkin()
         {
             if (Settings.TurnOff) return;
             var enemies =

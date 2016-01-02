@@ -26,11 +26,6 @@ namespace KickassSeries.Champions.Vayne.Modes
                 E.Cast(minion);
             }
 
-            if (W.IsReady() && minion.IsValidTarget(W.Range) && Settings.UseW)
-            {
-                W.Cast();
-            }
-
             if (Q.IsReady() && minion.IsValidTarget(Q.Range) && Settings.UseQ)
             {
                 Q.Cast(minion);

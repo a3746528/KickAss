@@ -8,7 +8,7 @@ namespace KickassSeries.Champions.Veigar.Modes
         {
             get { return SpellManager.Q; }
         }
-        protected static Spell.Active W
+        protected static Spell.Skillshot W
         {
             get { return SpellManager.W; }
         }
@@ -16,7 +16,7 @@ namespace KickassSeries.Champions.Veigar.Modes
         {
             get { return SpellManager.E; }
         }
-        protected static Spell.Skillshot R
+        protected static Spell.Targeted R
         {
             get { return SpellManager.R; }
         }

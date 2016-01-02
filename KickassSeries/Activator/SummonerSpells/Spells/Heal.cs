@@ -13,10 +13,9 @@ namespace KickassSeries.Activator.SummonerSpells.Spells
         public static void Initialize()
         {
             SetHealtSlot();
-            Game.OnTick += Game_OnTick;
         }
 
-        private static void Game_OnTick(EventArgs args)
+        public static void Execute()
         {
             if(!SummonerHeal.IsReady() || SummonerSpells.Initialize.lastSpell + 1500 >= Environment.TickCount || !Settings.UseHeal) return;
             var ally =

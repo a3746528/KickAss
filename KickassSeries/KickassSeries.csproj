@@ -60,6 +60,8 @@
   <ItemGroup>
     <Compile Include="Activator\Activator.cs" />
     <Compile Include="Activator\Config.cs" />
+    <Compile Include="Activator\DMGHandler\DamageHandle.cs" />
+    <Compile Include="Activator\DMGHandler\DangerousSpells.cs" />
     <Compile Include="Activator\Items\Extensions.cs" />
     <Compile Include="Activator\SummonerSpells\Extensions.cs" />
     <Compile Include="Activator\Items\Consumables.cs" />

@@ -16,12 +16,6 @@ namespace KickassSeries.Champions.Vayne
                 damage += SpellManager.Q.GetRealDamage(target);
             }
 
-            // W
-            if (SpellManager.W.IsReady())
-            {
-                damage += SpellManager.W.GetRealDamage(target);
-            }
-
             // E
             if (SpellManager.E.IsReady())
             {
@@ -60,22 +54,17 @@ namespace KickassSeries.Champions.Vayne
             {
                 case SpellSlot.Q:
 
-                    damage = new float[] { 0, 0, 0, 0, 0 }[spellLevel] + 0.0f * Player.Instance.FlatMagicDamageMod;
-                    break;
-
-                case SpellSlot.W:
-
-                    damage = new float[] { 0, 0, 0, 0, 0 }[spellLevel] + 0.0f * Player.Instance.FlatMagicDamageMod;
+                    damage = Player.Instance.GetAutoAttackDamage(target) + new float[] { 30, 35, 40, 45, 50 }[spellLevel] * Player.Instance.FlatPhysicalDamageMod;
                     break;
 
                 case SpellSlot.E:
 
-                    damage = new float[] { 0, 0, 0, 0, 0 }[spellLevel] + 0.0f * Player.Instance.FlatMagicDamageMod;
+                    damage = new float[] { 45 ,80 ,115, 150, 185 }[spellLevel] + 0.5f * Player.Instance.FlatPhysicalDamageMod;
                     break;
 
                 case SpellSlot.R:
 
-                    damage = new float[] { 0, 0, 0 }[spellLevel] + 0.0f * Player.Instance.FlatMagicDamageMod;
+                    damage = new float[] { 30, 50, 70 }[spellLevel] * 4f;
                     break;
             }
 

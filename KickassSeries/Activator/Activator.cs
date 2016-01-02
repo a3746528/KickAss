@@ -13,13 +13,16 @@ namespace KickassSeries.Activator
             Game.OnTick += Game_OnTick;
 
             SummonerSpells.Initialize.Init();
+
+            DMGHandler.DamageHandler.Initialize();
         }
 
         private static void Game_OnTick(EventArgs args)
         {
-            Defensive.Execute();
-            Offensive.Execute();
-            Consumables.Execute();
+
+            //Defensive.Execute();
+            //Offensive.Execute();
+            //Consumables.Execute();
         }
     }
 }
