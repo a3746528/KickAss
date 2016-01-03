@@ -17,7 +17,7 @@ namespace KickassSeries.Activator.DMGHandler
 
     public class DangerousSpells
     {
-        public static List<DangerousSpell> Spells = new List<DangerousSpell>()
+        public static List<DangerousSpell> Spells = new List<DangerousSpell>
         {
             new DangerousSpell(Champion.Annie, SpellSlot.R),
             new DangerousSpell(Champion.Caitlyn, SpellSlot.R),

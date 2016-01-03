@@ -20,6 +20,7 @@ namespace KickassSeries.Activator
 
         private static void Game_OnTick(EventArgs args)
         {
+            SummonerSpells.Initialize.Execute();
             Defensive.Execute();
             Offensive.Execute();
             Consumables.Execute();

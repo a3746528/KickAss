@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Linq;
 using EloBuddy;
 using EloBuddy.SDK;
 
@@ -16,8 +15,7 @@ namespace KickassSeries.Activator.Items
         {
             if (LastRun > Environment.TickCount) return;
 
-            var target =
-                EntityManager.Heroes.Enemies.FirstOrDefault(e => !e.IsDead && e.IsInRange(Player.Instance, 1000));
+            var target = TargetSelector.GetTarget(900, DamageType.Mixed);
 
             if (Player.Instance.IsRecalling() || Player.Instance.IsInShopRange() || target == null ||
                 !Orbwalker.ActiveModesFlags.HasFlag(Orbwalker.ActiveModes.Combo)) return;
@@ -76,7 +74,16 @@ namespace KickassSeries.Activator.Items
                 }
             }
 
-            LastRun = Environment.TickCount + 200;
+            if (Settings.Hextech && Hextech.IsOwned() && Hextech.IsReady())
+            {
+                if (Settings.HextechMyHp >= Player.Instance.HealthPercent &&
+                    target.HealthPercent <= Settings.HextechTargetHp)
+                {
+                    Hextech.Cast(target);
+                }
+            }
+
+            LastRun = Environment.TickCount + 300;
         }
     }
 }

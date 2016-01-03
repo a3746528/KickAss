@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using EloBuddy;
 using EloBuddy.SDK;
 using KickassSeries.Activator.DMGHandler;
@@ -11,40 +12,47 @@ namespace KickassSeries.Activator.Items
     // ReSharper disable once ClassNeverInstantiated.Global
     internal class Defensive : Ids
     {
+        private static int lastItemUsed;
         public static void Execute()
         {
-            if (Player.Instance.IsInShopRange() || Player.Instance.CountAlliesInRange(Misc.RangeEnemy) < Misc.EnemyCount)return;
+            if (Player.Instance.IsInShopRange() || Player.Instance.CountAlliesInRange(Misc.RangeEnemy) < Misc.EnemyCount || lastItemUsed >= Environment.TickCount)return;
 
             #region Self
 
             if (Zhonyas.IsReady() && Zhonyas.IsOwned() && Player.Instance.InDanger() && Settings.Zhonyas && Player.Instance.HealthPercent <= Settings.ZhonyasMyHp)
             {
                 Zhonyas.Cast();
+                lastItemUsed = Environment.TickCount + 1500;
             }
 
             if (ArchengelStaff.IsReady() && ArchengelStaff.IsOwned() && Player.Instance.InDanger() && Settings.ArchengelStaff && Player.Instance.HealthPercent <= Settings.MYHPArchengelStaff)
             {
                 ArchengelStaff.Cast();
+                lastItemUsed = Environment.TickCount + 1500;
             }
 
             if (FaceOfTheMountain.IsReady() && FaceOfTheMountain.IsOwned() && Player.Instance.InDanger())
             {
                 FaceOfTheMountain.Cast(Player.Instance);
+                lastItemUsed = Environment.TickCount + 1500;
             }
 
             if (Talisman.IsReady() && Player.Instance.CountAlliesInRange(450) >= 2 && Talisman.IsOwned() && Player.Instance.InDanger())
             {
                 Talisman.Cast();
+                lastItemUsed = Environment.TickCount + 1500;
             }
 
             if (Mikael.IsReady() && Player.Instance.HasCC() && Mikael.IsOwned() && Player.Instance.InDanger())
             {
                 Mikael.Cast(Player.Instance);
+                lastItemUsed = Environment.TickCount + 1500;
             }
 
             if (Solari.IsReady() && Solari.IsOwned() && Player.Instance.InDanger())
             {
                 Solari.Cast();
+                lastItemUsed = Environment.TickCount + 1500;
             }
 
             if (Ohm.IsReady() && Ohm.IsOwned() && Player.Instance.InDanger())
@@ -53,12 +61,14 @@ namespace KickassSeries.Activator.Items
                 if (turret != null)
                 {
                     Ohm.Cast(turret);
+                    lastItemUsed = Environment.TickCount + 1500;
                 }
             }
 
             if (Randuin.IsReady() && Player.Instance.CountEnemiesInRange(Randuin.Range) >= 2 && Randuin.IsOwned() && Player.Instance.InDanger())
             {
                 Randuin.Cast();
+                lastItemUsed = Environment.TickCount + 1500;
             }
 
             //CC
@@ -68,16 +78,19 @@ namespace KickassSeries.Activator.Items
             if (DerbishBlade.IsReady() && DerbishBlade.IsOwned())
             {
                 DerbishBlade.Cast();
+                lastItemUsed = Environment.TickCount + 1500;
             }
 
             if (Mercurial.IsReady() && Mercurial.IsOwned())
             {
                 Mercurial.Cast();
+                lastItemUsed = Environment.TickCount + 1500;
             }
 
             if (QuickSilver.IsReady() && QuickSilver.IsOwned())
             {
                 QuickSilver.Cast();
+                lastItemUsed = Environment.TickCount + 1500;
             }
 
             #endregion Self

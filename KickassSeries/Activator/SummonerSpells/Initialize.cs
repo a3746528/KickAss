@@ -34,6 +34,11 @@
 
         public static void Execute()
         {
+            if (HasSpell("summonersmite"))
+            {
+                Spells.Smite.Execute();
+            }
+
             if (HasSpell("summonerheal"))
             {
                 Spells.Heal.Execute();

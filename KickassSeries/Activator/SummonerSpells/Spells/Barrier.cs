@@ -1,7 +1,7 @@
 ﻿using System;
 using EloBuddy;
 using EloBuddy.SDK;
-
+using KickassSeries.Activator.DMGHandler;
 using Settings = KickassSeries.Activator.Config.Types.SummonerSpells;
 
 namespace KickassSeries.Activator.SummonerSpells.Spells
@@ -19,7 +19,7 @@ namespace KickassSeries.Activator.SummonerSpells.Spells
         {
             if (!SummonerBarrier.IsReady() || SummonerSpells.Initialize.lastSpell + 1500 >= Environment.TickCount || !Settings.UseBarrier) return;
 
-            if (true == false)
+            if (Player.Instance.InDanger())
             {
                 SummonerBarrier.Cast();
                 SummonerSpells.Initialize.lastSpell = Environment.TickCount;

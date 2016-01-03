@@ -22,6 +22,7 @@ namespace KickassSeries.Activator.DMGHandler
 
         private static void Obj_AI_Base_OnBasicAttack(Obj_AI_Base sender, GameObjectProcessSpellCastEventArgs args)
         {
+            if(!Settings.ConsiderAttacks)return;
             var hero = sender as AIHeroClient;
             if (hero == null) return;
             if(hero.IsAlly) return;
@@ -46,6 +47,7 @@ namespace KickassSeries.Activator.DMGHandler
             //SkilShot
             if (args.Target == null)
             {
+                if (!Settings.ConsiderSkillshots) return;
                 if (args.Start.To2D().IsInRange(Player.Instance, args.SData.CastRangeDisplayOverride))
                 {
                     var projection = Player.Instance.Position.To2D().ProjectOn(args.Start.To2D(), args.End.To2D());
@@ -68,6 +70,7 @@ namespace KickassSeries.Activator.DMGHandler
             //Targetted spell
             else
             {
+                if (!Settings.ConsiderSpells) return;
                 if (args.Target.IsMe)
                 {
                     ReceivingSpell = true;

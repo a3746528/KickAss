@@ -28,13 +28,6 @@ namespace KickassSeries.Activator.SummonerSpells.Spells
             {
                 SummonerSmite = new Spell.Targeted(smite.Slot, 500);
             }
-
-            Game.OnTick += Game_OnTick;
-        }
-
-        private static void Game_OnTick(EventArgs args)
-        {
-            Execute();
         }
 
         private static int GetSmiteDamage()

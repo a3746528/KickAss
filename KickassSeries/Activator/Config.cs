@@ -645,14 +645,11 @@ namespace KickassSeries.Activator
             public static class Settings
             {
                 private static readonly Slider _HPDangerSlider;
-                private static readonly Slider EnemyRange;//
-                private static readonly Slider EnemySlider;//
+                private static readonly Slider EnemyRange;
+                private static readonly Slider EnemySlider;
                 private static readonly CheckBox Spells;
                 private static readonly CheckBox Skillshots;
-                private static readonly CheckBox Targeted;
-                private static readonly CheckBox Attacks;
-                private static readonly CheckBox Minions;
-                private static readonly CheckBox DisableExecuteCheck;
+                private static readonly CheckBox AAs;
 
                 public static int HealthDanger
                 {
@@ -669,35 +666,19 @@ namespace KickassSeries.Activator
                     get { return EnemySlider.CurrentValue; }
                 }
 
-
-                public static bool CountSpells
+                public static bool ConsiderSpells
                 {
                     get { return Spells.CurrentValue; }
                 }
 
-                public static bool CountSkillshots
+                public static bool ConsiderSkillshots
                 {
                     get { return Skillshots.CurrentValue; }
                 }
 
-                public static bool CountTargeted
+                public static bool ConsiderAttacks
                 {
-                    get { return Targeted.CurrentValue; }
-                }
-
-                public static bool CountAttacks
-                {
-                    get { return Attacks.CurrentValue; }
-                }
-
-                public static bool CountMinions
-                {
-                    get { return Minions.CurrentValue; }
-                }
-
-                public static bool DisableExeCheck
-                {
-                    get { return DisableExecuteCheck.CurrentValue; }
+                    get { return AAs.CurrentValue; }
                 }
 
                 static Settings()
@@ -706,11 +687,14 @@ namespace KickassSeries.Activator
                     _HPDangerSlider = SettingsMenu.Add("hpdangerslider", new Slider("Min health to be in danger " , 25, 10));
                     EnemyRange = SettingsMenu.Add("minrangeenemy", new Slider("Enemies must be in X range to be in danger", 850, 500, 2000));
                     EnemySlider = SettingsMenu.Add("minenemiesinrange", new Slider("Min enemies in the range determined up", 2, 0, 5));
+                    Spells = SettingsMenu.Add("considerspells", new CheckBox("Consider spells ?"));
+                    Skillshots = SettingsMenu.Add("considerskilshots", new CheckBox("Consider SkillShots ?"));
+                    AAs = SettingsMenu.Add("consideraas", new CheckBox("Consider Auto Attacks ?"));
                     SettingsMenu.AddSeparator();
                     SettingsMenu.AddGroupLabel("Dangerous Spells");
                     foreach (var spell in DMGHandler.DangerousSpells.Spells.Where(x => EntityManager.Heroes.Enemies.Any(b => b.Hero == x.Hero)))
                     {
-                        SettingsMenu.Add(spell.Hero.ToString() + spell.Slot,new CheckBox(spell.Hero + ": " + spell.Slot));
+                        SettingsMenu.Add(spell.Hero.ToString() + spell.Slot,new CheckBox(spell.Hero + ":: " + spell.Slot));
                     }
                 }
 
