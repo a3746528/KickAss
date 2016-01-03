@@ -18,7 +18,10 @@ namespace KickassSeries.Champions.Ahri
                 AllowedCollisionCount = int.MaxValue
             };
             W = new Spell.Active(SpellSlot.W, 700);
-            E = new Spell.Skillshot(SpellSlot.E, 1000, SkillShotType.Linear, 250, 1530, 60);
+            E = new Spell.Skillshot(SpellSlot.E, 1000, SkillShotType.Linear, 250, 1530, 60)
+            {
+                MinimumHitChance = HitChance.High
+            };
             R = new Spell.Skillshot(SpellSlot.R, 410, SkillShotType.Circular, 250, 1200, 30);
         }
 

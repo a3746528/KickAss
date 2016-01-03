@@ -303,12 +303,12 @@ namespace KickassSeries.Activator
                 private static readonly CheckBox UseZhonyas;
                 private static readonly Slider HpZhonyas;
 
-                public static bool Bilgewater
+                public static bool Zhonyas
                 {
                     get { return UseZhonyas.CurrentValue; }
                 }
 
-                public static int BilgewaterMyHp
+                public static int ZhonyasMyHp
                 {
                     get { return HpZhonyas.CurrentValue; }
                 }
@@ -645,9 +645,8 @@ namespace KickassSeries.Activator
             public static class Settings
             {
                 private static readonly Slider _HPDangerSlider;
-                private static readonly CheckBox RequireEnemy;
-                private static readonly Slider EnemySlider;//
                 private static readonly Slider EnemyRange;//
+                private static readonly Slider EnemySlider;//
                 private static readonly CheckBox Spells;
                 private static readonly CheckBox Skillshots;
                 private static readonly CheckBox Targeted;
@@ -660,19 +659,16 @@ namespace KickassSeries.Activator
                     get { return _HPDangerSlider.CurrentValue; }
                 }
 
-                public static bool RequiresEnemy
+                public static int RangeEnemy
                 {
-                    get { return RequireEnemy.CurrentValue; }
+                    get { return EnemyRange.CurrentValue; }
                 }
 
                 public static int EnemyCount
                 {
                     get { return EnemySlider.CurrentValue; }
                 }
-                public static int RangeEnemy
-                {
-                    get { return EnemyRange.CurrentValue; }
-                }
+
 
                 public static bool CountSpells
                 {
@@ -707,7 +703,9 @@ namespace KickassSeries.Activator
                 static Settings()
                 {
                     SettingsMenu.AddGroupLabel("Settings");
-                    _HPDangerSlider = SettingsMenu.Add("hpdangerslider", new Slider("Min health to be in danger " , 30, 1));
+                    _HPDangerSlider = SettingsMenu.Add("hpdangerslider", new Slider("Min health to be in danger " , 25, 10));
+                    EnemyRange = SettingsMenu.Add("minrangeenemy", new Slider("Enemies must be in X range to be in danger", 850, 500, 2000));
+                    EnemySlider = SettingsMenu.Add("minenemiesinrange", new Slider("Min enemies in the range determined up", 2, 0, 5));
                     SettingsMenu.AddSeparator();
                     SettingsMenu.AddGroupLabel("Dangerous Spells");
                     foreach (var spell in DMGHandler.DangerousSpells.Spells.Where(x => EntityManager.Heroes.Enemies.Any(b => b.Hero == x.Hero)))

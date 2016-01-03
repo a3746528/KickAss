@@ -51,7 +51,7 @@ namespace KickassSeries.Ultilities.Trackers
         {
             if (Settings.TurnOff) return;
 
-            if (args.Type != TeleportType.Recall || !(sender is AIHeroClient) || sender.IsAlly && !sender.IsMe) return;
+            if (args.Type != TeleportType.Recall || !(sender is AIHeroClient)) return;
 
             switch (args.Status)
             {

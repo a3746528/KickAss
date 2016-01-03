@@ -1,8 +1,10 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 using EloBuddy;
 using EloBuddy.SDK;
 using KickassSeries.Activator.DMGHandler;
+
+using Misc = KickassSeries.Activator.Config.Types.Settings;
+using Settings = KickassSeries.Activator.Config.Types.DeffensiveItems;
 
 namespace KickassSeries.Activator.Items
 {
@@ -11,20 +13,16 @@ namespace KickassSeries.Activator.Items
     {
         public static void Execute()
         {
-            var target =
-                EntityManager.Heroes.Enemies.FirstOrDefault(e => !e.IsDead && e.IsInRange(Player.Instance, 1500));
-
-            if (Player.Instance.IsInShopRange() || target == null)
-                return;
+            if (Player.Instance.IsInShopRange() || Player.Instance.CountAlliesInRange(Misc.RangeEnemy) < Misc.EnemyCount)return;
 
             #region Self
 
-            if (Zhonyas.IsReady() && Zhonyas.IsOwned() && Player.Instance.InDanger())
+            if (Zhonyas.IsReady() && Zhonyas.IsOwned() && Player.Instance.InDanger() && Settings.Zhonyas && Player.Instance.HealthPercent <= Settings.ZhonyasMyHp)
             {
                 Zhonyas.Cast();
             }
 
-            if (ArchengelStaff.IsReady() && ArchengelStaff.IsOwned() && Player.Instance.InDanger())
+            if (ArchengelStaff.IsReady() && ArchengelStaff.IsOwned() && Player.Instance.InDanger() && Settings.ArchengelStaff && Player.Instance.HealthPercent <= Settings.MYHPArchengelStaff)
             {
                 ArchengelStaff.Cast();
             }

@@ -2,7 +2,9 @@
 using System.Linq;
 using EloBuddy;
 using EloBuddy.SDK;
+using KickassSeries.Activator.DMGHandler;
 
+using Misc = KickassSeries.Activator.Config.Types.Settings;
 using Settings = KickassSeries.Activator.Config.Types.SummonerSpells;
 
 namespace KickassSeries.Activator.SummonerSpells.Spells
@@ -17,11 +19,14 @@ namespace KickassSeries.Activator.SummonerSpells.Spells
 
         public static void Execute()
         {
-            if(!SummonerHeal.IsReady() || SummonerSpells.Initialize.lastSpell + 1500 >= Environment.TickCount || !Settings.UseHeal) return;
+            if (Player.Instance.IsInShopRange() ||
+                Player.Instance.CountAlliesInRange(Misc.RangeEnemy) < Misc.EnemyCount && !SummonerHeal.IsReady() ||
+                SummonerSpells.Initialize.lastSpell + 1500 >= Environment.TickCount || !Settings.UseHeal)
+                return;
             var ally =
                 EntityManager.Heroes.Allies.OrderByDescending(a => a.Health)
                     .FirstOrDefault(a => a.IsValidTarget(SummonerHeal.Range));
-            if (true == false)
+            if (Player.Instance.InDanger())
             {
                 SummonerHeal.Cast();
                 SummonerSpells.Initialize.lastSpell = Environment.TickCount;

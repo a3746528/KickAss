@@ -20,14 +20,9 @@ namespace KickassSeries.Activator
 
         private static void Game_OnTick(EventArgs args)
         {
-            if (Player.Instance.InDanger())
-            {
-                Chat.Print("Player in danger = " + Player.Instance.InDanger());
-            }
-
-            //Defensive.Execute();
-            //Offensive.Execute();
-            //Consumables.Execute();
+            Defensive.Execute();
+            Offensive.Execute();
+            Consumables.Execute();
         }
     }
 }
