@@ -2,6 +2,7 @@
 using System.Linq;
 using EloBuddy;
 using EloBuddy.SDK;
+using KickassSeries.Activator.DMGHandler;
 
 namespace KickassSeries.Activator.Items
 {
@@ -18,37 +19,37 @@ namespace KickassSeries.Activator.Items
 
             #region Self
 
-            if (Zhonyas.IsReady() && Zhonyas.IsOwned())
+            if (Zhonyas.IsReady() && Zhonyas.IsOwned() && Player.Instance.InDanger())
             {
                 Zhonyas.Cast();
             }
 
-            if (ArchengelStaff.IsReady() && ArchengelStaff.IsOwned())
+            if (ArchengelStaff.IsReady() && ArchengelStaff.IsOwned() && Player.Instance.InDanger())
             {
                 ArchengelStaff.Cast();
             }
 
-            if (FaceOfTheMountain.IsReady() && FaceOfTheMountain.IsOwned())
+            if (FaceOfTheMountain.IsReady() && FaceOfTheMountain.IsOwned() && Player.Instance.InDanger())
             {
                 FaceOfTheMountain.Cast(Player.Instance);
             }
 
-            if (Talisman.IsReady() && Player.Instance.CountAlliesInRange(450) >= 2 && Talisman.IsOwned())
+            if (Talisman.IsReady() && Player.Instance.CountAlliesInRange(450) >= 2 && Talisman.IsOwned() && Player.Instance.InDanger())
             {
                 Talisman.Cast();
             }
 
-            if (Mikael.IsReady() && Player.Instance.HasCC() && Mikael.IsOwned())
+            if (Mikael.IsReady() && Player.Instance.HasCC() && Mikael.IsOwned() && Player.Instance.InDanger())
             {
                 Mikael.Cast(Player.Instance);
             }
 
-            if (Solari.IsReady() && Solari.IsOwned())
+            if (Solari.IsReady() && Solari.IsOwned() && Player.Instance.InDanger())
             {
                 Solari.Cast();
             }
 
-            if (Ohm.IsReady() && Ohm.IsOwned())
+            if (Ohm.IsReady() && Ohm.IsOwned() && Player.Instance.InDanger())
             {
                 var turret = EntityManager.Turrets.Enemies.FirstOrDefault(t => t.IsAttackingPlayer);
                 if (turret != null)
@@ -57,7 +58,7 @@ namespace KickassSeries.Activator.Items
                 }
             }
 
-            if (Randuin.IsReady() && Player.Instance.CountEnemiesInRange(Randuin.Range) >= 2 && Randuin.IsOwned())
+            if (Randuin.IsReady() && Player.Instance.CountEnemiesInRange(Randuin.Range) >= 2 && Randuin.IsOwned() && Player.Instance.InDanger())
             {
                 Randuin.Cast();
             }

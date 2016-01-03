@@ -710,9 +710,9 @@ namespace KickassSeries.Activator
                     _HPDangerSlider = SettingsMenu.Add("hpdangerslider", new Slider("Min health to be in danger " , 30, 1));
                     SettingsMenu.AddSeparator();
                     SettingsMenu.AddGroupLabel("Dangerous Spells");
-                    foreach (var spell in DMGHandler.DangerousSpells.Spells.Where(x => EntityManager.Heroes.Enemies.Any(b => b.Hero == x.Champion)))
+                    foreach (var spell in DMGHandler.DangerousSpells.Spells.Where(x => EntityManager.Heroes.Enemies.Any(b => b.Hero == x.Hero)))
                     {
-                        SettingsMenu.Add(spell.Champion.ToString() + spell.Slot,new CheckBox(spell.Champion + ": " + spell.Slot));
+                        SettingsMenu.Add(spell.Hero.ToString() + spell.Slot,new CheckBox(spell.Hero + ": " + spell.Slot));
                     }
                 }
 

@@ -1,14 +1,16 @@
 ﻿using System.Linq;
 using EloBuddy;
 using EloBuddy.SDK;
-using EloBuddy.SDK.Enumerations;
 using EloBuddy.SDK.Menu.Values;
+
+using Settings = KickassSeries.Activator.Config.Types.Settings;
 
 namespace KickassSeries.Activator.DMGHandler
 {
-    internal class DamageHandler
+    public static class DamageHandler
     {
         public static bool ReceivingAA;
+        public static bool ReceivingSkillShot;
         public static bool ReceivingSpell;
         public static bool ReceivingDangSpell;
 
@@ -21,14 +23,14 @@ namespace KickassSeries.Activator.DMGHandler
         private static void Obj_AI_Base_OnBasicAttack(Obj_AI_Base sender, GameObjectProcessSpellCastEventArgs args)
         {
             var hero = sender as AIHeroClient;
-            if (hero == null || hero.IsAlly) return;
+            if (hero == null) return;
+            if(hero.IsAlly) return;
 
             if (args.Target.IsMe)
             {
                 ReceivingAA = true;
+                Core.DelayAction(() => ReceivingAA = false, 80);
             }
-            
-            Core.DelayAction(() => ReceivingAA = false, 50);
         }
 
         private static void Obj_AI_Base_OnProcessSpellCast(Obj_AI_Base sender, GameObjectProcessSpellCastEventArgs args)
@@ -39,43 +41,64 @@ namespace KickassSeries.Activator.DMGHandler
             var dangerousspell =
                 DangerousSpells.Spells.FirstOrDefault(
                     x =>
-                        x.Champion == hero.Hero && args.Slot == x.Slot &&
-                        Config.Types.SettingsMenu[x.Champion.ToString() + x.Slot].Cast<CheckBox>().CurrentValue);
-
-            if (dangerousspell != null && args.Target.IsMe)
+                        x.Hero == hero.Hero && args.Slot == x.Slot &&
+                        Config.Types.SettingsMenu[x.Hero.ToString() + x.Slot].Cast<CheckBox>().CurrentValue);
+            //SkilShot
+            if (args.Target == null)
             {
-                ReceivingDangSpell = true;
-                Chat.Print("player received AA");
-                Core.DelayAction(Reset, 50);
-                return;
-            }
-
-            if (args.Target.IsMe && args.Target != null)
-            {
-                ReceivingSpell = true;
-                Chat.Print("player received Targeted spell");
-                Core.DelayAction(Reset, 50);
-                return;
-            }
-
-            if (Player.Instance.IsInRange(args.Start.To2D(), args.SData.CastRadius))
-            {
-                Chat.Print("Skill shot is in range");
-                var projection = Player.Instance.Position.To2D().ProjectOn(args.Start.To2D(), args.End.To2D());
-
-                if (projection.IsOnSegment &&
-                    projection.SegmentPoint.Distance(Player.Instance.Position.To2D()) <= args.SData.CastRadius + Player.Instance.BoundingRadius)
+                if (args.Start.To2D().IsInRange(Player.Instance, args.SData.CastRangeDisplayOverride))
                 {
-                    Chat.Print("player is on skillshot");
+                    var projection = Player.Instance.Position.To2D().ProjectOn(args.Start.To2D(), args.End.To2D());
+
+                    if (projection.IsOnSegment &&
+                        projection.SegmentPoint.Distance(Player.Instance.Position.To2D()) <= args.SData.CastRadius + Player.Instance.BoundingRadius + 30)
+                    {
+                        if (dangerousspell != null)
+                        {
+                            ReceivingDangSpell = true;
+                            Core.DelayAction(() => ReceivingDangSpell = false, 80);
+                            return;
+                        }
+
+                        ReceivingSkillShot = true;
+                        Core.DelayAction(() => ReceivingSkillShot = false, 80);
+                    }
                 }
             }
-
+            //Targetted spell
+            else
+            {
+                if (args.Target.IsMe)
+                {
+                    ReceivingSpell = true;
+                    Core.DelayAction(() => ReceivingSpell = false, 80);
+                }
+                
+                if (dangerousspell != null && ReceivingSpell)
+                {
+                    ReceivingDangSpell = true;
+                    Core.DelayAction(() => ReceivingDangSpell = false, 80);
+                }
+            }        
         }
 
-        private static void Reset()
+        #region Extensions
+
+        public static bool InDanger(this AIHeroClient hero)
         {
-            ReceivingDangSpell = false;
-            ReceivingSpell = false;
+            if (ReceivingDangSpell)
+            {
+                return true;
+            }
+            if (ReceivingSpell || ReceivingAA || ReceivingSkillShot)
+            {
+                if (Player.Instance.HealthPercent < Settings.HealthDanger)
+                {
+                    return true;
+                }
+            }
+            return false;
         }
+        #endregion Extensions
     }
 }

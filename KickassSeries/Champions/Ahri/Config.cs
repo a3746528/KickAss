@@ -223,7 +223,7 @@ namespace KickassSeries.Champions.Ahri
                     ModesMenu.AddGroupLabel("LastHit");
                     _useQ = ModesMenu.Add("lastQ", new CheckBox("Use Q"));
                     _useE = ModesMenu.Add("lastE", new CheckBox("Use E"));
-                    _ManaLast = ModesMenu.Add("laneMana", new Slider("Min mana to last hit", 30));
+                    _ManaLast = ModesMenu.Add("lastMana", new Slider("Min mana to last hit", 30));
                 }
 
                 public static void Initialize()

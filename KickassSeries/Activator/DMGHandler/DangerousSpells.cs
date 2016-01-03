@@ -5,14 +5,14 @@ namespace KickassSeries.Activator.DMGHandler
 {
     public class DangerousSpell
     {
-        public DangerousSpell(Champion champ, SpellSlot slot)
+        public DangerousSpell(Champion _hero, SpellSlot slot)
         {
             Slot = slot;
-            Champion = champ;
+            Hero = _hero;
         }
 
         public SpellSlot Slot;
-        public Champion Champion;
+        public Champion Hero;
     }
 
     public class DangerousSpells
@@ -51,7 +51,7 @@ namespace KickassSeries.Activator.DMGHandler
             new DangerousSpell(Champion.JarvanIV, SpellSlot.R),
             new DangerousSpell(Champion.Mordekaiser, SpellSlot.R),
             new DangerousSpell(Champion.Vladimir, SpellSlot.R),
-            //Test
+            new DangerousSpell(Champion.Ezreal, SpellSlot.R)
         };
     }
 }
