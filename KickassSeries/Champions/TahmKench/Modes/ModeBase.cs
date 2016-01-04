@@ -8,11 +8,11 @@ namespace KickassSeries.Champions.TahmKench.Modes
         {
             get { return SpellManager.Q; }
         }
-        protected static Spell.Skillshot W
+        protected static Spell.Targeted W
         {
             get { return SpellManager.W; }
         }
-        protected static Spell.Skillshot E
+        protected static Spell.Active E
         {
             get { return SpellManager.E; }
         }

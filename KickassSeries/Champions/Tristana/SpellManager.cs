@@ -8,7 +8,7 @@ namespace KickassSeries.Champions.Tristana
     {
         public static Spell.Skillshot Q { get; private set; }
         public static Spell.Skillshot W { get; private set; }
-        public static Spell.Skillshot E { get; private set; }
+        public static Spell.Targeted E { get; private set; }
         public static Spell.Skillshot R { get; private set; }
 
         static SpellManager()
@@ -21,10 +21,7 @@ namespace KickassSeries.Champions.Tristana
             {
                 AllowedCollisionCount = int.MaxValue
             };
-            E = new Spell.Skillshot(SpellSlot.E, 1100, SkillShotType.Linear, 250, 1150, 70)
-            {
-                AllowedCollisionCount = int.MaxValue
-            };
+            E = new Spell.Targeted(SpellSlot.E, 550);
             R = new Spell.Skillshot(SpellSlot.R, 700, SkillShotType.Circular, 250, 1200, 500)
             {
                 AllowedCollisionCount = int.MaxValue
@@ -33,6 +30,14 @@ namespace KickassSeries.Champions.Tristana
 
         public static void Initialize()
         {
+            Obj_AI_Base.OnLevelUp += Obj_AI_Base_OnLevelUp;
+        }
+
+        private static void Obj_AI_Base_OnLevelUp(Obj_AI_Base sender, Obj_AI_BaseLevelUpEventArgs args)
+        {
+            if(!sender.IsMe)return;
+
+            E = new Spell.Targeted(SpellSlot.E, 543 + 7 * (uint)Player.Instance.Level);
         }
     }
 }

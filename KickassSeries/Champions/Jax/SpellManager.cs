@@ -13,7 +13,7 @@ namespace KickassSeries.Champions.Jax
         static SpellManager()
         {
             Q = new Spell.Targeted(SpellSlot.Q, 700);
-            W = new Spell.Active(SpellSlot.W, (uint)Player.Instance.GetAutoAttackRange());
+            W = new Spell.Active(SpellSlot.W, 235);
             E = new Spell.Active(SpellSlot.E, 185);
             R = new Spell.Active(SpellSlot.R, 600);
         }

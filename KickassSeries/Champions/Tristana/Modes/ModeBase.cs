@@ -12,7 +12,7 @@ namespace KickassSeries.Champions.Tristana.Modes
         {
             get { return SpellManager.W; }
         }
-        protected static Spell.Skillshot E
+        protected static Spell.Targeted E
         {
             get { return SpellManager.E; }
         }

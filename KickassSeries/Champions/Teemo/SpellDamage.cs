@@ -60,7 +60,7 @@ namespace KickassSeries.Champions.Teemo
             {
                 case SpellSlot.Q:
 
-                    damage = new float[] { 70, 105, 140, 175, 210 }[spellLevel] + 0.65f * Player.Instance.FlatMagicDamageMod;
+                    damage = new float[] { 80, 125, 170, 215, 260 }[spellLevel] + 0.8f * Player.Instance.FlatMagicDamageMod;
                     break;
 
                 case SpellSlot.W:
@@ -70,12 +70,12 @@ namespace KickassSeries.Champions.Teemo
 
                 case SpellSlot.E:
 
-                    damage = new float[] { 60, 95, 130, 165, 200 }[spellLevel] + 0.5f * Player.Instance.FlatMagicDamageMod;
+                    damage = (new float[] { 6, 12, 18, 24, 30 }[spellLevel] + 0.1f * Player.Instance.FlatMagicDamageMod) * 4f + new float[] { 10, 20, 30, 40, 50 }[spellLevel] + 0.3f * Player.Instance.FlatMagicDamageMod;
                     break;
 
                 case SpellSlot.R:
 
-                    damage = new float[] { 180, 265, 350 }[spellLevel] + 0.7f * Player.Instance.FlatMagicDamageMod;
+                    damage = (new float[] { 50, 81, 112 }[spellLevel] + 0.125f * Player.Instance.FlatMagicDamageMod) * 4f;
                     break;
             }
 

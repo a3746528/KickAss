@@ -18,6 +18,7 @@ namespace KickassSeries.Champions.Jax
         private static void Orbwalker_OnPostAttack(AttackableUnit target, System.EventArgs args)
         {
             CanW = SpellManager.W.IsReady();
+            Core.DelayAction(() => CanW = false, 80);
         }
 
         private static void Gapcloser_OnGapcloser(AIHeroClient sender, Gapcloser.GapcloserEventArgs e)
