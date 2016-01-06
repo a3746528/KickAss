@@ -13,7 +13,7 @@ namespace KickassSeries.Champions.Yasuo
 {
     public static class Config
     {
-        private const string MenuName = "YasuoHu3 Reborn";
+        private static readonly string MenuName = "KA " + Player.Instance.ChampionName;
 
         private static readonly Menu Menu;
 
@@ -21,7 +21,7 @@ namespace KickassSeries.Champions.Yasuo
         {
             // Initialize the menu
             Menu = MainMenu.AddMenu(MenuName, MenuName.ToLower());
-            Menu.AddGroupLabel("YasuoHu3 Reborn");
+            Menu.AddGroupLabel("KA " + Player.Instance.ChampionName);
             Menu.AddLabel("Made By: MarioGK", 50);
 
             // Initialize the modes

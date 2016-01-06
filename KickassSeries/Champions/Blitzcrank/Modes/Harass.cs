@@ -17,19 +17,19 @@ namespace KickassSeries.Champions.Blitzcrank.Modes
             var target = TargetSelector.GetTarget(Q.Range, DamageType.Physical);
             if (target == null || target.IsZombie) return;
 
+            if (Q.IsReady() && target.IsValidTarget(Q.Range) && Settings.UseQ)
+            {
+                Q.Cast(target);
+            }
+
             if (E.IsReady() && target.IsValidTarget(E.Range) && Settings.UseE)
             {
-                E.Cast(target);
+                E.Cast();
             }
 
             if (W.IsReady() && target.IsValidTarget(W.Range) && Settings.UseW)
             {
                 W.Cast();
-            }
-
-            if (Q.IsReady() && target.IsValidTarget(Q.Range) && Settings.UseQ)
-            {
-                Q.Cast(target);
             }
         }
     }

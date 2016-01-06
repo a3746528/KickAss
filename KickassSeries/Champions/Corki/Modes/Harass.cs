@@ -17,19 +17,20 @@ namespace KickassSeries.Champions.Corki.Modes
             var target = TargetSelector.GetTarget(Q.Range, DamageType.Physical);
             if (target == null || target.IsZombie) return;
 
-            if (E.IsReady() && target.IsValidTarget(E.Range) && Settings.UseE)
-            {
-                E.Cast(target);
-            }
-
-            if (W.IsReady() && target.IsValidTarget(W.Range) && Settings.UseW)
-            {
-                W.Cast();
-            }
 
             if (Q.IsReady() && target.IsValidTarget(Q.Range) && Settings.UseQ)
             {
                 Q.Cast(target);
+            }
+
+            if (W.IsReady() && target.IsValidTarget(W.Range) && Settings.UseW)
+            {
+                W.Cast(target);
+            }
+
+            if (E.IsReady() && target.IsValidTarget(E.Range) && Settings.UseE && target.IsFacing(Player.Instance))
+            {
+                E.Cast(target);
             }
         }
     }

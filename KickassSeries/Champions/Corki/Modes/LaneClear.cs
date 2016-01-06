@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using EloBuddy;
 using EloBuddy.SDK;
 
 using Settings = KickassSeries.Champions.Corki.Config.Modes.LaneClear;
@@ -21,19 +22,19 @@ namespace KickassSeries.Champions.Corki.Modes
 
             if (minion == null) return;
 
-            if (E.IsReady() && minion.IsValidTarget(E.Range) && Settings.UseE)
+            if (Q.IsReady() && minion.IsValidTarget(Q.Range) && Settings.UseQ)
             {
-                E.Cast(minion);
+                Q.Cast(minion);
             }
 
             if (W.IsReady() && minion.IsValidTarget(W.Range) && Settings.UseW)
             {
-                W.Cast();
+                W.Cast(minion);
             }
 
-            if (Q.IsReady() && minion.IsValidTarget(Q.Range) && Settings.UseQ)
+            if (E.IsReady() && minion.IsValidTarget(E.Range) && Settings.UseE && Player.Instance.IsFacing(minion))
             {
-                Q.Cast(minion);
+                E.Cast(minion);
             }
         }
     }

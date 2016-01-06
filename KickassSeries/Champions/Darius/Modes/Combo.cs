@@ -14,7 +14,7 @@ namespace KickassSeries.Champions.Darius.Modes
 
         public override void Execute()
         {
-            var target = TargetSelector.GetTarget(Q.Range, DamageType.Magical);
+            var target = TargetSelector.GetTarget(E.Range, DamageType.Physical);
             if (target == null || target.IsZombie) return;
 
             if (E.IsReady() && target.IsValidTarget(E.Range) && Settings.UseE)
@@ -22,9 +22,9 @@ namespace KickassSeries.Champions.Darius.Modes
                 E.Cast(target);
             }
 
-            if (Q.IsReady() && target.IsValidTarget(Q.Range) && Settings.UseQ && !E.IsReady())
+            if (Q.IsReady() && target.IsValidTarget(Q.Range) && Settings.UseQ)
             {
-                Q.Cast(target);
+                Q.Cast();
             }
 
             if (W.IsReady() && target.IsValidTarget(W.Range) && Settings.UseW)
@@ -32,16 +32,9 @@ namespace KickassSeries.Champions.Darius.Modes
                 W.Cast();
             }
 
-            if (R.IsReady() && Settings.UseR)
+            if (R.IsReady() && target.IsValidTarget(R.Range) && Settings.UseR && target.Health < SpellDamage.GetRealDamage(SpellSlot.R, target))
             {
-                var targetR = TargetSelector.GetTarget(Q.Range + R.Range + 50, DamageType.Magical);
-
-                if (target.IsValidTarget(R.Range + Q.Range - 50) && targetR.CountEnemiesInRange(800) <= 2 &&
-                    Player.Instance.HealthPercent > targetR.HealthPercent && targetR.HealthPercent <= 50 ||
-                    targetR.Health < SpellDamage.GetTotalDamage(targetR))
-                {
-                    R.Cast(Player.Instance.Position.Extend(target.Position, R.Range + 250).To3D());
-                }
+                R.Cast(target);
             }
         }
     }

@@ -17,19 +17,19 @@ namespace KickassSeries.Champions.Cassiopeia.Modes
             var target = TargetSelector.GetTarget(Q.Range, DamageType.Physical);
             if (target == null || target.IsZombie) return;
 
-            if (E.IsReady() && target.IsValidTarget(E.Range) && Settings.UseE)
+            if (Q.IsReady() && target.IsValidTarget(Q.Range) && Settings.UseQ)
+            {
+                Q.Cast(target);
+            }
+
+            if (E.IsReady() && target.IsValidTarget(E.Range) && Settings.UseE && target.HasBuffOfType(BuffType.Poison))
             {
                 E.Cast(target);
             }
 
-            if (W.IsReady() && target.IsValidTarget(W.Range) && Settings.UseW)
+            if (W.IsReady() && target.IsValidTarget(W.Range) && Settings.UseW && !target.HasBuffOfType(BuffType.Poison))
             {
-                W.Cast();
-            }
-
-            if (Q.IsReady() && target.IsValidTarget(Q.Range) && Settings.UseQ)
-            {
-                Q.Cast(target);
+                W.Cast(target);
             }
         }
     }

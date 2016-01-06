@@ -28,7 +28,7 @@ namespace KickassSeries.Champions.Cassiopeia.Modes
 
             if (W.IsReady() && minion.IsValidTarget(W.Range) && Settings.UseW)
             {
-                W.Cast();
+                W.Cast(minion);
             }
 
             if (Q.IsReady() && minion.IsValidTarget(Q.Range) && Settings.UseQ)

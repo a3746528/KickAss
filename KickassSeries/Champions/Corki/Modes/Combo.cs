@@ -17,31 +17,24 @@ namespace KickassSeries.Champions.Corki.Modes
             var target = TargetSelector.GetTarget(Q.Range, DamageType.Magical);
             if (target == null || target.IsZombie) return;
 
-            if (E.IsReady() && target.IsValidTarget(E.Range) && Settings.UseE)
-            {
-                E.Cast(target);
-            }
-
-            if (Q.IsReady() && target.IsValidTarget(Q.Range) && Settings.UseQ && !E.IsReady())
+            if (Q.IsReady() && target.IsValidTarget(Q.Range) && Settings.UseQ)
             {
                 Q.Cast(target);
             }
 
             if (W.IsReady() && target.IsValidTarget(W.Range) && Settings.UseW)
             {
-                W.Cast();
+                W.Cast(target);
             }
 
-            if (R.IsReady() && Settings.UseR)
+            if (E.IsReady() && target.IsValidTarget(E.Range) && Settings.UseE && Player.Instance.IsFacing(target))
             {
-                var targetR = TargetSelector.GetTarget(Q.Range + R.Range + 50, DamageType.Magical);
+                E.Cast();
+            }
 
-                if (target.IsValidTarget(R.Range + Q.Range - 50) && targetR.CountEnemiesInRange(800) <= 2 &&
-                    Player.Instance.HealthPercent > targetR.HealthPercent && targetR.HealthPercent <= 50 ||
-                    targetR.Health < SpellDamage.GetTotalDamage(targetR))
-                {
-                    R.Cast(Player.Instance.Position.Extend(target.Position, R.Range + 250).To3D());
-                }
+            if (R.IsReady() && target.IsValidTarget(R.Range) && Settings.UseR)
+            {
+                R.Cast(target);
             }
         }
     }

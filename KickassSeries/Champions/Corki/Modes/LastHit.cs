@@ -21,19 +21,14 @@ namespace KickassSeries.Champions.Corki.Modes
 
             if (minion == null) return;
 
-            if (E.IsReady() && minion.IsValidTarget(E.Range) && Settings.UseE)
+            if (Q.IsReady() && minion.IsValidTarget(Q.Range) && Settings.UseQ)
             {
-                E.Cast(minion);
+                Q.Cast(minion);
             }
 
             if (W.IsReady() && minion.IsValidTarget(W.Range) && Settings.UseW)
             {
-                W.Cast();
-            }
-
-            if (Q.IsReady() && minion.IsValidTarget(Q.Range) && Settings.UseQ)
-            {
-                Q.Cast(minion);
+                W.Cast(minion);
             }
         }
     }

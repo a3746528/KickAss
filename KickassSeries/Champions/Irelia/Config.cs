@@ -1,4 +1,5 @@
-﻿using EloBuddy.SDK.Menu;
+﻿using EloBuddy;
+using EloBuddy.SDK.Menu;
 using EloBuddy.SDK.Menu.Values;
 using KickassSeries.MenuSettings;
 using Color = System.Drawing.Color;
@@ -12,7 +13,7 @@ namespace KickassSeries.Champions.Irelia
 {
     public static class Config
     {
-        private const string MenuName = "IreliaHu3 Reborn";
+        private static readonly string MenuName = "KA " + Player.Instance.ChampionName;
 
         private static readonly Menu Menu;
 
@@ -20,7 +21,7 @@ namespace KickassSeries.Champions.Irelia
         {
             // Initialize the menu
             Menu = MainMenu.AddMenu(MenuName, MenuName.ToLower());
-            Menu.AddGroupLabel("IreliaHu3 Reborn");
+            Menu.AddGroupLabel("KA " + Player.Instance.ChampionName);
             Menu.AddLabel("Made By: MarioGK", 50);
 
             // Initialize the modes

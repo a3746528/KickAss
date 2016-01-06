@@ -13,7 +13,7 @@ namespace KickassSeries.Champions.Thresh
 {
     public static class Config
     {
-        private const string MenuName = "ThreshHu3 Reborn";
+        private static readonly string MenuName = "KA " + Player.Instance.ChampionName;
 
         private static readonly Menu Menu;
 
@@ -21,7 +21,7 @@ namespace KickassSeries.Champions.Thresh
         {
             // Initialize the menu
             Menu = MainMenu.AddMenu(MenuName, MenuName.ToLower());
-            Menu.AddGroupLabel("ThreshHu3 Reborn");
+            Menu.AddGroupLabel("KA " + Player.Instance.ChampionName);
             Menu.AddLabel("Made By: MarioGK", 50);
 
             // Initialize the modes

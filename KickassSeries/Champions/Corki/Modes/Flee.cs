@@ -12,9 +12,9 @@ namespace KickassSeries.Champions.Corki.Modes
 
         public override void Execute()
         {
-            if (Player.Instance.HealthPercent <= 15 && Player.Instance.CountEnemiesInRange(R.Range) > 1)
+            if (Player.Instance.HealthPercent <= 35 && Player.Instance.CountEnemiesInRange(R.Range) > 1)
             {
-                R.Cast(Player.Instance.Position.Extend(Game.CursorPos, R.Range + 250).To3D());
+                W.Cast(Player.Instance.Position.Extend(Game.CursorPos, W.Range).To3D());
             }
         }
     }

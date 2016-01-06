@@ -33,7 +33,7 @@ namespace KickassSeries.Champions.Darius.Modes
 
             if (Q.IsReady() && minion.IsValidTarget(Q.Range) && Settings.UseQ)
             {
-                Q.Cast(minion);
+                Q.Cast();
             }
         }
     }

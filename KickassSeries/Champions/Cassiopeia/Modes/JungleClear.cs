@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using EloBuddy;
 using EloBuddy.SDK;
 
 using Settings = KickassSeries.Champions.Cassiopeia.Config.Modes.LaneClear;
@@ -21,19 +22,19 @@ namespace KickassSeries.Champions.Cassiopeia.Modes
 
             if (jgminion == null)return;
 
-            if (E.IsReady() && jgminion.IsValidTarget(E.Range) && Settings.UseE)
+            if (E.IsReady() && jgminion.IsValidTarget(E.Range) && Settings.UseE && jgminion.HasBuffOfType(BuffType.Poison))
             {
                 E.Cast(jgminion);
-            }
-
-            if (W.IsReady() && jgminion.IsValidTarget(W.Range) && Settings.UseW)
-            {
-                W.Cast();
             }
 
             if (Q.IsReady() && jgminion.IsValidTarget(Q.Range) && Settings.UseQ)
             {
                 Q.Cast(jgminion);
+            }
+
+            if (W.IsReady() && jgminion.IsValidTarget(W.Range) && Settings.UseW && !jgminion.HasBuffOfType(BuffType.Poison))
+            {
+                W.Cast(jgminion);
             }
         }
     }

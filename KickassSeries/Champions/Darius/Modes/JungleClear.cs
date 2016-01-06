@@ -33,7 +33,7 @@ namespace KickassSeries.Champions.Darius.Modes
 
             if (Q.IsReady() && jgminion.IsValidTarget(Q.Range) && Settings.UseQ)
             {
-                Q.Cast(jgminion);
+                Q.Cast();
             }
         }
     }

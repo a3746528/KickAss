@@ -1,4 +1,5 @@
-﻿using EloBuddy.SDK.Menu;
+﻿using EloBuddy;
+using EloBuddy.SDK.Menu;
 using EloBuddy.SDK.Menu.Values;
 using KickassSeries.MenuSettings;
 using Color = System.Drawing.Color;
@@ -12,7 +13,7 @@ namespace KickassSeries.Champions.Caitlyn
 {
     public static class Config
     {
-        private const string MenuName = "CaitlynHu3 Reborn";
+        private static readonly string MenuName = "KA " + Player.Instance.ChampionName;
 
         private static readonly Menu Menu;
 
@@ -20,7 +21,7 @@ namespace KickassSeries.Champions.Caitlyn
         {
             // Initialize the menu
             Menu = MainMenu.AddMenu(MenuName, MenuName.ToLower());
-            Menu.AddGroupLabel("CaitlynHu3 Reborn");
+            Menu.AddGroupLabel("KA + " + Player.Instance.ChampionName);
             Menu.AddLabel("Made By: MarioGK", 50);
 
             // Initialize the modes

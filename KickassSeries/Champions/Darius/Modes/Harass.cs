@@ -14,7 +14,7 @@ namespace KickassSeries.Champions.Darius.Modes
 
         public override void Execute()
         {
-            var target = TargetSelector.GetTarget(Q.Range, DamageType.Physical);
+            var target = TargetSelector.GetTarget(E.Range, DamageType.Physical);
             if (target == null || target.IsZombie) return;
 
             if (E.IsReady() && target.IsValidTarget(E.Range) && Settings.UseE)
@@ -22,14 +22,14 @@ namespace KickassSeries.Champions.Darius.Modes
                 E.Cast(target);
             }
 
+            if (Q.IsReady() && target.IsValidTarget(Q.Range) && Settings.UseQ)
+            {
+                Q.Cast();
+            }
+
             if (W.IsReady() && target.IsValidTarget(W.Range) && Settings.UseW)
             {
                 W.Cast();
-            }
-
-            if (Q.IsReady() && target.IsValidTarget(Q.Range) && Settings.UseQ)
-            {
-                Q.Cast(target);
             }
         }
     }

@@ -21,19 +21,19 @@ namespace KickassSeries.Champions.Blitzcrank.Modes
 
             if (jgminion == null)return;
 
+            if (Q.IsReady() && jgminion.IsValidTarget(Q.Range) && Settings.UseQ)
+            {
+                Q.Cast(jgminion);
+            }
+
             if (E.IsReady() && jgminion.IsValidTarget(E.Range) && Settings.UseE)
             {
-                E.Cast(jgminion);
+                E.Cast();
             }
 
             if (W.IsReady() && jgminion.IsValidTarget(W.Range) && Settings.UseW)
             {
                 W.Cast();
-            }
-
-            if (Q.IsReady() && jgminion.IsValidTarget(Q.Range) && Settings.UseQ)
-            {
-                Q.Cast(jgminion);
             }
         }
     }

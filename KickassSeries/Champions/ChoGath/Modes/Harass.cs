@@ -17,14 +17,9 @@ namespace KickassSeries.Champions.ChoGath.Modes
             var target = TargetSelector.GetTarget(Q.Range, DamageType.Physical);
             if (target == null || target.IsZombie) return;
 
-            if (E.IsReady() && target.IsValidTarget(E.Range) && Settings.UseE)
-            {
-                E.Cast(target);
-            }
-
             if (W.IsReady() && target.IsValidTarget(W.Range) && Settings.UseW)
             {
-                W.Cast();
+                W.Cast(target);
             }
 
             if (Q.IsReady() && target.IsValidTarget(Q.Range) && Settings.UseQ)
