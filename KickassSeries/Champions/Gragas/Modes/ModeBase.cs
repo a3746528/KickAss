@@ -8,7 +8,7 @@ namespace KickassSeries.Champions.Gragas.Modes
         {
             get { return SpellManager.Q; }
         }
-        protected static Spell.Skillshot W
+        protected static Spell.Active W
         {
             get { return SpellManager.W; }
         }

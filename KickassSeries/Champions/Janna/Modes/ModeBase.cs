@@ -8,15 +8,15 @@ namespace KickassSeries.Champions.Janna.Modes
         {
             get { return SpellManager.Q; }
         }
-        protected static Spell.Skillshot W
+        protected static Spell.Targeted W
         {
             get { return SpellManager.W; }
         }
-        protected static Spell.Skillshot E
+        protected static Spell.Targeted E
         {
             get { return SpellManager.E; }
         }
-        protected static Spell.Skillshot R
+        protected static Spell.Active R
         {
             get { return SpellManager.R; }
         }

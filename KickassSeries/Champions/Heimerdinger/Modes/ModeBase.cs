@@ -16,7 +16,7 @@ namespace KickassSeries.Champions.Heimerdinger.Modes
         {
             get { return SpellManager.E; }
         }
-        protected static Spell.Skillshot R
+        protected static Spell.Active R
         {
             get { return SpellManager.R; }
         }
