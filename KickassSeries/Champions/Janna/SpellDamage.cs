@@ -60,12 +60,12 @@ namespace KickassSeries.Champions.Janna
             {
                 case SpellSlot.Q:
 
-                    damage = new float[] { 70, 105, 140, 175, 210 }[spellLevel] + 0.65f * Player.Instance.FlatMagicDamageMod;
+                    damage = new float[] { 60, 85, 110, 135, 160 }[spellLevel] + 0.35f * Player.Instance.FlatMagicDamageMod;
                     break;
 
                 case SpellSlot.W:
 
-                    damage = new float[] { 0, 0, 0, 0, 0 }[spellLevel] + 0.0f * Player.Instance.FlatMagicDamageMod;
+                    damage = new float[] { 60, 115, 170, 225, 280 }[spellLevel] + 0.5f * Player.Instance.FlatMagicDamageMod;
                     break;
 
                 case SpellSlot.E:
@@ -75,7 +75,7 @@ namespace KickassSeries.Champions.Janna
 
                 case SpellSlot.R:
 
-                    damage = new float[] { 180, 265, 350 }[spellLevel] + 0.7f * Player.Instance.FlatMagicDamageMod;
+                    damage = new float[] { 0, 0, 0 }[spellLevel] + 0f * Player.Instance.FlatMagicDamageMod;
                     break;
             }
 

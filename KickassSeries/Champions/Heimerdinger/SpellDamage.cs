@@ -11,10 +11,8 @@ namespace KickassSeries.Champions.Heimerdinger
             var damage = Player.Instance.GetAutoAttackDamage(target);
 
             // Q
-            if (SpellManager.Q.IsReady())
-            {
-                damage += SpellManager.Q.GetRealDamage(target);
-            }
+
+            damage += SpellManager.Q.GetRealDamage(target);
 
             // W
             if (SpellManager.W.IsReady())
@@ -60,22 +58,22 @@ namespace KickassSeries.Champions.Heimerdinger
             {
                 case SpellSlot.Q:
 
-                    damage = new float[] { 70, 105, 140, 175, 210 }[spellLevel] + 0.65f * Player.Instance.FlatMagicDamageMod;
+                    damage = (new float[] { 12, 18, 23, 29, 34 }[spellLevel] + 0.15f * Player.Instance.FlatMagicDamageMod) * 3f + new float[] { 40, 60, 80, 105, 130 }[spellLevel] + 0.55f * Player.Instance.FlatMagicDamageMod;
                     break;
 
                 case SpellSlot.W:
 
-                    damage = new float[] { 0, 0, 0, 0, 0 }[spellLevel] + 0.0f * Player.Instance.FlatMagicDamageMod;
+                    damage = new float[] { 60, 90, 120, 150, 180 }[spellLevel] + 0.45f * Player.Instance.FlatMagicDamageMod;
                     break;
 
                 case SpellSlot.E:
 
-                    damage = new float[] { 60, 95, 130, 165, 200 }[spellLevel] + 0.5f * Player.Instance.FlatMagicDamageMod;
+                    damage = new float[] { 60, 100, 140, 180, 220 }[spellLevel] + 0.6f * Player.Instance.FlatMagicDamageMod;
                     break;
 
                 case SpellSlot.R:
 
-                    damage = new float[] { 180, 265, 350 }[spellLevel] + 0.7f * Player.Instance.FlatMagicDamageMod;
+                    damage = new float[] { 0, 0, 0 }[spellLevel] + 0.0f * Player.Instance.FlatMagicDamageMod;
                     break;
             }
 

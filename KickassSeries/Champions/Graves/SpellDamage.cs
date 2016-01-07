@@ -60,22 +60,25 @@ namespace KickassSeries.Champions.Graves
             {
                 case SpellSlot.Q:
 
-                    damage = new float[] { 70, 105, 140, 175, 210 }[spellLevel] + 0.65f * Player.Instance.FlatMagicDamageMod;
+                    damage = new float[] {55, 70, 85, 100, 115}[spellLevel] +
+                             0.75f*Player.Instance.FlatPhysicalDamageMod +
+                             new float[] {85, 145, 205, 265, 325}[spellLevel] +
+                             new[] {0.4f, 0.6f, 0.8f, 1f, 1.2f}[spellLevel]*Player.Instance.FlatPhysicalDamageMod;
                     break;
 
                 case SpellSlot.W:
 
-                    damage = new float[] { 0, 0, 0, 0, 0 }[spellLevel] + 0.0f * Player.Instance.FlatMagicDamageMod;
+                    damage = new float[] { 60, 110, 160, 210, 260 }[spellLevel] + 0.6f * Player.Instance.FlatMagicDamageMod;
                     break;
 
                 case SpellSlot.E:
 
-                    damage = new float[] { 60, 95, 130, 165, 200 }[spellLevel] + 0.5f * Player.Instance.FlatMagicDamageMod;
+                    damage = new float[] { 0, 0, 0, 0, 0 }[spellLevel] + 0.0f * Player.Instance.FlatMagicDamageMod;
                     break;
 
                 case SpellSlot.R:
 
-                    damage = new float[] { 180, 265, 350 }[spellLevel] + 0.7f * Player.Instance.FlatMagicDamageMod;
+                    damage = new float[] { 250, 400, 550 }[spellLevel] + 1.5f * Player.Instance.FlatPhysicalDamageMod;
                     break;
             }
 

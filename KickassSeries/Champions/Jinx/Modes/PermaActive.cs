@@ -1,4 +1,5 @@
 ﻿using EloBuddy;
+using EloBuddy.SDK;
 
 namespace KickassSeries.Champions.Jinx.Modes
 {
@@ -9,9 +10,10 @@ namespace KickassSeries.Champions.Jinx.Modes
             return true;
         }
 
+        public static uint Qrange;
         public override void Execute()
         {
-            
+            Qrange = (uint)Player.Instance.GetAutoAttackRange();
         }
     }
 }

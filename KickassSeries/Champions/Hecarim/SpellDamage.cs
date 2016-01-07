@@ -60,22 +60,22 @@ namespace KickassSeries.Champions.Hecarim
             {
                 case SpellSlot.Q:
 
-                    damage = new float[] { 70, 105, 140, 175, 210 }[spellLevel] + 0.65f * Player.Instance.FlatMagicDamageMod;
+                    damage = new float[] { 40, 63, 86, 110, 133 }[spellLevel] + 0.4f * Player.Instance.FlatPhysicalDamageMod;
                     break;
 
                 case SpellSlot.W:
 
-                    damage = new float[] { 0, 0, 0, 0, 0 }[spellLevel] + 0.0f * Player.Instance.FlatMagicDamageMod;
+                    damage = (new float[] { 20, 30, 40, 50, 60 }[spellLevel] + 0.2f * Player.Instance.FlatMagicDamageMod) * 4f;
                     break;
 
                 case SpellSlot.E:
 
-                    damage = new float[] { 60, 95, 130, 165, 200 }[spellLevel] + 0.5f * Player.Instance.FlatMagicDamageMod;
+                    damage = new float[] { 40, 75, 110, 145, 180 }[spellLevel] + 0.5f * Player.Instance.FlatMagicDamageMod;
                     break;
 
                 case SpellSlot.R:
 
-                    damage = new float[] { 180, 265, 350 }[spellLevel] + 0.7f * Player.Instance.FlatMagicDamageMod;
+                    damage = new float[] { 150, 250, 350 }[spellLevel] + 1f * Player.Instance.FlatMagicDamageMod;
                     break;
             }
 

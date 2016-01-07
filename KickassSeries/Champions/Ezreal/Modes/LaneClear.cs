@@ -20,7 +20,8 @@ namespace KickassSeries.Champions.Ezreal.Modes
                     .OrderByDescending(m => m.Health)
                     .FirstOrDefault(
                         m => m.IsValidTarget(Q.Range) && m.Health <= SpellDamage.GetRealDamage(SpellSlot.Q, m));
-            if (laneMinion == null && Orbwalker.IsAutoAttacking) return;
+
+            if (laneMinion == null) return;
 
             if (Settings.UseQ && Q.IsReady() && Settings.ManaLane <= Player.Instance.ManaPercent)
             {

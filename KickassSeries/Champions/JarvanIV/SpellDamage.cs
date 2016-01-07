@@ -60,7 +60,7 @@ namespace KickassSeries.Champions.JarvanIV
             {
                 case SpellSlot.Q:
 
-                    damage = new float[] { 70, 105, 140, 175, 210 }[spellLevel] + 0.65f * Player.Instance.FlatMagicDamageMod;
+                    damage = new float[] { 70, 115, 160, 205, 250 }[spellLevel] + 1.2f * Player.Instance.FlatPhysicalDamageMod;
                     break;
 
                 case SpellSlot.W:
@@ -70,12 +70,12 @@ namespace KickassSeries.Champions.JarvanIV
 
                 case SpellSlot.E:
 
-                    damage = new float[] { 60, 95, 130, 165, 200 }[spellLevel] + 0.5f * Player.Instance.FlatMagicDamageMod;
+                    damage = new float[] { 60, 105, 150, 195, 240 }[spellLevel] + 0.8f * Player.Instance.FlatMagicDamageMod;
                     break;
 
                 case SpellSlot.R:
 
-                    damage = new float[] { 180, 265, 350 }[spellLevel] + 0.7f * Player.Instance.FlatMagicDamageMod;
+                    damage = new float[] { 200, 325, 450 }[spellLevel] + 1.5f * Player.Instance.FlatPhysicalDamageMod;
                     break;
             }
 

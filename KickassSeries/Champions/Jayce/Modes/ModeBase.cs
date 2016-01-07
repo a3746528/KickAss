@@ -4,17 +4,17 @@ namespace KickassSeries.Champions.Jayce.Modes
 {
     public abstract class ModeBase
     {
-        protected static Spell.Skillshot Q
+        protected static Spell.Targeted Q
         {
-            get { return SpellManager.Q; }
+            get { return SpellManager.Qh; }
         }
-        protected static Spell.Skillshot W
+        protected static Spell.Active W
         {
-            get { return SpellManager.W; }
+            get { return SpellManager.Wh; }
         }
-        protected static Spell.Skillshot E
+        protected static Spell.Targeted E
         {
-            get { return SpellManager.E; }
+            get { return SpellManager.Eh; }
         }
         protected static Spell.Skillshot R
         {

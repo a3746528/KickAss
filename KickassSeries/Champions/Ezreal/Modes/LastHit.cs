@@ -18,7 +18,8 @@ namespace KickassSeries.Champions.Ezreal.Modes
             var laneMinion =
                 EntityManager.MinionsAndMonsters.GetLaneMinions()
                     .FirstOrDefault(m => m.IsValidTarget(Q.Range) && m.Health <= SpellDamage.GetRealDamage(SpellSlot.Q, m));
-            if (laneMinion == null && Orbwalker.IsAutoAttacking) return;
+
+            if (laneMinion == null) return;
 
             if (Settings.UseQ && Q.IsReady() && Settings.ManaLast <= Player.Instance.ManaPercent && !Player.Instance.IsInAutoAttackRange(laneMinion))
             {

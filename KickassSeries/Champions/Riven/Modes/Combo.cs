@@ -17,14 +17,15 @@ namespace KickassSeries.Champions.Riven.Modes
             var target = TargetSelector.GetTarget(Q.Range, DamageType.Magical);
             if (target == null || target.IsZombie) return;
 
+            if (Q.IsReady() && target.IsValidTarget(Player.Instance.GetAutoAttackRange()) && Settings.UseQ && Orbwalker.CanAutoAttack)
+            {
+                Q.Cast(target);
+                Core.DelayAction(() =>Player.IssueOrder(GameObjectOrder.AttackUnit, target) , 30);
+            }
+
             if (E.IsReady() && target.IsValidTarget(E.Range) && Settings.UseE)
             {
                 E.Cast(target);
-            }
-
-            if (Q.IsReady() && target.IsValidTarget(Q.Range) && Settings.UseQ && !E.IsReady())
-            {
-                Q.Cast(target);
             }
 
             if (W.IsReady() && target.IsValidTarget(W.Range) && Settings.UseW)

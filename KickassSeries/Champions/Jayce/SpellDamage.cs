@@ -9,23 +9,47 @@ namespace KickassSeries.Champions.Jayce
         {
             // Auto attack
             var damage = Player.Instance.GetAutoAttackDamage(target);
-
-            // Q
-            if (SpellManager.Q.IsReady())
+            //Hammer
+            if (Player.Instance.Spellbook.GetSpell(SpellSlot.R).ToggleState == 1)
             {
-                damage += SpellManager.Q.GetRealDamage(target);
+                // Qh
+                if (SpellManager.Qh.IsReady())
+                {
+                    damage += SpellManager.Qh.GetRealDamage(target);
+                }
+
+                // Wh
+                if (SpellManager.Wh.IsReady())
+                {
+                    damage += SpellManager.Wh.GetRealDamage(target);
+                }
+
+                // Eh
+                if (SpellManager.Eh.IsReady())
+                {
+                    damage += SpellManager.Eh.GetRealDamage(target);
+                }
             }
-
-            // W
-            if (SpellManager.W.IsReady())
+            //Gun
+            else
             {
-                damage += SpellManager.W.GetRealDamage(target);
-            }
+                // Qg
+                if (SpellManager.Qg.IsReady())
+                {
+                    damage += SpellManager.Qg.GetRealDamage(target);
+                }
 
-            // E
-            if (SpellManager.E.IsReady())
-            {
-                damage += SpellManager.E.GetRealDamage(target);
+                // Wg
+                if (SpellManager.Wg.IsReady())
+                {
+                    damage += SpellManager.Wg.GetRealDamage(target);
+                }
+
+                // Eg
+                if (SpellManager.Eg.IsReady())
+                {
+                    damage += SpellManager.Eh.GetRealDamage(target);
+                }
             }
 
             // R
@@ -50,34 +74,44 @@ namespace KickassSeries.Champions.Jayce
             float damage = 0;
 
             // Validate spell level
-            if (spellLevel == 0)
+
+            //Hammer
+            if (Player.Instance.Spellbook.GetSpell(SpellSlot.R).ToggleState == 1)
             {
-                return 0;
-            }
-            spellLevel--;
+                switch (slot)
+                {
+                    case SpellSlot.Q:
 
-            switch (slot)
+                        damage = new float[] { 30, 70, 110, 150, 190, 230 }[spellLevel] + 1f * Player.Instance.FlatPhysicalDamageMod;
+                        break;
+
+                    case SpellSlot.W:
+
+                        damage = new float[] { 25, 40, 55, 70, 85, 100 }[spellLevel] + 0.25f * Player.Instance.FlatMagicDamageMod;
+                        break;
+
+                    case SpellSlot.E:
+
+                        damage = new [] { 0.08f, 0.104f, 0.128f, 0.152f, 0.176f,0.2f }[spellLevel] * target.MaxHealth + 1f * Player.Instance.FlatPhysicalDamageMod;
+                        break;
+                }
+            }
+            //Gun
+            else
             {
-                case SpellSlot.Q:
+                switch (slot)
+                {
+                    case SpellSlot.Q:
 
-                    damage = new float[] { 70, 105, 140, 175, 210 }[spellLevel] + 0.65f * Player.Instance.FlatMagicDamageMod;
-                    break;
+                        damage = new float[] { 70, 120, 170, 220, 270, 320 }[spellLevel] + 1.2f * Player.Instance.FlatPhysicalDamageMod;
+                        break;
 
-                case SpellSlot.W:
+                    case SpellSlot.W:
 
-                    damage = new float[] { 0, 0, 0, 0, 0 }[spellLevel] + 0.0f * Player.Instance.FlatMagicDamageMod;
-                    break;
-
-                case SpellSlot.E:
-
-                    damage = new float[] { 60, 95, 130, 165, 200 }[spellLevel] + 0.5f * Player.Instance.FlatMagicDamageMod;
-                    break;
-
-                case SpellSlot.R:
-
-                    damage = new float[] { 180, 265, 350 }[spellLevel] + 0.7f * Player.Instance.FlatMagicDamageMod;
-                    break;
-            }
+                        damage = new [] { 0.70f, 0.78f, 0.86f, 0.94f, 1.02f, 1.10f }[spellLevel] * Player.Instance.GetAutoAttackDamage(target);
+                        break;
+                }
+            }            
 
             if (damage <= 0)
             {

@@ -13,19 +13,19 @@ namespace KickassSeries.Champions.Graves
 
         static SpellManager()
         {
-            Q = new Spell.Skillshot(SpellSlot.Q, 800, SkillShotType.Linear, 250, int.MaxValue, 85)
+            Q = new Spell.Skillshot(SpellSlot.Q, 950, SkillShotType.Linear, 250, 2100, 95)
             {
                 AllowedCollisionCount = int.MaxValue
             };
-            W = new Spell.Skillshot(SpellSlot.W, 825, SkillShotType.Circular, 250 , int.MaxValue, 20)
+            W = new Spell.Skillshot(SpellSlot.W, 850, SkillShotType.Circular, 250 , int.MaxValue, 250)
             {
                 AllowedCollisionCount = int.MaxValue
             };
-            E = new Spell.Skillshot(SpellSlot.E, 1100, SkillShotType.Linear, 250, 1150, 70)
+            E = new Spell.Skillshot(SpellSlot.E, 425, SkillShotType.Linear, 250, int.MaxValue, 10)
             {
                 AllowedCollisionCount = int.MaxValue
             };
-            R = new Spell.Skillshot(SpellSlot.R, 700, SkillShotType.Circular, 250, 1200, 500)
+            R = new Spell.Skillshot(SpellSlot.R, 1000, SkillShotType.Linear, 250, 900, 70)
             {
                 AllowedCollisionCount = int.MaxValue
             };

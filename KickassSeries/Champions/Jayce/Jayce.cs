@@ -21,19 +21,19 @@ namespace KickassSeries.Champions.Jayce
 
         private static void OnDraw(EventArgs args)
         {
-            if (Settings.DrawReady ? SpellManager.Q.IsReady() : Settings.DrawQ)
+            if (Settings.DrawReady ? SpellManager.Qh.IsReady() : Settings.DrawQ)
             {
-                new Circle { Color = Settings.colorQ, BorderWidth = Settings._widthQ, Radius = SpellManager.Q.Range }.Draw(Player.Instance.Position);
+                new Circle { Color = Settings.colorQ, BorderWidth = Settings._widthQ, Radius = SpellManager.Qh.Range }.Draw(Player.Instance.Position);
             }
 
-            if (Settings.DrawReady ? SpellManager.W.IsReady() : Settings.DrawW)
+            if (Settings.DrawReady ? SpellManager.Wh.IsReady() : Settings.DrawW)
             {
-                new Circle { Color = Settings.colorW, BorderWidth = Settings._widthW, Radius = SpellManager.W.Range }.Draw(Player.Instance.Position);
+                new Circle { Color = Settings.colorW, BorderWidth = Settings._widthW, Radius = SpellManager.Wh.Range }.Draw(Player.Instance.Position);
             }
 
-            if (Settings.DrawReady ? SpellManager.E.IsReady() : Settings.DrawE)
+            if (Settings.DrawReady ? SpellManager.Eh.IsReady() : Settings.DrawE)
             {
-                new Circle { Color = Settings.colorE, BorderWidth = Settings._widthE, Radius = SpellManager.E.Range }.Draw(Player.Instance.Position);
+                new Circle { Color = Settings.colorE, BorderWidth = Settings._widthE, Radius = SpellManager.Eh.Range }.Draw(Player.Instance.Position);
             }
 
             if (Settings.DrawReady ? SpellManager.R.IsReady() : Settings.DrawR)

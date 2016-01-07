@@ -60,12 +60,14 @@ namespace KickassSeries.Champions.Illaoi
             {
                 case SpellSlot.Q:
 
-                    damage = new float[] { 0, 0, 0, 0, 0 }[spellLevel] + 0.0f * Player.Instance.FlatMagicDamageMod;
+                    damage = Player.Instance.GetAutoAttackDamage(target) +
+                             new float[] {0, 10, 20, 30, 40}[spellLevel]*Player.Instance.FlatPhysicalDamageMod;
                     break;
 
                 case SpellSlot.W:
 
-                    damage = new float[] { 0, 0, 0, 0, 0 }[spellLevel] + 0.0f * Player.Instance.FlatMagicDamageMod;
+                    damage = Player.Instance.GetAutoAttackDamage(target) + new float[] {15, 35, 55, 75, 95}[spellLevel] +
+                             0.1f*Player.Instance.FlatPhysicalDamageMod;
                     break;
 
                 case SpellSlot.E:
@@ -75,7 +77,7 @@ namespace KickassSeries.Champions.Illaoi
 
                 case SpellSlot.R:
 
-                    damage = new float[] { 0, 0, 0 }[spellLevel] + 0.0f * Player.Instance.FlatMagicDamageMod;
+                    damage = new float[] { 150, 250, 350 }[spellLevel] + 0.5f * Player.Instance.FlatPhysicalDamageMod;
                     break;
             }
 

@@ -17,9 +17,9 @@ namespace KickassSeries.Champions.Jayce
         {
             if (!sender.IsEnemy) return;
 
-            if (sender.IsValidTarget(SpellManager.E.Range))
+            if (sender.IsValidTarget(SpellManager.Eh.Range))
             {
-                SpellManager.E.Cast(sender);
+                SpellManager.Eh.Cast(sender);
             }
         }
 
@@ -29,7 +29,7 @@ namespace KickassSeries.Champions.Jayce
 
             if (e.DangerLevel == DangerLevel.High)
             {
-                SpellManager.E.Cast(sender);
+                SpellManager.Eh.Cast(sender);
             }
         }
     }
