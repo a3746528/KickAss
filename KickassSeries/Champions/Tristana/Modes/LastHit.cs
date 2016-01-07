@@ -2,8 +2,6 @@
 using EloBuddy;
 using EloBuddy.SDK;
 
-using Settings = KickassSeries.Champions.Tristana.Config.Modes.LastHit;
-
 namespace KickassSeries.Champions.Tristana.Modes
 {
     public sealed class LastHit : ModeBase

@@ -1,10 +1,9 @@
 ﻿using EloBuddy;
 using EloBuddy.SDK;
 using EloBuddy.SDK.Menu.Values;
-using Settings = TristanaHu3Reborn.Config.Modes.Combo;
-using Configs = TristanaHu3Reborn.Config.Modes.Misc;
+using Settings = KickassSeries.Champions.Tristana.Config.Modes.Combo;
 
-namespace TristanaHu3Reborn.Modes
+namespace KickassSeries.Champions.Tristana.Modes
 {
     public sealed class Combo : ModeBase
     {

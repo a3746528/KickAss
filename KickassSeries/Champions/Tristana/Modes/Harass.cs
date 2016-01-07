@@ -1,5 +1,4 @@
-﻿using System.Linq;
-using EloBuddy;
+﻿using EloBuddy;
 using EloBuddy.SDK;
 
 using Settings = KickassSeries.Champions.Tristana.Config.Modes.Harass;
@@ -15,28 +14,19 @@ namespace KickassSeries.Champions.Tristana.Modes
 
         public override void Execute()
         {
-            var minion =
-                EntityManager.MinionsAndMonsters.GetJungleMonsters()
-                    .FirstOrDefault(m => m.IsValidTarget(Player.Instance.AttackRange));
-            if (minion == null) return;
+            var target = TargetSelector.GetTarget(Q.Range, DamageType.Physical);
+            if (target == null || target.IsZombie || target.HasUndyingBuff()) return;
 
-            if (minion.IsValidTarget(E.Range) && Settings.UseE)
+            Orbwalker.ForcedTarget = null;
+
+            if (Settings.UseE && E.IsReady() && target.IsValidTarget(E.Range))
             {
-                E.Cast(minion);
+                E.Cast(target);
             }
 
-            if (minion.IsValidTarget(Q.Range) && Settings.UseQ)
+            if (Settings.UseQ && target.IsValidTarget(Q.Range) && target.GetBuffCount("tristanaecharge") > 0)
             {
                 Q.Cast();
-            }
-
-            var minionE =
-                EntityManager.MinionsAndMonsters.GetLaneMinions()
-                    .FirstOrDefault(
-                        m => m.IsValidTarget(Player.Instance.AttackRange) && m.GetBuffCount("tristanaecharge") > 0);
-            if (minionE != null)
-            {
-                Orbwalker.ForcedTarget = minionE;
             }
         }
     }
