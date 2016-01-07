@@ -2,6 +2,8 @@
 using EloBuddy.SDK;
 using EloBuddy.SDK.Events;
 
+using Misc = KickassSeries.Champions.Ezreal.Config.Modes.Misc;
+
 using Settings = KickassSeries.Champions.Ezreal.Config.Modes.LastHit;
 
 namespace KickassSeries.Champions.Ezreal
@@ -38,7 +40,7 @@ namespace KickassSeries.Champions.Ezreal
 
         private static void Gapcloser_OnGapcloser(AIHeroClient sender, Gapcloser.GapcloserEventArgs e)
         {
-            if (!Config.Modes.Misc.GapE || !SpellManager.E.IsReady() || sender.IsAlly) return;
+            if (!Misc.GapE && !SpellManager.E.IsReady() && sender.IsAlly) return;
 
             if (sender.IsEnemy && sender.IsVisible && Player.Instance.Distance(e.End) < 150)
             {
