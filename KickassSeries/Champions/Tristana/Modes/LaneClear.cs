@@ -17,24 +17,43 @@ namespace KickassSeries.Champions.Tristana.Modes
         {
             var minion =
                 EntityManager.MinionsAndMonsters.GetLaneMinions()
-                    .OrderByDescending(m => m.Health)
-                    .FirstOrDefault(m => m.IsValidTarget(Q.Range));
-
-            if (minion == null) return;
-
-            if (W.IsReady() && Settings.UseW)
+                    .FirstOrDefault(m => m.IsValidTarget(Player.Instance.AttackRange));
+            if (minion != null)
             {
-                W.Cast(Player.Instance.Position.Extend(minion.Position, W.Range).To3D());
+
+                if (minion.IsValidTarget(E.Range) && Settings.UseE && E.IsReady())
+                {
+                    E.Cast(minion);
+                }
+
+                if (minion.IsValidTarget(Q.Range) && Settings.UseQ && Q.IsReady())
+                {
+                    Q.IsReady();
+                }
+
+                var minionE =
+                    EntityManager.MinionsAndMonsters.GetLaneMinions()
+                        .FirstOrDefault(
+                            m => m.IsValidTarget(Player.Instance.AttackRange) && m.GetBuffCount("tristanaecharge") > 0);
+                if (minionE != null)
+                {
+                    Orbwalker.ForcedTarget = minionE;
+                }
             }
 
-            if (E.IsReady() && minion.IsValidTarget(E.Range) && Settings.UseE)
+            var tower = EntityManager.Turrets.Enemies.FirstOrDefault(t => !t.IsDead && t.IsInRange(Player.Instance, 800));
+            if (tower != null)
             {
-                E.Cast(minion);
-            }
 
-            if (Q.IsReady() && minion.IsValidTarget(Q.Range) && Settings.UseQ)
-            {
-                Q.Cast(minion);
+                if (tower.IsInRange(Player.Instance, E.Range) && Settings.UseE && E.IsReady())
+                {
+                    E.Cast(tower);
+                }
+
+                if (tower.IsInRange(Player.Instance, Q.Range) && Settings.UseQ && Q.IsReady())
+                {
+                    Q.Cast();
+                }
             }
         }
     }

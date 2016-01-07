@@ -1,6 +1,8 @@
 ﻿using EloBuddy;
 using EloBuddy.SDK;
 
+using Settings = KickassSeries.Champions.Tristana.Config.Modes.Misc;
+
 namespace KickassSeries.Champions.Tristana.Modes
 {
     public sealed class Flee : ModeBase
@@ -12,10 +14,17 @@ namespace KickassSeries.Champions.Tristana.Modes
 
         public override void Execute()
         {
-            var target = TargetSelector.GetTarget(Q.Range, DamageType.Magical);
-            if (Player.Instance.HealthPercent <= 25 && target.IsValidTarget(E.Range))
+            var target = TargetSelector.GetTarget(R.Range, DamageType.Physical);
+            if (target == null || target.IsZombie || target.HasUndyingBuff()) return;
+
+            if (Settings.UseRFlee && Player.Instance.HealthPercent >= 15 && Player.Instance.HealthPercent < target.HealthPercent)
             {
-                E.Cast(target);
+                R.Cast(target);
+            }
+
+            if (Settings.UseWFlee && W.IsReady())
+            {
+                W.Cast(Player.Instance.Position.Extend(Game.CursorPos, W.Range).To3D());
             }
         }
     }

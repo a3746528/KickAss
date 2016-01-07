@@ -2,6 +2,7 @@
 using System.Linq;
 using EloBuddy;
 using EloBuddy.SDK;
+using SharpDX;
 
 namespace KickassSeries.Champions
 {
@@ -50,6 +51,21 @@ namespace KickassSeries.Champions
                                            b.Type == BuffType.Stun ||
                                            b.Type == BuffType.Suppression ||
                                            b.Type == BuffType.Snare)).Aggregate(0f, (current, buff) => Math.Max(current, buff.EndTime)) - Game.Time) * 1000;
+        }
+
+        public static bool Tower(this Vector3 pos)
+        {
+            return EntityManager.Turrets.Enemies.Where(t => !t.IsDead).Any(d => d.Distance(pos) < 950);
+        }
+
+        public static bool AllyTower(this Vector3 pos)
+        {
+            return EntityManager.Turrets.Allies.Where(t => !t.IsDead).Any(d => d.Distance(pos) < 700);
+        }
+
+        public static Vector3 RPos(this Obj_AI_Base unit)
+        {
+            return unit.Position.Extend(Prediction.Position.PredictUnitPosition(unit, 300), 600).To3D();
         }
 
         public static bool IsPassiveReady(this AIHeroClient target)

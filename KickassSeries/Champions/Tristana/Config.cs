@@ -1,4 +1,5 @@
 ﻿using EloBuddy;
+using EloBuddy.SDK;
 using EloBuddy.SDK.Menu;
 using EloBuddy.SDK.Menu.Values;
 using KickassSeries.MenuSettings;
@@ -34,7 +35,7 @@ namespace KickassSeries.Champions.Tristana
 
         public static class Modes
         {
-            private static readonly Menu ModesMenu, DrawMenu;
+            public static readonly Menu ModesMenu, DrawMenu;
 
             static Modes()
             {
@@ -46,7 +47,7 @@ namespace KickassSeries.Champions.Tristana
                 Menu.AddSeparator();
                 LaneClear.Initialize();
                 Menu.AddSeparator();
-                LastHit.Initialize();
+                Misc.Initialize();
 
                 DrawMenu = Menu.AddSubMenu("Draw");
                 Draw.Initialize();
@@ -62,6 +63,7 @@ namespace KickassSeries.Champions.Tristana
                 private static readonly CheckBox _useW;
                 private static readonly CheckBox _useE;
                 private static readonly CheckBox _useR;
+                private static readonly CheckBox _useRtower;
 
                 public static bool UseQ
                 {
@@ -83,6 +85,11 @@ namespace KickassSeries.Champions.Tristana
                     get { return _useR.CurrentValue; }
                 }
 
+
+                public static bool UseRTower
+                {
+                    get { return _useRtower.CurrentValue; }
+                }
                 static Combo()
                 {
                     // Initialize the menu values
@@ -90,7 +97,8 @@ namespace KickassSeries.Champions.Tristana
                     _useQ = ModesMenu.Add("comboQ", new CheckBox("Use Q"));
                     _useW = ModesMenu.Add("comboW", new CheckBox("Use W"));
                     _useE = ModesMenu.Add("comboE", new CheckBox("Use E"));
-                    _useR = ModesMenu.Add("comboR", new CheckBox("Use R", false)); // Default false
+                    _useR = ModesMenu.Add("comboR", new CheckBox("Use R to kill"));
+                    _useRtower = ModesMenu.Add("comboRtower", new CheckBox("Use R to throw the enemy under ally tower"));
                 }
 
                 public static void Initialize()
@@ -101,17 +109,11 @@ namespace KickassSeries.Champions.Tristana
             public static class Harass
             {
                 private static readonly CheckBox _useQ;
-                private static readonly CheckBox _useW;
                 private static readonly CheckBox _useE;
 
                 public static bool UseQ
                 {
                     get { return _useQ.CurrentValue; }
-                }
-
-                public static bool UseW
-                {
-                    get { return _useW.CurrentValue; }
                 }
 
                 public static bool UseE
@@ -124,7 +126,6 @@ namespace KickassSeries.Champions.Tristana
                     // Initialize the menu values
                     ModesMenu.AddGroupLabel("Harass");
                     _useQ = ModesMenu.Add("harassQ", new CheckBox("Use Q"));
-                    _useW = ModesMenu.Add("harassW", new CheckBox("Use W"));
                     _useE = ModesMenu.Add("harassE", new CheckBox("Use E"));
                 }
 
@@ -136,17 +137,11 @@ namespace KickassSeries.Champions.Tristana
             public static class LaneClear
             {
                 private static readonly CheckBox _useQ;
-                private static readonly CheckBox _useW;
                 private static readonly CheckBox _useE;
 
                 public static bool UseQ
                 {
                     get { return _useQ.CurrentValue; }
-                }
-
-                public static bool UseW
-                {
-                    get { return _useW.CurrentValue; }
                 }
 
                 public static bool UseE
@@ -159,7 +154,6 @@ namespace KickassSeries.Champions.Tristana
                     // Initialize the menu values
                     ModesMenu.AddGroupLabel("LaneClear");
                     _useQ = ModesMenu.Add("laneQ", new CheckBox("Use Q"));
-                    _useW = ModesMenu.Add("laneW", new CheckBox("Use W"));
                     _useE = ModesMenu.Add("laneE", new CheckBox("Use E"));
                 }
 
@@ -168,41 +162,55 @@ namespace KickassSeries.Champions.Tristana
                 }
             }
 
-            public static class LastHit
+            public static class Misc
             {
-                private static readonly CheckBox _useQ;
-                private static readonly CheckBox _useW;
-                private static readonly CheckBox _useE;
+                private static readonly CheckBox _Rint;
+                private static readonly CheckBox _Rgap;
+                private static readonly CheckBox _fleeW;
+                private static readonly CheckBox _fleeR;
 
-                public static bool UseQ
+                public static bool RInt
                 {
-                    get { return _useQ.CurrentValue; }
+                    get { return _Rint.CurrentValue; }
                 }
 
-                public static bool UseW
+                public static bool RGap
                 {
-                    get { return _useW.CurrentValue; }
+                    get { return _Rgap.CurrentValue; }
                 }
 
-                public static bool UseE
+                public static bool UseWFlee
                 {
-                    get { return _useE.CurrentValue; }
+                    get { return _fleeW.CurrentValue; }
                 }
 
-                static LastHit()
+                public static bool UseRFlee
+                {
+                    get { return _fleeR.CurrentValue; }
+                }
+
+                static Misc()
                 {
                     // Initialize the menu values
-                    ModesMenu.AddGroupLabel("LastHit");
-                    _useQ = ModesMenu.Add("lastQ", new CheckBox("Use Q"));
-                    _useW = ModesMenu.Add("lastW", new CheckBox("Use W"));
-                    _useE = ModesMenu.Add("lastE", new CheckBox("Use E"));
+                    ModesMenu.AddGroupLabel("Exclude E List");
+                    foreach (var enemy in EntityManager.Heroes.Enemies)
+                    {
+                        ModesMenu.Add("dont e" + enemy.ChampionName,
+                            new CheckBox("Don't use E on " + enemy.ChampionName, false));
+                    }
+
+                    ModesMenu.AddGroupLabel("Interrupt/Gapcloser");
+                    _Rint = ModesMenu.Add("rint", new CheckBox("Use R On Interruptable Spell"));
+                    _Rgap = ModesMenu.Add("rgap", new CheckBox("Use R On GapCloser"));
+                    ModesMenu.AddGroupLabel("Flee");
+                    _fleeW = ModesMenu.Add("_fleeW", new CheckBox("Use W to flee"));
+                    _fleeR = ModesMenu.Add("_fleeR", new CheckBox("Use R when you`re low health"));
                 }
 
                 public static void Initialize()
                 {
                 }
             }
-
             public static class Draw
             {
                 private static readonly CheckBox _drawHealth;

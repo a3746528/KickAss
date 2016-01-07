@@ -15,45 +15,13 @@ namespace KickassSeries.Champions.Tristana.Modes
 
         public override void Execute()
         {
-            var minion =
-                EntityManager.MinionsAndMonsters.GetLaneMinions()
-                    .OrderByDescending(m => m.Health)
-                    .FirstOrDefault(m => m.IsValidTarget(Q.Range));
-
-            if (minion == null) return;
-
-            if (W.IsReady() && Settings.UseW)
+            var minionE =
+    EntityManager.MinionsAndMonsters.GetLaneMinions()
+        .FirstOrDefault(
+            m => m.IsValidTarget(Player.Instance.AttackRange) && m.GetBuffCount("tristanaecharge") > 0);
+            if (minionE != null)
             {
-                W.Cast(Player.Instance.Position.Extend(minion.Position, W.Range).To3D());
-            }
-
-            if (E.IsReady() && minion.IsValidTarget(E.Range) && Settings.UseE)
-            {
-                var minionE =
-                       EntityManager.MinionsAndMonsters.GetLaneMinions()
-                           .OrderByDescending(m => m.Health)
-                           .FirstOrDefault(
-                               m => m.IsValidTarget(E.Range) && m.Health <= SpellDamage.GetRealDamage(SpellSlot.E, m));
-
-                if (minionE != null)
-                {
-                    E.Cast(minionE);
-                }
-                
-            }
-
-            if (Q.IsReady() && minion.IsValidTarget(Q.Range) && Settings.UseQ)
-            {
-                var minionQ =
-                       EntityManager.MinionsAndMonsters.GetLaneMinions()
-                           .OrderByDescending(m => m.Health)
-                           .FirstOrDefault(
-                               m => m.IsValidTarget(Q.Range) && m.Health <= SpellDamage.GetRealDamage(SpellSlot.Q, m));
-
-                if (minionQ != null)
-                {
-                    Q.Cast(minionQ);
-                }
+                Orbwalker.ForcedTarget = minionE;
             }
         }
     }

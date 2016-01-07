@@ -1,9 +1,10 @@
 ﻿using EloBuddy;
 using EloBuddy.SDK;
+using EloBuddy.SDK.Menu.Values;
+using Settings = TristanaHu3Reborn.Config.Modes.Combo;
+using Configs = TristanaHu3Reborn.Config.Modes.Misc;
 
-using Settings = KickassSeries.Champions.Tristana.Config.Modes.Combo;
-
-namespace KickassSeries.Champions.Tristana.Modes
+namespace TristanaHu3Reborn.Modes
 {
     public sealed class Combo : ModeBase
     {
@@ -14,27 +15,31 @@ namespace KickassSeries.Champions.Tristana.Modes
 
         public override void Execute()
         {
-            var target = TargetSelector.GetTarget(Q.Range, DamageType.Magical);
-            if (target == null || target.IsZombie) return;
+            var target = TargetSelector.GetTarget(1200, DamageType.Physical);
+            if (target == null || target.IsZombie || target.HasUndyingBuff()) return;
 
-            if (W.IsReady() && Settings.UseW)
-            {
-                W.Cast(Player.Instance.Position.Extend(target.Position, W.Range).To3D());
-            }
+            Orbwalker.ForcedTarget = null;
 
-            if (E.IsReady() && target.IsValidTarget(E.Range) && Settings.UseE)
+
+            if (Settings.UseE && E.IsReady() && target.IsValidTarget(E.Range) && !Config.Modes.ModesMenu["dont e" + target.ChampionName].Cast<CheckBox>().CurrentValue)
             {
                 E.Cast(target);
             }
 
-            if (Q.IsReady() && target.IsValidTarget(Q.Range) && Settings.UseQ)
+            if (Settings.UseQ && target.IsValidTarget(Player.Instance.AttackRange))
             {
-                Q.Cast(target);
+                Q.Cast();
             }
 
-            if (R.IsReady() && target.IsValidTarget(R.Range) && Settings.UseR)
+            if (Settings.UseW && W.IsReady() && target.IsValidTarget(1200) && target.CountEnemiesInRange(700) <= 2 &&
+                (target.HealthPercent < (Player.Instance.HealthPercent - 15)) &&
+                !target.IsInRange(Player.Instance, Player.Instance.AttackRange))
             {
-                R.Cast(target);
+                var castpos = Player.Instance.Position.Extend(target.Position, W.Range).To3D();
+                if (!castpos.Tower())
+                {
+                    W.Cast(castpos);
+                }
             }
         }
     }

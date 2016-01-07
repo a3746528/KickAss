@@ -1,4 +1,5 @@
-﻿using EloBuddy;
+﻿using System.Linq;
+using EloBuddy;
 using EloBuddy.SDK;
 
 using Settings = KickassSeries.Champions.Tristana.Config.Modes.Harass;
@@ -14,22 +15,28 @@ namespace KickassSeries.Champions.Tristana.Modes
 
         public override void Execute()
         {
-            var target = TargetSelector.GetTarget(Q.Range, DamageType.Physical);
-            if (target == null || target.IsZombie) return;
+            var minion =
+                EntityManager.MinionsAndMonsters.GetJungleMonsters()
+                    .FirstOrDefault(m => m.IsValidTarget(Player.Instance.AttackRange));
+            if (minion == null) return;
 
-            if (W.IsReady() && Settings.UseW)
+            if (minion.IsValidTarget(E.Range) && Settings.UseE)
             {
-                W.Cast(Player.Instance.Position.Extend(target.Position, W.Range).To3D());
+                E.Cast(minion);
             }
 
-            if (E.IsReady() && target.IsValidTarget(E.Range) && Settings.UseE)
+            if (minion.IsValidTarget(Q.Range) && Settings.UseQ)
             {
-                E.Cast(target);
+                Q.Cast();
             }
 
-            if (Q.IsReady() && target.IsValidTarget(Q.Range) && Settings.UseQ)
+            var minionE =
+                EntityManager.MinionsAndMonsters.GetLaneMinions()
+                    .FirstOrDefault(
+                        m => m.IsValidTarget(Player.Instance.AttackRange) && m.GetBuffCount("tristanaecharge") > 0);
+            if (minionE != null)
             {
-                Q.Cast(target);
+                Orbwalker.ForcedTarget = minionE;
             }
         }
     }

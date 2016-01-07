@@ -15,26 +15,28 @@ namespace KickassSeries.Champions.Tristana.Modes
 
         public override void Execute()
         {
-            var jgminion =
+            var minion =
                 EntityManager.MinionsAndMonsters.GetJungleMonsters()
-                    .OrderByDescending(j => j.Health)
-                    .FirstOrDefault(j => j.IsValidTarget(Q.Range));
+                    .OrderBy(m=>m.MaxHealth).FirstOrDefault(m => m.IsValidTarget(Player.Instance.AttackRange));
+            if (minion == null) return;
 
-            if (jgminion == null)return;
-
-            if (W.IsReady() && Settings.UseW)
+            if (minion.IsValidTarget(E.Range) && Settings.UseE)
             {
-                W.Cast(Player.Instance.Position.Extend(jgminion.Position, W.Range).To3D());
+                E.Cast(minion);
             }
 
-            if (E.IsReady() && jgminion.IsValidTarget(E.Range) && Settings.UseE)
+            if (minion.IsValidTarget(Q.Range) && Settings.UseQ)
             {
-                E.Cast(jgminion);
+                Q.Cast();
             }
 
-            if (Q.IsReady() && jgminion.IsValidTarget(Q.Range) && Settings.UseQ)
+            var minionE =
+                EntityManager.MinionsAndMonsters.GetLaneMinions()
+                    .FirstOrDefault(
+                        m => m.IsValidTarget(Player.Instance.AttackRange) && m.GetBuffCount("tristanaecharge") > 0);
+            if (minionE != null)
             {
-                Q.Cast(jgminion);
+                Orbwalker.ForcedTarget = minionE;
             }
         }
     }
