@@ -13,10 +13,10 @@ namespace KickassSeries.Champions.Teemo
 
         static SpellManager()
         {
-            Q = new Spell.Targeted(SpellSlot.Q, 580);
+            Q = new Spell.Targeted(SpellSlot.Q, 680);
             W = new Spell.Active(SpellSlot.W);
-            E = new Spell.Active(SpellSlot.E, 1100);
-            R = new Spell.Skillshot(SpellSlot.R, 300 * (uint)R.Level, SkillShotType.Circular, 500, 1000, 120);
+            E = new Spell.Active(SpellSlot.E);
+            R = new Spell.Skillshot(SpellSlot.R, 300, SkillShotType.Circular, 500, 1000, 120);
         }
 
         public static void Initialize()

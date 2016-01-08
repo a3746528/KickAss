@@ -3,6 +3,7 @@ using EloBuddy.SDK;
 using SharpDX;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace KickassSeries.Ultilities
 {
@@ -110,5 +111,11 @@ namespace KickassSeries.Ultilities
             public static readonly Dictionary<int, List<Vector2>> StoredPaths = new Dictionary<int, List<Vector2>>();
             public static readonly Dictionary<int, int> StoredTick = new Dictionary<int, int>();
         }
+        //teemo
+        public static bool IsShroomed(this Vector3 position)
+        {
+            return ObjectManager.Get<Obj_AI_Base>().Where(obj => obj.Name == "Noxious Trap").Any(obj => position.Distance(obj.Position) <= 250);
+        }
+        //teemo
     }
 }

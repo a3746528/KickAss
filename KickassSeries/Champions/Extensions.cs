@@ -68,6 +68,10 @@ namespace KickassSeries.Champions
             return unit.Position.Extend(Prediction.Position.PredictUnitPosition(unit, 300), 600).To3D();
         }
 
+        //Teemo
+
+        //Teemo
+
         public static bool IsPassiveReady(this AIHeroClient target)
         {
             return target.IsMe && target.HasBuff("");

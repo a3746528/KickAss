@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using EloBuddy;
 using EloBuddy.SDK;
 
@@ -8,6 +9,8 @@ namespace KickassSeries.Champions.Teemo.Modes
 {
     public sealed class LaneClear : ModeBase
     {
+        private static int LaneClearLastR;
+
         public override bool ShouldBeExecuted()
         {
             return Orbwalker.ActiveModesFlags.HasFlag(Orbwalker.ActiveModes.LaneClear);
@@ -22,19 +25,39 @@ namespace KickassSeries.Champions.Teemo.Modes
 
             if (minion == null) return;
 
-            if (W.IsReady() && Settings.UseW)
+
+            var qMinion =
+                EntityManager.MinionsAndMonsters.EnemyMinions.Where(
+                    t => Q.IsInRange(t) && t.IsValidTarget() && t.IsMinion && t.IsEnemy)
+                    .OrderBy(t => t.Health)
+                    .FirstOrDefault();
+
+            if (qMinion != null)
             {
-                W.Cast(Player.Instance.Position.Extend(minion.Position, W.Range).To3D());
+                if (Q.IsReady()
+                    && Settings.UseQ
+                    && qMinion.Health <= Player.Instance.GetSpellDamage(qMinion, SpellSlot.Q)
+                    && Settings.QMana <= (int) Player.Instance.ManaPercent)
+                {
+                    Q.Cast(qMinion);
+                }
             }
 
-            if (E.IsReady() && minion.IsValidTarget(E.Range) && Settings.UseE)
+            if (!Settings.UseR)
             {
-                E.Cast(minion);
+                return;
             }
 
-            if (Q.IsReady() && minion.IsValidTarget(Q.Range) && Settings.UseQ)
+            var allMinionsR =
+                EntityManager.MinionsAndMonsters.EnemyMinions.Where(t => R.IsInRange(t) && t.IsValidTarget())
+                    .OrderBy(t => t.Health);
+            var rLocation = EntityManager.MinionsAndMonsters.GetCircularFarmLocation(allMinionsR, R.Width, (int) R.Range);
+
+            if (rLocation.HitNumber >= Settings.rMinions
+                && Environment.TickCount - LaneClearLastR >= 5000)
             {
-                Q.Cast(minion);
+                R.Cast(rLocation.CastPosition);
+                LaneClearLastR = Environment.TickCount;
             }
         }
     }

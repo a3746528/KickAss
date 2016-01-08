@@ -36,6 +36,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>D:\EloBuddy\System\EloBuddy.dll</HintPath>
     </Reference>
+    <Reference Include="EloBuddy.Sandbox">
+      <HintPath>D:\EloBuddy\System\EloBuddy.Sandbox.dll</HintPath>
+    </Reference>
     <Reference Include="EloBuddy.SDK, Version=1.0.0.0, Culture=neutral, PublicKeyToken=6b574a82b1ea937e, processorArchitecture=x86">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>D:\EloBuddy\System\EloBuddy.SDK.dll</HintPath>
@@ -188,6 +191,8 @@
     <Compile Include="Champions\Riven\Modes\PermaActive.cs" />
     <Compile Include="Champions\Riven\SpellDamage.cs" />
     <Compile Include="Champions\Riven\SpellManager.cs" />
+    <Compile Include="Champions\Teemo\FileHandler.cs" />
+    <Compile Include="Champions\Teemo\ShroomTables.cs" />
     <Compile Include="Champions\Viktor\Config.cs" />
     <Compile Include="Champions\Viktor\DamageIndicator.cs" />
     <Compile Include="Champions\Viktor\EventsManager.cs" />

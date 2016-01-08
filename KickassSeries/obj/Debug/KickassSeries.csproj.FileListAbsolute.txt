@@ -10,3 +10,4 @@ C:\Users\Mario\Documents\GitHub\Kickass\KickassSeries\bin\Debug\SharpDX.dll
 C:\Users\Mario\Documents\GitHub\Kickass\KickassSeries\bin\Debug\Newtonsoft.Json.dll
 C:\Users\Mario\Documents\GitHub\Kickass\KickassSeries\obj\Debug\KickassSeries.exe
 C:\Users\Mario\Documents\GitHub\Kickass\KickassSeries\obj\Debug\KickassSeries.pdb
+C:\Users\Mario\Documents\GitHub\Kickass\KickassSeries\bin\Debug\EloBuddy.Sandbox.dll

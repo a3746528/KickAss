@@ -1,7 +1,11 @@
-﻿using EloBuddy;
+﻿using System.Linq;
+using EloBuddy;
 using EloBuddy.SDK;
-
+using EloBuddy.SDK.Enumerations;
+using EloBuddy.SDK.Menu.Values;
+using KickassSeries.Ultilities;
 using Settings = KickassSeries.Champions.Teemo.Config.Modes.Combo;
+using Misc = KickassSeries.Champions.Teemo.Config.Modes.Misc;
 
 namespace KickassSeries.Champions.Teemo.Modes
 {
@@ -17,24 +21,42 @@ namespace KickassSeries.Champions.Teemo.Modes
             var target = TargetSelector.GetTarget(Q.Range, DamageType.Magical);
             if (target == null || target.IsZombie) return;
 
-            if (W.IsReady() && Settings.UseW)
+            if (Settings.PrevenUnstealth && Player.Instance.HasBuff("CamouflageStealth"))
             {
-                W.Cast(Player.Instance.Position.Extend(target.Position, W.Range).To3D());
+                return;
             }
 
-            if (E.IsReady() && target.IsValidTarget(E.Range) && Settings.UseE)
+            var enemies = EntityManager.Heroes.Enemies.FirstOrDefault(t => t.IsValidTarget() && Player.Instance.IsInAutoAttackRange(t));
+            var rtarget = TargetSelector.GetTarget(R.Range, DamageType.Magical);
+            var rCount = Player.Instance.Spellbook.GetSpell(SpellSlot.R).Ammo;
+
+            if (W.IsReady() && Settings.UseW && !Settings.OnlyWInRange)
             {
-                E.Cast(target);
+                W.Cast();
             }
 
-            if (Q.IsReady() && target.IsValidTarget(Q.Range) && Settings.UseQ)
+            if (Settings.UseW && Settings.OnlyWInRange)
             {
-                Q.Cast(target);
+                if (W.IsReady() && enemies != null)
+                {
+                    W.Cast();
+                }
             }
 
-            if (R.IsReady() && target.IsValidTarget(R.Range) && Settings.UseR)
+            if (rtarget == null)
             {
-                R.Cast(target);
+                return;
+            }
+            var predictionR = R.GetPrediction(rtarget);
+
+            if (!R.IsReady() || !Settings.UseR || !R.IsInRange(rtarget) || Settings.RCharges > rCount || !rtarget.IsValidTarget()
+                || predictionR.CastPosition.IsShroomed())
+            {
+                return;
+            }
+            if (predictionR.HitChance >= HitChance.High)
+            {
+                R.Cast(predictionR.CastPosition);
             }
         }
     }

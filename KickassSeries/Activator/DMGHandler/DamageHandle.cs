@@ -53,7 +53,7 @@ namespace KickassSeries.Activator.DMGHandler
                     var projection = Player.Instance.Position.To2D().ProjectOn(args.Start.To2D(), args.End.To2D());
 
                     if (projection.IsOnSegment &&
-                        projection.SegmentPoint.Distance(Player.Instance.Position.To2D()) <= args.SData.CastRadius + Player.Instance.BoundingRadius + 30)
+                        projection.SegmentPoint.Distance(Player.Instance.Position) <= args.SData.CastRadius + Player.Instance.BoundingRadius + 30)
                     {
                         if (dangerousspell != null)
                         {

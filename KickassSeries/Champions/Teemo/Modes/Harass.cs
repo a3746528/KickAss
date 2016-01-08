@@ -17,16 +17,6 @@ namespace KickassSeries.Champions.Teemo.Modes
             var target = TargetSelector.GetTarget(Q.Range, DamageType.Physical);
             if (target == null || target.IsZombie) return;
 
-            if (W.IsReady() && Settings.UseW)
-            {
-                W.Cast(Player.Instance.Position.Extend(target.Position, W.Range).To3D());
-            }
-
-            if (E.IsReady() && target.IsValidTarget(E.Range) && Settings.UseE)
-            {
-                E.Cast(target);
-            }
-
             if (Q.IsReady() && target.IsValidTarget(Q.Range) && Settings.UseQ)
             {
                 Q.Cast(target);

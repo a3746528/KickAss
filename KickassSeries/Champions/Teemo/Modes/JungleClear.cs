@@ -2,7 +2,7 @@
 using EloBuddy;
 using EloBuddy.SDK;
 
-using Settings = KickassSeries.Champions.Teemo.Config.Modes.LaneClear;
+using Settings = KickassSeries.Champions.Teemo.Config.Modes.JungleClear;
 
 namespace KickassSeries.Champions.Teemo.Modes
 {
@@ -22,19 +22,28 @@ namespace KickassSeries.Champions.Teemo.Modes
 
             if (jgminion == null)return;
 
-            if (W.IsReady() && Settings.UseW)
+            var ammoR = Player.Instance.Spellbook.GetSpell(SpellSlot.R).Ammo;
+            var jungleMobQ = EntityManager.MinionsAndMonsters.GetJungleMonsters(Player.Instance.ServerPosition, Q.Range).FirstOrDefault();
+            var jungleMobR = EntityManager.MinionsAndMonsters.GetJungleMonsters(Player.Instance.ServerPosition, R.Range);
+
+            if (Settings.UseQ && jungleMobQ != null)
             {
-                W.Cast(Player.Instance.Position.Extend(jgminion.Position, W.Range).To3D());
+                if (Q.IsReady() && Settings.QMana <= (int)Player.Instance.ManaPercent)
+                {
+                    Q.Cast(jungleMobQ);
+                }
             }
 
-            if (E.IsReady() && jgminion.IsValidTarget(E.Range) && Settings.UseE)
+            var firstjunglemobR = jungleMobR.FirstOrDefault();
+
+            if (!Settings.UseR || firstjunglemobR == null)
             {
-                E.Cast(jgminion);
+                return;
             }
 
-            if (Q.IsReady() && jgminion.IsValidTarget(Q.Range) && Settings.UseQ)
+            if (R.IsReady() && ammoR >= 1)
             {
-                Q.Cast(jgminion);
+                R.Cast(firstjunglemobR.ServerPosition);
             }
         }
     }
