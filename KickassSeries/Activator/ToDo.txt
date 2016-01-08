@@ -1,4 +1,0 @@
-﻿Finish the defensive menu ()
-Test the activator ()
-Add eventsmanager Pre/Pos AA ()
-Fix Activator(Done)
