@@ -32,7 +32,7 @@ namespace KickassSeries.Ultilities
         public static class Types
         {
             private static readonly Menu RecallTrackerMenu, SpellTrackerMenu;
-            public static readonly Menu SkinHackMenu ;
+            //public static readonly Menu SkinHackMenu ;
 
             static Types()
             {
@@ -42,8 +42,8 @@ namespace KickassSeries.Ultilities
                 SpellTrackerMenu = Menu.AddSubMenu("Spell Tracker");
                 SpellTracker.Initialize();
 
-                SkinHackMenu = Menu.AddSubMenu("SkinHack");
-                SkinHack.Initialize();
+                //SkinHackMenu = Menu.AddSubMenu("SkinHack");
+                //SkinHack.Initialize();
             }
 
             public static void Initialize()
@@ -103,7 +103,7 @@ namespace KickassSeries.Ultilities
                 {
                 }
             }
-
+            /*
             public static class SkinHack
             {
                 private static readonly CheckBox _turnOff;
@@ -159,6 +159,7 @@ namespace KickassSeries.Ultilities
                 {
                 }
             }
+            */
         }
     }
 }

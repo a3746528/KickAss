@@ -1,17 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using EloBuddy;
 using EloBuddy.SDK;
 using EloBuddy.SDK.Menu.Values;
 
-using Settings = KickassSeries.Ultilities.Config.Types.SkinHack;
+//using Settings = KickassSeries.Ultilities.Config.Types.SkinHack;
 
 
 namespace KickassSeries.Ultilities
 {
     internal static class SkinHack
     {
+        /*
         public static readonly Dictionary<string, int> Skins = new Dictionary<string, int>();
 
         private static int lastCheck;
@@ -51,5 +51,6 @@ namespace KickassSeries.Ultilities
                 }
             }
         }
+        */
     }
 }

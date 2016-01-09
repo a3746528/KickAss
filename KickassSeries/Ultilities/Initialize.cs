@@ -19,7 +19,7 @@ namespace KickassSeries.Ultilities
 
         private static void Game_OnTick(System.EventArgs args)
         {
-            SkinHack.Execute();
+            //SkinHack.Execute();
         }
     }
 }
