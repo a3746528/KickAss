@@ -1,4 +1,6 @@
-﻿namespace KickassSeries.Ultilities
+﻿using EloBuddy;
+
+namespace KickassSeries.Ultilities
 {
     internal class Initialize
     {
@@ -11,6 +13,13 @@
             Trackers.SpellsTracker.Initialize();
 
             Trackers.WardTracker.Initialize();
+
+            Game.OnTick += Game_OnTick;
+        }
+
+        private static void Game_OnTick(System.EventArgs args)
+        {
+            //SkinHack.Execute();
         }
     }
 }
