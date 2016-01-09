@@ -2019,7 +2019,6 @@
     <Compile Include="Ultilities\Config.cs" />
     <Compile Include="Ultilities\Extensions.cs" />
     <Compile Include="Ultilities\Initialize.cs" />
-    <Compile Include="Ultilities\SkinHack.cs" />
     <Compile Include="Ultilities\Trackers\RecallTracker.cs" />
     <Compile Include="Ultilities\Trackers\SpellsTracker.cs" />
     <Compile Include="Ultilities\Trackers\WardTracker.cs" />
@@ -2027,6 +2026,7 @@
   <ItemGroup>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
+      <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
