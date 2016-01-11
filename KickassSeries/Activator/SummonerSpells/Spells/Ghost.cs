@@ -1,7 +1,7 @@
 ﻿using System;
-using System.Linq;
 using EloBuddy;
 using EloBuddy.SDK;
+using KickassSeries.Activator.DMGHandler;
 
 namespace KickassSeries.Activator.SummonerSpells.Spells
 {
@@ -18,7 +18,7 @@ namespace KickassSeries.Activator.SummonerSpells.Spells
         {
             if (!SummonerGhost.IsReady() || SummonerSpells.Initialize.lastSpell + 1500 >= Environment.TickCount) return;
 
-            if (true == false)
+            if (Player.Instance.InDanger())
             {
                 SummonerGhost.Cast();
                 SummonerSpells.Initialize.lastSpell = Environment.TickCount;

@@ -237,7 +237,6 @@ namespace KickassSeries.Activator
                         new Slider("Use Bilgewater Cutlass When My Health hits X%", 80));
                     TargetHpBilgewater = OffensiveMenu.Add("useBilgewaterTargetHP",
                         new Slider("Use Bilgewater Cutlass When Target`s Health hits X%", 80));
-                    OffensiveMenu.AddSeparator();
 
                     OffensiveMenu.AddGroupLabel("Blade Of The Ruined King");
                     UseBlade = OffensiveMenu.Add("useBlade", new CheckBox("Use Blade Of The Ruined King ?"));
@@ -245,7 +244,6 @@ namespace KickassSeries.Activator
                         new Slider("Use Blade Of The Ruined King When My Health hits X%", 80));
                     TargetHpBlade = OffensiveMenu.Add("useBladeTargetHP",
                         new Slider("Use Blade Of The Ruined King When Target`s Health hits X%", 80));
-                    OffensiveMenu.AddSeparator();
 
                     OffensiveMenu.AddGroupLabel("Tiamat");
                     UseTiamat = OffensiveMenu.Add("useTiamat", new CheckBox("Use Tiamat ?"));
@@ -253,7 +251,6 @@ namespace KickassSeries.Activator
                         new Slider("Use Tiamat When My Health hits X%", 80));
                     TargetHpTiamat = OffensiveMenu.Add("useTiamatTargetHP",
                         new Slider("Use Tiamat When Target`s Health hits X%", 80));
-                    OffensiveMenu.AddSeparator();
 
                     OffensiveMenu.AddGroupLabel("Ravenous Hydra");
                     UseHydra = OffensiveMenu.Add("useHydra", new CheckBox("Use Ravenous Hydra ?"));
@@ -261,7 +258,6 @@ namespace KickassSeries.Activator
                         new Slider("Use Ravenous Hydra When My Health hits X%", 80));
                     TargetHpHydra = OffensiveMenu.Add("useHydraTargetHP",
                         new Slider("Use Ravenous Hydra When Target`s Health hits X%", 80));
-                    OffensiveMenu.AddSeparator();
 
                     OffensiveMenu.AddGroupLabel("Titanic Hydra");
                     UseTitanicHydra = OffensiveMenu.Add("useTitanic", new CheckBox("Use Titanic Hydra ?"));
@@ -269,7 +265,6 @@ namespace KickassSeries.Activator
                         new Slider("Use Titanic Hydra When My Health hits X%", 80));
                     TargetHpTitanicHydra = OffensiveMenu.Add("useTitanicTargetHP",
                         new Slider("Use Titanic Hydra When Target`s Health hits X%", 80));
-                    OffensiveMenu.AddSeparator();
 
                     OffensiveMenu.AddGroupLabel("Youmuu");
                     UseYoumuu = OffensiveMenu.Add("useYoumuu ", new CheckBox("Use Youmuu ?"));
@@ -277,7 +272,6 @@ namespace KickassSeries.Activator
                         new Slider("Use Youmuu  When My Health hits X%", 80));
                     TargetHpYoumuu = OffensiveMenu.Add("useYoumuuTargetHP",
                         new Slider("Use Youmuu  When Target`s Health hits X%", 80));
-                    OffensiveMenu.AddSeparator();
 
                     OffensiveMenu.AddGroupLabel("Hextech");
                     UseHextech = OffensiveMenu.Add("useHextech", new CheckBox("Use Hextech ?"));
@@ -285,8 +279,7 @@ namespace KickassSeries.Activator
                         new Slider("Use Hextech When My Health hits X%", 80));
                     TargetHpHextech = OffensiveMenu.Add("useHextechTargetHP",
                         new Slider("Use Hextech When Target`s Health hits X%", 80));
-                    OffensiveMenu.AddSeparator();
-
+                   
                 }
 
                 #endregion Offensive Menu
@@ -644,6 +637,21 @@ namespace KickassSeries.Activator
 
             public static class Settings
             {
+                //Offensive
+                private static readonly CheckBox _AAcancel;
+                private static readonly Slider _DelayOff;
+
+                public static bool AACancel
+                {
+                    get { return _AAcancel.CurrentValue; }
+                }
+
+                public static int DelayBetweenOff
+                {
+                    get { return _DelayOff.CurrentValue; }
+                }
+
+                //Danger
                 private static readonly Slider _HPDangerSlider;
                 private static readonly Slider EnemyRange;
                 private static readonly Slider EnemySlider;
@@ -683,7 +691,10 @@ namespace KickassSeries.Activator
 
                 static Settings()
                 {
-                    SettingsMenu.AddGroupLabel("Settings");
+                    SettingsMenu.AddGroupLabel("Offensive Settings");
+                    _AAcancel = SettingsMenu.Add("aacanceloff", new CheckBox("Cancel AA animation with items ?"));
+                    _DelayOff = _HPDangerSlider = SettingsMenu.Add("delayoffbetween", new Slider("Delay between each offensive item used(in MS)", 1000, 100, 5000));
+                    SettingsMenu.AddGroupLabel("Danger Settings");
                     _HPDangerSlider = SettingsMenu.Add("hpdangerslider", new Slider("Min health to be in danger " , 25, 10));
                     EnemyRange = SettingsMenu.Add("minrangeenemy", new Slider("Enemies must be in X range to be in danger", 850, 500, 2000));
                     EnemySlider = SettingsMenu.Add("minenemiesinrange", new Slider("Min enemies in the range determined up", 2, 0, 5));
@@ -694,7 +705,7 @@ namespace KickassSeries.Activator
                     SettingsMenu.AddGroupLabel("Dangerous Spells");
                     foreach (var spell in DMGHandler.DangerousSpells.Spells.Where(x => EntityManager.Heroes.Enemies.Any(b => b.Hero == x.Hero)))
                     {
-                        SettingsMenu.Add(spell.Hero.ToString() + spell.Slot,new CheckBox(spell.Hero + ":: " + spell.Slot));
+                        SettingsMenu.Add(spell.Hero.ToString() + spell.Slot,new CheckBox(spell.Hero + "-" + spell.Slot));
                     }
                 }
 

@@ -16,6 +16,8 @@ namespace KickassSeries.Activator
             SummonerSpells.Initialize.Init();
 
             DamageHandler.Initialize();
+
+            EventsManager.Initialize();
         }
 
         private static void Game_OnTick(EventArgs args)

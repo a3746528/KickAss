@@ -60,7 +60,7 @@ namespace KickassSeries.Champions.Udyr
             {
                 case SpellSlot.Q:
 
-                    damage = new float[] { 70, 105, 140, 175, 210 }[spellLevel] + 0.65f * Player.Instance.FlatMagicDamageMod;
+                    damage = new float[] { 15, 40, 65, 90, 115 }[spellLevel] + new [] { 0.6f, 0.65f, 0.7f, 0.75f, 0.8f }[spellLevel] * Player.Instance.FlatPhysicalDamageMod;
                     break;
 
                 case SpellSlot.W:
@@ -70,12 +70,12 @@ namespace KickassSeries.Champions.Udyr
 
                 case SpellSlot.E:
 
-                    damage = new float[] { 60, 95, 130, 165, 200 }[spellLevel] + 0.5f * Player.Instance.FlatMagicDamageMod;
+                    damage = new float[] { 0, 0, 0, 0, 0 }[spellLevel] + 0.0f * Player.Instance.FlatMagicDamageMod;
                     break;
 
                 case SpellSlot.R:
 
-                    damage = new float[] { 180, 265, 350 }[spellLevel] + 0.7f * Player.Instance.FlatMagicDamageMod;
+                    damage = new float[] { 15, 25, 35, 45, 55 }[spellLevel] + 0.25f * Player.Instance.FlatMagicDamageMod;
                     break;
             }
 

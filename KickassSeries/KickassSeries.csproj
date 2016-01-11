@@ -65,6 +65,7 @@
     <Compile Include="Activator\Config.cs" />
     <Compile Include="Activator\DMGHandler\DamageHandle.cs" />
     <Compile Include="Activator\DMGHandler\DangerousSpells.cs" />
+    <Compile Include="Activator\EventsManager.cs" />
     <Compile Include="Activator\Items\Extensions.cs" />
     <Compile Include="Activator\SummonerSpells\Extensions.cs" />
     <Compile Include="Activator\Items\Consumables.cs" />
@@ -169,6 +170,7 @@
     <Compile Include="Champions\Irelia\DamageIndicator.cs" />
     <Compile Include="Champions\Jax\DamageIndicator.cs" />
     <Compile Include="Champions\Jinx\DamageIndicator.cs" />
+    <Compile Include="Champions\Jinx\Essentials.cs" />
     <Compile Include="Champions\Katarina\DamageIndicator.cs" />
     <Compile Include="Champions\Kennen\DamageIndicator.cs" />
     <Compile Include="Champions\KogMaw\DamageIndicator.cs" />

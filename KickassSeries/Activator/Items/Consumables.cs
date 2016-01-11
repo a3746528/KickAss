@@ -77,7 +77,7 @@ namespace KickassSeries.Activator.Items
                                     m.BaseSkinName == "SRU_Blue" || m.BaseSkinName == "SRU_Red" ||
                                     m.BaseSkinName == "Sru_Crab" || m.BaseSkinName == "SRU_Gromp" ||
                                     m.BaseSkinName == "SRU_Murkwolf" || m.BaseSkinName == "SRU_Krug" ||
-                                    m.BaseSkinName == "SRU_Razorbeak" && m.IsValidTarget(500) && m.Health <= 150);
+                                    m.BaseSkinName == "SRU_Razorbeak" && m.IsValidTarget(800) && m.Health <= 150);
 
                     if (BigJGMinion == null)return;
 

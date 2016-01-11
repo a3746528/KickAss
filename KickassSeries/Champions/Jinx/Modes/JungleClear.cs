@@ -1,7 +1,9 @@
 ﻿using System.Linq;
+using EloBuddy;
 using EloBuddy.SDK;
 
-using Settings = KickassSeries.Champions.Jinx.Config.Modes.LaneClear;
+using Settings = KickassSeries.Champions.Jinx.Config.Modes.JungleClear;
+using Misc = KickassSeries.Champions.Jinx.Config.Modes.Misc;
 
 namespace KickassSeries.Champions.Jinx.Modes
 {
@@ -14,26 +16,65 @@ namespace KickassSeries.Champions.Jinx.Modes
 
         public override void Execute()
         {
-            var jgminion =
-                EntityManager.MinionsAndMonsters.GetJungleMonsters()
-                    .OrderByDescending(j => j.Health)
-                    .FirstOrDefault(j => j.IsValidTarget(Q.Range));
-
-            if (jgminion == null)return;
-
-            if (E.IsReady() && jgminion.IsValidTarget(E.Range) && Settings.UseE)
+            if (Settings.UseQ && Player.Instance.ManaPercent >= Settings.ManaQ && Q.IsReady())
             {
-                E.Cast(jgminion);
+                if (Essentials.FishBones())
+                {
+                    var mobs = EntityManager.MinionsAndMonsters.GetJungleMonsters(
+                        Player.Instance.ServerPosition,
+                        Essentials.FishBonesRange());
+
+                    foreach (
+                        var mob in
+                            mobs.Where(mob => mob != null && Player.Instance.Distance(mob) <= Essentials.MinigunRange))
+                    {
+                        Q.Cast();
+                        Orbwalker.ForcedTarget = mob;
+                    }
+                }
+                else if (!Essentials.FishBones())
+                {
+                    var mobs = EntityManager.MinionsAndMonsters.GetJungleMonsters(
+                        Player.Instance.ServerPosition,
+                        Essentials.FishBonesRange());
+
+                    foreach (
+                        var mob in
+                            mobs.Where(mob => mob != null)
+                                .Where(
+                                    mob =>
+                                        !Player.Instance.IsInAutoAttackRange(mob) &&
+                                        Player.Instance.Distance(mob) <= Essentials.FishBonesRange()))
+                    {
+                        Q.Cast();
+                        Orbwalker.ForcedTarget = mob;
+                    }
+                }
             }
 
-            if (W.IsReady() && jgminion.IsValidTarget(W.Range) && Settings.UseW)
+            if (Settings.UseW && Player.Instance.ManaPercent >= Settings.ManaW && W.IsReady())
             {
-                W.Cast();
-            }
+                var target =
+                    EntityManager.MinionsAndMonsters.GetJungleMonsters(Player.Instance.ServerPosition, W.Range)
+                        .OrderByDescending(t => t.Health)
+                        .FirstOrDefault();
+                if (target != null)
+                {
+                    var wPrediction = W.GetPrediction(target);
 
-            if (Q.IsReady() && jgminion.IsValidTarget(Q.Range) && Settings.UseQ)
-            {
-                Q.Cast(jgminion);
+                    if (!(wPrediction.HitChancePercent >= Settings.WPredPercentage))
+                    {
+                        return;
+                    }
+                    if (Misc.WAARange && Player.Instance.IsInAutoAttackRange(target))
+                    {
+                        W.Cast(wPrediction.CastPosition);
+                    }
+                    else if (!Misc.WAARange)
+                    {
+                        W.Cast(wPrediction.CastPosition);
+                    }
+                }
             }
         }
     }

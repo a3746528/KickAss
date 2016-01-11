@@ -3,7 +3,7 @@
 
 namespace KickassSeries.Activator.Items
 {
-    static class Extensions
+    internal static class Extensions
     {
         public static bool HasCC(this AIHeroClient target)
         {          

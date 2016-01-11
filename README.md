@@ -1,2 +1,0 @@
-# KickAss
-KickAss AIO

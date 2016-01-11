@@ -4,7 +4,7 @@ namespace KickassSeries.Champions.Twitch.Modes
 {
     public abstract class ModeBase
     {
-        protected static Spell.Skillshot Q
+        protected static Spell.Active Q
         {
             get { return SpellManager.Q; }
         }
@@ -12,11 +12,11 @@ namespace KickassSeries.Champions.Twitch.Modes
         {
             get { return SpellManager.W; }
         }
-        protected static Spell.Skillshot E
+        protected static Spell.Active E
         {
             get { return SpellManager.E; }
         }
-        protected static Spell.Skillshot R
+        protected static Spell.Active R
         {
             get { return SpellManager.R; }
         }

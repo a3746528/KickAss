@@ -13,12 +13,10 @@ namespace KickassSeries.Champions.Jinx
 
         static SpellManager()
         {
-            //Need to finish
-            Q = new Spell.Active(SpellSlot.Q, Modes.PermaActive.Qrange);
-            //Q radius = 150
-            W = new Spell.Skillshot(SpellSlot.W, 1500, SkillShotType.Linear, 250, 90);
-            E = new Spell.Skillshot(SpellSlot.E, 1000, SkillShotType.Linear, 250, 1530, 60);
-            R = new Spell.Skillshot(SpellSlot.R, 410, SkillShotType.Circular, 250, 1200, 30);
+            Q = new Spell.Active(SpellSlot.Q);
+            W = new Spell.Skillshot(SpellSlot.W, 1450, SkillShotType.Linear, 500, 1500, 60);
+            E = new Spell.Skillshot(SpellSlot.E, 900, SkillShotType.Circular, 1200, 1750, 100);
+            R = new Spell.Skillshot(SpellSlot.R, 3000, SkillShotType.Linear, 700, 1500, 140);
         }
 
         public static void Initialize()

@@ -51,7 +51,7 @@ namespace KickassSeries.Activator.DMGHandler
             new DangerousSpell(Champion.JarvanIV, SpellSlot.R),
             new DangerousSpell(Champion.Mordekaiser, SpellSlot.R),
             new DangerousSpell(Champion.Vladimir, SpellSlot.R),
-            new DangerousSpell(Champion.Ezreal, SpellSlot.R)
+            new DangerousSpell(Champion.Ezreal, SpellSlot.R),
         };
     }
 }

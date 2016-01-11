@@ -60,22 +60,22 @@ namespace KickassSeries.Champions.Varus
             {
                 case SpellSlot.Q:
 
-                    damage = new float[] { 70, 105, 140, 175, 210 }[spellLevel] + 0.65f * Player.Instance.FlatMagicDamageMod;
+                    damage = new float[] { 10, 46, 83, 120, 156 }[spellLevel] + 1.0f * Player.Instance.FlatPhysicalDamageMod;
                     break;
 
                 case SpellSlot.W:
 
-                    damage = new float[] { 0, 0, 0, 0, 0 }[spellLevel] + 0.0f * Player.Instance.FlatMagicDamageMod;
+                    damage = new float[] { 10, 14, 18, 22, 26 }[spellLevel] + 0.25f * Player.Instance.FlatMagicDamageMod + new [] { 0.02f, 0.0275f, 0.035f,0.0425f, 0.05f }[spellLevel] * target.MaxHealth + 0.02f /100 * Player.Instance.FlatMagicDamageMod;
                     break;
 
                 case SpellSlot.E:
 
-                    damage = new float[] { 60, 95, 130, 165, 200 }[spellLevel] + 0.5f * Player.Instance.FlatMagicDamageMod;
+                    damage = new float[] { 65, 100, 135, 170, 205 }[spellLevel] + 0.6f * Player.Instance.FlatPhysicalDamageMod;
                     break;
 
                 case SpellSlot.R:
 
-                    damage = new float[] { 180, 265, 350 }[spellLevel] + 0.7f * Player.Instance.FlatMagicDamageMod;
+                    damage = new float[] { 100, 175, 250 }[spellLevel] + 1.0f * Player.Instance.FlatMagicDamageMod;
                     break;
             }
 
