@@ -46,16 +46,23 @@ namespace KickassSeries.Ultilities
             public static class RecallTracker
             {
                 private static readonly CheckBox _turnOff;
+                private static readonly Slider _xPos;
 
                 public static bool TurnOff
                 {
                     get { return _turnOff.CurrentValue; }
                 }
 
+                public static int XPos
+                {
+                    get { return _xPos.CurrentValue; }
+                }
+
                 static RecallTracker()
                 {
                     RecallTrackerMenu.AddGroupLabel("RecallTracker");
                     _turnOff = RecallTrackerMenu.Add("turnoffrecalltracker", new CheckBox("Turn off recall tracker ?", false));
+                    _xPos = RecallTrackerMenu.Add("xpositionslider", new Slider("Turn off recall tracker ?", 0, 0, 600));
                 }
 
                 public static void Initialize()

@@ -81,7 +81,7 @@ namespace KickassSeries.Ultilities.Trackers
             var y = (int) (Drawing.Height*0.5555555555555556);
             */
             var x = (int)(Drawing.Width * 0.846875);
-            var y = (int)(Drawing.Height * 0.45);
+            var y = (int)(Drawing.Height * 0.5 + Settings.XPos);
 
             var bonus = 0;
             foreach (var recall in Recalls.ToList())
