@@ -1,9 +1,12 @@
-﻿Menu: ()
-Integrate Skinhack to the Ultilities menu ()
-Tracker too ()
+﻿Menu: (x)
+Tracker too (x)
 
-Tracker: ()
-CopyPasta Summoner Spells Icon ()
-Skills Cooldown ()
-Make it nice ()
+RecallTracker
+Fix X and Y()
+
+Tracker: (x)
+CopyPasta Summoner Spells Icon (x)
+Skills Cooldown (x)
+Make it nice (x)
+Fix X and Y ()
 

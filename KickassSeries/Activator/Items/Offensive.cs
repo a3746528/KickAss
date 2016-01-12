@@ -44,7 +44,9 @@ namespace KickassSeries.Activator.Items
             if (Settings.Tiamat && Tiamat.IsOwned() && Tiamat.IsReady())
             {
                 if (Settings.TiamatMyHp >= Player.Instance.HealthPercent &&
-                    target.HealthPercent <= Settings.TiamatTargetHp && Misc.AACancel ? EventsManager.CanAACancel : Tiamat.IsReady())
+                    target.HealthPercent <= Settings.TiamatTargetHp && Misc.AACancel
+                    ? EventsManager.CanAACancel
+                    : Tiamat.IsReady())
                 {
                     Tiamat.Cast();
                     LastItemUsed = Environment.TickCount + Misc.DelayBetweenOff;
@@ -54,7 +56,9 @@ namespace KickassSeries.Activator.Items
             if (Settings.Hydra && Hydra.IsOwned() && Hydra.IsReady())
             {
                 if (Settings.HydraMyHp >= Player.Instance.HealthPercent &&
-                    target.HealthPercent <= Settings.HydraTargetHp && Misc.AACancel ? EventsManager.CanAACancel : Hydra.IsReady())
+                    target.HealthPercent <= Settings.HydraTargetHp && Misc.AACancel
+                    ? EventsManager.CanAACancel
+                    : Hydra.IsReady())
                 {
                     Hydra.Cast();
                     LastItemUsed = Environment.TickCount + Misc.DelayBetweenOff;
@@ -64,7 +68,9 @@ namespace KickassSeries.Activator.Items
             if (Settings.Titanic && TitanicHydra.IsOwned() && TitanicHydra.IsReady())
             {
                 if (Settings.TitanicMyHp >= Player.Instance.HealthPercent &&
-                    target.HealthPercent <= Settings.TitanicTargetHp && Misc.AACancel ? EventsManager.CanAACancel : TitanicHydra.IsReady())
+                    target.HealthPercent <= Settings.TitanicTargetHp && Misc.AACancel
+                    ? EventsManager.CanAACancel
+                    : TitanicHydra.IsReady())
                 {
                     TitanicHydra.Cast();
                     LastItemUsed = Environment.TickCount + Misc.DelayBetweenOff;

@@ -1,7 +1,6 @@
 ﻿using System.Linq;
 using EloBuddy;
 using EloBuddy.SDK;
-using EloBuddy.SDK.Menu.Values;
 
 using Settings = KickassSeries.Champions.Jinx.Config.Modes.Combo;
 using Misc = KickassSeries.Champions.Jinx.Config.Modes.Misc;

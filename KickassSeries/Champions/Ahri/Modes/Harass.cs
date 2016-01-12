@@ -15,7 +15,7 @@ namespace KickassSeries.Champions.Ahri.Modes
         public override void Execute()
         {
             var target = TargetSelector.GetTarget(Q.Range, DamageType.Physical);
-            if (target == null || target.IsZombie || Settings.ManaHarass <= Player.Instance.ManaPercent) return;
+            if (target == null || target.IsZombie || Settings.ManaHarass >= Player.Instance.ManaPercent) return;
 
             if (E.IsReady() && target.IsValidTarget(E.Range) && Settings.UseE)
             {

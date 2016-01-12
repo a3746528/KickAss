@@ -151,6 +151,7 @@
     <Compile Include="Champions\Draven\SpellDamage.cs" />
     <Compile Include="Champions\Draven\SpellManager.cs" />
     <Compile Include="Champions\DrMundo\DamageIndicator.cs" />
+    <Compile Include="Champions\Extensions.cs" />
     <Compile Include="Champions\Ezreal\DamageIndicator.cs" />
     <Compile Include="Champions\Ezreal\Ezreal.cs" />
     <Compile Include="Champions\Ezreal\Config.cs" />
@@ -2005,7 +2006,6 @@
     <Compile Include="Champions\Ahri\Modes\PermaActive.cs" />
     <Compile Include="Champions\Ahri\SpellDamage.cs" />
     <Compile Include="Champions\Ahri\SpellManager.cs" />
-    <Compile Include="Champions\Extensions.cs" />
     <Compile Include="Evade\Config.cs" />
     <Compile Include="Evade\Spells\SpellData.cs" />
     <Compile Include="Evade\Spells\SpellDataBase.cs" />

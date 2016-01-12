@@ -13,19 +13,23 @@ namespace KickassSeries.Activator.Items
     internal class Defensive : Ids
     {
         private static int lastItemUsed;
+
         public static void Execute()
         {
-            if (Player.Instance.IsInShopRange() || Player.Instance.CountAlliesInRange(Misc.RangeEnemy) < Misc.EnemyCount || lastItemUsed >= Environment.TickCount)return;
+            if (Player.Instance.IsInShopRange() || Player.Instance.CountAlliesInRange(Misc.RangeEnemy) < Misc.EnemyCount ||
+                lastItemUsed >= Environment.TickCount) return;
 
             #region Self
 
-            if (Zhonyas.IsReady() && Zhonyas.IsOwned() && Player.Instance.InDanger() && Settings.Zhonyas && Player.Instance.HealthPercent <= Settings.ZhonyasMyHp)
+            if (Zhonyas.IsReady() && Zhonyas.IsOwned() && Player.Instance.InDanger() && Settings.Zhonyas &&
+                Player.Instance.HealthPercent <= Settings.ZhonyasMyHp)
             {
                 Zhonyas.Cast();
                 lastItemUsed = Environment.TickCount + 1500;
             }
 
-            if (ArchengelStaff.IsReady() && ArchengelStaff.IsOwned() && Player.Instance.InDanger() && Settings.ArchengelStaff && Player.Instance.HealthPercent <= Settings.MYHPArchengelStaff)
+            if (ArchengelStaff.IsReady() && ArchengelStaff.IsOwned() && Player.Instance.InDanger() &&
+                Settings.ArchengelStaff && Player.Instance.HealthPercent <= Settings.MYHPArchengelStaff)
             {
                 ArchengelStaff.Cast();
                 lastItemUsed = Environment.TickCount + 1500;
@@ -37,7 +41,8 @@ namespace KickassSeries.Activator.Items
                 lastItemUsed = Environment.TickCount + 1500;
             }
 
-            if (Talisman.IsReady() && Player.Instance.CountAlliesInRange(450) >= 2 && Talisman.IsOwned() && Player.Instance.InDanger())
+            if (Talisman.IsReady() && Player.Instance.CountAlliesInRange(450) >= 2 && Talisman.IsOwned() &&
+                Player.Instance.InDanger())
             {
                 Talisman.Cast();
                 lastItemUsed = Environment.TickCount + 1500;
@@ -65,7 +70,8 @@ namespace KickassSeries.Activator.Items
                 }
             }
 
-            if (Randuin.IsReady() && Player.Instance.CountEnemiesInRange(Randuin.Range) >= 2 && Randuin.IsOwned() && Player.Instance.InDanger())
+            if (Randuin.IsReady() && Player.Instance.CountEnemiesInRange(Randuin.Range) >= 2 && Randuin.IsOwned() &&
+                Player.Instance.InDanger())
             {
                 Randuin.Cast();
                 lastItemUsed = Environment.TickCount + 1500;

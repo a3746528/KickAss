@@ -36,7 +36,7 @@ namespace KickassSeries.Champions.Gnar
                 new Circle { Color = Settings.colorE, BorderWidth = Settings._widthE, Radius = SpellManager.E1.Range }.Draw(Player.Instance.Position);
             }
 
-            if (Settings.DrawReady ? SpellManager.R.IsReady() : Settings.DrawR)
+            if (Settings.DrawR && Settings.DrawReady ? SpellManager.R.IsReady() : Settings.DrawR)
             {
                 new Circle { Color = Settings.colorR, BorderWidth = Settings._widthR, Radius = SpellManager.R.Range }.Draw(Player.Instance.Position);
             }

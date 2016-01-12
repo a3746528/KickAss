@@ -26,17 +26,17 @@ namespace KickassSeries.Champions.Ziggs
                 new Circle { Color = Settings.colorQ, BorderWidth = Settings._widthQ, Radius = SpellManager.Q1.Range }.Draw(Player.Instance.Position);
             }
 
-            if (Settings.DrawReady ? SpellManager.W.IsReady() : Settings.DrawW)
+            if (Settings.DrawW && Settings.DrawReady ? SpellManager.W.IsReady() : Settings.DrawW)
             {
                 new Circle { Color = Settings.colorW, BorderWidth = Settings._widthW, Radius = SpellManager.W.Range }.Draw(Player.Instance.Position);
             }
 
-            if (Settings.DrawReady ? SpellManager.E.IsReady() : Settings.DrawE)
+            if (Settings.DrawE && Settings.DrawReady ? SpellManager.E.IsReady() : Settings.DrawE)
             {
                 new Circle { Color = Settings.colorE, BorderWidth = Settings._widthE, Radius = SpellManager.E.Range }.Draw(Player.Instance.Position);
             }
 
-            if (Settings.DrawReady ? SpellManager.R.IsReady() : Settings.DrawR)
+            if (Settings.DrawR && Settings.DrawReady ? SpellManager.R.IsReady() : Settings.DrawR)
             {
                 new Circle { Color = Settings.colorR, BorderWidth = Settings._widthR, Radius = SpellManager.R.Range }.Draw(Player.Instance.Position);
             }
