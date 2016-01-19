@@ -38,7 +38,7 @@ namespace KickassSeries.Champions.Ezreal.Modes
                 }
             }
 
-            if (Configs.UseQ && Q.IsReady() && Configs.ManaAutoHarass <= Player.Instance.ManaPercent)
+            if (Configs.UseQAuto && Q.IsReady() && Configs.ManaAutoHarass <= Player.Instance.ManaPercent)
             {
                 var target = TargetSelector.GetTarget(Q.Range, DamageType.Physical);
                 if (target == null || target.IsZombie) return;
@@ -49,7 +49,7 @@ namespace KickassSeries.Champions.Ezreal.Modes
                 }
             }
 
-            if (Configs.UseW && W.IsReady() && Configs.ManaAutoHarass <= Player.Instance.ManaPercent)
+            if (Configs.UseWAuto && W.IsReady() && Configs.ManaAutoHarass <= Player.Instance.ManaPercent)
             {
                 var target = TargetSelector.GetTarget(W.Range, DamageType.Physical);
                 if (target == null || target.IsZombie) return;
