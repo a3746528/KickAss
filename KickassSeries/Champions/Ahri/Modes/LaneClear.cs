@@ -41,7 +41,7 @@ namespace KickassSeries.Champions.Ahri.Modes
                 if (minions.Length == 0) return;
 
                 var farmLocation = EntityManager.MinionsAndMonsters.GetLineFarmLocation(minions, Q.Width, (int)Q.Range);
-                if (farmLocation.HitNumber == Settings.XCount)
+                if (farmLocation.HitNumber == Settings.QCount)
                 {
                     Q.Cast(farmLocation.CastPosition);
                 }

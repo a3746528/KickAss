@@ -22,7 +22,7 @@ namespace KickassSeries.Champions.Akali.Modes
                 Q.Cast(target);
             }
             //TODO GET Q BUFF NAME
-            if (R.IsReady() && target.IsValidTarget(R.Range) && Settings.UseR && target.HasBuff("QBUFFNAME"))
+            if (R.IsReady() && target.IsValidTarget(R.Range) && Settings.UseR && target.HasBuff("AkaliMota"))
             {
                 R.Cast(target);
             }

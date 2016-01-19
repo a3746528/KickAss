@@ -31,7 +31,7 @@ namespace KickassSeries.Champions.Akali.Modes
                             m => m.IsValidTarget(Q.Range) && m.Health <= SpellDamage.GetRealDamage(SpellSlot.Q, m));
                 if (minionQ != null)
                 {
-                    Q.Cast(minion);
+                    Q.Cast(minionQ);
                 }
             }
 
@@ -44,7 +44,7 @@ namespace KickassSeries.Champions.Akali.Modes
                             m => m.IsValidTarget(E.Range) && m.Health <= SpellDamage.GetRealDamage(SpellSlot.E, m));
                 if (minionE != null)
                 {
-                    E.Cast(minion);
+                    E.Cast();
                 }
             }
         }
