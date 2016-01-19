@@ -134,7 +134,6 @@ namespace KickassSeries.Champions.Ahri
                     _useQ = SpellsMenu.Add("harassQ", new CheckBox("Use Q on Harass ?"));
                     _useW = SpellsMenu.Add("harassW", new CheckBox("Use W on Harass ?"));
                     _useE = SpellsMenu.Add("harassE", new CheckBox("Use E on Harass ?"));
-                    _useR = SpellsMenu.Add("harassR", new CheckBox("Use R on Harass ?"));
                     SpellsMenu.AddGroupLabel("Harass Settings:");
                     _manaHarass = SpellsMenu.Add("harassMana", new Slider("It will only cast any harass spell if the mana is greater than ({0}).", 30));
                 }
@@ -151,7 +150,7 @@ namespace KickassSeries.Champions.Ahri
                 private static readonly CheckBox _useE;
                 private static readonly CheckBox _useR;
                 private static readonly Slider _laneMana;
-                private static readonly Slider _xCount;
+                private static readonly Slider _qCount;
 
                 public static bool UseQ
                 {
@@ -178,9 +177,9 @@ namespace KickassSeries.Champions.Ahri
                     get { return _laneMana.CurrentValue; }
                 }
 
-                public static int XCount
+                public static int QCount
                 {
-                    get { return _xCount.CurrentValue; }
+                    get { return _qCount.CurrentValue; }
                 }
 
                 static LaneClear()
@@ -189,10 +188,9 @@ namespace KickassSeries.Champions.Ahri
                     _useQ = FarmMenu.Add("laneclearQ", new CheckBox("Use Q on Laneclear ?"));
                     _useW = FarmMenu.Add("laneclearW", new CheckBox("Use W on Laneclear ?"));
                     _useE = FarmMenu.Add("laneclearE", new CheckBox("Use E on Laneclear ?"));
-                    _useR = FarmMenu.Add("laneclearR", new CheckBox("Use R on Laneclear ?"));
                     FarmMenu.AddGroupLabel("LaneClear Settings:");
                     _laneMana = FarmMenu.Add("laneMana", new Slider("It will only cast any laneclear spell if the mana is greater than ({0}).", 30));
-                    _xCount = FarmMenu.Add("xCount", new Slider("It will only cast X spell if it`ll hit ({0}).", 3, 1, 6));
+                    _qCount = FarmMenu.Add("qCount", new Slider("It will only cast Q spell if it`ll hit ({0}).", 3, 1, 6));
                 }
 
                 public static void Initialize()
@@ -205,9 +203,7 @@ namespace KickassSeries.Champions.Ahri
                 private static readonly CheckBox _useQ;
                 private static readonly CheckBox _useW;
                 private static readonly CheckBox _useE;
-                private static readonly CheckBox _useR;
                 private static readonly Slider _lastMana;
-                private static readonly Slider _xCount;
 
                 public static bool UseQ
                 {
@@ -224,21 +220,10 @@ namespace KickassSeries.Champions.Ahri
                     get { return _useE.CurrentValue; }
                 }
 
-                public static bool UseR
-                {
-                    get { return _useR.CurrentValue; }
-                }
-
                 public static int LastMana
                 {
                     get { return _lastMana.CurrentValue; }
                 }
-
-                public static int XCount
-                {
-                    get { return _xCount.CurrentValue; }
-                }
-
 
                 static LastHit()
                 {
@@ -246,10 +231,8 @@ namespace KickassSeries.Champions.Ahri
                     _useQ = FarmMenu.Add("lasthitQ", new CheckBox("Use Q on LastHit ?"));
                     _useW = FarmMenu.Add("lasthitW", new CheckBox("Use W on LastHit ?"));
                     _useE = FarmMenu.Add("lasthitE", new CheckBox("Use E on LastHit ?"));
-                    _useR = FarmMenu.Add("lasthitR", new CheckBox("Use R on LastHit ?"));
                     FarmMenu.AddGroupLabel("LastHit Settings:");
                     _lastMana = FarmMenu.Add("lastMana", new Slider("It will only cast any lasthit spell if the mana is greater than ({0}).", 30));
-                    _xCount = FarmMenu.Add("wCount", new Slider("It will only cast X spell if it`ll hit ({0}).", 3, 1, 6));
                 }
 
                 public static void Initialize()
@@ -282,8 +265,8 @@ namespace KickassSeries.Champions.Ahri
                 {
                     // Initialize the menu values
                     MiscMenu.AddGroupLabel("Miscellaneous");
-                    _interruptSpell = MiscMenu.Add("interruptX", new CheckBox("Use X to interrupt spells ?"));
-                    _antiGapCloserSpell = MiscMenu.Add("gapcloserX", new CheckBox("Use X to antigapcloser spells ?"));
+                    _interruptSpell = MiscMenu.Add("interruptX", new CheckBox("Use E to interrupt spells ?"));
+                    _antiGapCloserSpell = MiscMenu.Add("gapcloserX", new CheckBox("Use E to antigapcloser spells ?"));
                     _miscMana = MiscMenu.Add("miscMana", new Slider("Min mana to use gapcloser/interrupt spells ?", 20));
                 }
 
