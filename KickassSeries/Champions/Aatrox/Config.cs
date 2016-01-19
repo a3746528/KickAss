@@ -98,19 +98,11 @@ namespace KickassSeries.Champions.Aatrox
             public static class Harass
             {
                 private static readonly CheckBox _useQ;
-                private static readonly CheckBox _useW;
                 private static readonly CheckBox _useE;
-                private static readonly CheckBox _useR;
-                private static readonly Slider _manaHarass;
 
                 public static bool UseQ
                 {
                     get { return _useQ.CurrentValue; }
-                }
-
-                public static bool UseW
-                {
-                    get { return _useW.CurrentValue; }
                 }
 
                 public static bool UseE
@@ -118,25 +110,11 @@ namespace KickassSeries.Champions.Aatrox
                     get { return _useE.CurrentValue; }
                 }
 
-                public static bool UseR
-                {
-                    get { return _useR.CurrentValue; }
-                }
-
-                public static int ManaHarass
-                {
-                    get { return _manaHarass.CurrentValue; }
-                }
-
                 static Harass()
                 {
                     SpellsMenu.AddGroupLabel("Harass Spells:");
                     _useQ = SpellsMenu.Add("harassQ", new CheckBox("Use Q on Harass ?"));
-                    _useW = SpellsMenu.Add("harassW", new CheckBox("Use W on Harass ?"));
                     _useE = SpellsMenu.Add("harassE", new CheckBox("Use E on Harass ?"));
-                    _useR = SpellsMenu.Add("harassR", new CheckBox("Use R on Harass ?"));
-                    SpellsMenu.AddGroupLabel("Harass Settings:");
-                    _manaHarass = SpellsMenu.Add("harassMana", new Slider("It will only cast any harass spell if the mana is greater than ({0}).", 30));
                 }
 
                 public static void Initialize()
@@ -147,10 +125,7 @@ namespace KickassSeries.Champions.Aatrox
             public static class LaneClear
             {
                 private static readonly CheckBox _useQ;
-                private static readonly CheckBox _useW;
                 private static readonly CheckBox _useE;
-                private static readonly CheckBox _useR;
-                private static readonly Slider _laneMana;
                 private static readonly Slider _xCount;
 
                 public static bool UseQ
@@ -158,24 +133,9 @@ namespace KickassSeries.Champions.Aatrox
                     get { return _useQ.CurrentValue; }
                 }
 
-                public static bool UseW
-                {
-                    get { return _useW.CurrentValue; }
-                }
-
                 public static bool UseE
                 {
                     get { return _useE.CurrentValue; }
-                }
-
-                public static bool UseR
-                {
-                    get { return _useR.CurrentValue; }
-                }
-
-                public static int LaneMana
-                {
-                    get { return _laneMana.CurrentValue; }
                 }
 
                 public static int XCount
@@ -187,11 +147,8 @@ namespace KickassSeries.Champions.Aatrox
                 {
                     FarmMenu.AddGroupLabel("LaneClear Spells:");
                     _useQ = FarmMenu.Add("laneclearQ", new CheckBox("Use Q on Laneclear ?"));
-                    _useW = FarmMenu.Add("laneclearW", new CheckBox("Use W on Laneclear ?"));
                     _useE = FarmMenu.Add("laneclearE", new CheckBox("Use E on Laneclear ?"));
-                    _useR = FarmMenu.Add("laneclearR", new CheckBox("Use R on Laneclear ?"));
                     FarmMenu.AddGroupLabel("LaneClear Settings:");
-                    _laneMana = FarmMenu.Add("laneMana", new Slider("It will only cast any laneclear spell if the mana is greater than ({0}).", 30));
                     _xCount = FarmMenu.Add("xCount", new Slider("It will only cast X spell if it`ll hit ({0}).", 3, 1, 6));
                 }
 
@@ -203,20 +160,11 @@ namespace KickassSeries.Champions.Aatrox
             public static class LastHit
             {
                 private static readonly CheckBox _useQ;
-                private static readonly CheckBox _useW;
                 private static readonly CheckBox _useE;
-                private static readonly CheckBox _useR;
-                private static readonly Slider _lastMana;
-                private static readonly Slider _xCount;
 
                 public static bool UseQ
                 {
                     get { return _useQ.CurrentValue; }
-                }
-
-                public static bool UseW
-                {
-                    get { return _useW.CurrentValue; }
                 }
 
                 public static bool UseE
@@ -224,32 +172,11 @@ namespace KickassSeries.Champions.Aatrox
                     get { return _useE.CurrentValue; }
                 }
 
-                public static bool UseR
-                {
-                    get { return _useR.CurrentValue; }
-                }
-
-                public static int LastMana
-                {
-                    get { return _lastMana.CurrentValue; }
-                }
-
-                public static int XCount
-                {
-                    get { return _xCount.CurrentValue; }
-                }
-
-
                 static LastHit()
                 {
                     FarmMenu.AddGroupLabel("LastHit Spells:");
                     _useQ = FarmMenu.Add("lasthitQ", new CheckBox("Use Q on LastHit ?"));
-                    _useW = FarmMenu.Add("lasthitW", new CheckBox("Use W on LastHit ?"));
                     _useE = FarmMenu.Add("lasthitE", new CheckBox("Use E on LastHit ?"));
-                    _useR = FarmMenu.Add("lasthitR", new CheckBox("Use R on LastHit ?"));
-                    FarmMenu.AddGroupLabel("LastHit Settings:");
-                    _lastMana = FarmMenu.Add("lastMana", new Slider("It will only cast any lasthit spell if the mana is greater than ({0}).", 30));
-                    _xCount = FarmMenu.Add("wCount", new Slider("It will only cast X spell if it`ll hit ({0}).", 3, 1, 6));
                 }
 
                 public static void Initialize()
@@ -261,7 +188,8 @@ namespace KickassSeries.Champions.Aatrox
             {
                 private static readonly CheckBox _interruptSpell;
                 private static readonly CheckBox _antiGapCloserSpell;
-                private static readonly Slider _miscMana;
+                private static readonly Slider _WHealSlider;
+                private static readonly Slider _WDamageSlider;
 
                 public static bool InterruptSpell
                 {
@@ -273,18 +201,25 @@ namespace KickassSeries.Champions.Aatrox
                     get { return _antiGapCloserSpell.CurrentValue; }
                 }
 
-                public static int MiscMana
+                public static int WHeal
                 {
-                    get { return _miscMana.CurrentValue; }
+                    get { return _WHealSlider.CurrentValue; }
+                }
+
+                public static int WDamage
+                {
+                    get { return _WDamageSlider.CurrentValue; }
                 }
 
                 static Misc()
                 {
                     // Initialize the menu values
                     MiscMenu.AddGroupLabel("Miscellaneous");
-                    _interruptSpell = MiscMenu.Add("interruptX", new CheckBox("Use X to interrupt spells ?"));
-                    _antiGapCloserSpell = MiscMenu.Add("gapcloserX", new CheckBox("Use X to antigapcloser spells ?"));
-                    _miscMana = MiscMenu.Add("miscMana", new Slider("Min mana to use gapcloser/interrupt spells ?", 20));
+                    _interruptSpell = MiscMenu.Add("interruptQ", new CheckBox("Use Q to interrupt spells ?"));
+                    _antiGapCloserSpell = MiscMenu.Add("gapcloserE", new CheckBox("Use E to antigapcloser spells ?"));
+                    MiscMenu.AddGroupLabel("W Settings");
+                    _WHealSlider = MiscMenu.Add("wHealmisc", new Slider("Switch W to heal when healt is less than ({0})", 35));
+                    _WDamageSlider = MiscMenu.Add("wDmgmisc", new Slider("Switch W to damage when healt is greater than ({0})", 75));
                 }
 
                 public static void Initialize()
