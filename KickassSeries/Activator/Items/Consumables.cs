@@ -55,11 +55,12 @@ namespace KickassSeries.Activator.Items
 
             if (Settings.UseHunters && HuntersPotion.IsOwned())
             {
-                if (Player.Instance.ManaPercent < Settings.MinHunterMp && Player.Instance.HealthPercent < Settings.MinHunterHp && !Player.Instance.HasBuff("ItemDarkCrystalFlask"))
+                if (Player.Instance.ManaPercent < Settings.MinHunterMp && Player.Instance.HealthPercent < Settings.MinHunterHp && !Player.Instance.HasBuff("ItemCrystalFlaskJungle"))
                 {
+                    Chat.Print("Casting");
                     HuntersPotion.Cast();
                 }
-
+                /*
                 if (Settings.UseHuntersMinionWillDie)
                 {
                     var BigJGMinion =
@@ -76,6 +77,7 @@ namespace KickassSeries.Activator.Items
 
                     HuntersPotion.Cast();
                 }
+                */
             }
 
             LastRun = Environment.TickCount + 1000;
