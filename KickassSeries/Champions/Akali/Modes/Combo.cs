@@ -1,6 +1,6 @@
 ﻿using EloBuddy;
 using EloBuddy.SDK;
-
+using KickassSeries.Activator.DMGHandler;
 using Settings = KickassSeries.Champions.Akali.Config.Modes.Combo;
 
 namespace KickassSeries.Champions.Akali.Modes
@@ -22,7 +22,7 @@ namespace KickassSeries.Champions.Akali.Modes
                 Q.Cast(target);
             }
 
-            if (R.IsReady() && target.IsValidTarget(R.Range) && Settings.UseR && target.HasBuff("AkaliMota") || target.HealthPercent <= Player.Instance.HealthPercent + 10)
+            if (R.IsReady() && target.IsValidTarget(R.Range) && Settings.UseR && target.HasBuff("AkaliMota") || target.HealthPercent <= Player.Instance.HealthPercent + 30)
             {
                 R.Cast(target);
             }
@@ -32,10 +32,13 @@ namespace KickassSeries.Champions.Akali.Modes
                 E.Cast();
             }
 
-            if (W.IsReady() && target.IsValidTarget(Q.Range) && Settings.UseW &&
-                Player.Instance.CountEnemiesInRange(Q.Range) >= 2 || Player.Instance.HealthPercent <= 15)
+            if (W.IsReady() && target.IsValidTarget(Q.Range) && Settings.UseW)
             {
-                W.Cast(Player.Instance);
+                if (Player.Instance.CountEnemiesInRange(Q.Range) >= 2 || Player.Instance.HealthPercent <= 18 ||
+                    Player.Instance.InDanger(20))
+                {
+                    W.Cast(Player.Instance);
+                }
             }
         }
     }

@@ -15,16 +15,19 @@ namespace KickassSeries.Activator.Items
         {
             if (Activator.lastUsed > Environment.TickCount) return;
 
-            var target = TargetSelector.GetTarget(900, DamageType.Mixed);
+            var target = TargetSelector.GetTarget(1000, DamageType.Mixed);
 
+            if (target == null || Player.Instance.IsRecalling())return;
+
+            /*
             if (Player.Instance.IsRecalling() || Player.Instance.IsInShopRange() || target == null ||
                 !Orbwalker.ActiveModesFlags.HasFlag(Orbwalker.ActiveModes.Combo) ||
                 !Orbwalker.ActiveModesFlags.HasFlag(Orbwalker.ActiveModes.LaneClear)) return;
-
+                */
             if (Settings.Bilgewater && BilgewaterCutlass.IsOwned() && BilgewaterCutlass.IsReady() && target.IsValidTarget(BilgewaterCutlass.Range))
             {
-                if (Settings.BilgewaterMyHp >= Player.Instance.HealthPercent &&
-                    target.HealthPercent <= Settings.BilgewaterTargetHp)
+                if (Settings.BilgewaterMyHp > Player.Instance.HealthPercent &&
+                    target.HealthPercent < Settings.BilgewaterTargetHp)
                 {
                     BilgewaterCutlass.Cast(target);
                     Activator.lastUsed = Environment.TickCount + Misc.DelayBetweenOff;
@@ -33,8 +36,8 @@ namespace KickassSeries.Activator.Items
 
             if (Settings.Blade && BladeOfTheRuinedKing.IsOwned() && BladeOfTheRuinedKing.IsReady() && target.IsValidTarget(BladeOfTheRuinedKing.Range))
             {
-                if (Settings.BladeMyHp >= Player.Instance.HealthPercent &&
-                    target.HealthPercent <= Settings.BladeTargetHp)
+                if (Settings.BladeMyHp > Player.Instance.HealthPercent &&
+                    target.HealthPercent < Settings.BladeTargetHp)
                 {
                     BladeOfTheRuinedKing.Cast(target);
                     Activator.lastUsed = Environment.TickCount + Misc.DelayBetweenOff;
@@ -44,7 +47,7 @@ namespace KickassSeries.Activator.Items
             var minions = EntityManager.MinionsAndMonsters.EnemyMinions.Count(m => m.IsValidTarget(Tiamat.Range));
             if (Settings.Tiamat && Tiamat.IsOwned() && Tiamat.IsReady() && target.IsValidTarget(Tiamat.Range) || minions > 2)
             {
-                if (target.HealthPercent <= Settings.TiamatTargetHp && Misc.AACancel
+                if (target.HealthPercent < Settings.TiamatTargetHp && Misc.AACancel
                     ? EventsManager.CanAACancel
                     : Tiamat.IsReady())
                 {
@@ -55,7 +58,7 @@ namespace KickassSeries.Activator.Items
 
             if (Settings.Hydra && Hydra.IsOwned() && Hydra.IsReady() && target.IsValidTarget(Hydra.Range) || minions > 2)
             {
-                if (target.HealthPercent <= Settings.HydraTargetHp && Misc.AACancel
+                if (target.HealthPercent < Settings.HydraTargetHp && Misc.AACancel
                     ? EventsManager.CanAACancel
                     : Hydra.IsReady())
                 {
@@ -66,7 +69,7 @@ namespace KickassSeries.Activator.Items
 
             if (Settings.Titanic && TitanicHydra.IsOwned() && TitanicHydra.IsReady() && target.IsValidTarget(TitanicHydra.Range) || minions > 2)
             {
-                if (target.HealthPercent <= Settings.TitanicTargetHp && Misc.AACancel
+                if (target.HealthPercent < Settings.TitanicTargetHp && Misc.AACancel
                     ? EventsManager.CanAACancel
                     : TitanicHydra.IsReady())
                 {
@@ -77,7 +80,7 @@ namespace KickassSeries.Activator.Items
 
             if (Settings.Youmuu && Youmuu.IsOwned() && Youmuu.IsReady() && target.IsValidTarget(Youmuu.Range))
             {
-                if (target.HealthPercent <= Settings.YoumuuTargetHp)
+                if (target.HealthPercent < Settings.YoumuuTargetHp)
                 {
                     Youmuu.Cast();
                     Activator.lastUsed = Environment.TickCount + Misc.DelayBetweenOff;
@@ -86,7 +89,7 @@ namespace KickassSeries.Activator.Items
 
             if (Settings.Hextech && Hextech.IsOwned() && Hextech.IsReady() && target.IsValidTarget(Hextech.Range))
             {
-                if (target.HealthPercent <= Settings.HextechTargetHp)
+                if (target.HealthPercent < Settings.HextechTargetHp)
                 {
                     Hextech.Cast(target);
                     Activator.lastUsed = Environment.TickCount + Misc.DelayBetweenOff;

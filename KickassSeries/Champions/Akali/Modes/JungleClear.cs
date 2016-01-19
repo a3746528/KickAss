@@ -28,7 +28,7 @@ namespace KickassSeries.Champions.Akali.Modes
 
             if (E.IsReady() && jgminion.IsValidTarget(E.Range) && Settings.UseE)
             {
-                E.Cast(jgminion);
+                E.Cast();
             }
         }
     }
