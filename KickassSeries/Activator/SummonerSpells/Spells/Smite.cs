@@ -32,7 +32,7 @@ namespace KickassSeries.Activator.SummonerSpells.Spells
 
         private static int GetSmiteDamage()
         {
-            var level = ObjectManager.Player.Level;
+            var level = Player.Instance.Level;
 
             int[] smitedamage =
             {

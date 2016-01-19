@@ -1,57 +1,61 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Drawing;
 using System.Linq;
 using EloBuddy;
 using EloBuddy.SDK.Enumerations;
 using EloBuddy.SDK.Events;
-using EloBuddy.SDK.Rendering;
-using KickassSeries.Properties;
 using SharpDX;
-using Color = System.Drawing.Color;
+using SharpDX.Direct3D9;
 
+using Color = System.Drawing.Color;
+using Line = EloBuddy.SDK.Rendering.Line;
 using Settings = KickassSeries.Ultilities.Config.Types.RecallTracker;
 
 namespace KickassSeries.Ultilities.Trackers
 {
     internal class RecallTracker
     {
-        private static Sprite TopSprite { get; set; }
-        private static Sprite BottomSprite { get; set; }
-        private static Sprite BackSprite { get; set; }
-        private static Text Text { get; set; }
-        // ReSharper disable once UnusedAutoPropertyAccessor.Local
-        private static Text TextTwo { get; set; }
-
         public static List<Recall> Recalls = new List<Recall>();
 
-        public static readonly TextureLoader TextureLoader = new TextureLoader();
+        private static Font _Font;
+        private static Font _FontNumber;
 
         public static void Initialize()
         {
-            TextureLoader.Load("top", Resources.RTTopHUD);
-            TextureLoader.Load("bottom", Resources.RTBottomHUD);
-            TextureLoader.Load("back", Resources.RTBack);
+            _Font = new Font(
+                Drawing.Direct3DDevice,
+                new FontDescription
+                {
+                    FaceName = "Tahoma",
+                    Height = 18,
+                    OutputPrecision = FontPrecision.Default,
+                    Quality = FontQuality.ClearType,
+                    Weight = FontWeight.Bold
 
-            TopSprite = new Sprite(() => TextureLoader["top"]);
-            BottomSprite = new Sprite(() => TextureLoader["bottom"]);
-            BackSprite = new Sprite(() => TextureLoader["back"]);
+                });
 
-            Text = new Text("", new Font(FontFamily.GenericSansSerif, 8, FontStyle.Bold)) {Color = Color.AntiqueWhite};
-            TextTwo = new Text("", new Font(FontFamily.GenericSansSerif, 8, FontStyle.Bold))
-            {
-                Color = Color.AntiqueWhite
-            };
+            _FontNumber = new Font(
+                Drawing.Direct3DDevice,
+                new FontDescription
+                {
+                    FaceName = "Tahoma",
+                    Height = 17,
+                    OutputPrecision = FontPrecision.Default,
+                    Quality = FontQuality.ClearType,
+                    Weight = FontWeight.Bold
 
-            Teleport.OnTeleport += Teleport_OnTeleport;
-            Drawing.OnEndScene += Drawing_OnEndScene;
+                });
         }
 
-        private static void Teleport_OnTeleport(Obj_AI_Base sender, Teleport.TeleportEventArgs args)
+        public static void OnTeleport(AIHeroClient sender , Teleport.TeleportEventArgs args)
         {
             if (Settings.TurnOff) return;
 
-            if (args.Type != TeleportType.Recall || !(sender is AIHeroClient)) return;
+            if (args.Type != TeleportType.Recall || sender == null) return;
+
+            if (!Settings.RecallAllies && sender.IsAlly)return;
+            if (!Settings.RecallEnemies && sender.IsEnemy) return;
+
 
             switch (args.Status)
             {
@@ -73,36 +77,33 @@ namespace KickassSeries.Ultilities.Trackers
             }
         }
 
-        private static void Drawing_OnEndScene(EventArgs args)
+        public static void DrawOnEnd(EventArgs args)
         {
             if(Settings.TurnOff) return;
-            /*
-            var x = (int) (Drawing.Width*0.846875);
-            var y = (int) (Drawing.Height*0.5555555555555556);
-            */
-            var x = (int)(Drawing.Width * 0.846875);
-            var y = (int)(Drawing.Height * 0.5 + Settings.XPos);
+
+            var x = (int)(Drawing.Width * 0.8475 - Settings.XPos);
+            var y = (int)(Drawing.Height * 0.1 + Settings.YPos);
 
             var bonus = 0;
             foreach (var recall in Recalls.ToList())
             {
-                TopSprite.Draw(new Vector2(x + 1, y));
-                BackSprite.Draw(new Vector2(x, y + 18 + bonus));
-                Text.Draw(Truncate(recall.Unit.ChampionName, 10), Color.White, x + 15, y + bonus + 27);
-                Text.Draw(recall.PercentComplete() + "%", Color.White, new Vector2(x + 258, y + bonus + 26));
+                Line.DrawLine(Color.GhostWhite, 18, new Vector2(x + 20 , y + bonus + 33), new Vector2(x + 250, y + bonus + 33));
 
-                Line.DrawLine(Color.White, 10, new Vector2(x + 80, y + bonus + 33), new Vector2(x + 250, y + bonus + 33));
+                Line.DrawLine(recall.IsAborted ? Color.DarkRed : BarColor(recall.PercentComplete()), 18,
+                    new Vector2(x + 20, y + bonus + 33),
+                    new Vector2(x + 20 + 230*(recall.PercentComplete()/100), y + bonus + 33));
 
-                Line.DrawLine(recall.IsAborted ? Color.DodgerBlue : BarColor(recall.PercentComplete()), 10,
-                    new Vector2(x + 80, y + bonus + 33),
-                    new Vector2(x + 80 + (170*(recall.PercentComplete()/100)), y + bonus + 33));
-                bonus += 31;
+                //Line.DrawLine(Color.Red, 18, new Vector2(x + 180, y + bonus + 33), new Vector2(x + 182, y + bonus + 33));
+
+                _Font.DrawText(null, recall.Unit.ChampionName, x + 25, y + bonus + 23, SharpDX.Color.Black);
+                _FontNumber.DrawText(null, recall.PercentComplete() + "%", x + 203, y + bonus + 24, SharpDX.Color.Black);
+
 
                 if (recall.ExpireTime < Environment.TickCount && Recalls.Contains(recall))
                 {
                     Recalls.Remove(recall);
                 }
-                BottomSprite.Draw(new Vector2(x + 1, y + bonus + 18));
+                bonus += 35;
             }
         }
 
@@ -110,11 +111,11 @@ namespace KickassSeries.Ultilities.Trackers
         {
             if (percent > 80)
             {
-                return Color.Red;
+                return Color.LimeGreen;
             }
             if (percent > 60)
             {
-                return Color.OrangeRed;
+                return Color.YellowGreen;
             }
 
             if (percent > 40)
@@ -123,11 +124,11 @@ namespace KickassSeries.Ultilities.Trackers
             }
             if (percent > 20)
             {
-                return Color.YellowGreen;
+                return Color.DarkOrange;
             }
             if (percent > 1)
             {
-                return Color.LimeGreen;
+                return Color.OrangeRed;
             }
             return Color.White;
         }
@@ -169,12 +170,6 @@ namespace KickassSeries.Ultilities.Trackers
             {
                 return (float) Math.Round(Elapsed/Duration*100) > 100 ? 100 : (float) Math.Round(Elapsed/Duration*100);
             }
-        }
-
-        public static string Truncate(string value, int maxLength)
-        {
-            if (string.IsNullOrEmpty(value)) return value;
-            return value.Length <= maxLength ? value : value.Substring(0, maxLength);
         }
     }
 }

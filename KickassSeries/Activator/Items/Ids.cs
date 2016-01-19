@@ -20,8 +20,8 @@ namespace KickassSeries.Activator.Items
         #region Offensive
         protected static readonly Item BilgewaterCutlass = new Item(ItemId.Bilgewater_Cutlass, 550f);
         protected static readonly Item BladeOfTheRuinedKing = new Item(ItemId.Blade_of_the_Ruined_King, 550f);
-        protected static readonly Item Hydra = new Item(ItemId.Ravenous_Hydra_Melee_Only, Player.Instance.GetAutoAttackRange());
-        protected static readonly Item Tiamat = new Item(ItemId.Tiamat_Melee_Only, Player.Instance.GetAutoAttackRange());
+        protected static readonly Item Hydra = new Item(ItemId.Ravenous_Hydra_Melee_Only, 250f);
+        protected static readonly Item Tiamat = new Item(ItemId.Tiamat_Melee_Only, 250f);
         protected static readonly Item TitanicHydra = new Item(3053, Player.Instance.GetAutoAttackRange());
         protected static readonly Item Youmuu = new Item(ItemId.Youmuus_Ghostblade, 600f);
         protected static readonly Item Hextech = new Item(ItemId.Hextech_Gunblade, 700f);

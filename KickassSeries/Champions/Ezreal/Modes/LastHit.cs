@@ -21,7 +21,7 @@ namespace KickassSeries.Champions.Ezreal.Modes
 
             if (laneMinion == null) return;
 
-            if (Settings.UseQ && Q.IsReady() && Settings.ManaLast <= Player.Instance.ManaPercent && !Player.Instance.IsInAutoAttackRange(laneMinion))
+            if (Settings.UseQ && Q.IsReady() && Settings.LastMana <= Player.Instance.ManaPercent && !Player.Instance.IsInAutoAttackRange(laneMinion))
             {
                 Q.Cast(laneMinion);
             }

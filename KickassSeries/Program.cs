@@ -461,19 +461,6 @@ namespace KickassSeries
                     Console.Write(exp);
                 }
                 #endregion LoadingSkinHack
-
-                Console.WriteLine(" ");
-
-                #region LoadingDrawings
-                try
-                {
-                    Console.WriteLine("Drawings Loaded");
-                }
-                catch (Exception exp)
-                {
-                    Console.Write(exp);
-                }
-                #endregion LoadingDrawings
             }
             catch (Exception exp)
             {

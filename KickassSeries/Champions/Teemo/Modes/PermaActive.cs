@@ -5,7 +5,7 @@ using EloBuddy.SDK;
 using EloBuddy.SDK.Enumerations;
 using KickassSeries.Ultilities;
 
-using KS = KickassSeries.Champions.Teemo.Config.Modes.KS;
+//using KS = KickassSeries.Champions.Teemo.Config.Modes.KS;
 using Misc = KickassSeries.Champions.Teemo.Config.Modes.Misc;
 
 namespace KickassSeries.Champions.Teemo.Modes
@@ -19,6 +19,7 @@ namespace KickassSeries.Champions.Teemo.Modes
 
         public override void Execute()
         {
+            /*
             #region KS
             if (KS.UseQ)
             {
@@ -185,6 +186,7 @@ namespace KickassSeries.Champions.Teemo.Modes
                 W.Cast();
             }
             #endregion AutoW
+            */
         }
     }
 }

@@ -15,6 +15,7 @@ namespace KickassSeries.Champions.Ezreal.Modes
 
         public override void Execute()
         {
+            
             var laneMinion =
                 EntityManager.MinionsAndMonsters.GetLaneMinions()
                     .OrderByDescending(m => m.Health)
@@ -23,10 +24,11 @@ namespace KickassSeries.Champions.Ezreal.Modes
 
             if (laneMinion == null) return;
 
-            if (Settings.UseQ && Q.IsReady() && Settings.ManaLane <= Player.Instance.ManaPercent)
+            if (Settings.UseQ && Q.IsReady() && Settings.LaneMana <= Player.Instance.ManaPercent)
             {
                 Q.Cast(laneMinion);
             }
+            
         }
     }
 }

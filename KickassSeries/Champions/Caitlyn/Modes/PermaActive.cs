@@ -17,7 +17,7 @@ namespace KickassSeries.Champions.Caitlyn.Modes
         private int _lastW;
 
         public override void Execute()
-        {
+        {/*
             if (Player.Instance.CanAttack && Settings.UseAA)
             {
                 var targetAutoAttack = TargetSelector.GetTarget(Player.Instance.AttackRange*2, DamageType.Physical);
@@ -69,7 +69,7 @@ namespace KickassSeries.Champions.Caitlyn.Modes
                         R.Cast(targetR);
                     }
                 }
-            }
+            }*/
         }
     }
 }

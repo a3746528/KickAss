@@ -15,24 +15,31 @@ namespace KickassSeries.Champions.Teemo
     internal static class EventsManager
     {
         #region Spells
+
         private static Spell.Targeted Q
         {
             get { return SpellManager.Q; }
         }
+
         private static Spell.Active W
         {
             get { return SpellManager.W; }
         }
+
         private static Spell.Active E
         {
             get { return SpellManager.E; }
         }
+
         private static Spell.Skillshot R
         {
             get { return SpellManager.R; }
         }
+
         #endregion Spells
+
         public static int LastR;
+
         public static void Initialize()
         {
             Gapcloser.OnGapcloser += Gapcloser_OnGapcloser;
@@ -58,7 +65,17 @@ namespace KickassSeries.Champions.Teemo
         {
             if (Orbwalker.ActiveModesFlags.HasFlag(Orbwalker.ActiveModes.LastHit))
             {
-                foreach (var m in ObjectManager.Get<Obj_AI_Base>().Where(creep => creep.IsMinion && creep.IsEnemy && Player.Instance.IsInAutoAttackRange(creep)).OrderBy(creep => creep.Health).Where(m => m != null).Where(m => m.Health <= Player.Instance.GetAutoAttackDamage(m) + SpellDamage.GetRealDamage(SpellSlot.E, m)))
+                foreach (
+                    var m in
+                        ObjectManager.Get<Obj_AI_Base>()
+                            .Where(
+                                creep => creep.IsMinion && creep.IsEnemy && Player.Instance.IsInAutoAttackRange(creep))
+                            .OrderBy(creep => creep.Health)
+                            .Where(m => m != null)
+                            .Where(
+                                m =>
+                                    m.Health <=
+                                    Player.Instance.GetAutoAttackDamage(m) + SpellDamage.GetRealDamage(SpellSlot.E, m)))
                 {
                     Orbwalker.DisableAttacking = true;
                     Orbwalker.DisableMovement = true;
@@ -73,8 +90,15 @@ namespace KickassSeries.Champions.Teemo
 
             if (Orbwalker.ActiveModesFlags.HasFlag(Orbwalker.ActiveModes.Harass))
             {
-                enemy = EntityManager.Heroes.Enemies.Where(hero => Player.Instance.IsInAutoAttackRange(hero)).OrderBy(hero => hero.Health).FirstOrDefault();
-                minion = ObjectManager.Get<Obj_AI_Base>().Where(unit => unit.IsMinion && unit.IsEnemy && Player.Instance.IsInAutoAttackRange(unit)).OrderBy(unit => unit.Health).FirstOrDefault();
+                enemy =
+                    EntityManager.Heroes.Enemies.Where(hero => Player.Instance.IsInAutoAttackRange(hero))
+                        .OrderBy(hero => hero.Health)
+                        .FirstOrDefault();
+                minion =
+                    ObjectManager.Get<Obj_AI_Base>()
+                        .Where(unit => unit.IsMinion && unit.IsEnemy && Player.Instance.IsInAutoAttackRange(unit))
+                        .OrderBy(unit => unit.Health)
+                        .FirstOrDefault();
 
                 #region Auto Attack
 
@@ -95,7 +119,9 @@ namespace KickassSeries.Champions.Teemo
                 else
                 {
                     if (enemy != null
-                        && minion.Health > Player.Instance.GetAutoAttackDamage(minion) + SpellDamage.GetRealDamage(SpellSlot.E, minion))
+                        &&
+                        minion.Health >
+                        Player.Instance.GetAutoAttackDamage(minion) + SpellDamage.GetRealDamage(SpellSlot.E, minion))
                     {
                         if (Player.Instance.IsInAutoAttackRange(enemy))
                         {
@@ -106,7 +132,8 @@ namespace KickassSeries.Champions.Teemo
                             Orbwalker.DisableMovement = false;
                         }
                     }
-                    else if (minion.Health <= Player.Instance.GetAutoAttackDamage(minion) + SpellDamage.GetRealDamage(SpellSlot.E, minion))
+                    else if (minion.Health <=
+                             Player.Instance.GetAutoAttackDamage(minion) + SpellDamage.GetRealDamage(SpellSlot.E, minion))
                     {
                         Orbwalker.DisableAttacking = true;
                         Orbwalker.DisableMovement = true;
@@ -123,8 +150,15 @@ namespace KickassSeries.Champions.Teemo
             {
                 return;
             }
-            enemy = EntityManager.Heroes.Enemies.Where(hero => Player.Instance.IsInAutoAttackRange(hero)).OrderBy(hero => hero.Health).FirstOrDefault();
-            minion = ObjectManager.Get<Obj_AI_Base>().Where(unit => unit.IsMinion && unit.IsEnemy && Player.Instance.IsInAutoAttackRange(unit)).OrderBy(unit => unit.Health).FirstOrDefault();
+            enemy =
+                EntityManager.Heroes.Enemies.Where(hero => Player.Instance.IsInAutoAttackRange(hero))
+                    .OrderBy(hero => hero.Health)
+                    .FirstOrDefault();
+            minion =
+                ObjectManager.Get<Obj_AI_Base>()
+                    .Where(unit => unit.IsMinion && unit.IsEnemy && Player.Instance.IsInAutoAttackRange(unit))
+                    .OrderBy(unit => unit.Health)
+                    .FirstOrDefault();
 
             if (minion == null)
             {
@@ -145,7 +179,9 @@ namespace KickassSeries.Champions.Teemo
             else
             {
                 if (enemy != null
-                    && minion.Health > Player.Instance.GetAutoAttackDamage(minion) + SpellDamage.GetRealDamage(SpellSlot.E, minion))
+                    &&
+                    minion.Health >
+                    Player.Instance.GetAutoAttackDamage(minion) + SpellDamage.GetRealDamage(SpellSlot.E, minion))
                 {
                     if (!Player.Instance.IsInAutoAttackRange(enemy))
                     {
@@ -157,7 +193,8 @@ namespace KickassSeries.Champions.Teemo
                     Orbwalker.DisableAttacking = false;
                     Orbwalker.DisableMovement = false;
                 }
-                else if (minion.Health <= Player.Instance.GetAutoAttackDamage(minion) + SpellDamage.GetRealDamage(SpellSlot.E, minion))
+                else if (minion.Health <=
+                         Player.Instance.GetAutoAttackDamage(minion) + SpellDamage.GetRealDamage(SpellSlot.E, minion))
                 {
                     Orbwalker.DisableAttacking = true;
                     Orbwalker.DisableMovement = true;
@@ -173,9 +210,10 @@ namespace KickassSeries.Champions.Teemo
             var t = target as AIHeroClient;
 
             if (t != null && Orbwalker.ActiveModesFlags.HasFlag(Orbwalker.ActiveModes.Combo))
-            {
+            {/*
                 #region Check AA
 
+                
                 if (Misc.CheckAA)
                 {
                     if (Combo.OnlyQADC)
@@ -204,6 +242,7 @@ namespace KickassSeries.Champions.Teemo
                         }
                     }
                 }
+                
 
                 #endregion
 
@@ -211,6 +250,7 @@ namespace KickassSeries.Champions.Teemo
 
                 else
                 {
+                    /*
                     if (Combo.OnlyQADC)
                     {
                         foreach (var adc in Teemo.Marksman)
@@ -225,6 +265,7 @@ namespace KickassSeries.Champions.Teemo
                             }
                         }
                     }
+                    
                     else
                     {
                         if (Combo.UseQ && Q.IsReady() && Q.IsInRange(t))
@@ -244,7 +285,7 @@ namespace KickassSeries.Champions.Teemo
             {
                 return;
             }
-
+            /*
             if (Misc.CheckAA)
             {
                 if (Harass.UseQ && Q.IsReady() && Player.Instance.Distance(t) < Q.Range - Misc.CheckAArange)
@@ -257,8 +298,9 @@ namespace KickassSeries.Champions.Teemo
                 if (Harass.UseQ && Q.IsReady() && Player.Instance.Distance(t) < Q.Range)
                 {
                     Q.Cast(t);
-                }
+                }*/
             }
+
         }
 
         private static void Gapcloser_OnGapcloser(AIHeroClient sender, Gapcloser.GapcloserEventArgs e)
@@ -271,7 +313,8 @@ namespace KickassSeries.Champions.Teemo
             }
         }
 
-        private static void Interrupter_OnInterruptableSpell(Obj_AI_Base sender, Interrupter.InterruptableSpellEventArgs e)
+        private static void Interrupter_OnInterruptableSpell(Obj_AI_Base sender,
+            Interrupter.InterruptableSpellEventArgs e)
         {
             if (!sender.IsEnemy) return;
 

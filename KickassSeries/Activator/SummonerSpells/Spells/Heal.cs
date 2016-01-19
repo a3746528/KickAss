@@ -14,31 +14,27 @@ namespace KickassSeries.Activator.SummonerSpells.Spells
         public static Spell.Active SummonerHeal;
         public static void Initialize()
         {
-            SetHealtSlot();
+            var heal = Player.Instance.Spellbook.Spells.FirstOrDefault(spell => spell.Name.Contains("heal"));
+            if (heal != null)
+            {
+                SummonerHeal = new Spell.Active(heal.Slot);
+            }
         }
 
         public static void Execute()
         {
             if (Player.Instance.IsInShopRange() ||
                 Player.Instance.CountAlliesInRange(Misc.RangeEnemy) < Misc.EnemyCount && !SummonerHeal.IsReady() ||
-                SummonerSpells.Initialize.lastSpell + 1500 >= Environment.TickCount || !Settings.UseHeal)
+                Activator.lastUsed >= Environment.TickCount || !Settings.UseHeal)
                 return;
             var ally =
                 EntityManager.Heroes.Allies.OrderByDescending(a => a.Health)
                     .FirstOrDefault(a => a.IsValidTarget(SummonerHeal.Range));
-            if (ally.InDanger())
+            if (ally.InDanger(30) && Player.Instance.HealthPercent <= 75)
             {
                 SummonerHeal.Cast();
-                SummonerSpells.Initialize.lastSpell = Environment.TickCount;
+                Activator.lastUsed = Environment.TickCount + 500;
             }
-        }
-
-        private static void SetHealtSlot()
-        {
-            if (Player.Instance.Spellbook.GetSpell(SpellSlot.Summoner1).Name.Contains("heal"))
-                SummonerHeal = new Spell.Active(SpellSlot.Summoner1, 830);
-            else if (Player.Instance.Spellbook.GetSpell(SpellSlot.Summoner2).Name.Contains("heal"))
-                SummonerHeal = new Spell.Active(SpellSlot.Summoner2, 830);
         }
     }
 }

@@ -6,7 +6,7 @@ using EloBuddy;
 using EloBuddy.Sandbox;
 using SharpDX;
 
-using Debug = KickassSeries.Champions.Teemo.Config.Modes.Debug;
+//using Debug = KickassSeries.Champions.Teemo.Config.Modes.Debug;
 
 namespace KickassSeries.Champions.Teemo
 {
@@ -71,10 +71,10 @@ namespace KickassSeries.Champions.Teemo
             for (var i = 0; i < xInt.Count() && i < yInt.Count() && i < zInt.Count(); i++)
             {
                 Position.Add(new Vector3(xInt[i], zInt[i], yInt[i]));
-                if (Debug.DebugPos)
+                /*if (Debug.DebugPos)
                 {
                     Chat.Print(Position[i].ToString());
-                }
+                }*/
             }
         }
 
@@ -108,11 +108,12 @@ namespace KickassSeries.Champions.Teemo
             }
 
             GetShroomLocation();
-
+            /*
             if (Debug.DebugPos)
             {
                 Chat.Print("Sucessfully Initialized FileHandler");
             }
+            */
         }
     }
 }

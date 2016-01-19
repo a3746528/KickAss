@@ -14,10 +14,12 @@ namespace KickassSeries.Champions.Ezreal.Modes
 
         public override void Execute()
         {
+            
             if (Settings.UseE && E.IsReady() && Player.Instance.CountEnemiesInRange(800) <= 1)
             {
                 E.Cast(Player.Instance.Position.Extend(Game.CursorPos, E.Range).To3D());
             }
+            
         }
     }
 }

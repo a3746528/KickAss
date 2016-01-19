@@ -39,24 +39,24 @@ namespace KickassSeries.Champions.Caitlyn
         {
             if (Settings.DrawQ && Settings.DrawReady ? SpellManager.Q.IsReady() : Settings.DrawQ)
             {
-                new Circle { Color = Settings.colorQ, BorderWidth = Settings._widthQ, Radius = SpellManager.Q.Range }.Draw(Player.Instance.Position);
+                Circle.Draw(Settings.QColor, SpellManager.Q.Range, 1f, Player.Instance);
             }
 
             if (Settings.DrawW && Settings.DrawReady ? SpellManager.W.IsReady() : Settings.DrawW)
             {
-                new Circle { Color = Settings.colorW, BorderWidth = Settings._widthW, Radius = SpellManager.W.Range }.Draw(Player.Instance.Position);
+                Circle.Draw(Settings.WColor, SpellManager.W.Range, 1f, Player.Instance);
             }
 
             if (Settings.DrawE && Settings.DrawReady ? SpellManager.E.IsReady() : Settings.DrawE)
             {
-                new Circle { Color = Settings.colorE, BorderWidth = Settings._widthE, Radius = SpellManager.E.Range }.Draw(Player.Instance.Position);
+                Circle.Draw(Settings.EColor, SpellManager.E.Range, 1f, Player.Instance);
             }
 
             if (Settings.DrawR && Settings.DrawReady ? SpellManager.R.IsReady() : Settings.DrawR)
             {
-                new Circle { Color = Settings.colorR, BorderWidth = Settings._widthR, Radius = SpellManager.R.Range }.Draw(Player.Instance.Position);
+                Circle.Draw(Settings.RColor, SpellManager.R.Range, 1f, Player.Instance);
             }
-
+            /*
             if (Settings.DrawKillable)
             {
                 var target = TargetSelector.GetTarget(SpellManager.R.Range, DamageType.Physical);
@@ -69,7 +69,7 @@ namespace KickassSeries.Champions.Caitlyn
                         _font.DrawText(null, "Target is Killable with R, if you want to Kill him press " + Misc.WhatKey, (int)playerPos[0] - 220, (int)playerPos[1] + 38, Color.Red);
                     }
                 }
-            }
+            }*/
         }
     }
 }

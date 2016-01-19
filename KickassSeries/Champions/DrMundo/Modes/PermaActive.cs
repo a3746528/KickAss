@@ -28,7 +28,7 @@ namespace KickassSeries.Champions.DrMundo.Modes
                     W.Cast();
                 }
             }
-
+            /*
             if (Settings.AutoR && Player.Instance.HealthPercent <= Settings.HealthR)
             {
                     R.Cast();
@@ -37,6 +37,7 @@ namespace KickassSeries.Champions.DrMundo.Modes
 
                 R.Cast();
             }
+            */
         }
     }
 }

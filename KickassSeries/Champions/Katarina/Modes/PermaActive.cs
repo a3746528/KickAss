@@ -12,6 +12,8 @@ namespace KickassSeries.Champions.Katarina.Modes
             return true;
         }
 
+        public static bool _ulting;
+
         private static float dmgQstack(Obj_AI_Base target)
         {
             var damage = new float[] { 15, 30, 45, 60, 75 }[Player.Instance.Spellbook.GetSpell(SpellSlot.Q).Level] +
@@ -19,8 +21,29 @@ namespace KickassSeries.Champions.Katarina.Modes
             return Player.Instance.CalculateDamageOnUnit(target, DamageType.Magical, damage) - 10;
         }
 
+        private static void CheckUlt()
+        {
+            if (!Player.Instance.IsRecalling())
+            {
+                _ulting = Player.Instance.Spellbook.IsChanneling;
+            }
+
+            if (_ulting)
+            {
+
+                Orbwalker.DisableAttacking = true;
+                Orbwalker.DisableMovement = true;
+            }
+            else
+            {
+                Orbwalker.DisableAttacking = false;
+                Orbwalker.DisableMovement = false;
+            }
+        }
+
         public override void Execute()
         {
+            CheckUlt();
             var target = TargetSelector.GetTarget(SpellManager.Q.Range, DamageType.Magical);
             if (target == null) return;
 

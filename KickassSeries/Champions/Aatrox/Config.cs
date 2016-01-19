@@ -19,12 +19,8 @@ namespace KickassSeries.Champions.Aatrox
 
         static Config()
         {
-            // Initialize the menu
             Menu = MainMenu.AddMenu(MenuName, MenuName.ToLower());
             Menu.AddGroupLabel("KA " + Player.Instance.ChampionName);
-            Menu.AddLabel("Made By: MarioGK", 50);
-
-            // Initialize the modes
             Modes.Initialize();
         }
 
@@ -34,23 +30,22 @@ namespace KickassSeries.Champions.Aatrox
 
         public static class Modes
         {
-            private static readonly Menu ModesMenu, DrawMenu;
+            private static readonly Menu SpellsMenu, FarmMenu, MiscMenu, DrawMenu;
 
             static Modes()
             {
-                ModesMenu = Menu.AddSubMenu("Modes");
-
+                SpellsMenu = Menu.AddSubMenu("::SpellsMenu::");
                 Combo.Initialize();
-                Menu.AddSeparator();
                 Harass.Initialize();
-                Menu.AddSeparator();
+
+                FarmMenu = Menu.AddSubMenu("::FarmMenu::");
                 LaneClear.Initialize();
-                Menu.AddSeparator();
                 LastHit.Initialize();
-                Menu.AddSeparator();
+
+                MiscMenu = Menu.AddSubMenu("::Misc::");
                 Misc.Initialize();
 
-                DrawMenu = Menu.AddSubMenu("Draw");
+                DrawMenu = Menu.AddSubMenu("::Drawings::");
                 Draw.Initialize();
             }
 
@@ -61,13 +56,18 @@ namespace KickassSeries.Champions.Aatrox
             public static class Combo
             {
                 private static readonly CheckBox _useQ;
+                private static readonly CheckBox _useW;
                 private static readonly CheckBox _useE;
                 private static readonly CheckBox _useR;
-                private static readonly Slider _useRSlider;
 
                 public static bool UseQ
                 {
                     get { return _useQ.CurrentValue; }
+                }
+
+                public static bool UseW
+                {
+                    get { return _useW.CurrentValue; }
                 }
 
                 public static bool UseE
@@ -80,19 +80,14 @@ namespace KickassSeries.Champions.Aatrox
                     get { return _useR.CurrentValue; }
                 }
 
-                public static int UseRSlider
-                {
-                    get { return _useRSlider.CurrentValue; }
-                }
-
                 static Combo()
                 {
                     // Initialize the menu values
-                    ModesMenu.AddGroupLabel("Combo");
-                    _useQ = ModesMenu.Add("comboQ", new CheckBox("Use Q"));
-                    _useE = ModesMenu.Add("comboE", new CheckBox("Use E"));
-                    _useR = ModesMenu.Add("comboR", new CheckBox("Use R", false)); // Default false
-                    _useRSlider = ModesMenu.Add("slideRcombo", new Slider("Enemy healt % to use R", 35));
+                    SpellsMenu.AddGroupLabel("Combo Spells:");
+                    _useQ = SpellsMenu.Add("comboQ", new CheckBox("Use Q on Combo ?"));
+                    _useW = SpellsMenu.Add("comboW", new CheckBox("Use W on Combo ?"));
+                    _useE = SpellsMenu.Add("comboE", new CheckBox("Use E on Combo ?"));
+                    _useR = SpellsMenu.Add("comboR", new CheckBox("Use R on Combo ?"));
                 }
 
                 public static void Initialize()
@@ -103,11 +98,19 @@ namespace KickassSeries.Champions.Aatrox
             public static class Harass
             {
                 private static readonly CheckBox _useQ;
+                private static readonly CheckBox _useW;
                 private static readonly CheckBox _useE;
+                private static readonly CheckBox _useR;
+                private static readonly Slider _manaHarass;
 
                 public static bool UseQ
                 {
                     get { return _useQ.CurrentValue; }
+                }
+
+                public static bool UseW
+                {
+                    get { return _useW.CurrentValue; }
                 }
 
                 public static bool UseE
@@ -115,13 +118,25 @@ namespace KickassSeries.Champions.Aatrox
                     get { return _useE.CurrentValue; }
                 }
 
+                public static bool UseR
+                {
+                    get { return _useR.CurrentValue; }
+                }
+
+                public static int ManaHarass
+                {
+                    get { return _manaHarass.CurrentValue; }
+                }
 
                 static Harass()
                 {
-                    // Initialize the menu values
-                    ModesMenu.AddGroupLabel("Harass");
-                    _useQ = ModesMenu.Add("harassQ", new CheckBox("Use Q"));
-                    _useE = ModesMenu.Add("harassE", new CheckBox("Use E"));
+                    SpellsMenu.AddGroupLabel("Harass Spells:");
+                    _useQ = SpellsMenu.Add("harassQ", new CheckBox("Use Q on Harass ?"));
+                    _useW = SpellsMenu.Add("harassW", new CheckBox("Use W on Harass ?"));
+                    _useE = SpellsMenu.Add("harassE", new CheckBox("Use E on Harass ?"));
+                    _useR = SpellsMenu.Add("harassR", new CheckBox("Use R on Harass ?"));
+                    SpellsMenu.AddGroupLabel("Harass Settings:");
+                    _manaHarass = SpellsMenu.Add("harassMana", new Slider("It will only cast any harass spell if the mana is greater than ({0}).", 30));
                 }
 
                 public static void Initialize()
@@ -132,11 +147,20 @@ namespace KickassSeries.Champions.Aatrox
             public static class LaneClear
             {
                 private static readonly CheckBox _useQ;
+                private static readonly CheckBox _useW;
                 private static readonly CheckBox _useE;
+                private static readonly CheckBox _useR;
+                private static readonly Slider _laneMana;
+                private static readonly Slider _xCount;
 
                 public static bool UseQ
                 {
                     get { return _useQ.CurrentValue; }
+                }
+
+                public static bool UseW
+                {
+                    get { return _useW.CurrentValue; }
                 }
 
                 public static bool UseE
@@ -144,12 +168,31 @@ namespace KickassSeries.Champions.Aatrox
                     get { return _useE.CurrentValue; }
                 }
 
+                public static bool UseR
+                {
+                    get { return _useR.CurrentValue; }
+                }
+
+                public static int LaneMana
+                {
+                    get { return _laneMana.CurrentValue; }
+                }
+
+                public static int XCount
+                {
+                    get { return _xCount.CurrentValue; }
+                }
+
                 static LaneClear()
                 {
-                    // Initialize the menu values
-                    ModesMenu.AddGroupLabel("LaneClear");
-                    _useQ = ModesMenu.Add("laneQ", new CheckBox("Use Q"));
-                    _useE = ModesMenu.Add("laneE", new CheckBox("Use E"));
+                    FarmMenu.AddGroupLabel("LaneClear Spells:");
+                    _useQ = FarmMenu.Add("laneclearQ", new CheckBox("Use Q on Laneclear ?"));
+                    _useW = FarmMenu.Add("laneclearW", new CheckBox("Use W on Laneclear ?"));
+                    _useE = FarmMenu.Add("laneclearE", new CheckBox("Use E on Laneclear ?"));
+                    _useR = FarmMenu.Add("laneclearR", new CheckBox("Use R on Laneclear ?"));
+                    FarmMenu.AddGroupLabel("LaneClear Settings:");
+                    _laneMana = FarmMenu.Add("laneMana", new Slider("It will only cast any laneclear spell if the mana is greater than ({0}).", 30));
+                    _xCount = FarmMenu.Add("xCount", new Slider("It will only cast X spell if it`ll hit ({0}).", 3, 1, 6));
                 }
 
                 public static void Initialize()
@@ -160,11 +203,20 @@ namespace KickassSeries.Champions.Aatrox
             public static class LastHit
             {
                 private static readonly CheckBox _useQ;
+                private static readonly CheckBox _useW;
                 private static readonly CheckBox _useE;
+                private static readonly CheckBox _useR;
+                private static readonly Slider _lastMana;
+                private static readonly Slider _xCount;
 
                 public static bool UseQ
                 {
                     get { return _useQ.CurrentValue; }
+                }
+
+                public static bool UseW
+                {
+                    get { return _useW.CurrentValue; }
                 }
 
                 public static bool UseE
@@ -172,12 +224,32 @@ namespace KickassSeries.Champions.Aatrox
                     get { return _useE.CurrentValue; }
                 }
 
+                public static bool UseR
+                {
+                    get { return _useR.CurrentValue; }
+                }
+
+                public static int LastMana
+                {
+                    get { return _lastMana.CurrentValue; }
+                }
+
+                public static int XCount
+                {
+                    get { return _xCount.CurrentValue; }
+                }
+
+
                 static LastHit()
                 {
-                    // Initialize the menu values
-                    ModesMenu.AddGroupLabel("LastHit");
-                    _useQ = ModesMenu.Add("lastQ", new CheckBox("Use Q"));
-                    _useE = ModesMenu.Add("lastE", new CheckBox("Use E"));
+                    FarmMenu.AddGroupLabel("LastHit Spells:");
+                    _useQ = FarmMenu.Add("lasthitQ", new CheckBox("Use Q on LastHit ?"));
+                    _useW = FarmMenu.Add("lasthitW", new CheckBox("Use W on LastHit ?"));
+                    _useE = FarmMenu.Add("lasthitE", new CheckBox("Use E on LastHit ?"));
+                    _useR = FarmMenu.Add("lasthitR", new CheckBox("Use R on LastHit ?"));
+                    FarmMenu.AddGroupLabel("LastHit Settings:");
+                    _lastMana = FarmMenu.Add("lastMana", new Slider("It will only cast any lasthit spell if the mana is greater than ({0}).", 30));
+                    _xCount = FarmMenu.Add("wCount", new Slider("It will only cast X spell if it`ll hit ({0}).", 3, 1, 6));
                 }
 
                 public static void Initialize()
@@ -187,25 +259,32 @@ namespace KickassSeries.Champions.Aatrox
 
             public static class Misc
             {
-                private static readonly Slider _Wheal;
-                private static readonly Slider _Wdmg;
+                private static readonly CheckBox _interruptSpell;
+                private static readonly CheckBox _antiGapCloserSpell;
+                private static readonly Slider _miscMana;
 
-                public static int WHeal
+                public static bool InterruptSpell
                 {
-                    get { return _Wheal.CurrentValue; }
+                    get { return _interruptSpell.CurrentValue; }
                 }
 
-                public static int Wdmg
+                public static bool AntiGapCloser
                 {
-                    get { return _Wdmg.CurrentValue; }
+                    get { return _antiGapCloserSpell.CurrentValue; }
+                }
+
+                public static int MiscMana
+                {
+                    get { return _miscMana.CurrentValue; }
                 }
 
                 static Misc()
                 {
                     // Initialize the menu values
-                    ModesMenu.AddGroupLabel("W manager");
-                    _Wheal = ModesMenu.Add("W4heal", new Slider("How much player health % to change the W for healing ?", 25));
-                    _Wdmg = ModesMenu.Add("W4dmg", new Slider("How much player health % to change the W for damage ?", 75));
+                    MiscMenu.AddGroupLabel("Miscellaneous");
+                    _interruptSpell = MiscMenu.Add("interruptX", new CheckBox("Use X to interrupt spells ?"));
+                    _antiGapCloserSpell = MiscMenu.Add("gapcloserX", new CheckBox("Use X to antigapcloser spells ?"));
+                    _miscMana = MiscMenu.Add("miscMana", new Slider("Min mana to use gapcloser/interrupt spells ?", 20));
                 }
 
                 public static void Initialize()
@@ -215,17 +294,34 @@ namespace KickassSeries.Champions.Aatrox
 
             public static class Draw
             {
+                private static readonly CheckBox _drawReady;
                 private static readonly CheckBox _drawHealth;
+                private static readonly CheckBox _drawPercent;
                 private static readonly CheckBox _drawQ;
                 private static readonly CheckBox _drawW;
                 private static readonly CheckBox _drawE;
                 private static readonly CheckBox _drawR;
+                //Color Config
+                private static readonly ColorConfig _qColor;
+                private static readonly ColorConfig _wColor;
+                private static readonly ColorConfig _eColor;
+                private static readonly ColorConfig _rColor;
+                private static readonly ColorConfig _healthColor;
 
-                private static readonly CheckBox _drawReady;
+                //CheckBoxes
+                public static bool DrawReady
+                {
+                    get { return _drawReady.CurrentValue; }
+                }
 
                 public static bool DrawHealth
                 {
                     get { return _drawHealth.CurrentValue; }
+                }
+
+                public static bool DrawPercent
+                {
+                    get { return _drawPercent.CurrentValue; }
                 }
 
                 public static bool DrawQ
@@ -247,84 +343,48 @@ namespace KickassSeries.Champions.Aatrox
                 {
                     get { return _drawR.CurrentValue; }
                 }
-
-                public static bool DrawReady
+                //Colors
+                public static Color HealthColor
                 {
-                    get { return _drawReady.CurrentValue; }
+                    get { return _healthColor.GetSystemColor(); }
                 }
 
-
-                public static Color colorHealth
+                public static SharpDX.Color QColor
                 {
-                    get { return DrawMenu.GetColor("colorHealth"); }
+                    get { return _qColor.GetSharpColor(); }
                 }
 
-                public static Color colorQ
+                public static SharpDX.Color WColor
                 {
-                    get { return DrawMenu.GetColor("colorQ"); }
+                    get { return _wColor.GetSharpColor(); }
                 }
 
-                public static Color colorW
+                public static SharpDX.Color EColor
                 {
-                    get { return DrawMenu.GetColor("colorW"); }
+                    get { return _eColor.GetSharpColor(); }
                 }
-
-                public static Color colorE
+                public static SharpDX.Color RColor
                 {
-                    get { return DrawMenu.GetColor("colorE"); }
-                }
-
-                public static Color colorR
-                {
-                    get { return DrawMenu.GetColor("colorR"); }
-                }
-
-                public static float _widthQ
-                {
-                    get { return DrawMenu.GetWidth("widthQ"); }
-                }
-
-                public static float _widthW
-                {
-                    get { return DrawMenu.GetWidth("widthW"); }
-                }
-
-                public static float _widthE
-                {
-                    get { return DrawMenu.GetWidth("widthE"); }
-                }
-
-                public static float _widthR
-                {
-                    get { return DrawMenu.GetWidth("widthR"); }
+                    get { return _rColor.GetSharpColor(); }
                 }
 
                 static Draw()
                 {
-                    DrawMenu.AddGroupLabel("Draw");
-                    _drawReady = DrawMenu.Add("drawReady", new CheckBox("Draw Only If The Spells Are Ready.", false));
-                    DrawMenu.AddSeparator();
-                    DrawMenu.AddLabel("Reload is required to aply the changes made in the damage indicator");
-                    _drawHealth = DrawMenu.Add("drawHealth", new CheckBox("Draw Damage in HealthBar"));
-                    
-                    DrawMenu.AddColorItem("colorHealth");
-                    DrawMenu.AddSeparator();
-                    //Q
-                    _drawQ = DrawMenu.Add("drawQ", new CheckBox("Draw Q"));
-                    DrawMenu.AddColorItem("colorQ");
-                    DrawMenu.AddWidthItem("widthQ");
-                    //W
-                    _drawW = DrawMenu.Add("drawW", new CheckBox("Draw W"));
-                    DrawMenu.AddColorItem("colorW");
-                    DrawMenu.AddWidthItem("widthW");
-                    //E
-                    _drawE = DrawMenu.Add("drawE", new CheckBox("Draw E"));
-                    DrawMenu.AddColorItem("colorE");
-                    DrawMenu.AddWidthItem("widthE");
-                    //R
-                    _drawR = DrawMenu.Add("drawR", new CheckBox("Draw R"));
-                    DrawMenu.AddColorItem("colorR");
-                    DrawMenu.AddWidthItem("widthR");
+                    DrawMenu.AddGroupLabel("Spell drawings Settings :");
+                    _drawReady = DrawMenu.Add("drawOnlyWhenReady", new CheckBox("Draw the spells only if they are ready ?"));
+                    _drawHealth = DrawMenu.Add("damageIndicatorDraw", new CheckBox("Draw damage indicator ?"));
+                    _drawPercent = DrawMenu.Add("percentageIndicatorDraw", new CheckBox("Draw damage percentage ?"));
+                    DrawMenu.AddSeparator(1);
+                    _drawQ = DrawMenu.Add("qDraw", new CheckBox("Draw Q spell range ?"));
+                    _drawW = DrawMenu.Add("wDraw", new CheckBox("Draw W spell range ?"));
+                    _drawE = DrawMenu.Add("eDraw", new CheckBox("Draw E spell range ?"));
+                    _drawR = DrawMenu.Add("rDraw", new CheckBox("Draw R spell range ?"));
+
+                    _healthColor = new ColorConfig(DrawMenu, "healthColorConfig", Color.Orange, "Color Damage Indicator:");
+                    _qColor = new ColorConfig(DrawMenu, "qColorConfig", Color.Blue, "Color Q:");
+                    _wColor = new ColorConfig(DrawMenu, "wColorConfig", Color.Red, "Color W:");
+                    _eColor = new ColorConfig(DrawMenu, "eColorConfig", Color.DeepPink, "Color E:");
+                    _rColor = new ColorConfig(DrawMenu, "rColorConfig", Color.Yellow, "Color R:");
                 }
 
                 public static void Initialize()

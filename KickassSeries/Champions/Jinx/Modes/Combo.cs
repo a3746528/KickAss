@@ -15,7 +15,7 @@ namespace KickassSeries.Champions.Jinx.Modes
         }
 
         public override void Execute()
-        {
+        {/*
             if (Settings.UseQ && Player.Instance.ManaPercent >= Settings.ManaQ && SpellManager.Q.IsReady() && !Essentials.FishBones())
             {
                 var target = TargetSelector.GetTarget(Essentials.FishBonesRange(), DamageType.Physical);
@@ -100,7 +100,7 @@ namespace KickassSeries.Champions.Jinx.Modes
                         }
                     }
                 }
-            }
+            }*/
         }
     }
 }

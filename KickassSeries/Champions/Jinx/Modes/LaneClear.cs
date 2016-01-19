@@ -15,7 +15,7 @@ namespace KickassSeries.Champions.Jinx.Modes
         }
 
         public override void Execute()
-        {
+        {/*
             if (Settings.UseQ && Q.IsReady())
             {
                 var minion = Orbwalker.LasthittableMinions.Where(t => t.IsValidTarget() && t.Distance(Player.Instance) <= Essentials.FishBonesRange());
@@ -57,7 +57,7 @@ namespace KickassSeries.Champions.Jinx.Modes
                         Orbwalker.ForcedTarget = m;
                     }
                 }
-            }
+            }*/
         }
     }
 }

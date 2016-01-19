@@ -28,7 +28,7 @@
 
             if (HasSpell("summonerghost"))
             {
-                //TODO EXHAUST
+                Spells.Ghost.Initialize();
             }
         }
 
@@ -42,6 +42,11 @@
             if (HasSpell("summonerheal"))
             {
                 Spells.Heal.Execute();
+            }
+
+            if (HasSpell("summonerbarrier"))
+            {
+                Spells.Barrier.Execute();
             }
         }
     }

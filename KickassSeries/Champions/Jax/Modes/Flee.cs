@@ -1,6 +1,8 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using EloBuddy;
 using EloBuddy.SDK;
+using SharpDX;
 
 namespace KickassSeries.Champions.Jax.Modes
 {
@@ -11,17 +13,28 @@ namespace KickassSeries.Champions.Jax.Modes
             return Orbwalker.ActiveModesFlags.HasFlag(Orbwalker.ActiveModes.Flee);
         }
 
+        private static int _lastWardCast;
+        
+
+        public static void WardJump(Vector3 pos)
+        {
+            var wards = new[]
+            {
+                ItemId.Warding_Totem_Trinket, ItemId.Sightstone, ItemId.Ruby_Sightstone,
+                ItemId.Greater_Stealth_Totem_Trinket, ItemId.Greater_Vision_Totem_Trinket
+            };
+            var ward = Player.Instance.InventoryItems.FirstOrDefault(a => wards.Contains(a.Id) && a.CanUseItem());
+
+            if (SpellManager.Q.IsReady() && _lastWardCast < Environment.TickCount && ward != null)
+            {
+                ward.Cast(Player.Instance.Position.Extend(pos, 590).To3D());
+                _lastWardCast = Environment.TickCount + 1000;
+            }
+        }
+
         public override void Execute()
         {
-            if (Q.IsReady() && Player.Instance.HealthPercent <= 35 && Player.Instance.CountEnemiesInRange(Q.Range) >= 1)
-            {
-                var enemyminion =
-                    EntityManager.MinionsAndMonsters.EnemyMinions.OrderByDescending(m => m.Distance(Game.CursorPos))
-                        .FirstOrDefault(m => m.IsValidTarget(E.Range));
-                if (enemyminion == null) return;
-
-                Q.Cast(enemyminion);
-            }
+            WardJump(Game.CursorPos);
         }
     }
 }

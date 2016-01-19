@@ -2,6 +2,8 @@
 using System.Linq;
 using EloBuddy;
 using EloBuddy.SDK;
+
+using Misc = KickassSeries.Activator.Config.Types.Settings;
 using Settings = KickassSeries.Activator.Config.Types.ConsumablesItems;
 
 namespace KickassSeries.Activator.Items
@@ -16,13 +18,12 @@ namespace KickassSeries.Activator.Items
         {
             if (LastRun > Environment.TickCount)return;
 
-            var target = EntityManager.Heroes.Enemies.FirstOrDefault(e => !e.IsDead && e.IsInRange(Player.Instance, 1000));
-
-            if (Player.Instance.IsRecalling() || Player.Instance.IsInShopRange() || target == null) return;
+            if (Player.Instance.IsInShopRange() || Player.Instance.CountAlliesInRange(Misc.RangeEnemy) < Misc.EnemyCount ||
+                Activator.lastUsed >= Environment.TickCount) return;
 
             if (Settings.UseHPpot && HealthPotion.IsOwned())
             {
-                if (Player.Instance.HealthPercent <= Settings.MinHPpot && !Player.Instance.HasBuff("RegenerationPotion"))
+                if (Player.Instance.HealthPercent < Settings.MinHPpot && !Player.Instance.HasBuff("RegenerationPotion"))
                 {
                     HealthPotion.Cast();
                 }
@@ -46,15 +47,7 @@ namespace KickassSeries.Activator.Items
 
             if (Settings.UseCorrupts && CorruptingPotion.IsOwned())
             {
-                if (Player.Instance.ManaPercent <= Settings.MinCorruptMp && Player.Instance.HealthPercent <= Settings.MinCorruptHp && !Player.Instance.HasBuff("ItemDarkCrystalFlask"))
-                {
-                    CorruptingPotion.Cast();
-                }
-            }
-
-            if (Settings.UseCorrupts && CorruptingPotion.IsOwned())
-            {
-                if (Player.Instance.ManaPercent <= Settings.MinCorruptMp && Player.Instance.HealthPercent <= Settings.MinCorruptHp && !Player.Instance.HasBuff("ItemDarkCrystalFlask"))
+                if (Player.Instance.ManaPercent < Settings.MinCorruptMp && Player.Instance.HealthPercent < Settings.MinCorruptHp && !Player.Instance.HasBuff("ItemDarkCrystalFlask"))
                 {
                     CorruptingPotion.Cast();
                 }
@@ -62,7 +55,7 @@ namespace KickassSeries.Activator.Items
 
             if (Settings.UseHunters && HuntersPotion.IsOwned())
             {
-                if (Player.Instance.ManaPercent <= Settings.MinHunterMp && Player.Instance.HealthPercent <= Settings.MinHunterHp && !Player.Instance.HasBuff("ItemDarkCrystalFlask"))
+                if (Player.Instance.ManaPercent < Settings.MinHunterMp && Player.Instance.HealthPercent < Settings.MinHunterHp && !Player.Instance.HasBuff("ItemDarkCrystalFlask"))
                 {
                     HuntersPotion.Cast();
                 }
@@ -85,7 +78,7 @@ namespace KickassSeries.Activator.Items
                 }
             }
 
-            LastRun = Environment.TickCount + 10000;
+            LastRun = Environment.TickCount + 1000;
         }
     }
 }

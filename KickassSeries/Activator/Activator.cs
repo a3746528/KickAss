@@ -7,11 +7,12 @@ namespace KickassSeries.Activator
 {
     public static class Activator
     {
+        public static int lastUsed;
         public static void Init()
         {
             Config.Initialize();
 
-            Game.OnTick += Game_OnTick;
+            Game.OnUpdate += Game_OnUpdate;
 
             SummonerSpells.Initialize.Init();
 
@@ -20,12 +21,13 @@ namespace KickassSeries.Activator
             EventsManager.Initialize();
         }
 
-        private static void Game_OnTick(EventArgs args)
+        private static void Game_OnUpdate(EventArgs args)
         {
-            SummonerSpells.Initialize.Execute();
             Defensive.Execute();
             Offensive.Execute();
             Consumables.Execute();
+
+            SummonerSpells.Initialize.Execute();
         }
     }
 }

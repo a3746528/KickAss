@@ -14,10 +14,10 @@ namespace KickassSeries.Champions.Alistar.Modes
 
         public override void Execute()
         {
-            var target = TargetSelector.GetTarget(Q.Range, DamageType.Magical);
+            var target = TargetSelector.GetTarget(W.Range, DamageType.Magical);
             if (target == null || target.IsZombie) return;
 
-            if (W.IsReady() && target.IsValidTarget(W.Range) && Settings.UseWQ)
+            if (W.IsReady() && target.IsValidTarget(W.Range) && Settings.UseW)
             {
                 W.Cast(target);
             }

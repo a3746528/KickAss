@@ -28,7 +28,7 @@ namespace KickassSeries.Champions.Yasuo.Modes
                 }
             }
 
-            if (Settings.UseEGap && SpellManager.E.IsReady())
+            if (/*Settings.UseEGap &&*/ SpellManager.E.IsReady())
             {
                 var minion =
                     ObjectManager.Get<Obj_AI_Minion>()
@@ -55,15 +55,15 @@ namespace KickassSeries.Champions.Yasuo.Modes
             {
                 var enemies =
                     ObjectManager.Get<AIHeroClient>()
-                        .Where(x => x.IsValidTarget(SpellManager.R.Range))
-                        .Where(x => x.HasBuffOfType(BuffType.Knockup) || x.HasBuffOfType(BuffType.Knockback));
+                        .Count(
+                            x =>
+                                x.IsValidTarget(SpellManager.R.Range) && x.HasBuffOfType(BuffType.Knockup) ||
+                                x.HasBuffOfType(BuffType.Knockback));
 
-                var enemy = enemies as IList<AIHeroClient> ?? enemies.ToList();
-
-                if (enemy.Count() >= Settings.MinR &&
-                    Player.Instance.CountEnemiesInRange(SpellManager.R.Range) <= Settings.MinR)
+                if (enemies >= 1/*Settings.MinR*/ &&
+                    Player.Instance.CountEnemiesInRange(SpellManager.R.Range) <= 100/*Settings.MinR*/)
                 {
-                    Core.DelayAction(() => SpellManager.R.Cast(), Settings.DelayR);
+                    //Core.DelayAction(() => SpellManager.R.Cast(), Settings.DelayR);
                 }
             }
         }

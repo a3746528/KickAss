@@ -13,3 +13,46 @@ C:\Users\Mario\Documents\GitHub\Kickass\KickassSeries\obj\Debug\KickassSeries.pd
 C:\Users\Mario\Documents\GitHub\Kickass\KickassSeries\bin\Debug\EloBuddy.Sandbox.dll
 C:\Users\Mario\Documents\GitHub\KA\KickassSeries\obj\Debug\KickassSeries.exe
 C:\Users\Mario\Documents\GitHub\KA\KickassSeries\obj\Debug\KickassSeries.pdb
+C:\Users\Mario\Desktop\New folder\KA\KickassSeries\obj\Debug\KickassSeries.exe
+C:\Users\Mario\Desktop\New folder\KA\KickassSeries\obj\Debug\KickassSeries.pdb
+C:\Users\Mario\Desktop\New folder\KA\KickassSeries\bin\Debug\KickassSeries.exe
+C:\Users\Mario\Desktop\New folder\KA\KickassSeries\bin\Debug\KickassSeries.pdb
+C:\Users\Mario\Desktop\New folder\KA\KickassSeries\bin\Debug\EloBuddy.dll
+C:\Users\Mario\Desktop\New folder\KA\KickassSeries\bin\Debug\EloBuddy.Sandbox.dll
+C:\Users\Mario\Desktop\New folder\KA\KickassSeries\bin\Debug\EloBuddy.SDK.dll
+C:\Users\Mario\Desktop\New folder\KA\KickassSeries\bin\Debug\SharpDX.Direct3D9.dll
+C:\Users\Mario\Desktop\New folder\KA\KickassSeries\bin\Debug\SharpDX.dll
+C:\Users\Mario\Desktop\New folder\KA\KickassSeries\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Mario\Desktop\New folder\KA\KickassSeries\obj\Debug\KickassSeries.csprojResolveAssemblyReference.cache
+C:\Users\Mario\Desktop\New folder\KA\KickassSeries\obj\Debug\KickassSeries.Properties.Resources.resources
+C:\Users\Mario\Desktop\New folder\KA\KickassSeries\obj\Debug\KickassSeries.csproj.GenerateResource.Cache
+C:\Users\Mario\Documents\KickAss AIO Repo\KA\KickassSeries\obj\Debug\KickassSeries.exe
+C:\Users\Mario\Documents\KickAss AIO Repo\KA\KickassSeries\obj\Debug\KickassSeries.pdb
+C:\Users\Mario\Desktop\KA Backup\KA,01-15\KickassSeries\obj\Debug\KickassSeries.exe
+C:\Users\Mario\Desktop\KA Backup\KA,01-15\KickassSeries\obj\Debug\KickassSeries.pdb
+C:\Users\Mario\Desktop\KA WorkSpace\KickassSeries\obj\Debug\KickassSeries.exe
+C:\Users\Mario\Desktop\KA WorkSpace\KickassSeries\obj\Debug\KickassSeries.pdb
+C:\Users\Mario\Desktop\KA WorkSpace\KickassSeries\bin\Debug\KickassSeries.exe
+C:\Users\Mario\Desktop\KA WorkSpace\KickassSeries\bin\Debug\KickassSeries.pdb
+C:\Users\Mario\Desktop\KA WorkSpace\KickassSeries\bin\Debug\EloBuddy.dll
+C:\Users\Mario\Desktop\KA WorkSpace\KickassSeries\bin\Debug\EloBuddy.Sandbox.dll
+C:\Users\Mario\Desktop\KA WorkSpace\KickassSeries\bin\Debug\EloBuddy.SDK.dll
+C:\Users\Mario\Desktop\KA WorkSpace\KickassSeries\bin\Debug\SharpDX.Direct3D9.dll
+C:\Users\Mario\Desktop\KA WorkSpace\KickassSeries\bin\Debug\SharpDX.dll
+C:\Users\Mario\Desktop\KA WorkSpace\KickassSeries\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Mario\Desktop\KA WorkSpace\KickassSeries\obj\Debug\KickassSeries.csprojResolveAssemblyReference.cache
+C:\Users\Mario\Desktop\KA WorkSpace\KickassSeries\obj\Debug\KickassSeries.Properties.Resources.resources
+C:\Users\Mario\Desktop\KA WorkSpace\KickassSeries\obj\Debug\KickassSeries.csproj.GenerateResource.Cache
+C:\Users\Mario\Desktop\KickAss Repo\KickassSeries\obj\Debug\KickassSeries.exe
+C:\Users\Mario\Desktop\KickAss Repo\KickassSeries\obj\Debug\KickassSeries.pdb
+C:\Users\Mario\Desktop\KickAss Repo\KickassSeries\obj\Debug\KickassSeries.Properties.Resources.resources
+C:\Users\Mario\Desktop\KickAss Repo\KickassSeries\obj\Debug\KickassSeries.csproj.GenerateResource.Cache
+C:\Users\Mario\Desktop\KickAss Repo\KickassSeries\bin\Debug\KickassSeries.exe
+C:\Users\Mario\Desktop\KickAss Repo\KickassSeries\bin\Debug\KickassSeries.pdb
+C:\Users\Mario\Desktop\KickAss Repo\KickassSeries\bin\Debug\EloBuddy.dll
+C:\Users\Mario\Desktop\KickAss Repo\KickassSeries\bin\Debug\EloBuddy.Sandbox.dll
+C:\Users\Mario\Desktop\KickAss Repo\KickassSeries\bin\Debug\EloBuddy.SDK.dll
+C:\Users\Mario\Desktop\KickAss Repo\KickassSeries\bin\Debug\SharpDX.Direct3D9.dll
+C:\Users\Mario\Desktop\KickAss Repo\KickassSeries\bin\Debug\SharpDX.dll
+C:\Users\Mario\Desktop\KickAss Repo\KickassSeries\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Mario\Desktop\KickAss Repo\KickassSeries\obj\Debug\KickassSeries.csprojResolveAssemblyReference.cache

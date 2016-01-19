@@ -2,7 +2,7 @@
 using EloBuddy;
 using EloBuddy.SDK;
 
-using Settings = KickassSeries.Champions.Teemo.Config.Modes.JungleClear;
+//using Settings = KickassSeries.Champions.Teemo.Config.Modes.JungleClear;
 
 namespace KickassSeries.Champions.Teemo.Modes
 {
@@ -15,6 +15,7 @@ namespace KickassSeries.Champions.Teemo.Modes
 
         public override void Execute()
         {
+            /*
             var jgminion =
                 EntityManager.MinionsAndMonsters.GetJungleMonsters()
                     .OrderByDescending(j => j.Health)
@@ -44,7 +45,7 @@ namespace KickassSeries.Champions.Teemo.Modes
             if (R.IsReady() && ammoR >= 1)
             {
                 R.Cast(firstjunglemobR.ServerPosition);
-            }
+            }*/
         }
     }
 }

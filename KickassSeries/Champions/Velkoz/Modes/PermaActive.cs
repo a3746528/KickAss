@@ -1,4 +1,5 @@
 ﻿using EloBuddy;
+using SharpDX;
 
 namespace KickassSeries.Champions.Velkoz.Modes
 {
@@ -11,7 +12,8 @@ namespace KickassSeries.Champions.Velkoz.Modes
 
         public override void Execute()
         {
-            
+            var targetpos = new Vector3();
+            Player.Instance.Spellbook.UpdateChargeableSpell(SpellSlot.R, targetpos, false);
         }
     }
 }

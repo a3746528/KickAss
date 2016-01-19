@@ -31,27 +31,24 @@ namespace KickassSeries.Activator
 
         public static class Types
         {
-            private static readonly Menu OffensiveMenu, DefensiveMenu, ConsumablesMenu, DrawMenu;
+            private static readonly Menu OffensiveMenu, DefensiveMenu, ConsumablesMenu;
             public static readonly Menu SummonerMenu, SettingsMenu;
 
             static Types()
             {
-                OffensiveMenu = Menu.AddSubMenu("Offensive Items");
+                OffensiveMenu = Menu.AddSubMenu("::Offensive Items::");
                 OffensiveItems.Initialize();
 
-                DefensiveMenu = Menu.AddSubMenu("Defensive Items");
+                DefensiveMenu = Menu.AddSubMenu("::Defensive Items::");
                 DeffensiveItems.Initialize();
 
-                ConsumablesMenu = Menu.AddSubMenu("Consumables Items");
+                ConsumablesMenu = Menu.AddSubMenu("::Consumables Items::");
                 ConsumablesItems.Initialize();
 
-                SummonerMenu = Menu.AddSubMenu("Summoner Spells");
+                SummonerMenu = Menu.AddSubMenu("::Summoner Spells::");
                 SummonerSpells.Initialize();
 
-                DrawMenu = Menu.AddSubMenu("Drawings");
-                DrawMenu.AddLabel("SOON");
-
-                SettingsMenu = Menu.AddSubMenu("Settings");
+                SettingsMenu = Menu.AddSubMenu("::Settings::");
                 Settings.Initialize();
             }
 
@@ -113,17 +110,11 @@ namespace KickassSeries.Activator
                 #region Tiamat
 
                 private static readonly CheckBox UseTiamat;
-                private static readonly Slider MyHpTiamat;
                 private static readonly Slider TargetHpTiamat;
 
                 public static bool Tiamat
                 {
                     get { return UseTiamat.CurrentValue; }
-                }
-
-                public static int TiamatMyHp
-                {
-                    get { return MyHpTiamat.CurrentValue; }
                 }
 
                 public static int TiamatTargetHp
@@ -136,17 +127,11 @@ namespace KickassSeries.Activator
                 #region Hydra
 
                 private static readonly CheckBox UseHydra;
-                private static readonly Slider MyHpHydra;
                 private static readonly Slider TargetHpHydra;
 
                 public static bool Hydra
                 {
                     get { return UseHydra.CurrentValue; }
-                }
-
-                public static int HydraMyHp
-                {
-                    get { return MyHpHydra.CurrentValue; }
                 }
 
                 public static int HydraTargetHp
@@ -159,17 +144,11 @@ namespace KickassSeries.Activator
                 #region Titanic
 
                 private static readonly CheckBox UseTitanicHydra;
-                private static readonly Slider MyHpTitanicHydra;
                 private static readonly Slider TargetHpTitanicHydra;
 
                 public static bool Titanic
                 {
                     get { return UseTitanicHydra.CurrentValue; }
-                }
-
-                public static int TitanicMyHp
-                {
-                    get { return MyHpTitanicHydra.CurrentValue; }
                 }
 
                 public static int TitanicTargetHp
@@ -182,17 +161,11 @@ namespace KickassSeries.Activator
                 #region Youmuu
 
                 private static readonly CheckBox UseYoumuu;
-                private static readonly Slider MyHpYoumuu;
                 private static readonly Slider TargetHpYoumuu;
 
                 public static bool Youmuu
                 {
                     get { return UseYoumuu.CurrentValue; }
-                }
-
-                public static int YoumuuMyHp
-                {
-                    get { return MyHpYoumuu.CurrentValue; }
                 }
 
                 public static int YoumuuTargetHp
@@ -205,17 +178,11 @@ namespace KickassSeries.Activator
                 #region Hextech
 
                 private static readonly CheckBox UseHextech;
-                private static readonly Slider MyHpHextech;
                 private static readonly Slider TargetHpHextech;
 
                 public static bool Hextech
                 {
                     get { return UseHextech.CurrentValue; }
-                }
-
-                public static int HextechMyHp
-                {
-                    get { return MyHpHextech.CurrentValue; }
                 }
 
                 public static int HextechTargetHp
@@ -247,36 +214,26 @@ namespace KickassSeries.Activator
 
                     OffensiveMenu.AddGroupLabel("Tiamat");
                     UseTiamat = OffensiveMenu.Add("useTiamat", new CheckBox("Use Tiamat ?"));
-                    MyHpTiamat = OffensiveMenu.Add("useTiamatMyHP",
-                        new Slider("Use Tiamat When My Health hits X%", 80));
                     TargetHpTiamat = OffensiveMenu.Add("useTiamatTargetHP",
                         new Slider("Use Tiamat When Target`s Health hits X%", 80));
 
                     OffensiveMenu.AddGroupLabel("Ravenous Hydra");
                     UseHydra = OffensiveMenu.Add("useHydra", new CheckBox("Use Ravenous Hydra ?"));
-                    MyHpHydra = OffensiveMenu.Add("useHydraMyHP",
-                        new Slider("Use Ravenous Hydra When My Health hits X%", 80));
                     TargetHpHydra = OffensiveMenu.Add("useHydraTargetHP",
                         new Slider("Use Ravenous Hydra When Target`s Health hits X%", 80));
 
                     OffensiveMenu.AddGroupLabel("Titanic Hydra");
                     UseTitanicHydra = OffensiveMenu.Add("useTitanic", new CheckBox("Use Titanic Hydra ?"));
-                    MyHpTitanicHydra = OffensiveMenu.Add("useTitanicMyHP",
-                        new Slider("Use Titanic Hydra When My Health hits X%", 80));
                     TargetHpTitanicHydra = OffensiveMenu.Add("useTitanicTargetHP",
                         new Slider("Use Titanic Hydra When Target`s Health hits X%", 80));
 
                     OffensiveMenu.AddGroupLabel("Youmuu");
                     UseYoumuu = OffensiveMenu.Add("useYoumuu ", new CheckBox("Use Youmuu ?"));
-                    MyHpYoumuu = OffensiveMenu.Add("useYoumuu MyHP",
-                        new Slider("Use Youmuu  When My Health hits X%", 80));
                     TargetHpYoumuu = OffensiveMenu.Add("useYoumuuTargetHP",
                         new Slider("Use Youmuu  When Target`s Health hits X%", 80));
 
                     OffensiveMenu.AddGroupLabel("Hextech");
                     UseHextech = OffensiveMenu.Add("useHextech", new CheckBox("Use Hextech ?"));
-                    MyHpHextech = OffensiveMenu.Add("useHextech MyHP",
-                        new Slider("Use Hextech When My Health hits X%", 80));
                     TargetHpHextech = OffensiveMenu.Add("useHextechTargetHP",
                         new Slider("Use Hextech When Target`s Health hits X%", 80));
                    
@@ -310,37 +267,76 @@ namespace KickassSeries.Activator
 
                 #region ArchengelStaff
 
-                private static readonly CheckBox UseArchengelStaff;
-                private static readonly Slider MyHPArchengelStaff;
+                private static readonly CheckBox _useArchengelStaff;
+                private static readonly Slider _myHPArchengelStaff;
 
-                public static bool ArchengelStaff
+                public static bool UseArchengelStaff
                 {
-                    get { return UseArchengelStaff.CurrentValue; }
+                    get { return _useArchengelStaff.CurrentValue; }
                 }
 
                 public static int MYHPArchengelStaff
                 {
-                    get { return MyHPArchengelStaff.CurrentValue; }
+                    get { return _myHPArchengelStaff.CurrentValue; }
                 }
 
                 #endregion ArchengelStaff
 
+                #region FaceOfTheMountain
+
+                private static readonly CheckBox _useFaceOfTheMountain;
+                private static readonly Slider _myHPFaceOfTheMountain;
+
+                public static bool UseFaceOfTheMountain
+                {
+                    get { return _useFaceOfTheMountain.CurrentValue; }
+                }
+
+                public static int MYHPFaceOfTheMountain
+                {
+                    get { return _myHPFaceOfTheMountain.CurrentValue; }
+                }
+
+                #endregion FaceOfTheMountain
+
+                #region Talisman
+
+                private static readonly CheckBox _useTalisman;
+                private static readonly Slider _myHPTalisman;
+
+                public static bool UseTalisman
+                {
+                    get { return _useTalisman.CurrentValue; }
+                }
+
+                public static int MYHPTalisman
+                {
+                    get { return _myHPTalisman.CurrentValue; }
+                }
+
+                #endregion Talisman
+
                 static DeffensiveItems()
                 {
-                    DefensiveMenu.AddGroupLabel("Defensive Menu");
-                    DefensiveMenu.AddLabel("Please configure if the player is in danger in the settings menu");
-                    // Initialize the menu values
                     DefensiveMenu.AddGroupLabel("Zhonyas");
                     UseZhonyas = DefensiveMenu.Add("useZhonyas", new CheckBox("Use Zhonyas ?"));
                     HpZhonyas = DefensiveMenu.Add("useZhonyasrMyHP",
-                        new Slider("Use Zhonyas When My Health hits X%", 20));
-                    DefensiveMenu.AddSeparator();
+                        new Slider("Use Zhonyas When My Health hits {0}%", 20));
 
-                    DefensiveMenu.AddGroupLabel("ArchengelStaff");
-                    UseArchengelStaff = DefensiveMenu.Add("useArchengelStaff", new CheckBox("Use ArchengelStaff ?"));
-                    MyHPArchengelStaff = DefensiveMenu.Add("useArchengelStaffMyHP",
-                        new Slider("Use ArchengelStaff When My Health hits X%", 80));
-                    DefensiveMenu.AddSeparator();
+                    DefensiveMenu.AddGroupLabel("Archengel Staff");
+                    _useArchengelStaff = DefensiveMenu.Add("useArchengelStaff", new CheckBox("Use ArchengelStaff ?"));
+                    _myHPFaceOfTheMountain = DefensiveMenu.Add("useArchengelStaffMyHP",
+                        new Slider("Use ArchengelStaff When My Health hits {0}%", 30));
+
+                    DefensiveMenu.AddGroupLabel("Face Of The Mountain");
+                    _useFaceOfTheMountain = DefensiveMenu.Add("useFaceOfTheMountain", new CheckBox("Use ArchengelStaff ?"));
+                    _myHPFaceOfTheMountain = DefensiveMenu.Add("useFaceOfTheMountainMyHP",
+                        new Slider("Use Face Of The Mountain When My Health hits {0}%", 30));
+
+                    DefensiveMenu.AddGroupLabel("Talisman");
+                    _useTalisman = DefensiveMenu.Add("useTalisman", new CheckBox("Use Talisman?"));
+                    _myHPTalisman = DefensiveMenu.Add("useTalismanMyHP",
+                        new Slider("Use Talisman When My Health hits {0}%", 30));
                 }
 
                 public static void Initialize()
@@ -462,23 +458,19 @@ namespace KickassSeries.Activator
 
                 static ConsumablesItems()
                 {
-                    // Initialize the menu values
                     ConsumablesMenu.AddGroupLabel("Health Pot");
                     UseHealthPot = ConsumablesMenu.Add("useHealthPot", new CheckBox("Use Health Pot ?"));
                     MinHealthPot = ConsumablesMenu.Add("minHealthPot", new Slider("Min Health to use Health Pot", 30));
-                    ConsumablesMenu.AddSeparator();
 
                     ConsumablesMenu.AddGroupLabel("Biscuit");
                     UseBiscuit = ConsumablesMenu.Add("useBiscuit", new CheckBox("Use Biscuit ?"));
                     MinHealthBiscuit = ConsumablesMenu.Add("minhpBiscuit", new Slider("Min Health to use Biscuit", 30));
                     MinManaBiscuit = ConsumablesMenu.Add("minmpBiscuit", new Slider("Min Mana to use Biscuit", 30));
-                    ConsumablesMenu.AddSeparator();
 
                     ConsumablesMenu.AddGroupLabel("Refill Potion");
                     UseRefillPotion = ConsumablesMenu.Add("useRefill", new CheckBox("Use Refill Potion ?"));
                     MinHPRefillPotion = ConsumablesMenu.Add("minhpRefill",
                         new Slider("Min Health to use Refill Potion", 30));
-                    ConsumablesMenu.AddSeparator();
 
                     ConsumablesMenu.AddGroupLabel("Corrupt Potion");
                     UseCorrupt = ConsumablesMenu.Add("useCorrupt", new CheckBox("Use Corrupt Potion ?"));
@@ -486,7 +478,6 @@ namespace KickassSeries.Activator
                         new Slider("Min Health to use Corrupt Potion", 30));
                     MinManaCorrupt = ConsumablesMenu.Add("minmpCorrupt",
                         new Slider("Min Mana to use Corrupt Potion", 30));
-                    ConsumablesMenu.AddSeparator();
 
                     ConsumablesMenu.AddGroupLabel("Hunter`s Potion");
                     UseHunter = ConsumablesMenu.Add("useHunter", new CheckBox("Use Hunter`s Potion ?"));
@@ -495,7 +486,6 @@ namespace KickassSeries.Activator
                     MinManaHunter = ConsumablesMenu.Add("minmpHunter", new Slider("Min Mana to use Hunter`s Potion", 30));
                     UseHunterMinionWillDie = ConsumablesMenu.Add("useHunterMinionWillDie",
                         new CheckBox("Use Hunter`s Potion when jungle minion will die ?"));
-                    ConsumablesMenu.AddSeparator();
                 }
 
                 public static void Initialize()
@@ -531,22 +521,46 @@ namespace KickassSeries.Activator
 
                 #region Heal
 
-                private static readonly CheckBox Heal;
+                private static readonly CheckBox _useHeal;
+                private static readonly Slider _healHealth;
+                private static readonly CheckBox _useHealAlly;
+                private static readonly Slider _healAllyHealth;
 
                 public static bool UseHeal
                 {
-                    get { return Heal.CurrentValue; }
+                    get { return _useHeal.CurrentValue; }
+                }
+                
+                public static int HealHealth
+                {
+                    get { return _healHealth.CurrentValue; }
+                }
+
+                public static bool UseHealAlly
+                {
+                    get { return _useHealAlly.CurrentValue; }
+                }
+
+                public static int HealAllyHealth
+                {
+                    get { return _healAllyHealth.CurrentValue; }
                 }
 
                 #endregion Heal
 
                 #region Barrier
 
-                private static readonly CheckBox Barrier;
+                private static readonly CheckBox _useBarrier;
+                private static readonly Slider _healthBarrier;
 
                 public static bool UseBarrier
                 {
-                    get { return Barrier.CurrentValue; }
+                    get { return _useBarrier.CurrentValue; }
+                }
+                
+                public static int BarrierHealth
+                {
+                    get { return _healthBarrier.CurrentValue; }
                 }
 
                 #endregion Barrier
@@ -597,10 +611,11 @@ namespace KickassSeries.Activator
 
                     if (KickassSeries.Activator.SummonerSpells.Extensions.HasSpell("summonerheal"))
                     {
-                        SummonerMenu.AddGroupLabel("Heal");
-                        Heal = SummonerMenu.Add("healuse", new CheckBox("Use heal when you are in danger ?"));
-                        SummonerMenu.AddLabel("You can configure when you are in danger in the settings menu");
-                        SummonerMenu.AddSeparator();
+                        SummonerMenu.AddGroupLabel("Summoner Heal Settings:");
+                        _useHeal = SummonerMenu.Add("useHeal", new CheckBox("Use heal ?"));
+                        _healHealth = SummonerMenu.Add("healthHeal", new Slider("Use Heal when health hits {0}%", 20));
+                        _useHealAlly = SummonerMenu.Add("useHealAlly", new CheckBox("Use heal in allies ?"));
+                        _healAllyHealth = SummonerMenu.Add("healthAllyHeal", new Slider("Use Heal when ally health hits {0}%", 30));
                     }
 
                     #endregion HealMenu
@@ -609,10 +624,9 @@ namespace KickassSeries.Activator
 
                     if (KickassSeries.Activator.SummonerSpells.Extensions.HasSpell("summonerbarrier"))
                     {
-                        SummonerMenu.AddGroupLabel("Barrier");
-                        Barrier = SummonerMenu.Add("barrieruse", new CheckBox("Use barrier when you are in danger ?"));
-                        SummonerMenu.AddLabel("You can configure when you are in danger in the settings menu");
-                        SummonerMenu.AddSeparator();
+                        SummonerMenu.AddGroupLabel("Summoner Barrier Settings:");
+                        _useBarrier = SummonerMenu.Add("useBarrier", new CheckBox("Use barrier ?"));
+                        _healthBarrier = SummonerMenu.Add("healthBarrier", new Slider("Use Barrier when health hits {0}%", 30));
                     }
 
                     #endregion BarrierMenu
@@ -652,17 +666,12 @@ namespace KickassSeries.Activator
                 }
 
                 //Danger
-                private static readonly Slider _HPDangerSlider;
                 private static readonly Slider EnemyRange;
                 private static readonly Slider EnemySlider;
                 private static readonly CheckBox Spells;
                 private static readonly CheckBox Skillshots;
                 private static readonly CheckBox AAs;
 
-                public static int HealthDanger
-                {
-                    get { return _HPDangerSlider.CurrentValue; }
-                }
 
                 public static int RangeEnemy
                 {
@@ -693,11 +702,10 @@ namespace KickassSeries.Activator
                 {
                     SettingsMenu.AddGroupLabel("Offensive Settings");
                     _AAcancel = SettingsMenu.Add("aacanceloff", new CheckBox("Cancel AA animation with items ?"));
-                    _DelayOff = _HPDangerSlider = SettingsMenu.Add("delayoffbetween", new Slider("Delay between each offensive item used(in MS)", 1000, 100, 5000));
+                    _DelayOff = SettingsMenu.Add("delayoffbetween", new Slider("Delay between each offensive item used(in MS)", 1000, 100, 5000));
                     SettingsMenu.AddGroupLabel("Danger Settings");
-                    _HPDangerSlider = SettingsMenu.Add("hpdangerslider", new Slider("Min health to be in danger " , 25, 10));
-                    EnemyRange = SettingsMenu.Add("minrangeenemy", new Slider("Enemies must be in X range to be in danger", 850, 500, 2000));
-                    EnemySlider = SettingsMenu.Add("minenemiesinrange", new Slider("Min enemies in the range determined up", 2, 0, 5));
+                    EnemySlider = SettingsMenu.Add("minenemiesinrange", new Slider("Min enemies in the range determined below", 1, 1, 5));
+                    EnemyRange = SettingsMenu.Add("minrangeenemy", new Slider("Enemies must be in ({0}) range to be in danger", 1000, 600, 2500));
                     Spells = SettingsMenu.Add("considerspells", new CheckBox("Consider spells ?"));
                     Skillshots = SettingsMenu.Add("considerskilshots", new CheckBox("Consider SkillShots ?"));
                     AAs = SettingsMenu.Add("consideraas", new CheckBox("Consider Auto Attacks ?"));
@@ -705,7 +713,7 @@ namespace KickassSeries.Activator
                     SettingsMenu.AddGroupLabel("Dangerous Spells");
                     foreach (var spell in DMGHandler.DangerousSpells.Spells.Where(x => EntityManager.Heroes.Enemies.Any(b => b.Hero == x.Hero)))
                     {
-                        SettingsMenu.Add(spell.Hero.ToString() + spell.Slot,new CheckBox(spell.Hero + "-" + spell.Slot));
+                        SettingsMenu.Add(spell.Hero.ToString() + spell.Slot,new CheckBox(spell.Hero + " - " + spell.Slot + ".", spell.DefaultValue));
                     }
                 }
 

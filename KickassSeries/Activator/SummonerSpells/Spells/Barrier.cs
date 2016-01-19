@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Linq;
 using EloBuddy;
 using EloBuddy.SDK;
 using KickassSeries.Activator.DMGHandler;
+
 using Settings = KickassSeries.Activator.Config.Types.SummonerSpells;
 
 namespace KickassSeries.Activator.SummonerSpells.Spells
@@ -11,27 +13,22 @@ namespace KickassSeries.Activator.SummonerSpells.Spells
         public static Spell.Active SummonerBarrier;
         public static void Initialize()
         {
-            SetHealtSlot();
-            Game.OnTick += Game_OnTick;
-        }
-
-        private static void Game_OnTick(EventArgs args)
-        {
-            if (!SummonerBarrier.IsReady() || SummonerSpells.Initialize.lastSpell + 1500 >= Environment.TickCount || !Settings.UseBarrier) return;
-
-            if (Player.Instance.InDanger())
+            var barrier = Player.Instance.Spellbook.Spells.FirstOrDefault(spell => spell.Name.Contains("barrier"));
+            if (barrier != null)
             {
-                SummonerBarrier.Cast();
-                SummonerSpells.Initialize.lastSpell = Environment.TickCount;
+                SummonerBarrier = new Spell.Active(barrier.Slot);
             }
         }
 
-        private static void SetHealtSlot()
+        public static void Execute()
         {
-            if (Player.Instance.Spellbook.GetSpell(SpellSlot.Summoner1).Name.Contains("barrier"))
-                SummonerBarrier = new Spell.Active(SpellSlot.Summoner1);
-            else if (Player.Instance.Spellbook.GetSpell(SpellSlot.Summoner2).Name.Contains("barrier"))
-                SummonerBarrier = new Spell.Active(SpellSlot.Summoner2);
+            if (!SummonerBarrier.IsReady() || Activator.lastUsed >= Environment.TickCount || !Settings.UseBarrier) return;
+
+            if (Player.Instance.InDanger(Settings.BarrierHealth))
+            {
+                SummonerBarrier.Cast();
+                Activator.lastUsed = Environment.TickCount + 500;
+            }
         }
     }
 }

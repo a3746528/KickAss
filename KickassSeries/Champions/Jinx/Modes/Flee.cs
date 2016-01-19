@@ -2,7 +2,7 @@
 using EloBuddy;
 using EloBuddy.SDK;
 
-using Settings = KickassSeries.Champions.Jinx.Config.Modes.Flee;
+//using Settings = KickassSeries.Champions.Jinx.Config.Modes.Flee;
 
 namespace KickassSeries.Champions.Jinx.Modes
 {
@@ -15,7 +15,7 @@ namespace KickassSeries.Champions.Jinx.Modes
 
         public override void Execute()
         {
-            if (Settings.UseW && W.IsReady())
+            if (W.IsReady())
             {
                 var enemy =
                     EntityManager.Heroes.Enemies.FirstOrDefault(
@@ -25,14 +25,14 @@ namespace KickassSeries.Champions.Jinx.Modes
                 {
                     var prediction = W.GetPrediction(enemy);
 
-                    if (prediction.HitChancePercent >= Settings.WPredPercentage)
+                    if (prediction.HitChancePercent >= 70)
                     {
                         W.Cast(prediction.CastPosition);
                     }
                 }
             }
 
-            if (Settings.UseE && E.IsReady())
+            if (E.IsReady())
             {
                 var enemy =
                     EntityManager.Heroes.Enemies.FirstOrDefault(
@@ -44,7 +44,7 @@ namespace KickassSeries.Champions.Jinx.Modes
                 {
                     var prediction = E.GetPrediction(enemy);
 
-                    if (prediction.HitChancePercent >= Settings.EPredPercentage)
+                    if (prediction.HitChancePercent >= 75)
                     {
                         E.Cast(prediction.CastPosition);
                     }

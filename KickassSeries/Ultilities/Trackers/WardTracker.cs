@@ -32,14 +32,7 @@ namespace KickassSeries.Ultilities.Trackers
 
         private static List<Wards> _Wards = new List<Wards>();
 
-        public static void Initialize()
-        {
-            GameObject.OnCreate += GameObject_OnCreate;
-            GameObject.OnDelete += GameObject_OnDelete;
-            Drawing.OnDraw += Drawing_OnDraw;
-        }
-
-        private static void GameObject_OnCreate(GameObject sender, EventArgs args)
+        public static void OnCreate(GameObject sender, EventArgs args)
         {
             if (!(sender is Obj_AI_Minion) || !sender.Name.Contains("Ward")) return;
 
@@ -63,7 +56,7 @@ namespace KickassSeries.Ultilities.Trackers
             }
         }
 
-        private static void GameObject_OnDelete(GameObject sender, EventArgs args)
+        public static void OnDelete(GameObject sender, EventArgs args)
         {
             if (!(sender is Obj_AI_Minion) || !sender.Name.Contains("Ward")) return;
 
@@ -76,7 +69,7 @@ namespace KickassSeries.Ultilities.Trackers
                 _wards.Available = false;
         }
 
-        private static void Drawing_OnDraw(EventArgs args)
+        public static void OnDraw(EventArgs args)
         {
             var auxList = new List<Wards>();
             foreach (var wardInfo in _Wards)

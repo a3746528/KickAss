@@ -15,10 +15,14 @@ namespace KickassSeries.Champions.Katarina
 
         private static void Obj_AI_Base_OnCreate(GameObject sender, System.EventArgs args)
         {
-            var ward = sender as Obj_Ward;
-            if(ward == null || !Orbwalker.ActiveModesFlags.HasFlag(Orbwalker.ActiveModes.Flee)) return;
-
-            SpellManager.E.Cast(ward);
+            var minion = sender as Obj_AI_Minion;
+            if (minion != null && minion.Name.Contains("Ward") && SpellManager.E.IsReady())
+            {
+                if (Orbwalker.ActiveModesFlags.HasFlag(Orbwalker.ActiveModes.Flee))
+                {
+                    Core.DelayAction(() => SpellManager.E.Cast(minion), 50);
+                }
+            }
         }
 
         private static void Gapcloser_OnGapcloser(AIHeroClient sender, Gapcloser.GapcloserEventArgs e)

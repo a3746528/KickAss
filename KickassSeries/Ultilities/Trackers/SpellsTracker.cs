@@ -5,7 +5,6 @@ using System.Globalization;
 using System.Linq;
 using EloBuddy;
 using EloBuddy.SDK;
-using EloBuddy.SDK.Events;
 using EloBuddy.SDK.Menu;
 using EloBuddy.SDK.Rendering;
 using KickassSeries.Properties;
@@ -40,11 +39,6 @@ namespace KickassSeries.Ultilities.Trackers
 
         public static void Initialize()
         {
-            Loading.OnLoadingComplete += Loading_OnLoadingComplete;
-        }
-
-        private static void Loading_OnLoadingComplete(EventArgs args)
-        {
             // Load main hud textures
             TextureLoader.Load("hud", Resources.SThud);
 
@@ -52,9 +46,9 @@ namespace KickassSeries.Ultilities.Trackers
             Text = new Text("", new Font(FontFamily.GenericSansSerif, 8, FontStyle.Bold)) { Color = Color.AntiqueWhite };
             MainBar = new Sprite(() => TextureLoader["hud"]);
 
-            TextureLoader.Load("summonersmite", Resources.summonersmite);
-            TextureLoader.Load("s5_summonersmiteduel", Resources.s5_summonersmiteduel);
-            TextureLoader.Load("s5_summonersmiteplayerganker", Resources.s5_summonersmiteplayerganker);
+            TextureLoader.Load("summonersmite", Resources.SummonerSmite);
+            TextureLoader.Load("s5_summonersmiteduel", Resources.SummonerRedSmite);
+            TextureLoader.Load("s5_summonersmiteplayerganker", Resources.SummonerBlueSmite);
             SummonerSpells.Add("summonersmite", new Sprite(() => TextureLoader["summonersmite"]));
             SummonerSpells.Add("s5_summonersmiteduel", new Sprite(() => TextureLoader["s5_summonersmiteduel"]));
             SummonerSpells.Add("s5_summonersmiteplayerganker", new Sprite(() => TextureLoader["s5_summonersmiteplayerganker"]));
@@ -71,65 +65,73 @@ namespace KickassSeries.Ultilities.Trackers
                 Bitmap bitmap = null;
                 switch (summonerName)
                 {
-                    case "summonerheal":
-                        bitmap = Resources.summonerheal;
+                        //Clarity
+                    case "summonerclarity":
+                        bitmap = Resources.SummonerClarity;
                         break;
-                    case "summonerdot":
-                        bitmap = Resources.summonerdot;
+                        //Garrison
+                    case "summonergarrison":
+                        bitmap = Resources.SummonerGarrison;
                         break;
-                    case "summonerexhaust":
-                        bitmap = Resources.summonerexhaust;
-                        break;
-                    case "summonerflash":
-                        bitmap = Resources.summonerflash;
-                        break;
+                        //Ghost
                     case "summonerhaste":
-                        bitmap = Resources.summonerhaste;
+                        bitmap = Resources.SummonerGhost;
                         break;
-                    case "summonermana":
-                        bitmap = Resources.summonermana;
+                        //Heal
+                    case "summonerheal":
+                        bitmap = Resources.SummonerHeal;
                         break;
+                        //SnowBall
+                    case "summonersnowball":
+                        bitmap = Resources.SummonerSnowBall;
+                        break;
+                        //Barrier
                     case "summonerbarrier":
-                        bitmap = Resources.summonerbarrier;
+                        bitmap = Resources.SummonerBarrier;
                         break;
+                        //Exhaust
+                    case "summonerexhaust":
+                        bitmap = Resources.SummonerExhaust;
+                        break;
+                        //Cleanse
+                    case "summonerboost":
+                        bitmap = Resources.SummonerCleanse;
+                        break;
+                        //TP
                     case "summonerteleport":
-                        bitmap = Resources.summonerteleport;
+                        bitmap = Resources.SummonerTeleport;
+                        break;
+                        //ClairVoyance
+                    case "summonerclairvoyance":
+                        bitmap = Resources.SummonerClairvoyance;
+                        break;
+                        //Flash
+                    case "summonerflash":
+                        bitmap = Resources.SummonerFlash;
+                        break;
+                        //Ignite
+                    case "summonerdot":
+                        bitmap = Resources.SummonerIgnite;
                         break;
                     case "summonersmite":
-                        bitmap = Resources.summonersmite;
+                        bitmap = Resources.SummonerSmite;
                         break;
-                    case "summonerboost":
-                        bitmap = Resources.summonerboost;
-                        break;
+                        //RedSmite
                     case "s5_summonersmiteduel":
-                        bitmap = Resources.s5_summonersmiteduel;
+                        bitmap = Resources.SummonerRedSmite;
                         break;
-                    case "summonerodingarrison":
-                        bitmap = Resources.summonerodingarrison;
-                        break;
+                        //BlueSmite
                     case "s5_summonersmiteplayerganker":
-                        bitmap = Resources.s5_summonersmiteplayerganker;
-                        break;
-                    case "summonerclairvoyance":
-                        bitmap = Resources.summonerclairvoyance;
-                        break;
-                    case "summonersnowball":
-                        bitmap = Resources.summonersnowball;
+                        bitmap = Resources.SummonerBlueSmite;
                         break;
                 }
 
                 TextureLoader.Load(summonerName, bitmap);
                 SummonerSpells.Add(summonerName, new Sprite(() => TextureLoader[summonerName]));
             }
-
-            // Listen to required events
-            Drawing.OnEndScene += OnDraw;
-            AppDomain.CurrentDomain.DomainUnload += OnDomainUnload;
-            AppDomain.CurrentDomain.ProcessExit += OnDomainUnload;
         }
 
-        //private static bool draw;
-        private static void OnDraw(EventArgs args)
+        public static void OnDrawEnd(EventArgs args)
         {
             if(Settings.TurnOff)return;
 
@@ -145,14 +147,14 @@ namespace KickassSeries.Ultilities.Trackers
                     if (SummonerSpells.ContainsKey(spell.Name.ToLower()))
                     {
                         var sprite = SummonerSpells[spell.Name.ToLower()];
-                        sprite.Color = cooldown < 0 ? Color.White : Color.FromArgb(255, Color.Red);
-                        sprite.Draw(new Vector2(spellPos.X, spellPos.Y));
+                        sprite.Color = cooldown < 0 ? Color.White : Color.FromArgb(255, Color.DimGray);
+                        sprite.Draw(new Vector2(spellPos.X + 1, spellPos.Y +3));
                     }
 
                     if (!(cooldown > 0)) continue;
 
                     Text.TextValue = Math.Floor(cooldown).ToString(CultureInfo.InvariantCulture);
-                    Text.Position = new Vector2((int)spellPos.X - 30 + Text.TextValue.Length, (int)spellPos.Y - 1);
+                    Text.Position = new Vector2((int)spellPos.X - 30 + Text.TextValue.Length, (int)spellPos.Y + 4);
                     Text.Draw();
                 }
 
@@ -176,13 +178,13 @@ namespace KickassSeries.Ultilities.Trackers
                 }
 
                 // Draw the main hud
-                MainBar.Draw(new Vector2((hpBarPos.X + OffsetHudX), (hpBarPos.Y + OffsetHudY -  1)));
+                MainBar.Draw(new Vector2(hpBarPos.X + OffsetHudX, hpBarPos.Y + OffsetHudY -  1));
             }
         }
 
         private static Vector2 GetSpellOffset(Obj_AI_Base hero, SpellSlot slot)
         {
-            var normalPos = new Vector2(hero.HPBarPosition.X + OffsetSpellsX, hero.HPBarPosition.Y + OffsetSpellsY + (-4) - 3);
+            var normalPos = new Vector2(hero.HPBarPosition.X + OffsetSpellsX, hero.HPBarPosition.Y + OffsetSpellsY + (-7));
             switch (slot)
             {
                 case SpellSlot.W:
@@ -197,7 +199,7 @@ namespace KickassSeries.Ultilities.Trackers
 
         private static Vector2 GetSummonerOffset(Obj_AI_Base hero, SpellSlot slot)
         {
-            var normalPos = new Vector2(hero.HPBarPosition.X + OffsetSummonersX, hero.HPBarPosition.Y + OffsetSummonersY + (-4)  - 3);
+            var normalPos = new Vector2(hero.HPBarPosition.X + OffsetSummonersX, hero.HPBarPosition.Y + OffsetSummonersY + (-7));
             return slot == SpellSlot.Summoner2 ? new Vector2(normalPos.X, normalPos.Y + 17) : normalPos;
         }
 
@@ -214,7 +216,7 @@ namespace KickassSeries.Ultilities.Trackers
             return percent < 1 ? Color.Green : Color.Lime;
         }
 
-        private static void OnDomainUnload(object sender, EventArgs e)
+        public static void OnUnload(object sender, EventArgs e)
         {
             TextureLoader.Dispose();
 

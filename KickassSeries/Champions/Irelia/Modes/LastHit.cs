@@ -15,7 +15,7 @@ namespace KickassSeries.Champions.Irelia.Modes
 
         public override void Execute()
         {
-            if (Q.IsReady() && Settings.UseQ && Player.Instance.ManaPercent >= Settings.ManaLast)
+            if (Q.IsReady() && Settings.UseQ && Player.Instance.ManaPercent >= Settings.LastMana)
             {
                 var minionq =
                     EntityManager.MinionsAndMonsters.EnemyMinions.FirstOrDefault(

@@ -1,5 +1,7 @@
 ﻿using EloBuddy;
 using EloBuddy.SDK;
+using KickassSeries.Ultilities;
+
 using Settings = KickassSeries.Champions.Tristana.Config.Modes.Combo;
 
 namespace KickassSeries.Champions.Tristana.Modes
@@ -14,7 +16,7 @@ namespace KickassSeries.Champions.Tristana.Modes
         public override void Execute()
         {
             var target = TargetSelector.GetTarget(R.Range, DamageType.Physical);
-            if (target == null || target.IsZombie || target.HasUndyingBuff()) return;
+            if (target == null || target.IsZombie) return;
 
             if (R.IsReady() && Settings.UseR)
             {
@@ -37,7 +39,7 @@ namespace KickassSeries.Champions.Tristana.Modes
                 }
             }
 
-            if (R.IsReady() && Settings.UseRTower)
+            if (R.IsReady()/* && Settings.UseRTower*/)
             {
                 if (target.RPos().AllyTower())
                 {

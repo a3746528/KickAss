@@ -19,12 +19,8 @@ namespace KickassSeries.Champions.Teemo
 
         static Config()
         {
-            // Initialize the menu
             Menu = MainMenu.AddMenu(MenuName, MenuName.ToLower());
             Menu.AddGroupLabel("KA " + Player.Instance.ChampionName);
-            Menu.AddLabel("Made By: MarioGK", 50);
-
-            // Initialize the modes
             Modes.Initialize();
         }
 
@@ -34,36 +30,23 @@ namespace KickassSeries.Champions.Teemo
 
         public static class Modes
         {
-            private static readonly Menu ComboMenu,HarassMenu,LaneClearMenu,JungleClearMenu,KSmenu, FleeMenu,MiscMenu, DrawMenu, DebugMenu;
+            private static readonly Menu SpellsMenu, FarmMenu, MiscMenu, DrawMenu;
 
             static Modes()
             {
-                ComboMenu = Menu.AddSubMenu("Combo");
+                SpellsMenu = Menu.AddSubMenu("::SpellsMenu::");
                 Combo.Initialize();
-
-                HarassMenu = Menu.AddSubMenu("Harass");
                 Harass.Initialize();
 
-                LaneClearMenu = Menu.AddSubMenu("LaneClear");
+                FarmMenu = Menu.AddSubMenu("::FarmMenu::");
                 LaneClear.Initialize();
+                LastHit.Initialize();
 
-                JungleClearMenu = Menu.AddSubMenu("JungleClear");
-                JungleClear.Initialize();
-
-                KSmenu = Menu.AddSubMenu("KS");
-                KS.Initialize();
-
-                FleeMenu = Menu.AddSubMenu("Flee");
-                Flee.Initialize();
-
-                MiscMenu = Menu.AddSubMenu("Misc");
+                MiscMenu = Menu.AddSubMenu("::Misc::");
                 Misc.Initialize();
 
-                DrawMenu = Menu.AddSubMenu("Draw");
+                DrawMenu = Menu.AddSubMenu("::Drawings::");
                 Draw.Initialize();
-
-                DebugMenu = Menu.AddSubMenu("Debug Menu");
-                Debug.Initialize();
             }
 
             public static void Initialize()
@@ -74,11 +57,8 @@ namespace KickassSeries.Champions.Teemo
             {
                 private static readonly CheckBox _useQ;
                 private static readonly CheckBox _useW;
+                private static readonly CheckBox _useE;
                 private static readonly CheckBox _useR;
-                private static readonly CheckBox _onlyQADC;
-                private static readonly CheckBox _wInRange;
-                private static readonly Slider _rCharges;
-                private static readonly CheckBox _preventUnstealh;
 
                 public static bool UseQ
                 {
@@ -90,43 +70,24 @@ namespace KickassSeries.Champions.Teemo
                     get { return _useW.CurrentValue; }
                 }
 
+                public static bool UseE
+                {
+                    get { return _useE.CurrentValue; }
+                }
+
                 public static bool UseR
                 {
                     get { return _useR.CurrentValue; }
                 }
 
-                public static bool OnlyQADC
-                {
-                    get { return _onlyQADC.CurrentValue; }
-                }
-
-                public static bool OnlyWInRange
-                {
-                    get { return _wInRange.CurrentValue; }
-                }
-
-                public static int RCharges
-                {
-                    get { return _rCharges.CurrentValue; }
-                }
-
-                public static bool PrevenUnstealth
-                {
-                    get { return _preventUnstealh.CurrentValue; }
-                }
-
                 static Combo()
                 {
                     // Initialize the menu values
-                    ComboMenu.AddGroupLabel("Combo");
-                    _useQ = ComboMenu.Add("comboQ", new CheckBox("Use Q ?"));
-                    _useW = ComboMenu.Add("comboW", new CheckBox("Use W ?"));
-                    _useR = ComboMenu.Add("comboR", new CheckBox("Use R to kite enemy ?", false));
-                    //Settings
-                    _onlyQADC = ComboMenu.Add("useqADC", new CheckBox("Use Q only on ADC during Combo", false));
-                    _wInRange = ComboMenu.Add("wCombat", new CheckBox("Use W if enemy is in range only"));
-                    _rCharges = ComboMenu.Add("rCharge", new Slider("Charges of R before using R", 2, 1, 3));
-                    _preventUnstealh = ComboMenu.Add("checkCamo", new CheckBox("Prevents combo being activated while stealth in brush", false));
+                    SpellsMenu.AddGroupLabel("Combo Spells:");
+                    _useQ = SpellsMenu.Add("comboQ", new CheckBox("Use Q on Combo ?"));
+                    _useW = SpellsMenu.Add("comboW", new CheckBox("Use W on Combo ?"));
+                    _useE = SpellsMenu.Add("comboE", new CheckBox("Use E on Combo ?"));
+                    _useR = SpellsMenu.Add("comboR", new CheckBox("Use R on Combo ?"));
                 }
 
                 public static void Initialize()
@@ -137,17 +98,45 @@ namespace KickassSeries.Champions.Teemo
             public static class Harass
             {
                 private static readonly CheckBox _useQ;
+                private static readonly CheckBox _useW;
+                private static readonly CheckBox _useE;
+                private static readonly CheckBox _useR;
+                private static readonly Slider _manaHarass;
 
                 public static bool UseQ
                 {
                     get { return _useQ.CurrentValue; }
                 }
 
+                public static bool UseW
+                {
+                    get { return _useW.CurrentValue; }
+                }
+
+                public static bool UseE
+                {
+                    get { return _useE.CurrentValue; }
+                }
+
+                public static bool UseR
+                {
+                    get { return _useR.CurrentValue; }
+                }
+
+                public static int ManaHarass
+                {
+                    get { return _manaHarass.CurrentValue; }
+                }
+
                 static Harass()
                 {
-                    // Initialize the menu values
-                    HarassMenu.AddGroupLabel("Harass");
-                    _useQ = HarassMenu.Add("harassQ", new CheckBox("Use Q"));
+                    SpellsMenu.AddGroupLabel("Harass Spells:");
+                    _useQ = SpellsMenu.Add("harassQ", new CheckBox("Use Q on Harass ?"));
+                    _useW = SpellsMenu.Add("harassW", new CheckBox("Use W on Harass ?"));
+                    _useE = SpellsMenu.Add("harassE", new CheckBox("Use E on Harass ?"));
+                    _useR = SpellsMenu.Add("harassR", new CheckBox("Use R on Harass ?"));
+                    SpellsMenu.AddGroupLabel("Harass Settings:");
+                    _manaHarass = SpellsMenu.Add("harassMana", new Slider("It will only cast any harass spell if the mana is greater than ({0}).", 30));
                 }
 
                 public static void Initialize()
@@ -158,120 +147,52 @@ namespace KickassSeries.Champions.Teemo
             public static class LaneClear
             {
                 private static readonly CheckBox _useQ;
-                private static readonly Slider _qMana;
-                private static readonly CheckBox _AAturrets;
-                private static readonly CheckBox _AAwards;
-                private static readonly CheckBox _useR;
-                private static readonly Slider _rMinions;
-
-                public static bool UseQ
-                {
-                    get { return _useQ.CurrentValue; }
-                }
-
-                public static int QMana
-                {
-                    get { return _qMana.CurrentValue; }
-                }
-
-                public static bool AAturrets
-                {
-                    get { return _AAturrets.CurrentValue; }
-                }
-
-                public static bool AAwards
-                {
-                    get { return _AAwards.CurrentValue; }
-                }
-
-                public static bool UseR
-                {
-                    get { return _useR.CurrentValue; }
-                }
-
-                public static int rMinions
-                {
-                    get { return _rMinions.CurrentValue; }
-                }
-
-                static LaneClear()
-                {
-                    LaneClearMenu.AddGroupLabel("LaneClear");
-                    LaneClearMenu.AddGroupLabel("LaneClear Settings");
-                    _useQ = LaneClearMenu.Add("qclear", new CheckBox("LaneClear with Q", false));
-                    _qMana = LaneClearMenu.Add("qManaManager", new Slider("Q Mana Manager", 50));
-                    _AAturrets = LaneClearMenu.Add("attackTurret", new CheckBox("Attack Turret"));
-                    _AAwards = LaneClearMenu.Add("attackWard", new CheckBox("Attack Ward"));
-                    _useR = LaneClearMenu.Add("rclear", new CheckBox("LaneClear with R"));
-                    _rMinions = LaneClearMenu.Add("minionR", new Slider("Minion for R", 3, 1, 4));
-                }
-
-                public static void Initialize()
-                {
-                }
-            }
-
-            public static class JungleClear
-            {
-                private static readonly CheckBox _useQ;
-                private static readonly Slider _qMana;
-                private static readonly CheckBox _useR;
-
-                public static bool UseQ
-                {
-                    get { return _useQ.CurrentValue; }
-                }
-
-                public static int QMana
-                {
-                    get { return _qMana.CurrentValue; }
-                }
-
-                public static bool UseR
-                {
-                    get { return _useR.CurrentValue; }
-                }
-
-                static JungleClear()
-                {
-                    JungleClearMenu.AddGroupLabel("JungleClear Settings");
-                    _useQ = JungleClearMenu.Add("qclear", new CheckBox("JungleClear with Q"));
-                    _useR = JungleClearMenu.Add("rclear", new CheckBox("JungleClear with R"));
-                    _qMana = JungleClearMenu.Add("qManaManager", new Slider("Q Mana Manager", 25));
-                }
-
-                public static void Initialize()
-                {
-                }
-            }
-
-            public static class Flee
-            {
                 private static readonly CheckBox _useW;
+                private static readonly CheckBox _useE;
                 private static readonly CheckBox _useR;
-                private static readonly Slider _rCharge;
+                private static readonly Slider _laneMana;
+                private static readonly Slider _xCount;
+
+                public static bool UseQ
+                {
+                    get { return _useQ.CurrentValue; }
+                }
 
                 public static bool UseW
                 {
                     get { return _useW.CurrentValue; }
                 }
 
+                public static bool UseE
+                {
+                    get { return _useE.CurrentValue; }
+                }
+
                 public static bool UseR
                 {
                     get { return _useR.CurrentValue; }
                 }
 
-                public static int RCharge
+                public static int LaneMana
                 {
-                    get { return _rCharge.CurrentValue; }
+                    get { return _laneMana.CurrentValue; }
                 }
 
-                static Flee()
+                public static int XCount
                 {
-                    FleeMenu.AddGroupLabel("Flee Settings");
-                    _useW = FleeMenu.Add("w", new CheckBox("Use W while Flee"));
-                    _useR = FleeMenu.Add("r", new CheckBox("Use R while Flee"));
-                    _rCharge = FleeMenu.Add("rCharge", new Slider("Charges of R before using R", 2, 1, 3));
+                    get { return _xCount.CurrentValue; }
+                }
+
+                static LaneClear()
+                {
+                    FarmMenu.AddGroupLabel("LaneClear Spells:");
+                    _useQ = FarmMenu.Add("laneclearQ", new CheckBox("Use Q on Laneclear ?"));
+                    _useW = FarmMenu.Add("laneclearW", new CheckBox("Use W on Laneclear ?"));
+                    _useE = FarmMenu.Add("laneclearE", new CheckBox("Use E on Laneclear ?"));
+                    _useR = FarmMenu.Add("laneclearR", new CheckBox("Use R on Laneclear ?"));
+                    FarmMenu.AddGroupLabel("LaneClear Settings:");
+                    _laneMana = FarmMenu.Add("laneMana", new Slider("It will only cast any laneclear spell if the mana is greater than ({0}).", 30));
+                    _xCount = FarmMenu.Add("xCount", new Slider("It will only cast X spell if it`ll hit ({0}).", 3, 1, 6));
                 }
 
                 public static void Initialize()
@@ -279,14 +200,28 @@ namespace KickassSeries.Champions.Teemo
                 }
             }
 
-            public static class KS
+            public static class LastHit
             {
                 private static readonly CheckBox _useQ;
+                private static readonly CheckBox _useW;
+                private static readonly CheckBox _useE;
                 private static readonly CheckBox _useR;
+                private static readonly Slider _lastMana;
+                private static readonly Slider _xCount;
 
                 public static bool UseQ
                 {
                     get { return _useQ.CurrentValue; }
+                }
+
+                public static bool UseW
+                {
+                    get { return _useW.CurrentValue; }
+                }
+
+                public static bool UseE
+                {
+                    get { return _useE.CurrentValue; }
                 }
 
                 public static bool UseR
@@ -294,13 +229,27 @@ namespace KickassSeries.Champions.Teemo
                     get { return _useR.CurrentValue; }
                 }
 
-
-                static KS()
+                public static int LastMana
                 {
-                    // KillSteal Menu
-                    KSmenu.AddGroupLabel("KillSteal Settings");
-                    _useQ = KSmenu.Add("KSQ", new CheckBox("KillSteal with Q"));
-                    _useR = KSmenu.Add("KSR", new CheckBox("KillSteal with R"));
+                    get { return _lastMana.CurrentValue; }
+                }
+
+                public static int XCount
+                {
+                    get { return _xCount.CurrentValue; }
+                }
+
+
+                static LastHit()
+                {
+                    FarmMenu.AddGroupLabel("LastHit Spells:");
+                    _useQ = FarmMenu.Add("lasthitQ", new CheckBox("Use Q on LastHit ?"));
+                    _useW = FarmMenu.Add("lasthitW", new CheckBox("Use W on LastHit ?"));
+                    _useE = FarmMenu.Add("lasthitE", new CheckBox("Use E on LastHit ?"));
+                    _useR = FarmMenu.Add("lasthitR", new CheckBox("Use R on LastHit ?"));
+                    FarmMenu.AddGroupLabel("LastHit Settings:");
+                    _lastMana = FarmMenu.Add("lastMana", new Slider("It will only cast any lasthit spell if the mana is greater than ({0}).", 30));
+                    _xCount = FarmMenu.Add("wCount", new Slider("It will only cast X spell if it`ll hit ({0}).", 3, 1, 6));
                 }
 
                 public static void Initialize()
@@ -310,128 +259,32 @@ namespace KickassSeries.Champions.Teemo
 
             public static class Misc
             {
-                private static readonly CheckBox _intQ;
-                private static readonly CheckBox _gapQ;
-                //
-                private static readonly CheckBox _autoQ;
-                private static readonly CheckBox _autoW;
-                private static readonly CheckBox _autoR;
-                private static readonly Slider _rCharge;
-                private static readonly KeyBind _autoPanicR;
-                private static readonly CheckBox _customLocation;
+                private static readonly CheckBox _interruptSpell;
+                private static readonly CheckBox _antiGapCloserSpell;
+                private static readonly Slider _miscMana;
 
-                private static readonly CheckBox _checkAA;
-                private static readonly Slider _checkAArange;
-
-                public static bool InterruptQ
+                public static bool InterruptSpell
                 {
-                    get { return _intQ.CurrentValue; }
+                    get { return _interruptSpell.CurrentValue; }
                 }
 
-                public static bool GapQ
+                public static bool AntiGapCloser
                 {
-                    get { return _gapQ.CurrentValue; }
+                    get { return _antiGapCloserSpell.CurrentValue; }
                 }
 
-                //
-
-                public static bool AutoQ
+                public static int MiscMana
                 {
-                    get { return _autoQ.CurrentValue; }
-                }
-
-                public static bool AutoW
-                {
-                    get { return _autoW.CurrentValue; }
-                }
-
-                public static bool AutoR
-                {
-                    get { return _autoR.CurrentValue; }
-                }
-
-                public static int RCharge
-                {
-                    get { return _rCharge.CurrentValue; }
-                }
-
-                public static bool AutoPanicR
-                {
-                    get { return _autoPanicR.CurrentValue; }
-                }
-
-                public static bool CustomLocation
-                {
-                    get { return _customLocation.CurrentValue; }
-                }
-
-                public static bool CheckAA
-                {
-                    get { return _checkAA.CurrentValue; }
-                }
-
-                public static int CheckAArange
-                {
-                    get { return _checkAArange.CurrentValue; }
+                    get { return _miscMana.CurrentValue; }
                 }
 
                 static Misc()
                 {
-                    MiscMenu.AddGroupLabel("Interruptter and Gapcloser Setting");
-                    _intQ = MiscMenu.Add("intq", new CheckBox("Interrupt with Q"));
-                    _gapQ = MiscMenu.Add("gapR", new CheckBox("Gapclose with R"));
-
-                    MiscMenu.AddGroupLabel("Misc Settings");
-                    _autoQ = MiscMenu.Add("autoQ", new CheckBox("Automatic Q", false));
-                    _autoW = MiscMenu.Add("autoW", new CheckBox("Automatic W", false));
-                    _autoR = MiscMenu.Add("autoR", new CheckBox("Auto Place Shrooms in Important Places"));
-                    _rCharge = MiscMenu.Add("rCharge", new Slider("Charges of R before using R in AutoShroom", 2, 1, 3));
-                    _autoPanicR = MiscMenu.Add("autoRPanic", new KeyBind("Panic Key for Auto R", false, KeyBind.BindTypes.HoldActive, 84));
-                    _customLocation = MiscMenu.Add("customLocation", new CheckBox("Use Custom Location for Auto Shroom (Requires Reload)"));
-                    MiscMenu.AddSeparator();
-                    _checkAA = MiscMenu.Add("checkAA", new CheckBox("Subtract Range for Q (checkAA)"));
-                    _checkAArange = MiscMenu.Add("checkaaRange", new Slider("How many to subtract from Q Range (checkAA)", 100, 0, 180));
-                }
-
-                public static void Initialize()
-                {
-                }
-            }
-
-            public static class Debug
-            {
-                private static readonly CheckBox _debugDraw;
-                private static readonly Slider _x;
-                private static readonly Slider _y;
-                private static readonly CheckBox _debugPos;
-
-                public static bool DebugDraw
-                {
-                    get { return _debugDraw.CurrentValue; }
-                }
-
-                public static int X
-                {
-                    get { return _x.CurrentValue; }
-                }
-
-                public static int Y
-                {
-                    get { return _y.CurrentValue; }
-                }
-
-                public static bool DebugPos
-                {
-                    get { return _debugPos.CurrentValue; }
-                }
-
-                static Debug()
-                {
-                    DebugMenu.AddGroupLabel("Debug Settings");
-                    _debugDraw = DebugMenu.Add("debugdraw", new CheckBox("Draw Coords", false));
-                    _x = DebugMenu.Add("x", new Slider("Where to draw X", 500, 0, 1920));
-                    _y = DebugMenu.Add("y", new Slider("Where to draw Y", 500, 0, 1080));
-                    _debugPos = DebugMenu.Add("debugpos", new CheckBox("Draw Custom Shroom Locations Coordinates"));
+                    // Initialize the menu values
+                    MiscMenu.AddGroupLabel("Miscellaneous");
+                    _interruptSpell = MiscMenu.Add("interruptX", new CheckBox("Use X to interrupt spells ?"));
+                    _antiGapCloserSpell = MiscMenu.Add("gapcloserX", new CheckBox("Use X to antigapcloser spells ?"));
+                    _miscMana = MiscMenu.Add("miscMana", new Slider("Min mana to use gapcloser/interrupt spells ?", 20));
                 }
 
                 public static void Initialize()
@@ -441,29 +294,34 @@ namespace KickassSeries.Champions.Teemo
 
             public static class Draw
             {
-                private static readonly CheckBox _drawautoR;
-                private static readonly Slider _drawVision;
+                private static readonly CheckBox _drawReady;
                 private static readonly CheckBox _drawHealth;
+                private static readonly CheckBox _drawPercent;
                 private static readonly CheckBox _drawQ;
                 private static readonly CheckBox _drawW;
                 private static readonly CheckBox _drawE;
                 private static readonly CheckBox _drawR;
+                //Color Config
+                private static readonly ColorConfig _qColor;
+                private static readonly ColorConfig _wColor;
+                private static readonly ColorConfig _eColor;
+                private static readonly ColorConfig _rColor;
+                private static readonly ColorConfig _healthColor;
 
-                private static readonly CheckBox _drawReady;
-
-                public static bool DrawAutoR
+                //CheckBoxes
+                public static bool DrawReady
                 {
-                    get { return _drawautoR.CurrentValue; }
-                }
-
-                public static int DrawVision
-                {
-                    get { return _drawVision.CurrentValue; }
+                    get { return _drawReady.CurrentValue; }
                 }
 
                 public static bool DrawHealth
                 {
                     get { return _drawHealth.CurrentValue; }
+                }
+
+                public static bool DrawPercent
+                {
+                    get { return _drawPercent.CurrentValue; }
                 }
 
                 public static bool DrawQ
@@ -485,85 +343,48 @@ namespace KickassSeries.Champions.Teemo
                 {
                     get { return _drawR.CurrentValue; }
                 }
-
-                public static bool DrawReady
+                //Colors
+                public static Color HealthColor
                 {
-                    get { return _drawReady.CurrentValue; }
+                    get { return _healthColor.GetSystemColor(); }
                 }
 
-
-                public static Color colorHealth
+                public static SharpDX.Color QColor
                 {
-                    get { return DrawMenu.GetColor("colorHealth"); }
+                    get { return _qColor.GetSharpColor(); }
                 }
 
-                public static Color colorQ
+                public static SharpDX.Color WColor
                 {
-                    get { return DrawMenu.GetColor("colorQ"); }
+                    get { return _wColor.GetSharpColor(); }
                 }
 
-                public static Color colorW
+                public static SharpDX.Color EColor
                 {
-                    get { return DrawMenu.GetColor("colorW"); }
+                    get { return _eColor.GetSharpColor(); }
                 }
-
-                public static Color colorE
+                public static SharpDX.Color RColor
                 {
-                    get { return DrawMenu.GetColor("colorE"); }
-                }
-
-                public static Color colorR
-                {
-                    get { return DrawMenu.GetColor("colorR"); }
-                }
-
-                public static float _widthQ
-                {
-                    get { return DrawMenu.GetWidth("widthQ"); }
-                }
-
-                public static float _widthW
-                {
-                    get { return DrawMenu.GetWidth("widthW"); }
-                }
-
-                public static float _widthE
-                {
-                    get { return DrawMenu.GetWidth("widthE"); }
-                }
-
-                public static float _widthR
-                {
-                    get { return DrawMenu.GetWidth("widthR"); }
+                    get { return _rColor.GetSharpColor(); }
                 }
 
                 static Draw()
                 {
-                    DrawMenu.AddGroupLabel("Draw");
-                    _drawautoR = DrawMenu.Add("drawautoR", new CheckBox("Draw Important Shroom Areas"));
-                    _drawVision = DrawMenu.Add("DrawVision", new Slider("Shroom Vision", 1500, 2500, 1000));
-                    _drawReady = DrawMenu.Add("drawReady", new CheckBox("Draw Only If The Spells Are Ready.", false));
-                    DrawMenu.AddSeparator();
-                    DrawMenu.AddLabel("Reload is required to aply the changes made in the damage indicator");
-                    _drawHealth = DrawMenu.Add("drawHealth", new CheckBox("Draw Damage in HealthBar"));
-                    DrawMenu.AddColorItem("colorHealth");
-                    DrawMenu.AddSeparator();
-                    //Q
-                    _drawQ = DrawMenu.Add("drawQ", new CheckBox("Draw Q"));
-                    DrawMenu.AddColorItem("colorQ");
-                    DrawMenu.AddWidthItem("widthQ");
-                    //W
-                    _drawW = DrawMenu.Add("drawW", new CheckBox("Draw W"));
-                    DrawMenu.AddColorItem("colorW");
-                    DrawMenu.AddWidthItem("widthW");
-                    //E
-                    _drawE = DrawMenu.Add("drawE", new CheckBox("Draw E"));
-                    DrawMenu.AddColorItem("colorE");
-                    DrawMenu.AddWidthItem("widthE");
-                    //R
-                    _drawR = DrawMenu.Add("drawR", new CheckBox("Draw R"));
-                    DrawMenu.AddColorItem("colorR");
-                    DrawMenu.AddWidthItem("widthR");
+                    DrawMenu.AddGroupLabel("Spell drawings Settings :");
+                    _drawReady = DrawMenu.Add("drawOnlyWhenReady", new CheckBox("Draw the spells only if they are ready ?"));
+                    _drawHealth = DrawMenu.Add("damageIndicatorDraw", new CheckBox("Draw damage indicator ?"));
+                    _drawPercent = DrawMenu.Add("percentageIndicatorDraw", new CheckBox("Draw damage percentage ?"));
+                    DrawMenu.AddSeparator(1);
+                    _drawQ = DrawMenu.Add("qDraw", new CheckBox("Draw Q spell range ?"));
+                    _drawW = DrawMenu.Add("wDraw", new CheckBox("Draw W spell range ?"));
+                    _drawE = DrawMenu.Add("eDraw", new CheckBox("Draw E spell range ?"));
+                    _drawR = DrawMenu.Add("rDraw", new CheckBox("Draw R spell range ?"));
+
+                    _healthColor = new ColorConfig(DrawMenu, "healthColorConfig", Color.Orange, "Color Damage Indicator:");
+                    _qColor = new ColorConfig(DrawMenu, "qColorConfig", Color.Blue, "Color Q:");
+                    _wColor = new ColorConfig(DrawMenu, "wColorConfig", Color.Red, "Color W:");
+                    _eColor = new ColorConfig(DrawMenu, "eColorConfig", Color.DeepPink, "Color E:");
+                    _rColor = new ColorConfig(DrawMenu, "rColorConfig", Color.Yellow, "Color R:");
                 }
 
                 public static void Initialize()

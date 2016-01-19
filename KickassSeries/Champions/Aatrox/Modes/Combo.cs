@@ -28,7 +28,7 @@ namespace KickassSeries.Champions.Aatrox.Modes
             }
 
             if (R.IsReady() && target.IsValidTarget(R.Range) && Settings.UseR &&
-                target.HealthPercent + 10 > Player.Instance.HealthPercent && target.HealthPercent <= Settings.UseRSlider)
+                target.HealthPercent + 10 > Player.Instance.HealthPercent && target.HealthPercent <= 30)
             {
                 R.Cast();
             }

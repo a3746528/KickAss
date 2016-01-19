@@ -12,91 +12,86 @@ namespace KickassSeries.Activator.Items
     // ReSharper disable once ClassNeverInstantiated.Global
     internal class Defensive : Ids
     {
-        private static int lastItemUsed;
-
         public static void Execute()
         {
             if (Player.Instance.IsInShopRange() || Player.Instance.CountAlliesInRange(Misc.RangeEnemy) < Misc.EnemyCount ||
-                lastItemUsed >= Environment.TickCount) return;
-
+                Activator.lastUsed >= Environment.TickCount) return;
             #region Self
 
-            if (Zhonyas.IsReady() && Zhonyas.IsOwned() && Player.Instance.InDanger() && Settings.Zhonyas &&
-                Player.Instance.HealthPercent <= Settings.ZhonyasMyHp)
+            if (Zhonyas.IsReady() && Zhonyas.IsOwned() && Player.Instance.InDanger(Settings.ZhonyasMyHp) && Settings.Zhonyas)
             {
                 Zhonyas.Cast();
-                lastItemUsed = Environment.TickCount + 1500;
+                Activator.lastUsed = Environment.TickCount + 1500;
             }
 
-            if (ArchengelStaff.IsReady() && ArchengelStaff.IsOwned() && Player.Instance.InDanger() &&
-                Settings.ArchengelStaff && Player.Instance.HealthPercent <= Settings.MYHPArchengelStaff)
+            if (ArchengelStaff.IsReady() && ArchengelStaff.IsOwned() && Player.Instance.InDanger(Settings.MYHPArchengelStaff) && Settings.UseArchengelStaff)
             {
                 ArchengelStaff.Cast();
-                lastItemUsed = Environment.TickCount + 1500;
+                Activator.lastUsed = Environment.TickCount + 1500;
             }
 
-            if (FaceOfTheMountain.IsReady() && FaceOfTheMountain.IsOwned() && Player.Instance.InDanger())
+            if (FaceOfTheMountain.IsReady() && FaceOfTheMountain.IsOwned() && Player.Instance.InDanger(30))
             {
                 FaceOfTheMountain.Cast(Player.Instance);
-                lastItemUsed = Environment.TickCount + 1500;
+                Activator.lastUsed = Environment.TickCount + 1500;
             }
 
             if (Talisman.IsReady() && Player.Instance.CountAlliesInRange(450) >= 2 && Talisman.IsOwned() &&
-                Player.Instance.InDanger())
+                Player.Instance.InDanger(30))
             {
                 Talisman.Cast();
-                lastItemUsed = Environment.TickCount + 1500;
+                Activator.lastUsed = Environment.TickCount + 1500;
             }
 
-            if (Mikael.IsReady() && Player.Instance.HasCC() && Mikael.IsOwned() && Player.Instance.InDanger())
+            if (Mikael.IsReady() && Player.Instance.HasCC() && Mikael.IsOwned() && Player.Instance.InDanger(30))
             {
                 Mikael.Cast(Player.Instance);
-                lastItemUsed = Environment.TickCount + 1500;
+                Activator.lastUsed = Environment.TickCount + 1500;
             }
 
-            if (Solari.IsReady() && Solari.IsOwned() && Player.Instance.InDanger())
+            if (Solari.IsReady() && Solari.IsOwned() && Player.Instance.InDanger(30))
             {
                 Solari.Cast();
-                lastItemUsed = Environment.TickCount + 1500;
+                Activator.lastUsed = Environment.TickCount + 1500;
             }
 
-            if (Ohm.IsReady() && Ohm.IsOwned() && Player.Instance.InDanger())
+            if (Ohm.IsReady() && Ohm.IsOwned() && Player.Instance.InDanger(30))
             {
                 var turret = EntityManager.Turrets.Enemies.FirstOrDefault(t => t.IsAttackingPlayer);
                 if (turret != null)
                 {
                     Ohm.Cast(turret);
-                    lastItemUsed = Environment.TickCount + 1500;
+                    Activator.lastUsed = Environment.TickCount + 1500;
                 }
             }
 
             if (Randuin.IsReady() && Player.Instance.CountEnemiesInRange(Randuin.Range) >= 2 && Randuin.IsOwned() &&
-                Player.Instance.InDanger())
+                Player.Instance.InDanger(30))
             {
                 Randuin.Cast();
-                lastItemUsed = Environment.TickCount + 1500;
+                Activator.lastUsed = Environment.TickCount + 1500;
             }
 
             //CC
 
             if (!Player.Instance.HasCC()) return;
-
+            Chat.Print("Player Has CC");
             if (DerbishBlade.IsReady() && DerbishBlade.IsOwned())
             {
                 DerbishBlade.Cast();
-                lastItemUsed = Environment.TickCount + 1500;
+                Activator.lastUsed = Environment.TickCount + 1500;
             }
 
             if (Mercurial.IsReady() && Mercurial.IsOwned())
             {
                 Mercurial.Cast();
-                lastItemUsed = Environment.TickCount + 1500;
+                Activator.lastUsed = Environment.TickCount + 1500;
             }
 
             if (QuickSilver.IsReady() && QuickSilver.IsOwned())
             {
                 QuickSilver.Cast();
-                lastItemUsed = Environment.TickCount + 1500;
+                Activator.lastUsed = Environment.TickCount + 1500;
             }
 
             #endregion Self

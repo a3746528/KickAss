@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using EloBuddy;
 using EloBuddy.SDK;
 
 using Settings = KickassSeries.Champions.Jax.Config.Modes.LaneClear;
@@ -26,7 +27,7 @@ namespace KickassSeries.Champions.Jax.Modes
                 Q.Cast(minion);
             }
 
-            if (E.IsReady() && minion.IsValidTarget(E.Range) && Settings.UseE)
+            if (E.IsReady() && minion.IsValidTarget(E.Range) && Settings.UseE && !Player.Instance.HasBuff("JaxCounterStrike"))
             {
                 E.Cast(minion);
             }

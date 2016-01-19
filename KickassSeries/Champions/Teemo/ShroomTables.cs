@@ -17,7 +17,7 @@ namespace KickassSeries.Champions.Teemo
 
         public ShroomTables()
         {
-            CreateTables();
+            //CreateTables();
 
             var list = (from pos in SummonersRift
                         let x = pos.X
@@ -54,7 +54,7 @@ namespace KickassSeries.Champions.Teemo
                     select new Vector3(x, z, y)).ToList();
             ButcherBridge = list;
         }
-
+        /*
         private void CreateTables()
         {
             switch (Game.MapId)
@@ -213,7 +213,9 @@ namespace KickassSeries.Champions.Teemo
                         Chat.Print("Please Lower/Increase the amount of Custom Shroom Locations for this assembly to work.");
                     }
                     break;
-            }
-        }
+            
+    }
+
+}*/
     }
 }

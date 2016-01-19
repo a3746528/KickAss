@@ -20,7 +20,7 @@ namespace KickassSeries.Champions.Ahri.Modes
                     .OrderByDescending(m => m.Health)
                     .FirstOrDefault(m => m.IsValidTarget(Q.Range));
 
-            if (minion == null || Settings.ManaLast >= Player.Instance.ManaPercent) return;
+            //if (minion == null || Settings.ManaLast >= Player.Instance.ManaPercent) return;
 
             if (E.IsReady() && minion.IsValidTarget(E.Range) && Settings.UseE)
             {

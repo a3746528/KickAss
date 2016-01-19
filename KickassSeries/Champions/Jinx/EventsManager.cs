@@ -14,15 +14,17 @@ namespace KickassSeries.Champions.Jinx
 {
     internal static class EventsManager
     {
+        
         public static void Initialize()
-        {
+        {/*
             Gapcloser.OnGapcloser += Gapcloser_OnGapcloser;
             Interrupter.OnInterruptableSpell += Interrupter_OnInterruptableSpell;
             Orbwalker.OnPreAttack += Orbwalker_OnPreAttack;
             Orbwalker.OnPostAttack += Orbwalker_OnPostAttack;
             Obj_AI_Base.OnProcessSpellCast += Obj_AI_Base_OnProcessSpellCast;
+            */
         }
-
+        /*
         private static void Obj_AI_Base_OnProcessSpellCast(Obj_AI_Base sender, GameObjectProcessSpellCastEventArgs args)
         {
             if (!Misc.AutoE || !SpellManager.E.IsReady())
@@ -197,6 +199,6 @@ namespace KickassSeries.Champions.Jinx
                     SpellManager.E.Cast(pred.CastPosition);
                 }
             }
-        }
+        }*/
     }
 }

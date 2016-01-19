@@ -41,7 +41,7 @@ namespace KickassSeries.Champions.Yasuo.Modes
 
             }
 
-            if (Settings.UseQ3 && Player.Instance.HasQ3() && SpellManager.Q.IsReady())
+            if (/*Settings.UseQ3 &&*/ Player.Instance.HasQ3() && SpellManager.Q.IsReady())
             {
                 var minionQ3 =
                     EntityManager.MinionsAndMonsters.EnemyMinions

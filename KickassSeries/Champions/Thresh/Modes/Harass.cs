@@ -23,7 +23,7 @@ namespace KickassSeries.Champions.Thresh.Modes
 
             if (Settings.UseE && E.IsReady() && target.IsValidTarget(E.Range))
             {
-                if (Settings.ModeE == 0)
+                /*if (Settings.ModeE == 0)
                 {
                     E.Cast(target);
                     Chat.Print("Use E Push");
@@ -33,6 +33,7 @@ namespace KickassSeries.Champions.Thresh.Modes
                     E.Cast(Player.Instance.Position.Shorten(target.Position, E.Range));
                     Chat.Print("Use E Pull");
                 }
+                */
             }
         }
     }

@@ -14,7 +14,7 @@ namespace KickassSeries.Champions.Jinx.Modes
         }
 
         public override void Execute()
-        {
+        {/*
             // Force Minigun if there is a lasthittable minion in minigun range and there is no targets more than the setting amount.
             var kM = Orbwalker.LasthittableMinions.Where(
                 t => t.IsEnemy &&
@@ -44,7 +44,7 @@ namespace KickassSeries.Champions.Jinx.Modes
                                     ) <=
                                 100 && t.Health <= (Player.Instance.GetAutoAttackDamage(t) * 1.1f)).ToArray();
 
-                    if (minion.Count() >= Settings.MinMinionsQ)
+                    if (minion.Count() >= 3/* Settings.MinMinionsQ)
                     {
                         foreach (var m in minion)
                         {
@@ -53,7 +53,7 @@ namespace KickassSeries.Champions.Jinx.Modes
                         }
                     }
                 }
-            }
+            }*/
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using EloBuddy;
 using EloBuddy.SDK;
-using EloBuddy.SDK.Menu.Values;
+using KickassSeries.Ultilities;
+
 using Settings = KickassSeries.Champions.Tristana.Config.Modes.Combo;
 
 namespace KickassSeries.Champions.Tristana.Modes
@@ -20,7 +21,7 @@ namespace KickassSeries.Champions.Tristana.Modes
             Orbwalker.ForcedTarget = null;
 
 
-            if (Settings.UseE && E.IsReady() && target.IsValidTarget(E.Range) && !Config.Modes.ModesMenu["dont e" + target.ChampionName].Cast<CheckBox>().CurrentValue)
+            if (Settings.UseE && E.IsReady() && target.IsValidTarget(E.Range) /*&& !Config.Modes.ModesMenu["dont e" + target.ChampionName].Cast<CheckBox>().CurrentValue*/)
             {
                 E.Cast(target);
             }

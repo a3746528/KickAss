@@ -22,7 +22,7 @@ namespace KickassSeries.Champions.Thresh.Modes
             {
                 Q.Cast(target);
             }
-
+            /*
             if (Settings.UseE && E.IsReady() && target.IsValidTarget(E.Range))
             {
                 if (Settings.ModeE == 0)
@@ -34,7 +34,7 @@ namespace KickassSeries.Champions.Thresh.Modes
                     E.Cast(Player.Instance.Position.Shorten(target.Position, E.Range));
                 }
             }
-
+            */
             if (Settings.UseW && W.IsReady())
             {
                 var ally =
@@ -46,11 +46,12 @@ namespace KickassSeries.Champions.Thresh.Modes
                     W.Cast(ally);
                 }
             }
-
+            /*
             if (Settings.UseR && R.IsReady() && Player.Instance.CountEnemiesInRange(R.Range) >= Settings.MinR)
             {
                 R.Cast();
             }
+            */
         }
     }
 }

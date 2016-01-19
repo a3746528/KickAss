@@ -21,24 +21,24 @@ namespace KickassSeries.Champions.Jayce
 
         private static void OnDraw(EventArgs args)
         {
-            if (Settings.DrawReady ? SpellManager.Qh.IsReady() : Settings.DrawQ)
+            if (Settings.DrawQ && Settings.DrawReady ? SpellManager.Qg.IsReady() : Settings.DrawQ)
             {
-                new Circle { Color = Settings.colorQ, BorderWidth = Settings._widthQ, Radius = SpellManager.Qh.Range }.Draw(Player.Instance.Position);
+                Circle.Draw(Settings.QColor, SpellManager.Qg.Range, 1f, Player.Instance);
             }
 
-            if (Settings.DrawReady ? SpellManager.Wh.IsReady() : Settings.DrawW)
+            if (Settings.DrawW && Settings.DrawReady ? SpellManager.Wg.IsReady() : Settings.DrawW)
             {
-                new Circle { Color = Settings.colorW, BorderWidth = Settings._widthW, Radius = SpellManager.Wh.Range }.Draw(Player.Instance.Position);
+                Circle.Draw(Settings.WColor, SpellManager.Wg.Range, 1f, Player.Instance);
             }
 
-            if (Settings.DrawReady ? SpellManager.Eh.IsReady() : Settings.DrawE)
+            if (Settings.DrawE && Settings.DrawReady ? SpellManager.Eg.IsReady() : Settings.DrawE)
             {
-                new Circle { Color = Settings.colorE, BorderWidth = Settings._widthE, Radius = SpellManager.Eh.Range }.Draw(Player.Instance.Position);
+                Circle.Draw(Settings.EColor, SpellManager.Eg.Range, 1f, Player.Instance);
             }
 
             if (Settings.DrawR && Settings.DrawReady ? SpellManager.R.IsReady() : Settings.DrawR)
             {
-                new Circle { Color = Settings.colorR, BorderWidth = Settings._widthR, Radius = SpellManager.R.Range }.Draw(Player.Instance.Position);
+                Circle.Draw(Settings.RColor, SpellManager.R.Range, 1f, Player.Instance);
             }
         }
     }

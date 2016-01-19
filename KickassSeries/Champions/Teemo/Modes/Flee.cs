@@ -1,7 +1,7 @@
 ﻿using EloBuddy;
 using EloBuddy.SDK;
 
-using Settings = KickassSeries.Champions.Teemo.Config.Modes.Flee;
+//using Settings = KickassSeries.Champions.Teemo.Config.Modes.Flee;
 
 namespace KickassSeries.Champions.Teemo.Modes
 {
@@ -14,6 +14,7 @@ namespace KickassSeries.Champions.Teemo.Modes
 
         public override void Execute()
         {
+            /*
             // Force move to player's mouse cursor
             Player.IssueOrder(GameObjectOrder.MoveTo, Game.CursorPos);
 
@@ -28,6 +29,7 @@ namespace KickassSeries.Champions.Teemo.Modes
             {
                 R.Cast(Player.Instance.ServerPosition);
             }
+            */
         }
     }
 }

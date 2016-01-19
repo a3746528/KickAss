@@ -25,31 +25,27 @@ namespace KickassSeries.Champions.Jinx
 
          private static void OnDraw(EventArgs args)
          {
-             if (Settings.DrawQ && Settings.DrawReady ? SpellManager.Q.IsReady() : Settings.DrawQ)
-             {
-                 new Circle {Color = Settings.colorQ, BorderWidth = Settings._widthQ, Radius = Player.Instance.GetAutoAttackRange()}
-                     .Draw(Player.Instance.Position);
-             }
+            if (Settings.DrawQ && Settings.DrawReady ? SpellManager.Q.IsReady() : Settings.DrawQ)
+            {
+                Circle.Draw(Settings.QColor, SpellManager.Q.Range, 1f, Player.Instance);
+            }
 
-             if (Settings.DrawW && Settings.DrawReady ? SpellManager.W.IsReady() : Settings.DrawW)
-             {
-                 new Circle {Color = Settings.colorW, BorderWidth = Settings._widthW, Radius = SpellManager.W.Range}
-                     .Draw(Player.Instance.Position);
-             }
+            if (Settings.DrawW && Settings.DrawReady ? SpellManager.W.IsReady() : Settings.DrawW)
+            {
+                Circle.Draw(Settings.WColor, SpellManager.W.Range, 1f, Player.Instance);
+            }
 
-             if (Settings.DrawE && Settings.DrawReady ? SpellManager.E.IsReady() : Settings.DrawE)
-             {
-                 new Circle {Color = Settings.colorE, BorderWidth = Settings._widthE, Radius = SpellManager.E.Range}
-                     .Draw(Player.Instance.Position);
-             }
+            if (Settings.DrawE && Settings.DrawReady ? SpellManager.E.IsReady() : Settings.DrawE)
+            {
+                Circle.Draw(Settings.EColor, SpellManager.E.Range, 1f, Player.Instance);
+            }
 
-             if (Settings.DrawR && Settings.DrawReady ? SpellManager.R.IsReady() : Settings.DrawR)
-             {
-                 new Circle {Color = Settings.colorR, BorderWidth = Settings._widthR, Radius = Misc.RRange}
-                     .Draw(Player.Instance.Position);
-             }
+            if (Settings.DrawR && Settings.DrawReady ? SpellManager.R.IsReady() : Settings.DrawR)
+            {
+                Circle.Draw(Settings.RColor, SpellManager.R.Range, 1f, Player.Instance);
+            }
 
-             if (Settings.DrawWPred)
+            if (true/*Settings.DrawWPred*/)
              {
                  var enemy =
                      EntityManager.Heroes.Enemies.Where(t => t.IsValidTarget() && SpellManager.W.IsInRange(t))
@@ -64,13 +60,13 @@ namespace KickassSeries.Champions.Jinx
                      SpellManager.W.IsReady() ? System.Drawing.Color.YellowGreen : System.Drawing.Color.Red);
              }
 
-             if (Settings.DrawRPred)
+             if (true /*Settings.DrawRPred*/)
              {
                  var enemy =
                      EntityManager.Heroes.Enemies.Where(
                          t =>
                              t.IsValidTarget()
-                             && t.Distance(Player.Instance) >= Misc.RRange &&
+                             && t.Distance(Player.Instance) >= 500 /*Misc.RRange*/ &&
                              t.Distance(Player.Instance) <= SpellManager.R.Range)
                          .OrderBy(t => t.Distance(Player.Instance))
                          .FirstOrDefault();

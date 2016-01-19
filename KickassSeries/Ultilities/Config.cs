@@ -32,10 +32,10 @@ namespace KickassSeries.Ultilities
 
             static Types()
             {
-                RecallTrackerMenu = Menu.AddSubMenu("Recall Tracker");
+                RecallTrackerMenu = Menu.AddSubMenu("::Recall Tracker::");
                 RecallTracker.Initialize();
 
-                SpellTrackerMenu = Menu.AddSubMenu("Spell Tracker");
+                SpellTrackerMenu = Menu.AddSubMenu("::Spell Tracker::");
                 SpellTracker.Initialize();
             }
 
@@ -46,11 +46,29 @@ namespace KickassSeries.Ultilities
             public static class RecallTracker
             {
                 private static readonly CheckBox _turnOff;
+                private static readonly CheckBox _recallEnemies;
+                private static readonly CheckBox _recallAllies;
+                private static readonly Slider _yPos;
                 private static readonly Slider _xPos;
 
                 public static bool TurnOff
                 {
                     get { return _turnOff.CurrentValue; }
+                }
+
+                public static bool RecallEnemies
+                {
+                    get { return _recallEnemies.CurrentValue; }
+                }
+
+                public static bool RecallAllies
+                {
+                    get { return _recallAllies.CurrentValue; }
+                }
+
+                public static int YPos
+                {
+                    get { return _yPos.CurrentValue; }
                 }
 
                 public static int XPos
@@ -60,9 +78,14 @@ namespace KickassSeries.Ultilities
 
                 static RecallTracker()
                 {
-                    RecallTrackerMenu.AddGroupLabel("RecallTracker");
+                    RecallTrackerMenu.AddGroupLabel("Recall Tracker Settings");
                     _turnOff = RecallTrackerMenu.Add("turnoffrecalltracker", new CheckBox("Turn off recall tracker ?", false));
-                    _xPos = RecallTrackerMenu.Add("xpositionslider", new Slider("Turn off recall tracker ?", 0, 0, 600));
+                    RecallTrackerMenu.AddSeparator();
+                    _recallEnemies = RecallTrackerMenu.Add("recallEnemies", new CheckBox("Enemies recall ?"));
+                    _recallAllies = RecallTrackerMenu.Add("recallAllies", new CheckBox("Allies recall?", false));
+                    RecallTrackerMenu.AddGroupLabel("Recall Tracker Position");
+                    _yPos = RecallTrackerMenu.Add("ypositionslider", new Slider("y Position?", 0, 0, 700));
+                    _xPos = RecallTrackerMenu.Add("xpositionslider", new Slider("x Position?", 0, 0, 1600));
                 }
 
                 public static void Initialize()
@@ -95,6 +118,7 @@ namespace KickassSeries.Ultilities
                 {
                     SpellTrackerMenu.AddGroupLabel("SpellTracker");
                     _turnOff = SpellTrackerMenu.Add("turnoffspelltracker", new CheckBox("Turn Off Spell Tracker ?" ,false));
+                    SpellTrackerMenu.AddSeparator();
                     _drawEnemies = SpellTrackerMenu.Add("drawenemiesid", new CheckBox("Draw Enemies ?"));
                     _drawAllies = SpellTrackerMenu.Add("drawalliesid", new CheckBox("Draw Allies ?"));
                 }

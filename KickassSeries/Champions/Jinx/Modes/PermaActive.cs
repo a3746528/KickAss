@@ -4,8 +4,6 @@ using EloBuddy.SDK;
 using EloBuddy.SDK.Menu.Values;
 
 using Misc = KickassSeries.Champions.Jinx.Config.Modes.Misc;
-using KS = KickassSeries.Champions.Jinx.Config.Modes.KillSteal;
-using JS = KickassSeries.Champions.Jinx.Config.Modes.JungleSteal;
 
 namespace KickassSeries.Champions.Jinx.Modes
 {
@@ -18,6 +16,7 @@ namespace KickassSeries.Champions.Jinx.Modes
 
         public override void Execute()
         {
+            /*
             if (Player.Instance.IsDead || Player.Instance.HasBuff("Recall")
                 || Player.Instance.IsStunned || Player.Instance.IsRooted || Player.Instance.IsCharmed ||
                 Orbwalker.IsAutoAttacking)
@@ -292,7 +291,7 @@ namespace KickassSeries.Champions.Jinx.Modes
                         }
                         break;
                 }
-            }
+            }*/
         }
     }
 }

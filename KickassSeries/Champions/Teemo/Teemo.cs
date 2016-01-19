@@ -7,7 +7,7 @@ using EloBuddy.SDK.Rendering;
 using KickassSeries.Ultilities;
 
 using Settings = KickassSeries.Champions.Teemo.Config.Modes.Draw;
-using Debug = KickassSeries.Champions.Teemo.Config.Modes.Debug;
+//using Debug = KickassSeries.Champions.Teemo.Config.Modes.Debug;
 
 namespace KickassSeries.Champions.Teemo
 {
@@ -38,7 +38,7 @@ namespace KickassSeries.Champions.Teemo
         }
 
         private static void OnDraw(EventArgs args)
-        {
+        {/*
             if (Debug.DebugDraw)
             {
                 Drawing.DrawText(
@@ -149,7 +149,7 @@ namespace KickassSeries.Champions.Teemo
                         Circle.Draw(place.IsShroomed() ? SharpDX.Color.Red : SharpDX.Color.LightGreen, 100, place);
                     }
                 }
-            }
+            }*/
         }
     }
 }

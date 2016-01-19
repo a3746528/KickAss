@@ -20,7 +20,7 @@ namespace KickassSeries.Champions.Ahri.Modes
                     .OrderByDescending(m => m.Health)
                     .FirstOrDefault(m => m.IsValidTarget(Q.Range));
 
-            if (minion == null || Settings.ManaLane >= Player.Instance.ManaPercent) return;
+            if (minion == null || Settings.LaneMana >= Player.Instance.ManaPercent) return;
 
 
             if (E.IsReady() && minion.IsValidTarget(E.Range) && Settings.UseE)
@@ -41,7 +41,7 @@ namespace KickassSeries.Champions.Ahri.Modes
                 if (minions.Length == 0) return;
 
                 var farmLocation = EntityManager.MinionsAndMonsters.GetLineFarmLocation(minions, Q.Width, (int)Q.Range);
-                if (farmLocation.HitNumber == Settings.MinQ)
+                if (farmLocation.HitNumber == Settings.XCount)
                 {
                     Q.Cast(farmLocation.CastPosition);
                 }

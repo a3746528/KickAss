@@ -20,7 +20,7 @@ namespace KickassSeries.Champions.Ezreal.Modes
                     .OrderByDescending(m => m.MaxHealth)
                     .FirstOrDefault(m => m.IsValidTarget(Q.Range));
             if (jungleMonsters == null) return;
-            if (Settings.UseQ && Q.IsReady() && Settings.ManaLane <= Player.Instance.ManaPercent)
+            if (Settings.UseQ && Q.IsReady() && Settings.LaneMana <= Player.Instance.ManaPercent)
             {
                 Q.Cast(jungleMonsters);
             }

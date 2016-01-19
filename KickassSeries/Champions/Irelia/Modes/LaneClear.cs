@@ -15,7 +15,7 @@ namespace KickassSeries.Champions.Irelia.Modes
 
         public override void Execute()
         {
-            if (Q.IsReady() && Settings.UseQ && Player.Instance.ManaPercent >= Settings.ManaLane)
+            if (Q.IsReady() && Settings.UseQ && Player.Instance.ManaPercent >= Settings.LaneMana)
             {
                 var minionq =
                     EntityManager.MinionsAndMonsters.EnemyMinions.FirstOrDefault(
@@ -27,7 +27,7 @@ namespace KickassSeries.Champions.Irelia.Modes
                 }
             }
 
-            if (EventsManager.CanW && Settings.UseW && Player.Instance.ManaPercent >= Settings.ManaLane)
+            if (EventsManager.CanW && Settings.UseW && Player.Instance.ManaPercent >= Settings.LaneMana)
             {
                 var minionw =
                    EntityManager.MinionsAndMonsters.EnemyMinions.FirstOrDefault(

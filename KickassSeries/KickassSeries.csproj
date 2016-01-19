@@ -54,6 +54,7 @@
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -151,7 +152,6 @@
     <Compile Include="Champions\Draven\SpellDamage.cs" />
     <Compile Include="Champions\Draven\SpellManager.cs" />
     <Compile Include="Champions\DrMundo\DamageIndicator.cs" />
-    <Compile Include="Champions\Extensions.cs" />
     <Compile Include="Champions\Ezreal\DamageIndicator.cs" />
     <Compile Include="Champions\Ezreal\Ezreal.cs" />
     <Compile Include="Champions\Ezreal\Config.cs" />
@@ -2006,8 +2006,10 @@
     <Compile Include="Champions\Ahri\Modes\PermaActive.cs" />
     <Compile Include="Champions\Ahri\SpellDamage.cs" />
     <Compile Include="Champions\Ahri\SpellManager.cs" />
-    <Compile Include="MenuSettings\Color.cs" />
-    <Compile Include="MenuSettings\Width.cs" />
+    <Compile Include="Evade\Config.cs" />
+    <Compile Include="Evade\Spells\SpellData.cs" />
+    <Compile Include="Evade\Spells\SpellDataBase.cs" />
+    <Compile Include="MenuSettings\ColorSliders.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
@@ -2031,7 +2033,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Activator\ToDo.txt" />
-    <Content Include="Champions\ToDo.txt" />
+    <Content Include="Evade\ToDo.txt" />
     <None Include="Resources\Back.png" />
     <None Include="Resources\BottomHUD.png" />
     <None Include="Resources\TempBar.png" />
@@ -2043,23 +2045,33 @@
     <None Include="Resources\IsReady.png" />
     <None Include="Resources\teste.png" />
     <None Include="Resources\itemsmiteaoe.jpg" />
-    <None Include="Resources\s5_summonersmiteduel.jpg" />
-    <None Include="Resources\s5_summonersmiteplayerganker.jpg" />
-    <None Include="Resources\s5_summonersmitequick.jpg" />
     <None Include="Resources\summonerbarrier.jpg" />
     <None Include="Resources\summonerboost.jpg" />
     <None Include="Resources\summonerclairvoyance.jpg" />
-    <None Include="Resources\summonerdot.jpg" />
     <None Include="Resources\summonerexhaust.jpg" />
-    <None Include="Resources\summonerflash.jpg" />
-    <None Include="Resources\summonerhaste.jpg" />
-    <None Include="Resources\summonerheal.jpg" />
     <None Include="Resources\summonermana.jpg" />
     <None Include="Resources\summonerodingarrison.jpg" />
     <None Include="Resources\summonerrevive.jpg" />
     <None Include="Resources\summonersmite.jpg" />
     <None Include="Resources\summonersnowball.jpg" />
     <None Include="Resources\summonerteleport.jpg" />
+    <None Include="Resources\Image1.png" />
+    <None Include="Resources\ColorPickerSprite.png" />
+    <None Include="Resources\SummonerBarrier.png" />
+    <None Include="Resources\SummonerBlueSmite.png" />
+    <None Include="Resources\SummonerCleanse.png" />
+    <None Include="Resources\SummonerExhaust.png" />
+    <None Include="Resources\SummonerFlash.png" />
+    <None Include="Resources\SummonerGarrison.png" />
+    <None Include="Resources\SummonerGhost.png" />
+    <None Include="Resources\SummonerHeal.png" />
+    <None Include="Resources\SummonerIgnite.png" />
+    <None Include="Resources\SummonerRedSmite.png" />
+    <None Include="Resources\SummonerSmite.png" />
+    <None Include="Resources\SummonerSnowBall.png" />
+    <None Include="Resources\SummonerTeleport.png" />
+    <None Include="Resources\SummonerClarity.png" />
+    <None Include="Resources\SummonerClairvoyance.png" />
     <Content Include="Ultilities\ToDo.txt" />
   </ItemGroup>
   <ItemGroup />

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using EloBuddy;
 using EloBuddy.SDK;
 
@@ -10,90 +11,85 @@ namespace KickassSeries.Activator.Items
     // ReSharper disable once ClassNeverInstantiated.Global
     public sealed class Offensive : Ids
     {
-        private static int LastItemUsed;
-
         public static void Execute()
         {
-            if (LastItemUsed > Environment.TickCount) return;
+            if (Activator.lastUsed > Environment.TickCount) return;
 
             var target = TargetSelector.GetTarget(900, DamageType.Mixed);
 
             if (Player.Instance.IsRecalling() || Player.Instance.IsInShopRange() || target == null ||
-                !Orbwalker.ActiveModesFlags.HasFlag(Orbwalker.ActiveModes.Combo)) return;
+                !Orbwalker.ActiveModesFlags.HasFlag(Orbwalker.ActiveModes.Combo) ||
+                !Orbwalker.ActiveModesFlags.HasFlag(Orbwalker.ActiveModes.LaneClear)) return;
 
-            if (Settings.Bilgewater && BilgewaterCutlass.IsOwned() && BilgewaterCutlass.IsReady())
+            if (Settings.Bilgewater && BilgewaterCutlass.IsOwned() && BilgewaterCutlass.IsReady() && target.IsValidTarget(BilgewaterCutlass.Range))
             {
                 if (Settings.BilgewaterMyHp >= Player.Instance.HealthPercent &&
                     target.HealthPercent <= Settings.BilgewaterTargetHp)
                 {
                     BilgewaterCutlass.Cast(target);
-                    LastItemUsed = Environment.TickCount + Misc.DelayBetweenOff;
+                    Activator.lastUsed = Environment.TickCount + Misc.DelayBetweenOff;
                 }
             }
 
-            if (Settings.Blade && BladeOfTheRuinedKing.IsOwned() && BladeOfTheRuinedKing.IsReady())
+            if (Settings.Blade && BladeOfTheRuinedKing.IsOwned() && BladeOfTheRuinedKing.IsReady() && target.IsValidTarget(BladeOfTheRuinedKing.Range))
             {
                 if (Settings.BladeMyHp >= Player.Instance.HealthPercent &&
                     target.HealthPercent <= Settings.BladeTargetHp)
                 {
                     BladeOfTheRuinedKing.Cast(target);
-                    LastItemUsed = Environment.TickCount + Misc.DelayBetweenOff;
+                    Activator.lastUsed = Environment.TickCount + Misc.DelayBetweenOff;
                 }
             }
 
-            if (Settings.Tiamat && Tiamat.IsOwned() && Tiamat.IsReady())
+            var minions = EntityManager.MinionsAndMonsters.EnemyMinions.Count(m => m.IsValidTarget(Tiamat.Range));
+            if (Settings.Tiamat && Tiamat.IsOwned() && Tiamat.IsReady() && target.IsValidTarget(Tiamat.Range) || minions > 2)
             {
-                if (Settings.TiamatMyHp >= Player.Instance.HealthPercent &&
-                    target.HealthPercent <= Settings.TiamatTargetHp && Misc.AACancel
+                if (target.HealthPercent <= Settings.TiamatTargetHp && Misc.AACancel
                     ? EventsManager.CanAACancel
                     : Tiamat.IsReady())
                 {
                     Tiamat.Cast();
-                    LastItemUsed = Environment.TickCount + Misc.DelayBetweenOff;
+                    Activator.lastUsed = Environment.TickCount + Misc.DelayBetweenOff;
                 }
             }
 
-            if (Settings.Hydra && Hydra.IsOwned() && Hydra.IsReady())
+            if (Settings.Hydra && Hydra.IsOwned() && Hydra.IsReady() && target.IsValidTarget(Hydra.Range) || minions > 2)
             {
-                if (Settings.HydraMyHp >= Player.Instance.HealthPercent &&
-                    target.HealthPercent <= Settings.HydraTargetHp && Misc.AACancel
+                if (target.HealthPercent <= Settings.HydraTargetHp && Misc.AACancel
                     ? EventsManager.CanAACancel
                     : Hydra.IsReady())
                 {
                     Hydra.Cast();
-                    LastItemUsed = Environment.TickCount + Misc.DelayBetweenOff;
+                    Activator.lastUsed = Environment.TickCount + Misc.DelayBetweenOff;
                 }
             }
 
-            if (Settings.Titanic && TitanicHydra.IsOwned() && TitanicHydra.IsReady())
+            if (Settings.Titanic && TitanicHydra.IsOwned() && TitanicHydra.IsReady() && target.IsValidTarget(TitanicHydra.Range) || minions > 2)
             {
-                if (Settings.TitanicMyHp >= Player.Instance.HealthPercent &&
-                    target.HealthPercent <= Settings.TitanicTargetHp && Misc.AACancel
+                if (target.HealthPercent <= Settings.TitanicTargetHp && Misc.AACancel
                     ? EventsManager.CanAACancel
                     : TitanicHydra.IsReady())
                 {
                     TitanicHydra.Cast();
-                    LastItemUsed = Environment.TickCount + Misc.DelayBetweenOff;
+                    Activator.lastUsed = Environment.TickCount + Misc.DelayBetweenOff;
                 }
             }
 
-            if (Settings.Youmuu && Youmuu.IsOwned() && Youmuu.IsReady())
+            if (Settings.Youmuu && Youmuu.IsOwned() && Youmuu.IsReady() && target.IsValidTarget(Youmuu.Range))
             {
-                if (Settings.YoumuuMyHp >= Player.Instance.HealthPercent &&
-                    target.HealthPercent <= Settings.YoumuuTargetHp)
+                if (target.HealthPercent <= Settings.YoumuuTargetHp)
                 {
                     Youmuu.Cast();
-                    LastItemUsed = Environment.TickCount + Misc.DelayBetweenOff;
+                    Activator.lastUsed = Environment.TickCount + Misc.DelayBetweenOff;
                 }
             }
 
-            if (Settings.Hextech && Hextech.IsOwned() && Hextech.IsReady())
+            if (Settings.Hextech && Hextech.IsOwned() && Hextech.IsReady() && target.IsValidTarget(Hextech.Range))
             {
-                if (Settings.HextechMyHp >= Player.Instance.HealthPercent &&
-                    target.HealthPercent <= Settings.HextechTargetHp)
+                if (target.HealthPercent <= Settings.HextechTargetHp)
                 {
                     Hextech.Cast(target);
-                    LastItemUsed = Environment.TickCount + Misc.DelayBetweenOff;
+                    Activator.lastUsed = Environment.TickCount + Misc.DelayBetweenOff;
                 }
             }
         }

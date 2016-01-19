@@ -2,7 +2,7 @@
 using EloBuddy;
 using EloBuddy.SDK;
 using Settings = KickassSeries.Champions.Ezreal.Config.Modes.Misc;
-using Configs = KickassSeries.Champions.Ezreal.Config.Modes.AutoHarass;
+using Configs = KickassSeries.Champions.Ezreal.Config.Modes.Harass;
 
 namespace KickassSeries.Champions.Ezreal.Modes
 {

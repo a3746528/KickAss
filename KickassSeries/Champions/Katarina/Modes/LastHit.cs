@@ -28,15 +28,16 @@ namespace KickassSeries.Champions.Katarina.Modes
             {
                 var minions =
                     EntityManager.MinionsAndMonsters.GetLaneMinions(EntityManager.UnitTeam.Enemy,
-                        Player.Instance.ServerPosition, E.Range, false).ToArray();
-                if (minions.Length == 0) return;
-
-                var farmLocation = EntityManager.MinionsAndMonsters.GetCircularFarmLocation(minions, W.Range,
-                    (int)E.Range);
-
-                if (farmLocation.HitNumber >= 3)
+                        Player.Instance.ServerPosition, E.Range, false).Where(m => m.Health < SpellDamage.GetRealDamage(SpellSlot.W, m)).ToArray();
+                if (minions.Length != 0)
                 {
-                    E.Cast(farmLocation.CastPosition);
+                    var farmLocation = EntityManager.MinionsAndMonsters.GetCircularFarmLocation(minions, W.Range,
+                        (int) E.Range);
+
+                    if (farmLocation.HitNumber >= 2)
+                    {
+                        E.Cast(farmLocation.CastPosition);
+                    }
                 }
             }
 
@@ -62,7 +63,7 @@ namespace KickassSeries.Champions.Katarina.Modes
                             m => m.IsValidTarget(E.Range) && m.Health <= SpellDamage.GetRealDamage(SpellSlot.Q, m));
                 if (minionQ != null)
                 {
-                    Q.Cast(minion);
+                    Q.Cast(minionQ);
                 }
             }
         }

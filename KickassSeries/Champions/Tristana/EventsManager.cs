@@ -19,7 +19,7 @@ namespace KickassSeries.Champions.Tristana
         {
             if (!sender.IsEnemy) return;
 
-            if (sender.IsEnemy && sender.IsInRange(Player.Instance, SpellManager.R.Range) && Player.Instance.Distance(e.End) < SpellManager.R.Range && Misc.RGap)
+            if (sender.IsEnemy && sender.IsInRange(Player.Instance, SpellManager.R.Range) && Player.Instance.Distance(e.End) < SpellManager.R.Range && Misc.AntiGapCloser)
             {
                 SpellManager.R.Cast(sender);
             }
@@ -29,7 +29,7 @@ namespace KickassSeries.Champions.Tristana
         {
             if (!sender.IsEnemy) return;
 
-            if (sender.IsValidTarget(SpellManager.R.Range) && e.DangerLevel >= DangerLevel.High && Misc.RInt)
+            if (sender.IsValidTarget(SpellManager.R.Range) && e.DangerLevel >= DangerLevel.High && Misc.InterruptSpell)
             {
                 SpellManager.R.Cast(sender);
             }

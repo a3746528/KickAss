@@ -117,5 +117,46 @@ namespace KickassSeries.Ultilities
             return ObjectManager.Get<Obj_AI_Base>().Where(obj => obj.Name == "Noxious Trap").Any(obj => position.Distance(obj.Position) <= 250);
         }
         //teemo
+
+        public static bool HasSpellShield(this AIHeroClient target)
+        {
+            // Various spellshields
+            return target.HasBuffOfType(BuffType.SpellShield) || target.HasBuffOfType(BuffType.SpellImmunity);
+        }
+
+        public static float TotalShieldHealth(this Obj_AI_Base target)
+        {
+            return target.Health + target.AllShield + target.AttackShield + target.MagicShield;
+        }
+
+        public static int GetStunDuration(this Obj_AI_Base target)
+        {
+            return (int)(target.Buffs.Where(b => b.IsActive && Game.Time < b.EndTime &&
+                                          (b.Type == BuffType.Charm ||
+                                           b.Type == BuffType.Knockback ||
+                                           b.Type == BuffType.Stun ||
+                                           b.Type == BuffType.Suppression ||
+                                           b.Type == BuffType.Snare)).Aggregate(0f, (current, buff) => Math.Max(current, buff.EndTime)) - Game.Time) * 1000;
+        }
+
+        public static bool Tower(this Vector3 pos)
+        {
+            return EntityManager.Turrets.Enemies.Where(t => !t.IsDead).Any(d => d.Distance(pos) < 950);
+        }
+
+        public static bool AllyTower(this Vector3 pos)
+        {
+            return EntityManager.Turrets.Allies.Where(t => !t.IsDead).Any(d => d.Distance(pos) < 700);
+        }
+
+        public static Vector3 RPos(this Obj_AI_Base unit)
+        {
+            return unit.Position.Extend(Prediction.Position.PredictUnitPosition(unit, 300), 600).To3D();
+        }
+
+        public static bool IsPassiveReady(this AIHeroClient target)
+        {
+            return target.IsMe && target.HasBuff("");
+        }
     }
 }

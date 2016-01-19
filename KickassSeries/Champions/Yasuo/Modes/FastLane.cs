@@ -9,7 +9,7 @@ namespace KickassSeries.Champions.Yasuo.Modes
     {
         public override bool ShouldBeExecuted()
         {
-            return Settings.FastLaneKey;
+            return true; /*Settings.FastLaneKey;*/
         }
 
         public override void Execute()

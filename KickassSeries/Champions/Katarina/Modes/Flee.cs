@@ -15,24 +15,19 @@ namespace KickassSeries.Champions.Katarina.Modes
 
         private static int _lastWardCast;
 
-        private static InventorySlot GetWard()
-        {
-            var wards = new[]
-            {
-                ItemId.Warding_Totem_Trinket, ItemId.Sightstone, ItemId.Ruby_Sightstone,
-                ItemId.Greater_Stealth_Totem_Trinket, ItemId.Greater_Vision_Totem_Trinket,
-                ItemId.Stealth_Ward, ItemId.Vision_Ward
-            };
-            return
-                Player.Instance.InventoryItems.FirstOrDefault(a => wards.Contains(a.Id) && a.IsWard && a.CanUseItem());
-        }
-
         public static void WardJump(Vector3 pos)
         {
-            if (SpellManager.E.IsReady() && _lastWardCast + 500 < Environment.TickCount)
+            var wards = new[]
+           {
+                ItemId.Warding_Totem_Trinket, ItemId.Sightstone, ItemId.Ruby_Sightstone,
+                ItemId.Greater_Stealth_Totem_Trinket, ItemId.Greater_Vision_Totem_Trinket
+            };
+            var ward = Player.Instance.InventoryItems.FirstOrDefault(a => wards.Contains(a.Id) && a.CanUseItem());
+
+            if (SpellManager.Q.IsReady() && _lastWardCast < Environment.TickCount && ward != null)
             {
-                GetWard().Cast(Player.Instance.Position.Extend(pos, 600).To3D());
-                _lastWardCast = Environment.TickCount;
+                ward.Cast(Player.Instance.Position.Extend(pos, 590).To3D());
+                _lastWardCast = Environment.TickCount + 1000;
             }
         }
 

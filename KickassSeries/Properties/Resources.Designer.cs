@@ -63,6 +63,16 @@ namespace KickassSeries.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap ColorPickerSprite {
+            get {
+                object obj = ResourceManager.GetObject("ColorPickerSprite", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap RTBack {
             get {
                 object obj = ResourceManager.GetObject("RTBack", resourceCulture);
@@ -103,26 +113,6 @@ namespace KickassSeries.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap s5_summonersmiteduel {
-            get {
-                object obj = ResourceManager.GetObject("s5_summonersmiteduel", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap s5_summonersmiteplayerganker {
-            get {
-                object obj = ResourceManager.GetObject("s5_summonersmiteplayerganker", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap STempy {
             get {
                 object obj = ResourceManager.GetObject("STempy", resourceCulture);
@@ -143,9 +133,9 @@ namespace KickassSeries.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap summonerbarrier {
+        internal static System.Drawing.Bitmap SummonerBarrier {
             get {
-                object obj = ResourceManager.GetObject("summonerbarrier", resourceCulture);
+                object obj = ResourceManager.GetObject("SummonerBarrier", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -153,9 +143,9 @@ namespace KickassSeries.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap summonerboost {
+        internal static System.Drawing.Bitmap SummonerBlueSmite {
             get {
-                object obj = ResourceManager.GetObject("summonerboost", resourceCulture);
+                object obj = ResourceManager.GetObject("SummonerBlueSmite", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -163,9 +153,9 @@ namespace KickassSeries.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap summonerclairvoyance {
+        internal static System.Drawing.Bitmap SummonerClairvoyance {
             get {
-                object obj = ResourceManager.GetObject("summonerclairvoyance", resourceCulture);
+                object obj = ResourceManager.GetObject("SummonerClairvoyance", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -173,9 +163,9 @@ namespace KickassSeries.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap summonerdot {
+        internal static System.Drawing.Bitmap SummonerClarity {
             get {
-                object obj = ResourceManager.GetObject("summonerdot", resourceCulture);
+                object obj = ResourceManager.GetObject("SummonerClarity", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -183,9 +173,9 @@ namespace KickassSeries.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap summonerexhaust {
+        internal static System.Drawing.Bitmap SummonerCleanse {
             get {
-                object obj = ResourceManager.GetObject("summonerexhaust", resourceCulture);
+                object obj = ResourceManager.GetObject("SummonerCleanse", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -193,9 +183,9 @@ namespace KickassSeries.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap summonerflash {
+        internal static System.Drawing.Bitmap SummonerExhaust {
             get {
-                object obj = ResourceManager.GetObject("summonerflash", resourceCulture);
+                object obj = ResourceManager.GetObject("SummonerExhaust", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -203,9 +193,9 @@ namespace KickassSeries.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap summonerhaste {
+        internal static System.Drawing.Bitmap SummonerFlash {
             get {
-                object obj = ResourceManager.GetObject("summonerhaste", resourceCulture);
+                object obj = ResourceManager.GetObject("SummonerFlash", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -213,9 +203,9 @@ namespace KickassSeries.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap summonerheal {
+        internal static System.Drawing.Bitmap SummonerGarrison {
             get {
-                object obj = ResourceManager.GetObject("summonerheal", resourceCulture);
+                object obj = ResourceManager.GetObject("SummonerGarrison", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -223,9 +213,9 @@ namespace KickassSeries.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap summonermana {
+        internal static System.Drawing.Bitmap SummonerGhost {
             get {
-                object obj = ResourceManager.GetObject("summonermana", resourceCulture);
+                object obj = ResourceManager.GetObject("SummonerGhost", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -233,9 +223,9 @@ namespace KickassSeries.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap summonerodingarrison {
+        internal static System.Drawing.Bitmap SummonerHeal {
             get {
-                object obj = ResourceManager.GetObject("summonerodingarrison", resourceCulture);
+                object obj = ResourceManager.GetObject("SummonerHeal", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -243,9 +233,9 @@ namespace KickassSeries.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap summonerrevive {
+        internal static System.Drawing.Bitmap SummonerIgnite {
             get {
-                object obj = ResourceManager.GetObject("summonerrevive", resourceCulture);
+                object obj = ResourceManager.GetObject("SummonerIgnite", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -253,9 +243,9 @@ namespace KickassSeries.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap summonersmite {
+        internal static System.Drawing.Bitmap SummonerRedSmite {
             get {
-                object obj = ResourceManager.GetObject("summonersmite", resourceCulture);
+                object obj = ResourceManager.GetObject("SummonerRedSmite", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -263,9 +253,9 @@ namespace KickassSeries.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap summonersnowball {
+        internal static System.Drawing.Bitmap SummonerSmite {
             get {
-                object obj = ResourceManager.GetObject("summonersnowball", resourceCulture);
+                object obj = ResourceManager.GetObject("SummonerSmite", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -273,9 +263,29 @@ namespace KickassSeries.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap summonerteleport {
+        internal static System.Drawing.Bitmap SummonerSnowBall {
             get {
-                object obj = ResourceManager.GetObject("summonerteleport", resourceCulture);
+                object obj = ResourceManager.GetObject("SummonerSnowBall", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap SummonerTeleport {
+            get {
+                object obj = ResourceManager.GetObject("SummonerTeleport", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap teste {
+            get {
+                object obj = ResourceManager.GetObject("teste", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

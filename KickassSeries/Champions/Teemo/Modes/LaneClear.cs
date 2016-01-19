@@ -37,7 +37,7 @@ namespace KickassSeries.Champions.Teemo.Modes
                 if (Q.IsReady()
                     && Settings.UseQ
                     && qMinion.Health <= Player.Instance.GetSpellDamage(qMinion, SpellSlot.Q)
-                    && Settings.QMana <= (int) Player.Instance.ManaPercent)
+                    /*&& Settings.QMana <= (int) Player.Instance.ManaPercent*/)
                 {
                     Q.Cast(qMinion);
                 }
@@ -52,13 +52,14 @@ namespace KickassSeries.Champions.Teemo.Modes
                 EntityManager.MinionsAndMonsters.EnemyMinions.Where(t => R.IsInRange(t) && t.IsValidTarget())
                     .OrderBy(t => t.Health);
             var rLocation = EntityManager.MinionsAndMonsters.GetCircularFarmLocation(allMinionsR, R.Width, (int) R.Range);
-
+            /*
             if (rLocation.HitNumber >= Settings.rMinions
                 && Environment.TickCount - LaneClearLastR >= 5000)
             {
                 R.Cast(rLocation.CastPosition);
                 LaneClearLastR = Environment.TickCount;
             }
+            */
         }
     }
 }

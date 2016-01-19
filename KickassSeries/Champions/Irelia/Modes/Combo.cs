@@ -35,7 +35,7 @@ namespace KickassSeries.Champions.Irelia.Modes
                 E.Cast(target);
             }
 
-            if (R.IsReady() && Settings.UseR && target.IsValidTarget(R.Range) && target.HealthPercent <= 50 && _lastRCast < Environment.TickCount + Settings.DelayR)
+            if (R.IsReady() && Settings.UseR && target.IsValidTarget(R.Range) && target.HealthPercent <= 50 && _lastRCast < Environment.TickCount + 50 /*Settings.DelayR*/)
             {
                 R.Cast(target);
                 _lastRCast = Environment.TickCount;

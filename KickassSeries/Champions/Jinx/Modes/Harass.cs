@@ -15,7 +15,7 @@ namespace KickassSeries.Champions.Jinx.Modes
         }
 
         public override void Execute()
-        {
+        {/*
             #region Last Hitting Section
 
             // Force Minigun if there is a lasthittable minion in minigun range and there is no targets more than the setting amount.
@@ -23,13 +23,13 @@ namespace KickassSeries.Champions.Jinx.Modes
                 t => t.IsEnemy &&
                      t.Health <= (Player.Instance.GetAutoAttackDamage(t)*0.9) && t.IsValidTarget() &&
                      t.Distance(Player.Instance) <= Essentials.MinigunRange);
-            if (Settings.UseQ && Essentials.FishBones() && kM.Count() < Settings.MinMinionQ)
+            if (Settings.UseQ && Essentials.FishBones() && kM.Count() < 2 /*Settings.MinMinionQ)
             {
                 Q.Cast();
             }
 
             // Out of Range
-            if (Settings.UseQ && Player.Instance.ManaPercent >= Settings.ManaQ && !Essentials.FishBones())
+            if (Settings.UseQ && Player.Instance.ManaPercent >= 30/*Settings.ManaQ && !Essentials.FishBones())
             {
                 var minionOutOfRange = Orbwalker.LasthittableMinions.FirstOrDefault(
                     m =>
@@ -155,6 +155,7 @@ namespace KickassSeries.Champions.Jinx.Modes
             }
 
             #endregion
+            */
         }
     }
 }

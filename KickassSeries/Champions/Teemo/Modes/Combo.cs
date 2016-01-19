@@ -20,7 +20,7 @@ namespace KickassSeries.Champions.Teemo.Modes
         {
             var target = TargetSelector.GetTarget(Q.Range, DamageType.Magical);
             if (target == null || target.IsZombie) return;
-
+            /*
             if (Settings.PrevenUnstealth && Player.Instance.HasBuff("CamouflageStealth"))
             {
                 return;
@@ -29,12 +29,12 @@ namespace KickassSeries.Champions.Teemo.Modes
             var enemies = EntityManager.Heroes.Enemies.FirstOrDefault(t => t.IsValidTarget() && Player.Instance.IsInAutoAttackRange(t));
             var rtarget = TargetSelector.GetTarget(R.Range, DamageType.Magical);
             var rCount = Player.Instance.Spellbook.GetSpell(SpellSlot.R).Ammo;
-
+            /*
             if (W.IsReady() && Settings.UseW && !Settings.OnlyWInRange)
             {
                 W.Cast();
             }
-
+            /*
             if (Settings.UseW && Settings.OnlyWInRange)
             {
                 if (W.IsReady() && enemies != null)
@@ -42,22 +42,24 @@ namespace KickassSeries.Champions.Teemo.Modes
                     W.Cast();
                 }
             }
-
+            
             if (rtarget == null)
             {
                 return;
             }
             var predictionR = R.GetPrediction(rtarget);
-
+            /*
             if (!R.IsReady() || !Settings.UseR || !R.IsInRange(rtarget) || Settings.RCharges > rCount || !rtarget.IsValidTarget()
                 || predictionR.CastPosition.IsShroomed())
             {
                 return;
             }
+            
             if (predictionR.HitChance >= HitChance.High)
             {
                 R.Cast(predictionR.CastPosition);
             }
+            */
         }
     }
 }

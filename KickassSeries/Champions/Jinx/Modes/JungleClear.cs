@@ -2,7 +2,7 @@
 using EloBuddy;
 using EloBuddy.SDK;
 
-using Settings = KickassSeries.Champions.Jinx.Config.Modes.JungleClear;
+using Settings = KickassSeries.Champions.Jinx.Config.Modes.LaneClear;
 using Misc = KickassSeries.Champions.Jinx.Config.Modes.Misc;
 
 namespace KickassSeries.Champions.Jinx.Modes
@@ -15,7 +15,7 @@ namespace KickassSeries.Champions.Jinx.Modes
         }
 
         public override void Execute()
-        {
+        {/*
             if (Settings.UseQ && Player.Instance.ManaPercent >= Settings.ManaQ && Q.IsReady())
             {
                 if (Essentials.FishBones())
@@ -75,7 +75,7 @@ namespace KickassSeries.Champions.Jinx.Modes
                         W.Cast(wPrediction.CastPosition);
                     }
                 }
-            }
+            }*/
         }
     }
 }

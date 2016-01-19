@@ -18,12 +18,12 @@ namespace KickassSeries.Champions.Aatrox.Modes
             if (target == null || target.IsZombie) return;
 
             //W Manager
-            if (Player.Instance.Spellbook.GetSpell(SpellSlot.W).ToggleState == 2 && Player.Instance.HealthPercent <= Settings.WHeal)
+            if (Player.Instance.Spellbook.GetSpell(SpellSlot.W).ToggleState == 2 && Player.Instance.HealthPercent <= 40)
             {
                 W.Cast();
             }
 
-            if (Player.Instance.Spellbook.GetSpell(SpellSlot.W).ToggleState == 1 && Player.Instance.HealthPercent >= Settings.Wdmg)
+            if (Player.Instance.Spellbook.GetSpell(SpellSlot.W).ToggleState == 1 && Player.Instance.HealthPercent >= 70)
             {
                 W.Cast();
             }
