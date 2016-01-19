@@ -21,8 +21,8 @@ namespace KickassSeries.Champions.Akali.Modes
             {
                 Q.Cast(target);
             }
-            //TODO GET Q BUFF NAME
-            if (R.IsReady() && target.IsValidTarget(R.Range) && Settings.UseR && target.HasBuff("AkaliMota"))
+
+            if (R.IsReady() && target.IsValidTarget(R.Range) && Settings.UseR && target.HasBuff("AkaliMota") || target.HealthPercent <= Player.Instance.HealthPercent + 10)
             {
                 R.Cast(target);
             }
