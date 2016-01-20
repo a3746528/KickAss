@@ -57,7 +57,6 @@ namespace KickassSeries.Activator.Items
             {
                 if (Player.Instance.ManaPercent < Settings.MinHunterMp && Player.Instance.HealthPercent < Settings.MinHunterHp && !Player.Instance.HasBuff("ItemCrystalFlaskJungle"))
                 {
-                    Chat.Print("Casting");
                     HuntersPotion.Cast();
                 }
                 /*
