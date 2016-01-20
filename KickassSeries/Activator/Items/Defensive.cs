@@ -75,7 +75,7 @@ namespace KickassSeries.Activator.Items
             //CC
 
             if (!Player.Instance.HasCC()) return;
-            Chat.Print("Player Has CC");
+
             if (DerbishBlade.IsReady() && DerbishBlade.IsOwned())
             {
                 DerbishBlade.Cast();
