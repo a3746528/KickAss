@@ -15,19 +15,19 @@ namespace KickassSeries.Champions.Ahri.Modes
         public override void Execute()
         {
             var target = TargetSelector.GetTarget(Q.Range, DamageType.Physical);
-            if (target == null || target.IsZombie || Settings.ManaHarass >= Player.Instance.ManaPercent) return;
+            if (target == null || target.IsZombie) return;
 
-            if (E.IsReady() && target.IsValidTarget(E.Range) && Settings.UseE)
+            if (E.IsReady() && target.IsValidTarget(E.Range) && Settings.UseE && Settings.ManaHarass < Player.Instance.ManaPercent)
             {
                 E.Cast(target);
             }
 
-            if (W.IsReady() && target.IsValidTarget(W.Range) && Settings.UseW)
+            if (W.IsReady() && target.IsValidTarget(W.Range) && Settings.UseW && Settings.ManaHarass < Player.Instance.ManaPercent)
             {
                 W.Cast();
             }
 
-            if (Q.IsReady() && target.IsValidTarget(Q.Range) && Settings.UseQ)
+            if (Q.IsReady() && target.IsValidTarget(Q.Range) && Settings.UseQ && Settings.ManaHarass < Player.Instance.ManaPercent)
             {
                 Q.Cast(target);
             }

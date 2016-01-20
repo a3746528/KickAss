@@ -22,7 +22,7 @@ namespace KickassSeries.Champions.Ahri.Modes
 
             //if (minion == null || Settings.ManaLast >= Player.Instance.ManaPercent) return;
 
-            if (E.IsReady() && minion.IsValidTarget(E.Range) && Settings.UseE)
+            if (E.IsReady() && minion.IsValidTarget(E.Range) && Settings.UseE && Settings.LastMana < Player.Instance.ManaPercent)
             {
                 var minionE =
                     EntityManager.MinionsAndMonsters.GetLaneMinions()
@@ -35,7 +35,7 @@ namespace KickassSeries.Champions.Ahri.Modes
                 }
             }
 
-            if (Q.IsReady() && minion.IsValidTarget(Q.Range) && Settings.UseQ)
+            if (Q.IsReady() && minion.IsValidTarget(Q.Range) && Settings.UseQ && Settings.LastMana < Player.Instance.ManaPercent)
             {
                 var minionQ =
                     EntityManager.MinionsAndMonsters.GetLaneMinions()

@@ -20,20 +20,20 @@ namespace KickassSeries.Champions.Ahri.Modes
                     .OrderByDescending(m => m.Health)
                     .FirstOrDefault(m => m.IsValidTarget(Q.Range));
 
-            if (minion == null || Settings.LaneMana >= Player.Instance.ManaPercent) return;
+            if (minion == null) return;
 
 
-            if (E.IsReady() && minion.IsValidTarget(E.Range) && Settings.UseE)
+            if (E.IsReady() && minion.IsValidTarget(E.Range) && Settings.UseE && Settings.LaneMana < Player.Instance.ManaPercent)
             {
                 E.Cast(minion);
             }
 
-            if (W.IsReady() && minion.IsValidTarget(W.Range) && Settings.UseW)
+            if (W.IsReady() && minion.IsValidTarget(W.Range) && Settings.UseW && Settings.LaneMana < Player.Instance.ManaPercent)
             {
                 W.Cast();
             }
 
-            if (Q.IsReady() && minion.IsValidTarget(Q.Range) && Settings.UseQ)
+            if (Q.IsReady() && minion.IsValidTarget(Q.Range) && Settings.UseQ && Settings.LaneMana < Player.Instance.ManaPercent)
             {
                 var minions =
                    EntityManager.MinionsAndMonsters.GetLaneMinions(EntityManager.UnitTeam.Enemy,
