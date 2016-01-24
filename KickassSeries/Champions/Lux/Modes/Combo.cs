@@ -22,22 +22,28 @@ namespace KickassSeries.Champions.Lux.Modes
                 Q.Cast(target);
             }
 
-            if (E.IsReady() && target.IsValidTarget(E.Range) && Settings.UseE)
+            if (E.IsReady() && target.IsValidTarget(E.Range) && Settings.UseE && Settings.UseESnared
+                ? target.HasBuffOfType(BuffType.Snare)
+                : target.IsValidTarget(E.Range))
             {
                 E.Cast(target);
             }
 
             if (W.IsReady() && target.IsValidTarget(W.Range) && Settings.UseW)
             {
-                W.Cast();
+                W.Cast(target);
             }
 
             if (R.IsReady() && Settings.UseR)
             {
                 var targetR = TargetSelector.GetTarget(R.Range, DamageType.Magical);
 
-                if (targetR == null)return;
-                R.Cast(targetR);
+                if (targetR != null && Settings.UseRSnared
+                ? target.HasBuffOfType(BuffType.Snare)
+                : target.IsValidTarget(R.Range))
+                {
+                    R.Cast(R.GetPrediction(targetR).CastPosition);
+                }
             }
         }
     }

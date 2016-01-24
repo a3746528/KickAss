@@ -58,7 +58,9 @@ namespace KickassSeries.Champions.Lux
                 private static readonly CheckBox _useQ;
                 private static readonly CheckBox _useW;
                 private static readonly CheckBox _useE;
+                private static readonly CheckBox _useESnared;
                 private static readonly CheckBox _useR;
+                private static readonly CheckBox _useRSnared;
 
                 public static bool UseQ
                 {
@@ -75,9 +77,19 @@ namespace KickassSeries.Champions.Lux
                     get { return _useE.CurrentValue; }
                 }
 
+                public static bool UseESnared
+                {
+                    get { return _useESnared.CurrentValue; }
+                }
+
                 public static bool UseR
                 {
                     get { return _useR.CurrentValue; }
+                }
+
+                public static bool UseRSnared
+                {
+                    get { return _useRSnared.CurrentValue; }
                 }
 
                 static Combo()
@@ -87,7 +99,9 @@ namespace KickassSeries.Champions.Lux
                     _useQ = SpellsMenu.Add("comboQ", new CheckBox("Use Q on Combo ?"));
                     _useW = SpellsMenu.Add("comboW", new CheckBox("Use W on Combo ?"));
                     _useE = SpellsMenu.Add("comboE", new CheckBox("Use E on Combo ?"));
+                    _useESnared = SpellsMenu.Add("comboESnared", new CheckBox("Only use E if target is snared ?"));
                     _useR = SpellsMenu.Add("comboR", new CheckBox("Use R on Combo ?"));
+                    _useRSnared = SpellsMenu.Add("comboRSnared", new CheckBox("Only use R if target is snared ?"));
                 }
 
                 public static void Initialize()
@@ -100,7 +114,6 @@ namespace KickassSeries.Champions.Lux
                 private static readonly CheckBox _useQ;
                 private static readonly CheckBox _useW;
                 private static readonly CheckBox _useE;
-                private static readonly CheckBox _useR;
                 private static readonly Slider _manaHarass;
 
                 public static bool UseQ
@@ -118,11 +131,6 @@ namespace KickassSeries.Champions.Lux
                     get { return _useE.CurrentValue; }
                 }
 
-                public static bool UseR
-                {
-                    get { return _useR.CurrentValue; }
-                }
-
                 public static int ManaHarass
                 {
                     get { return _manaHarass.CurrentValue; }
@@ -134,7 +142,6 @@ namespace KickassSeries.Champions.Lux
                     _useQ = SpellsMenu.Add("harassQ", new CheckBox("Use Q on Harass ?"));
                     _useW = SpellsMenu.Add("harassW", new CheckBox("Use W on Harass ?"));
                     _useE = SpellsMenu.Add("harassE", new CheckBox("Use E on Harass ?"));
-                    _useR = SpellsMenu.Add("harassR", new CheckBox("Use R on Harass ?"));
                     SpellsMenu.AddGroupLabel("Harass Settings:");
                     _manaHarass = SpellsMenu.Add("harassMana", new Slider("It will only cast any harass spell if the mana is greater than ({0}).", 30));
                 }
@@ -147,30 +154,18 @@ namespace KickassSeries.Champions.Lux
             public static class LaneClear
             {
                 private static readonly CheckBox _useQ;
-                private static readonly CheckBox _useW;
                 private static readonly CheckBox _useE;
-                private static readonly CheckBox _useR;
                 private static readonly Slider _laneMana;
-                private static readonly Slider _xCount;
+                private static readonly Slider _eCount;
 
                 public static bool UseQ
                 {
                     get { return _useQ.CurrentValue; }
                 }
 
-                public static bool UseW
-                {
-                    get { return _useW.CurrentValue; }
-                }
-
                 public static bool UseE
                 {
                     get { return _useE.CurrentValue; }
-                }
-
-                public static bool UseR
-                {
-                    get { return _useR.CurrentValue; }
                 }
 
                 public static int LaneMana
@@ -180,19 +175,17 @@ namespace KickassSeries.Champions.Lux
 
                 public static int XCount
                 {
-                    get { return _xCount.CurrentValue; }
+                    get { return _eCount.CurrentValue; }
                 }
 
                 static LaneClear()
                 {
                     FarmMenu.AddGroupLabel("LaneClear Spells:");
                     _useQ = FarmMenu.Add("laneclearQ", new CheckBox("Use Q on Laneclear ?"));
-                    _useW = FarmMenu.Add("laneclearW", new CheckBox("Use W on Laneclear ?"));
                     _useE = FarmMenu.Add("laneclearE", new CheckBox("Use E on Laneclear ?"));
-                    _useR = FarmMenu.Add("laneclearR", new CheckBox("Use R on Laneclear ?"));
                     FarmMenu.AddGroupLabel("LaneClear Settings:");
                     _laneMana = FarmMenu.Add("laneMana", new Slider("It will only cast any laneclear spell if the mana is greater than ({0}).", 30));
-                    _xCount = FarmMenu.Add("xCount", new Slider("It will only cast X spell if it`ll hit ({0}).", 3, 1, 6));
+                    _eCount = FarmMenu.Add("eCount", new Slider("It will only cast E if it`ll hit ({0}).", 3, 1, 6));
                 }
 
                 public static void Initialize()
@@ -203,20 +196,13 @@ namespace KickassSeries.Champions.Lux
             public static class LastHit
             {
                 private static readonly CheckBox _useQ;
-                private static readonly CheckBox _useW;
                 private static readonly CheckBox _useE;
-                private static readonly CheckBox _useR;
                 private static readonly Slider _lastMana;
-                private static readonly Slider _xCount;
+                private static readonly Slider _eCount;
 
                 public static bool UseQ
                 {
                     get { return _useQ.CurrentValue; }
-                }
-
-                public static bool UseW
-                {
-                    get { return _useW.CurrentValue; }
                 }
 
                 public static bool UseE
@@ -224,19 +210,14 @@ namespace KickassSeries.Champions.Lux
                     get { return _useE.CurrentValue; }
                 }
 
-                public static bool UseR
-                {
-                    get { return _useR.CurrentValue; }
-                }
-
                 public static int LastMana
                 {
                     get { return _lastMana.CurrentValue; }
                 }
 
-                public static int XCount
+                public static int ECount
                 {
-                    get { return _xCount.CurrentValue; }
+                    get { return _eCount.CurrentValue; }
                 }
 
 
@@ -244,12 +225,10 @@ namespace KickassSeries.Champions.Lux
                 {
                     FarmMenu.AddGroupLabel("LastHit Spells:");
                     _useQ = FarmMenu.Add("lasthitQ", new CheckBox("Use Q on LastHit ?"));
-                    _useW = FarmMenu.Add("lasthitW", new CheckBox("Use W on LastHit ?"));
                     _useE = FarmMenu.Add("lasthitE", new CheckBox("Use E on LastHit ?"));
-                    _useR = FarmMenu.Add("lasthitR", new CheckBox("Use R on LastHit ?"));
                     FarmMenu.AddGroupLabel("LastHit Settings:");
                     _lastMana = FarmMenu.Add("lastMana", new Slider("It will only cast any lasthit spell if the mana is greater than ({0}).", 30));
-                    _xCount = FarmMenu.Add("wCount", new Slider("It will only cast X spell if it`ll hit ({0}).", 3, 1, 6));
+                    _eCount = FarmMenu.Add("wCount", new Slider("It will only cast X spell if it`ll hit ({0}).", 2, 1, 6));
                 }
 
                 public static void Initialize()
@@ -262,6 +241,9 @@ namespace KickassSeries.Champions.Lux
                 private static readonly CheckBox _interruptSpell;
                 private static readonly CheckBox _antiGapCloserSpell;
                 private static readonly Slider _miscMana;
+                //KS
+                private static readonly CheckBox _killStealR;
+                private static readonly Slider _ksMana;
 
                 public static bool InterruptSpell
                 {
@@ -277,14 +259,27 @@ namespace KickassSeries.Champions.Lux
                 {
                     get { return _miscMana.CurrentValue; }
                 }
+                //KS
+                public static bool KillStealR
+                {
+                    get { return _killStealR.CurrentValue; }
+                }
+
+                public static int KillStealMana
+                {
+                    get { return _ksMana.CurrentValue; }
+                }
 
                 static Misc()
                 {
                     // Initialize the menu values
-                    MiscMenu.AddGroupLabel("Miscellaneous");
-                    _interruptSpell = MiscMenu.Add("interruptX", new CheckBox("Use X to interrupt spells ?"));
-                    _antiGapCloserSpell = MiscMenu.Add("gapcloserX", new CheckBox("Use X to antigapcloser spells ?"));
+                    MiscMenu.AddGroupLabel("Miscellaneous Settings");
+                    _interruptSpell = MiscMenu.Add("interruptQ", new CheckBox("Use Q to interrupt spells ?"));
+                    _antiGapCloserSpell = MiscMenu.Add("gapcloserQ", new CheckBox("Use Q to antigapcloser spells ?"));
                     _miscMana = MiscMenu.Add("miscMana", new Slider("Min mana to use gapcloser/interrupt spells ?", 20));
+                    MiscMenu.AddGroupLabel("KillSteal Settings");
+                    _killStealR = MiscMenu.Add("killstealR", new CheckBox("Use R to KS ?"));
+                    _ksMana = MiscMenu.Add("killstealMana", new Slider("Min mana to use KillSteal spells ?", 20));
                 }
 
                 public static void Initialize()

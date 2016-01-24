@@ -26,11 +26,6 @@ namespace KickassSeries.Champions.Lux.Modes
                 E.Cast(jgminion);
             }
 
-            if (W.IsReady() && jgminion.IsValidTarget(W.Range) && Settings.UseW)
-            {
-                W.Cast();
-            }
-
             if (Q.IsReady() && jgminion.IsValidTarget(Q.Range) && Settings.UseQ)
             {
                 Q.Cast(jgminion);

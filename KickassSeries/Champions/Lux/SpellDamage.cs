@@ -84,7 +84,7 @@ namespace KickassSeries.Champions.Lux
                 return 0;
             }
 
-            return Player.Instance.CalculateDamageOnUnit(target, damageType, damage) - 10;
+            return Player.Instance.CalculateDamageOnUnit(target, damageType, damage) - 30;
         }
     }
 }

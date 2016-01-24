@@ -64,17 +64,11 @@ namespace KickassSeries.Activator
                 #region Bilgewater
 
                 private static readonly CheckBox UseBilgewater;
-                private static readonly Slider MyHpBilgewater;
                 private static readonly Slider TargetHpBilgewater;
 
                 public static bool Bilgewater
                 {
                     get { return UseBilgewater.CurrentValue; }
-                }
-
-                public static int BilgewaterMyHp
-                {
-                    get { return MyHpBilgewater.CurrentValue; }
                 }
 
                 public static int BilgewaterTargetHp
@@ -200,8 +194,6 @@ namespace KickassSeries.Activator
                     // Initialize the menu values
                     OffensiveMenu.AddGroupLabel("Bilgewater Cutlass");
                     UseBilgewater = OffensiveMenu.Add("useBilgewater", new CheckBox("Use Bilgewater Cutlass ?"));
-                    MyHpBilgewater = OffensiveMenu.Add("useBilgewaterMyHP",
-                        new Slider("Use Bilgewater Cutlass When My Health hits X%", 80));
                     TargetHpBilgewater = OffensiveMenu.Add("useBilgewaterTargetHP",
                         new Slider("Use Bilgewater Cutlass When Target`s Health hits X%", 80));
 

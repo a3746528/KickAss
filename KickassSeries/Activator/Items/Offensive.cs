@@ -26,8 +26,7 @@ namespace KickassSeries.Activator.Items
                 */
             if (Settings.Bilgewater && BilgewaterCutlass.IsOwned() && BilgewaterCutlass.IsReady() && target.IsValidTarget(BilgewaterCutlass.Range))
             {
-                if (Settings.BilgewaterMyHp > Player.Instance.HealthPercent &&
-                    target.HealthPercent < Settings.BilgewaterTargetHp)
+                if (target.HealthPercent < Settings.BilgewaterTargetHp)
                 {
                     BilgewaterCutlass.Cast(target);
                     Activator.lastUsed = Environment.TickCount + Misc.DelayBetweenOff;

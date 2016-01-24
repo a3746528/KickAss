@@ -182,7 +182,7 @@ namespace KickassSeries
                         Champions.Leblanc.Leblanc.Initialize();
                         break;
                     case Champion.LeeSin:
-                        Champions.LeeSin.LeeSin.Initialize();
+                        //Champions.LeeSin.LeeSin.Initialize();
                         break;
                     case Champion.Leona:
                         Champions.Leona.Leona.Initialize();
@@ -266,7 +266,7 @@ namespace KickassSeries
                         Champions.Renekton.Renekton.Initialize();
                         break;
                     case Champion.Rengar:
-                        Champions.Rengar.Rengar.Initialize();
+                        //Champions.Rengar.Rengar.Initialize();
                         break;
                     case Champion.Riven:
                         Champions.Riven.Riven.Initialize();
@@ -338,7 +338,7 @@ namespace KickassSeries
                         Champions.Tryndamere.Tryndamere.Initialize();
                         break;
                     case Champion.TwistedFate:
-                        Champions.TwistedFate.TwistedFate.Initialize();
+                        //Champions.TwistedFate.TwistedFate.Initialize();
                         break;
                     case Champion.Twitch:
                         Champions.Twitch.Twitch.Initialize();
@@ -383,7 +383,7 @@ namespace KickassSeries
                         Champions.XinZhao.XinZhao.Initialize();
                         break;
                     case Champion.Yasuo:
-                        Champions.Yasuo.Yasuo.Initialize();
+                        //Champions.Yasuo.Yasuo.Initialize();
                         break;
                     case Champion.Yorick:
                         Champions.Yorick.Yorick.Initialize();
