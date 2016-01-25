@@ -271,14 +271,30 @@ namespace KickassSeries.Champions.Jax
                 {
                     get { return _miscMana.CurrentValue; }
                 }
+                //KS
+                private static readonly CheckBox _QWKillsteal;
+                private static readonly Slider _ksMana;
+
+                public static bool QWKillSteal
+                {
+                    get { return _QWKillsteal.CurrentValue; }
+                }
+
+                public static int KillStealMana
+                {
+                    get { return _ksMana.CurrentValue; }
+                }
 
                 static Misc()
                 {
                     // Initialize the menu values
                     MiscMenu.AddGroupLabel("Miscellaneous");
-                    _interruptSpell = MiscMenu.Add("interruptX", new CheckBox("Use X to interrupt spells ?"));
-                    _antiGapCloserSpell = MiscMenu.Add("gapcloserX", new CheckBox("Use X to antigapcloser spells ?"));
+                    _interruptSpell = MiscMenu.Add("interruptE", new CheckBox("Use E to interrupt spells ?"));
+                    _antiGapCloserSpell = MiscMenu.Add("gapcloserE", new CheckBox("Use E to antigapcloser spells ?"));
                     _miscMana = MiscMenu.Add("miscMana", new Slider("Min mana to use gapcloser/interrupt spells ?", 20));
+                    MiscMenu.AddGroupLabel("KillSteal Settings");
+                    _QWKillsteal = MiscMenu.Add("QWkillsteal", new CheckBox("Use Q+W to KS ?"));
+                    _ksMana = MiscMenu.Add("miscMana", new Slider("Min mana to use KillSteal spells ?", 10));
                 }
 
                 public static void Initialize()
