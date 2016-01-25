@@ -19,12 +19,12 @@ namespace KickassSeries.Champions.Lux.Modes
 
             if (Q.IsReady() && target.IsValidTarget(Q.Range) && Settings.UseQ)
             {
-                Q.Cast(target);
+                Q.Cast(Q.GetPrediction(target).CastPosition);
             }
 
             if (E.IsReady() && target.IsValidTarget(E.Range) && Settings.UseE)
             {
-                E.Cast(target);
+                E.Cast(E.GetPrediction(target).CastPosition);
             }
         }
     }

@@ -44,7 +44,6 @@ namespace KickassSeries.Champions.Lux.Modes
                     E.Cast(farmLocation.CastPosition);
                 }
             }
-
         }
     }
 }

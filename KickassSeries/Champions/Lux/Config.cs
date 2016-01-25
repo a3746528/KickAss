@@ -56,7 +56,6 @@ namespace KickassSeries.Champions.Lux
             public static class Combo
             {
                 private static readonly CheckBox _useQ;
-                private static readonly CheckBox _useW;
                 private static readonly CheckBox _useE;
                 private static readonly CheckBox _useESnared;
                 private static readonly CheckBox _useR;
@@ -65,11 +64,6 @@ namespace KickassSeries.Champions.Lux
                 public static bool UseQ
                 {
                     get { return _useQ.CurrentValue; }
-                }
-
-                public static bool UseW
-                {
-                    get { return _useW.CurrentValue; }
                 }
 
                 public static bool UseE
@@ -97,7 +91,6 @@ namespace KickassSeries.Champions.Lux
                     // Initialize the menu values
                     SpellsMenu.AddGroupLabel("Combo Spells:");
                     _useQ = SpellsMenu.Add("comboQ", new CheckBox("Use Q on Combo ?"));
-                    _useW = SpellsMenu.Add("comboW", new CheckBox("Use W on Combo ?"));
                     _useE = SpellsMenu.Add("comboE", new CheckBox("Use E on Combo ?"));
                     _useESnared = SpellsMenu.Add("comboESnared", new CheckBox("Only use E if target is snared ?"));
                     _useR = SpellsMenu.Add("comboR", new CheckBox("Use R on Combo ?"));
@@ -244,6 +237,9 @@ namespace KickassSeries.Champions.Lux
                 //KS
                 private static readonly CheckBox _killStealR;
                 private static readonly Slider _ksMana;
+                //W Settings
+                private static readonly CheckBox _wDefense;
+                private static readonly Slider _wMana;
 
                 public static bool InterruptSpell
                 {
@@ -269,6 +265,16 @@ namespace KickassSeries.Champions.Lux
                 {
                     get { return _ksMana.CurrentValue; }
                 }
+                //W Settings
+                public static bool WDefense
+                {
+                    get { return _wDefense.CurrentValue; }
+                }
+
+                public static int WMana
+                {
+                    get { return _wMana.CurrentValue; }
+                }
 
                 static Misc()
                 {
@@ -279,7 +285,10 @@ namespace KickassSeries.Champions.Lux
                     _miscMana = MiscMenu.Add("miscMana", new Slider("Min mana to use gapcloser/interrupt spells ?", 20));
                     MiscMenu.AddGroupLabel("KillSteal Settings");
                     _killStealR = MiscMenu.Add("killstealR", new CheckBox("Use R to KS ?"));
-                    _ksMana = MiscMenu.Add("killstealMana", new Slider("Min mana to use KillSteal spells ?", 20));
+                    _ksMana = MiscMenu.Add("killstealMana", new Slider("Min mana to use KillSteal spells ?", 15));
+                    MiscMenu.AddGroupLabel("W Settings");
+                    _wDefense = MiscMenu.Add("safetyW", new CheckBox("Use W when the player is receiving a spell ?"));
+                    _wMana = MiscMenu.Add("wMana", new Slider("Min mana to use KillSteal spells ?", 10));
                 }
 
                 public static void Initialize()
