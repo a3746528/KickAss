@@ -185,7 +185,7 @@ namespace KickassSeries.Champions.Lux
                     _useE = FarmMenu.Add("laneclearE", new CheckBox("Use E on Laneclear ?"));
                     FarmMenu.AddGroupLabel("LaneClear Settings:");
                     _laneMana = FarmMenu.Add("laneMana", new Slider("It will only cast any laneclear spell if the mana is greater than ({0}).", 30));
-                    _eCount = FarmMenu.Add("eCount", new Slider("It will only cast E if it`ll hit ({0}).", 3, 1, 6));
+                    _eCount = FarmMenu.Add("eCountLaneClear", new Slider("It will only cast E if it`ll hit ({0}).", 3, 1, 6));
                 }
 
                 public static void Initialize()
@@ -228,7 +228,7 @@ namespace KickassSeries.Champions.Lux
                     _useE = FarmMenu.Add("lasthitE", new CheckBox("Use E on LastHit ?"));
                     FarmMenu.AddGroupLabel("LastHit Settings:");
                     _lastMana = FarmMenu.Add("lastMana", new Slider("It will only cast any lasthit spell if the mana is greater than ({0}).", 30));
-                    _eCount = FarmMenu.Add("eCount", new Slider("It will only cast E spell if it`ll hit ({0}).", 2, 1, 6));
+                    _eCount = FarmMenu.Add("eCountLastHit", new Slider("It will only cast E spell if it`ll hit ({0}).", 2, 1, 6));
                 }
 
                 public static void Initialize()
