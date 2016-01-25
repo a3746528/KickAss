@@ -173,7 +173,7 @@ namespace KickassSeries.Champions.Lux
                     get { return _laneMana.CurrentValue; }
                 }
 
-                public static int XCount
+                public static int ECount
                 {
                     get { return _eCount.CurrentValue; }
                 }
@@ -228,7 +228,7 @@ namespace KickassSeries.Champions.Lux
                     _useE = FarmMenu.Add("lasthitE", new CheckBox("Use E on LastHit ?"));
                     FarmMenu.AddGroupLabel("LastHit Settings:");
                     _lastMana = FarmMenu.Add("lastMana", new Slider("It will only cast any lasthit spell if the mana is greater than ({0}).", 30));
-                    _eCount = FarmMenu.Add("wCount", new Slider("It will only cast X spell if it`ll hit ({0}).", 2, 1, 6));
+                    _eCount = FarmMenu.Add("eCount", new Slider("It will only cast E spell if it`ll hit ({0}).", 2, 1, 6));
                 }
 
                 public static void Initialize()
