@@ -1,6 +1,7 @@
 ﻿using System.Linq;
 using EloBuddy;
 using EloBuddy.SDK;
+
 using Settings = KickassSeries.Champions.Ezreal.Config.Modes.Misc;
 using Configs = KickassSeries.Champions.Ezreal.Config.Modes.Harass;
 

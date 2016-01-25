@@ -29,7 +29,7 @@ namespace KickassSeries.Champions.Lux.Modes
                 if (targetR == null || targetR.IsZombie || targetR.HasUndyingBuff()) return;
 
                 if (targetR.Health <= SpellDamage.GetRealDamage(SpellSlot.R, targetR) &&
-                    !targetR.IsInAutoAttackRange(Player.Instance) && targetR.Health > 100 && !E.IsReady() && !Q.IsReady())
+                    !targetR.IsInAutoAttackRange(Player.Instance) && targetR.Health > 150)
                 {
                     R.Cast(R.GetPrediction(targetR).CastPosition);
                 }

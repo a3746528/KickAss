@@ -32,7 +32,7 @@ namespace KickassSeries.Champions.Jax.Modes
                 E.Cast();
             }
 
-            if (R.IsReady() && Player.Instance.CountEnemiesInRange(R.Range) >= 2 && Settings.UseR && Player.Instance.HealthPercent <= 50)
+            if (R.IsReady() && Player.Instance.CountEnemiesInRange(R.Range) >= 2 && Settings.UseR && Player.Instance.HealthPercent <= 60)
             {
                 R.Cast();
             }
