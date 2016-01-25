@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Linq;
 using EloBuddy;
 using EloBuddy.SDK;
 
@@ -18,68 +17,52 @@ namespace KickassSeries.Activator.Items
         {
             if (LastRun > Environment.TickCount)return;
 
-            if (Player.Instance.IsInShopRange() || Player.Instance.CountAlliesInRange(Misc.RangeEnemy) < Misc.EnemyCount ||
-                Activator.lastUsed >= Environment.TickCount) return;
-
-            if (Settings.UseHPpot && HealthPotion.IsOwned())
+            if (!Player.Instance.IsInShopRange() &&
+                Player.Instance.CountAlliesInRange(Misc.RangeEnemy) >= Misc.EnemyCount &&
+                Activator.lastUsed > Environment.TickCount)
             {
-                if (Player.Instance.HealthPercent < Settings.MinHPpot && !Player.Instance.HasBuff("RegenerationPotion"))
+                if (Settings.UseHPpot && HealthPotion.IsOwned())
                 {
-                    HealthPotion.Cast();
+                    if (Player.Instance.HealthPercent < Settings.MinHPpot && !Player.Instance.HasBuff("RegenerationPotion"))
+                    {
+                        HealthPotion.Cast();
+                    }
                 }
+
+                if (Settings.UseBiscuits && Biscuit.IsOwned())
+                {
+                    if (Player.Instance.ManaPercent <= Settings.MinBiscuitMp && Player.Instance.HealthPercent <= Settings.MinBiscuitHp && !Player.Instance.HasBuff("ItemMiniRegenPotion"))
+                    {
+                        Biscuit.Cast();
+                    }
+                }
+
+                if (Settings.UseRefillPOT && RefilablePotion.IsOwned())
+                {
+                    if (Player.Instance.HealthPercent <= Settings.MinRefillHp && !Player.Instance.HasBuff("ItemCrystalFlask"))
+                    {
+                        RefilablePotion.Cast();
+                    }
+                }
+
+                if (Settings.UseCorrupts && CorruptingPotion.IsOwned())
+                {
+                    if (Player.Instance.ManaPercent < Settings.MinCorruptMp && Player.Instance.HealthPercent < Settings.MinCorruptHp && !Player.Instance.HasBuff("ItemDarkCrystalFlask"))
+                    {
+                        CorruptingPotion.Cast();
+                    }
+                }
+
+                if (Settings.UseHunters && HuntersPotion.IsOwned())
+                {
+                    if (Player.Instance.ManaPercent < Settings.MinHunterMp && Player.Instance.HealthPercent < Settings.MinHunterHp && !Player.Instance.HasBuff("ItemCrystalFlaskJungle"))
+                    {
+                        HuntersPotion.Cast();
+                    }
+                }
+
+                LastRun = Environment.TickCount + 1000;
             }
-
-            if (Settings.UseBiscuits && Biscuit.IsOwned())
-            {
-                if (Player.Instance.ManaPercent <= Settings.MinBiscuitMp && Player.Instance.HealthPercent <= Settings.MinBiscuitHp && !Player.Instance.HasBuff("ItemMiniRegenPotion"))
-                {
-                    Biscuit.Cast();
-                }
-            }
-
-            if (Settings.UseRefillPOT && RefilablePotion.IsOwned())
-            {
-                if (Player.Instance.HealthPercent <= Settings.MinRefillHp && !Player.Instance.HasBuff("ItemCrystalFlask"))
-                {
-                    RefilablePotion.Cast();
-                }
-            }
-
-            if (Settings.UseCorrupts && CorruptingPotion.IsOwned())
-            {
-                if (Player.Instance.ManaPercent < Settings.MinCorruptMp && Player.Instance.HealthPercent < Settings.MinCorruptHp && !Player.Instance.HasBuff("ItemDarkCrystalFlask"))
-                {
-                    CorruptingPotion.Cast();
-                }
-            }
-
-            if (Settings.UseHunters && HuntersPotion.IsOwned())
-            {
-                if (Player.Instance.ManaPercent < Settings.MinHunterMp && Player.Instance.HealthPercent < Settings.MinHunterHp && !Player.Instance.HasBuff("ItemCrystalFlaskJungle"))
-                {
-                    HuntersPotion.Cast();
-                }
-                /*
-                if (Settings.UseHuntersMinionWillDie)
-                {
-                    var BigJGMinion =
-                        EntityManager.MinionsAndMonsters.GetJungleMonsters()
-                            .FirstOrDefault(
-                                m =>
-                                    m.BaseSkinName == "SRU_Baron" || m.BaseSkinName == "SRU_Dragon" ||
-                                    m.BaseSkinName == "SRU_Blue" || m.BaseSkinName == "SRU_Red" ||
-                                    m.BaseSkinName == "Sru_Crab" || m.BaseSkinName == "SRU_Gromp" ||
-                                    m.BaseSkinName == "SRU_Murkwolf" || m.BaseSkinName == "SRU_Krug" ||
-                                    m.BaseSkinName == "SRU_Razorbeak" && m.IsValidTarget(800) && m.Health <= 150);
-
-                    if (BigJGMinion == null)return;
-
-                    HuntersPotion.Cast();
-                }
-                */
-            }
-
-            LastRun = Environment.TickCount + 1000;
         }
     }
 }

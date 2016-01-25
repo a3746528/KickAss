@@ -23,7 +23,7 @@
 
             if (HasSpell("summonerexhaust"))
             {
-                //TODO EXHAUST
+                Spells.Exhaust.Initialize();
             }
 
             if (HasSpell("summonerghost"))
@@ -47,6 +47,16 @@
             if (HasSpell("summonerbarrier"))
             {
                 Spells.Barrier.Execute();
+            }
+
+            if (HasSpell("summonerexhaust"))
+            {
+                Spells.Exhaust.Execute();
+            }
+
+            if (HasSpell("summonerghost"))
+            {
+                Spells.Ghost.Execute();
             }
         }
     }

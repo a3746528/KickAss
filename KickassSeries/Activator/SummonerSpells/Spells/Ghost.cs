@@ -4,6 +4,8 @@ using EloBuddy;
 using EloBuddy.SDK;
 using KickassSeries.Activator.DMGHandler;
 
+using Settings = KickassSeries.Activator.Config.Types.SummonerSpells;
+
 namespace KickassSeries.Activator.SummonerSpells.Spells
 {
     internal class Ghost
@@ -18,11 +20,11 @@ namespace KickassSeries.Activator.SummonerSpells.Spells
             }
         }
 
-        private static void Execute()
+        public static void Execute()
         {
-            if (!SummonerGhost.IsReady() || Activator.lastUsed >= Environment.TickCount) return;
+            if (!SummonerGhost.IsReady() || Activator.lastUsed + 1000 >= Environment.TickCount || !Settings.UseGhost) return;
 
-            if (Player.Instance.InDanger(30))
+            if (Player.Instance.InDanger(20))
             {
                 SummonerGhost.Cast();
                 Activator.lastUsed = Environment.TickCount + 500;

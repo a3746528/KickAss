@@ -2032,7 +2032,6 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Activator\ToDo.txt" />
     <Content Include="Evade\ToDo.txt" />
     <None Include="Resources\Back.png" />
     <None Include="Resources\BottomHUD.png" />
