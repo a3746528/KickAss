@@ -18,23 +18,18 @@ namespace KickassSeries.Champions.Rumble.Modes
             var jgminion =
                 EntityManager.MinionsAndMonsters.GetJungleMonsters()
                     .OrderByDescending(j => j.Health)
-                    .FirstOrDefault(j => j.IsValidTarget(Q.Range));
+                    .FirstOrDefault(j => j.IsValidTarget(E.Range));
 
             if (jgminion == null)return;
-
-            if (W.IsReady() && Settings.UseW)
-            {
-                W.Cast(Player.Instance.Position.Extend(jgminion.Position, W.Range).To3D());
-            }
 
             if (E.IsReady() && jgminion.IsValidTarget(E.Range) && Settings.UseE)
             {
                 E.Cast(jgminion);
             }
 
-            if (Q.IsReady() && jgminion.IsValidTarget(Q.Range) && Settings.UseQ)
+            if (Q.IsReady() && jgminion.IsValidTarget(Q.Range) && Settings.UseQ && Player.Instance.IsFacing(jgminion))
             {
-                Q.Cast(jgminion);
+                Q.Cast();
             }
         }
     }

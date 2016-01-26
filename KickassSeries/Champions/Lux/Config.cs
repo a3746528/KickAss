@@ -235,6 +235,8 @@ namespace KickassSeries.Champions.Lux
                 private static readonly CheckBox _antiGapCloserSpell;
                 private static readonly Slider _miscMana;
                 //KS
+                private static readonly CheckBox _killStealQ;
+                private static readonly CheckBox _killStealE;
                 private static readonly CheckBox _killStealR;
                 private static readonly Slider _ksMana;
                 //W Settings
@@ -256,6 +258,16 @@ namespace KickassSeries.Champions.Lux
                     get { return _miscMana.CurrentValue; }
                 }
                 //KS
+                public static bool KillStealQ
+                {
+                    get { return _killStealQ.CurrentValue; }
+                }
+
+                public static bool KillStealE
+                {
+                    get { return _killStealE.CurrentValue; }
+                }
+
                 public static bool KillStealR
                 {
                     get { return _killStealR.CurrentValue; }
@@ -284,6 +296,8 @@ namespace KickassSeries.Champions.Lux
                     _antiGapCloserSpell = MiscMenu.Add("gapcloserQ", new CheckBox("Use Q to antigapcloser spells ?"));
                     _miscMana = MiscMenu.Add("miscMana", new Slider("Min mana to use gapcloser/interrupt spells ?", 20));
                     MiscMenu.AddGroupLabel("KillSteal Settings");
+                    _killStealR = MiscMenu.Add("killstealQ", new CheckBox("Use Q to KS ?"));
+                    _killStealR = MiscMenu.Add("killstealE", new CheckBox("Use E to KS ?"));
                     _killStealR = MiscMenu.Add("killstealR", new CheckBox("Use R to KS ?"));
                     _ksMana = MiscMenu.Add("killstealMana", new Slider("Min mana to use KillSteal spells ?", 15));
                     MiscMenu.AddGroupLabel("W Settings");

@@ -4,11 +4,11 @@ namespace KickassSeries.Champions.Shyvana.Modes
 {
     public abstract class ModeBase
     {
-        protected static Spell.Skillshot Q
+        protected static Spell.Active Q
         {
             get { return SpellManager.Q; }
         }
-        protected static Spell.Skillshot W
+        protected static Spell.Active W
         {
             get { return SpellManager.W; }
         }

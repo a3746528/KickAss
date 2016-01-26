@@ -14,27 +14,28 @@ namespace KickassSeries.Champions.Shyvana.Modes
 
         public override void Execute()
         {
-            var target = TargetSelector.GetTarget(Q.Range, DamageType.Magical);
-            if (target == null || target.IsZombie) return;
+            var target = TargetSelector.GetTarget(R.Range, DamageType.Magical);
+            if (target == null || target.IsZombie || target.HasUndyingBuff()) return;
 
-            if (W.IsReady() && Settings.UseW)
+            if (Q.IsReady() && target.IsValidTarget(Q.Range) && Settings.UseQ && EventsManager.CanQ)
             {
-                W.Cast(Player.Instance.Position.Extend(target.Position, W.Range).To3D());
+                Q.Cast();
+            }
+
+            if (W.IsReady() && Settings.UseW && target.IsValidTarget(W.Range))
+            {
+                W.Cast();
             }
 
             if (E.IsReady() && target.IsValidTarget(E.Range) && Settings.UseE)
             {
-                E.Cast(target);
+                E.Cast(E.GetPrediction(target).CastPosition);
             }
 
-            if (Q.IsReady() && target.IsValidTarget(Q.Range) && Settings.UseQ)
+            if (R.IsReady() && target.IsValidTarget(R.Range) && Settings.UseR &&
+                target.HealthPercent + 15 <= Player.Instance.HealthPercent && target.CountEnemiesInRange(R.Range) <= 2)
             {
-                Q.Cast(target);
-            }
-
-            if (R.IsReady() && target.IsValidTarget(R.Range) && Settings.UseR)
-            {
-                R.Cast(target);
+                R.Cast(E.GetPrediction(target).CastPosition);
             }
         }
     }

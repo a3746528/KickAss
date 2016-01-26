@@ -23,6 +23,30 @@ namespace KickassSeries.Champions.Lux.Modes
                 }
             }
 
+            if (Q.IsReady() && Settings.KillStealQ && Player.Instance.ManaPercent >= Settings.KillStealMana)
+            {
+                var targetQ = TargetSelector.GetTarget(Q.Range, DamageType.Magical);
+                if (targetQ == null || targetQ.IsZombie || targetQ.HasUndyingBuff()) return;
+
+                if (targetQ.Health <= SpellDamage.GetRealDamage(SpellSlot.Q, targetQ) &&
+                    !targetQ.IsInAutoAttackRange(Player.Instance) && targetQ.Health > 80)
+                {
+                    Q.Cast(Q.GetPrediction(targetQ).CastPosition);
+                }
+            }
+
+            if (E.IsReady() && Settings.KillStealE && Player.Instance.ManaPercent >= Settings.KillStealMana)
+            {
+                var targetE = TargetSelector.GetTarget(E.Range, DamageType.Magical);
+                if (targetE == null || targetE.IsZombie || targetE.HasUndyingBuff()) return;
+
+                if (targetE.Health <= SpellDamage.GetRealDamage(SpellSlot.E, targetE) &&
+                    !targetE.IsInAutoAttackRange(Player.Instance) && targetE.Health > 80)
+                {
+                    Q.Cast(Q.GetPrediction(targetE).CastPosition);
+                }
+            }
+
             if (R.IsReady() && Settings.KillStealR && Player.Instance.ManaPercent >= Settings.KillStealMana)
             {
                 var targetR = TargetSelector.GetTarget(R.Range, DamageType.Magical);

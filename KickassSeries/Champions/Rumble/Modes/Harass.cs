@@ -14,22 +14,17 @@ namespace KickassSeries.Champions.Rumble.Modes
 
         public override void Execute()
         {
-            var target = TargetSelector.GetTarget(Q.Range, DamageType.Physical);
+            var target = TargetSelector.GetTarget(E.Range, DamageType.Physical);
             if (target == null || target.IsZombie) return;
-
-            if (W.IsReady() && Settings.UseW)
-            {
-                W.Cast(Player.Instance.Position.Extend(target.Position, W.Range).To3D());
-            }
 
             if (E.IsReady() && target.IsValidTarget(E.Range) && Settings.UseE)
             {
-                E.Cast(target);
+                E.Cast(E.GetPrediction(target).CastPosition);
             }
 
-            if (Q.IsReady() && target.IsValidTarget(Q.Range) && Settings.UseQ)
+            if (Q.IsReady() && target.IsValidTarget(Q.Range) && Settings.UseQ && Player.Instance.IsFacing(target))
             {
-                Q.Cast(target);
+                Q.Cast();
             }
         }
     }

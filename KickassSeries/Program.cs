@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using EloBuddy;
 using EloBuddy.SDK.Events;
 
@@ -425,8 +426,17 @@ namespace KickassSeries
                 #region LoadingActivator
                 try
                 {
-                    Activator.Activator.Init();
-                    Console.WriteLine("Kickass Activator Loaded");
+                    var anotherActivator = AppDomain.CurrentDomain.GetAssemblies().FirstOrDefault(a => a.FullName.Contains("ctivator"));
+
+                    if (anotherActivator != null)
+                    {
+                        Console.WriteLine("There is another activator");
+                    }
+                    else
+                    {
+                        Activator.Activator.Init();
+                        Console.WriteLine("Kickass Activator Loaded");
+                    }
                 }
                 catch (Exception exp)
                 {
@@ -435,7 +445,7 @@ namespace KickassSeries
                 #endregion LoadingActivator
 
                 Console.WriteLine(" ");
-
+                /*
                 #region LoadingEvade
                 try
                 {
@@ -447,9 +457,9 @@ namespace KickassSeries
                     Console.Write(exp);
                 }
                 #endregion LoadingEvade
-
+                
                 Console.WriteLine(" ");
-
+                */
                 #region LoadingUltilities
                 try
                 {
@@ -461,6 +471,8 @@ namespace KickassSeries
                     Console.Write(exp);
                 }
                 #endregion LoadingSkinHack
+
+
             }
             catch (Exception exp)
             {

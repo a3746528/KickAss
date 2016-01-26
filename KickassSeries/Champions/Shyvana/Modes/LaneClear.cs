@@ -18,23 +18,23 @@ namespace KickassSeries.Champions.Shyvana.Modes
             var minion =
                 EntityManager.MinionsAndMonsters.GetLaneMinions()
                     .OrderByDescending(m => m.Health)
-                    .FirstOrDefault(m => m.IsValidTarget(Q.Range));
+                    .FirstOrDefault(m => m.IsValidTarget(E.Range));
 
             if (minion == null) return;
 
-            if (W.IsReady() && Settings.UseW)
+            if (Q.IsReady() && minion.IsValidTarget(Q.Range) && Settings.UseQ && EventsManager.CanQ)
             {
-                W.Cast(Player.Instance.Position.Extend(minion.Position, W.Range).To3D());
+                Q.Cast();
+            }
+
+            if (W.IsReady() && Settings.UseW && minion.IsValidTarget(W.Range))
+            {
+                W.Cast();
             }
 
             if (E.IsReady() && minion.IsValidTarget(E.Range) && Settings.UseE)
             {
-                E.Cast(minion);
-            }
-
-            if (Q.IsReady() && minion.IsValidTarget(Q.Range) && Settings.UseQ)
-            {
-                Q.Cast(minion);
+                E.Cast(E.GetPrediction(minion).CastPosition);
             }
         }
     }

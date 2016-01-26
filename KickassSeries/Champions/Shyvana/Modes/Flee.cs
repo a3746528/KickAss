@@ -12,10 +12,10 @@ namespace KickassSeries.Champions.Shyvana.Modes
 
         public override void Execute()
         {
-            var target = TargetSelector.GetTarget(Q.Range, DamageType.Magical);
-            if (Player.Instance.HealthPercent <= 25 && target.IsValidTarget(E.Range))
+            var target = TargetSelector.GetTarget(R.Range, DamageType.Magical);
+            if (Player.Instance.HealthPercent <= 15 && target.IsValidTarget(E.Range))
             {
-                E.Cast(target);
+                R.Cast(Player.Instance.Position.Extend(Game.CursorPos, R.Range).To3D());
             }
         }
     }

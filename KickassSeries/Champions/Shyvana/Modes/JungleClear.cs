@@ -18,23 +18,23 @@ namespace KickassSeries.Champions.Shyvana.Modes
             var jgminion =
                 EntityManager.MinionsAndMonsters.GetJungleMonsters()
                     .OrderByDescending(j => j.Health)
-                    .FirstOrDefault(j => j.IsValidTarget(Q.Range));
+                    .FirstOrDefault(j => j.IsValidTarget(E.Range));
 
             if (jgminion == null)return;
 
-            if (W.IsReady() && Settings.UseW)
+            if (Q.IsReady() && jgminion.IsValidTarget(Q.Range) && Settings.UseQ && EventsManager.CanQ)
             {
-                W.Cast(Player.Instance.Position.Extend(jgminion.Position, W.Range).To3D());
+                Q.Cast();
+            }
+
+            if (W.IsReady() && Settings.UseW && jgminion.IsValidTarget(W.Range))
+            {
+                W.Cast();
             }
 
             if (E.IsReady() && jgminion.IsValidTarget(E.Range) && Settings.UseE)
             {
-                E.Cast(jgminion);
-            }
-
-            if (Q.IsReady() && jgminion.IsValidTarget(Q.Range) && Settings.UseQ)
-            {
-                Q.Cast(jgminion);
+                E.Cast(E.GetPrediction(jgminion).CastPosition);
             }
         }
     }
