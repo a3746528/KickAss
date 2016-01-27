@@ -15,7 +15,7 @@ namespace KickassSeries.Champions.Lux
         {
             Q = new Spell.Skillshot(SpellSlot.Q, 1175, SkillShotType.Linear, 250, 1200, 80)
             {
-               MinimumHitChance = HitChance.High, AllowedCollisionCount = 2
+               MinimumHitChance = HitChance.High, AllowedCollisionCount = 1
             };
             W = new Spell.Skillshot(SpellSlot.W, 1175, SkillShotType.Linear, 250 , 1200, 150)
             {
