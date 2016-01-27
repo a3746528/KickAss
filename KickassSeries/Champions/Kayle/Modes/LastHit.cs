@@ -22,25 +22,7 @@ namespace KickassSeries.Champions.Kayle.Modes
 
             if (minion == null) return;
 
-            if (W.IsReady() && Settings.UseW)
-            {
-                W.Cast(Player.Instance.Position.Extend(minion.Position, W.Range).To3D());
-            }
-
-            if (E.IsReady() && minion.IsValidTarget(E.Range) && Settings.UseE)
-            {
-                var minionE =
-                       EntityManager.MinionsAndMonsters.GetLaneMinions()
-                           .OrderByDescending(m => m.Health)
-                           .FirstOrDefault(
-                               m => m.IsValidTarget(E.Range) && m.Health <= SpellDamage.GetRealDamage(SpellSlot.E, m));
-
-                if (minionE != null)
-                {
-                    E.Cast(minionE);
-                }
-                
-            }
+            if (Player.Instance.ManaPercent < Settings.LastMana) return;
 
             if (Q.IsReady() && minion.IsValidTarget(Q.Range) && Settings.UseQ)
             {
@@ -54,6 +36,21 @@ namespace KickassSeries.Champions.Kayle.Modes
                 {
                     Q.Cast(minionQ);
                 }
+            }
+
+            if (E.IsReady() && minion.IsValidTarget(E.Range) && Settings.UseE && Settings.UseQ ? !Q.IsReady() : E.IsReady())
+            {
+                var minionE =
+                       EntityManager.MinionsAndMonsters.GetLaneMinions()
+                           .OrderByDescending(m => m.Health)
+                           .FirstOrDefault(
+                               m => m.IsValidTarget(E.Range) && m.Health <= SpellDamage.GetRealDamage(SpellSlot.E, m));
+
+                if (minionE != null)
+                {
+                    E.Cast();
+                }
+
             }
         }
     }

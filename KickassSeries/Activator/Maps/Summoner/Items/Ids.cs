@@ -1,7 +1,7 @@
 ﻿using EloBuddy;
 using EloBuddy.SDK;
 
-namespace KickassSeries.Activator.Items
+namespace KickassSeries.Activator.Maps.Summoner.Items
 {
     public abstract class Ids
     {

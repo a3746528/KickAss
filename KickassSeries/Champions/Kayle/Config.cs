@@ -1,4 +1,6 @@
-﻿using EloBuddy;
+﻿using System.Linq;
+using EloBuddy;
+using EloBuddy.SDK;
 using EloBuddy.SDK.Menu;
 using EloBuddy.SDK.Menu.Values;
 using KickassSeries.MenuSettings;
@@ -30,7 +32,8 @@ namespace KickassSeries.Champions.Kayle
 
         public static class Modes
         {
-            private static readonly Menu SpellsMenu, FarmMenu, MiscMenu, DrawMenu;
+            private static readonly Menu SpellsMenu, FarmMenu, DrawMenu;
+            public static readonly Menu MiscMenu;
 
             static Modes()
             {
@@ -58,7 +61,6 @@ namespace KickassSeries.Champions.Kayle
                 private static readonly CheckBox _useQ;
                 private static readonly CheckBox _useW;
                 private static readonly CheckBox _useE;
-                private static readonly CheckBox _useR;
 
                 public static bool UseQ
                 {
@@ -75,11 +77,6 @@ namespace KickassSeries.Champions.Kayle
                     get { return _useE.CurrentValue; }
                 }
 
-                public static bool UseR
-                {
-                    get { return _useR.CurrentValue; }
-                }
-
                 static Combo()
                 {
                     // Initialize the menu values
@@ -87,7 +84,6 @@ namespace KickassSeries.Champions.Kayle
                     _useQ = SpellsMenu.Add("comboQ", new CheckBox("Use Q on Combo ?"));
                     _useW = SpellsMenu.Add("comboW", new CheckBox("Use W on Combo ?"));
                     _useE = SpellsMenu.Add("comboE", new CheckBox("Use E on Combo ?"));
-                    _useR = SpellsMenu.Add("comboR", new CheckBox("Use R on Combo ?"));
                 }
 
                 public static void Initialize()
@@ -98,9 +94,7 @@ namespace KickassSeries.Champions.Kayle
             public static class Harass
             {
                 private static readonly CheckBox _useQ;
-                private static readonly CheckBox _useW;
                 private static readonly CheckBox _useE;
-                private static readonly CheckBox _useR;
                 private static readonly Slider _manaHarass;
 
                 public static bool UseQ
@@ -108,19 +102,9 @@ namespace KickassSeries.Champions.Kayle
                     get { return _useQ.CurrentValue; }
                 }
 
-                public static bool UseW
-                {
-                    get { return _useW.CurrentValue; }
-                }
-
                 public static bool UseE
                 {
                     get { return _useE.CurrentValue; }
-                }
-
-                public static bool UseR
-                {
-                    get { return _useR.CurrentValue; }
                 }
 
                 public static int ManaHarass
@@ -132,9 +116,7 @@ namespace KickassSeries.Champions.Kayle
                 {
                     SpellsMenu.AddGroupLabel("Harass Spells:");
                     _useQ = SpellsMenu.Add("harassQ", new CheckBox("Use Q on Harass ?"));
-                    _useW = SpellsMenu.Add("harassW", new CheckBox("Use W on Harass ?"));
                     _useE = SpellsMenu.Add("harassE", new CheckBox("Use E on Harass ?"));
-                    _useR = SpellsMenu.Add("harassR", new CheckBox("Use R on Harass ?"));
                     SpellsMenu.AddGroupLabel("Harass Settings:");
                     _manaHarass = SpellsMenu.Add("harassMana", new Slider("It will only cast any harass spell if the mana is greater than ({0}).", 30));
                 }
@@ -147,20 +129,12 @@ namespace KickassSeries.Champions.Kayle
             public static class LaneClear
             {
                 private static readonly CheckBox _useQ;
-                private static readonly CheckBox _useW;
                 private static readonly CheckBox _useE;
-                private static readonly CheckBox _useR;
                 private static readonly Slider _laneMana;
-                private static readonly Slider _xCount;
 
                 public static bool UseQ
                 {
                     get { return _useQ.CurrentValue; }
-                }
-
-                public static bool UseW
-                {
-                    get { return _useW.CurrentValue; }
                 }
 
                 public static bool UseE
@@ -168,31 +142,18 @@ namespace KickassSeries.Champions.Kayle
                     get { return _useE.CurrentValue; }
                 }
 
-                public static bool UseR
-                {
-                    get { return _useR.CurrentValue; }
-                }
-
                 public static int LaneMana
                 {
                     get { return _laneMana.CurrentValue; }
-                }
-
-                public static int XCount
-                {
-                    get { return _xCount.CurrentValue; }
                 }
 
                 static LaneClear()
                 {
                     FarmMenu.AddGroupLabel("LaneClear Spells:");
                     _useQ = FarmMenu.Add("laneclearQ", new CheckBox("Use Q on Laneclear ?"));
-                    _useW = FarmMenu.Add("laneclearW", new CheckBox("Use W on Laneclear ?"));
                     _useE = FarmMenu.Add("laneclearE", new CheckBox("Use E on Laneclear ?"));
-                    _useR = FarmMenu.Add("laneclearR", new CheckBox("Use R on Laneclear ?"));
                     FarmMenu.AddGroupLabel("LaneClear Settings:");
                     _laneMana = FarmMenu.Add("laneMana", new Slider("It will only cast any laneclear spell if the mana is greater than ({0}).", 30));
-                    _xCount = FarmMenu.Add("xCount", new Slider("It will only cast X spell if it`ll hit ({0}).", 3, 1, 6));
                 }
 
                 public static void Initialize()
@@ -203,20 +164,12 @@ namespace KickassSeries.Champions.Kayle
             public static class LastHit
             {
                 private static readonly CheckBox _useQ;
-                private static readonly CheckBox _useW;
                 private static readonly CheckBox _useE;
-                private static readonly CheckBox _useR;
                 private static readonly Slider _lastMana;
-                private static readonly Slider _xCount;
 
                 public static bool UseQ
                 {
                     get { return _useQ.CurrentValue; }
-                }
-
-                public static bool UseW
-                {
-                    get { return _useW.CurrentValue; }
                 }
 
                 public static bool UseE
@@ -224,32 +177,19 @@ namespace KickassSeries.Champions.Kayle
                     get { return _useE.CurrentValue; }
                 }
 
-                public static bool UseR
-                {
-                    get { return _useR.CurrentValue; }
-                }
 
                 public static int LastMana
                 {
                     get { return _lastMana.CurrentValue; }
                 }
 
-                public static int XCount
-                {
-                    get { return _xCount.CurrentValue; }
-                }
-
-
                 static LastHit()
                 {
                     FarmMenu.AddGroupLabel("LastHit Spells:");
                     _useQ = FarmMenu.Add("lasthitQ", new CheckBox("Use Q on LastHit ?"));
-                    _useW = FarmMenu.Add("lasthitW", new CheckBox("Use W on LastHit ?"));
                     _useE = FarmMenu.Add("lasthitE", new CheckBox("Use E on LastHit ?"));
-                    _useR = FarmMenu.Add("lasthitR", new CheckBox("Use R on LastHit ?"));
                     FarmMenu.AddGroupLabel("LastHit Settings:");
                     _lastMana = FarmMenu.Add("lastMana", new Slider("It will only cast any lasthit spell if the mana is greater than ({0}).", 30));
-                    _xCount = FarmMenu.Add("wCount", new Slider("It will only cast X spell if it`ll hit ({0}).", 3, 1, 6));
                 }
 
                 public static void Initialize()
@@ -259,14 +199,16 @@ namespace KickassSeries.Champions.Kayle
 
             public static class Misc
             {
-                private static readonly CheckBox _interruptSpell;
                 private static readonly CheckBox _antiGapCloserSpell;
                 private static readonly Slider _miscMana;
-
-                public static bool InterruptSpell
-                {
-                    get { return _interruptSpell.CurrentValue; }
-                }
+                //R
+                private static readonly CheckBox _useR;
+                private static readonly Slider _useRHP;
+                private static readonly Slider _useRMana;
+                //W
+                private static readonly CheckBox _useW;
+                private static readonly Slider _useWHP;
+                private static readonly Slider _useWMana;
 
                 public static bool AntiGapCloser
                 {
@@ -277,14 +219,58 @@ namespace KickassSeries.Champions.Kayle
                 {
                     get { return _miscMana.CurrentValue; }
                 }
+                //R
+                public static bool UseR
+                {
+                    get { return _useR.CurrentValue; }
+                }
+
+                public static int UseRHealth
+                {
+                    get { return _useRHP.CurrentValue; }
+                }
+
+                public static int UseRMana
+                {
+                    get { return _useRMana.CurrentValue; }
+                }
+                //W
+                public static bool UseW
+                {
+                    get { return _useW.CurrentValue; }
+                }
+                public static int UseWHealth
+                {
+                    get { return _useWHP.CurrentValue; }
+                }
+
+                public static int UseWMana
+                {
+                    get { return _useWMana.CurrentValue; }
+                }
 
                 static Misc()
                 {
                     // Initialize the menu values
                     MiscMenu.AddGroupLabel("Miscellaneous");
-                    _interruptSpell = MiscMenu.Add("interruptX", new CheckBox("Use X to interrupt spells ?"));
-                    _antiGapCloserSpell = MiscMenu.Add("gapcloserX", new CheckBox("Use X to antigapcloser spells ?"));
-                    _miscMana = MiscMenu.Add("miscMana", new Slider("Min mana to use gapcloser/interrupt spells ?", 20));
+                    _antiGapCloserSpell = MiscMenu.Add("gapcloserQ", new CheckBox("Use Q to antigapcloser spells ?"));
+                    _miscMana = MiscMenu.Add("miscMana", new Slider("Min mana to use gapcloser spells ?", 20));
+                    MiscMenu.AddGroupLabel("R Settings");
+                    _useR = MiscMenu.Add("useRMisc", new CheckBox("Use R ?"));
+                    _useRHP = MiscMenu.Add("rHealth", new Slider("Ally health must be less than ({0}) to cast R.", 20));
+                    _useRMana = MiscMenu.Add("rmana", new Slider("It will only cast R if the mana is greater than ({0}).", 10));
+                    foreach (var ally in EntityManager.Heroes.Allies)
+                    {
+                        MiscMenu.Add("allyUseR" + ally.ChampionName, new CheckBox("Use R to save " + ally.ChampionName +" (" +ally.Name + ") ?"));
+                    }
+                    MiscMenu.AddGroupLabel("W Settings");
+                    _useW = MiscMenu.Add("useWMisc", new CheckBox("Use W ?"));
+                    _useWHP = MiscMenu.Add("wHealth", new Slider("Ally health must be less than ({0}) to cast W.", 50));
+                    _useWMana = MiscMenu.Add("wMana", new Slider("It will only cast W if the mana is greater than ({0}).", 30));
+                    foreach (var ally in EntityManager.Heroes.Allies)
+                    {
+                        MiscMenu.Add("allyUseW" + ally.ChampionName, new CheckBox("Use W to heal " + ally.ChampionName + " (" + ally.Name + ") ?"));
+                    }
                 }
 
                 public static void Initialize()

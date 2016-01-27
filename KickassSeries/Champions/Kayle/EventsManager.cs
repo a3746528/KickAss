@@ -1,7 +1,8 @@
 ﻿using EloBuddy;
 using EloBuddy.SDK;
-using EloBuddy.SDK.Enumerations;
 using EloBuddy.SDK.Events;
+
+using Settings = KickassSeries.Champions.Kayle.Config.Modes.Misc;
 
 namespace KickassSeries.Champions.Kayle
 {
@@ -10,26 +11,15 @@ namespace KickassSeries.Champions.Kayle
         public static void Initialize()
         {
             Gapcloser.OnGapcloser += Gapcloser_OnGapcloser;
-            Interrupter.OnInterruptableSpell += Interrupter_OnInterruptableSpell;
         }
 
         private static void Gapcloser_OnGapcloser(AIHeroClient sender, Gapcloser.GapcloserEventArgs e)
         {
             if (!sender.IsEnemy) return;
 
-            if (sender.IsValidTarget(SpellManager.E.Range))
+            if (sender.IsValidTarget(SpellManager.Q.Range) && Player.Instance.ManaPercent > Settings.MiscMana)
             {
-                SpellManager.E.Cast(sender);
-            }
-        }
-
-        private static void Interrupter_OnInterruptableSpell(Obj_AI_Base sender, Interrupter.InterruptableSpellEventArgs e)
-        {
-            if (!sender.IsEnemy) return;
-
-            if (e.DangerLevel == DangerLevel.High)
-            {
-                SpellManager.E.Cast(sender);
+                SpellManager.Q.Cast(sender);
             }
         }
     }

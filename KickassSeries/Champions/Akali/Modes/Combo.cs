@@ -22,7 +22,7 @@ namespace KickassSeries.Champions.Akali.Modes
                 Q.Cast(target);
             }
 
-            if (R.IsReady() && target.IsValidTarget(R.Range) && Settings.UseR && target.HasBuff("AkaliMota") || target.HealthPercent <= Player.Instance.HealthPercent + 30)
+            if (R.IsReady() && target.IsValidTarget(R.Range) && Settings.UseR && (target.HasBuff("AkaliMota") || target.HealthPercent +20 <= Player.Instance.HealthPercent))
             {
                 R.Cast(target);
             }

@@ -22,7 +22,7 @@ namespace KickassSeries.Champions.Lux.Modes
                     W.Cast(Player.Instance);
                 }
             }
-
+            
             if (Q.IsReady() && Settings.KillStealQ && Player.Instance.ManaPercent >= Settings.KillStealMana)
             {
                 var targetQ = TargetSelector.GetTarget(Q.Range, DamageType.Magical);
@@ -34,7 +34,7 @@ namespace KickassSeries.Champions.Lux.Modes
                     Q.Cast(Q.GetPrediction(targetQ).CastPosition);
                 }
             }
-
+            
             if (E.IsReady() && Settings.KillStealE && Player.Instance.ManaPercent >= Settings.KillStealMana)
             {
                 var targetE = TargetSelector.GetTarget(E.Range, DamageType.Magical);
@@ -43,10 +43,10 @@ namespace KickassSeries.Champions.Lux.Modes
                 if (targetE.Health <= SpellDamage.GetRealDamage(SpellSlot.E, targetE) &&
                     !targetE.IsInAutoAttackRange(Player.Instance) && targetE.Health > 80)
                 {
-                    Q.Cast(Q.GetPrediction(targetE).CastPosition);
+                    E.Cast(E.GetPrediction(targetE).CastPosition);
                 }
             }
-
+            
             if (R.IsReady() && Settings.KillStealR && Player.Instance.ManaPercent >= Settings.KillStealMana)
             {
                 var targetR = TargetSelector.GetTarget(R.Range, DamageType.Magical);

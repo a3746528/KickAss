@@ -67,12 +67,12 @@
     <Compile Include="Activator\DMGHandler\DamageHandle.cs" />
     <Compile Include="Activator\DMGHandler\DangerousSpells.cs" />
     <Compile Include="Activator\EventsManager.cs" />
-    <Compile Include="Activator\Items\Extensions.cs" />
+    <Compile Include="Activator\Maps\Summoner\Items\Extensions.cs" />
     <Compile Include="Activator\SummonerSpells\Extensions.cs" />
-    <Compile Include="Activator\Items\Consumables.cs" />
-    <Compile Include="Activator\Items\Defensive.cs" />
-    <Compile Include="Activator\Items\Ids.cs" />
-    <Compile Include="Activator\Items\Offensive.cs" />
+    <Compile Include="Activator\Maps\Summoner\Items\Consumables.cs" />
+    <Compile Include="Activator\Maps\Summoner\Items\Defensive.cs" />
+    <Compile Include="Activator\Maps\Summoner\Items\Ids.cs" />
+    <Compile Include="Activator\Maps\Summoner\Items\Offensive.cs" />
     <Compile Include="Activator\SummonerSpells\Initialize.cs" />
     <Compile Include="Activator\SummonerSpells\Spells\Barrier.cs" />
     <Compile Include="Activator\SummonerSpells\Spells\Exhaust.cs" />
@@ -2063,7 +2063,9 @@
     <None Include="Resources\SummonerClairvoyance.png" />
     <Content Include="Ultilities\ToDo.txt" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Activator\Maps\TwistedTreeLines\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

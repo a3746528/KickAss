@@ -1,7 +1,6 @@
 ﻿using System;
 using EloBuddy;
 using KickassSeries.Activator.DMGHandler;
-using KickassSeries.Activator.Items;
 
 namespace KickassSeries.Activator
 {
@@ -12,20 +11,63 @@ namespace KickassSeries.Activator
         {
             Config.Initialize();
 
-            Game.OnUpdate += Game_OnUpdate;
+            
 
             SummonerSpells.Initialize.Init();
 
             DamageHandler.Initialize();
 
             EventsManager.Initialize();
+
+            switch (Game.MapId)
+            {
+                case GameMapId.CrystalScar:
+                    Game.OnUpdate += CrystalScar;
+                    break;
+                case GameMapId.TwistedTreeline:
+                    Game.OnUpdate += TwistedTreeline;
+                    break;
+                case GameMapId.SummonersRift:
+                    Game.OnUpdate += SummonerRift;
+                    break;
+                case GameMapId.HowlingAbyss:
+                    Game.OnUpdate += HowlingAbyss;
+                    break;
+            }
         }
 
-        private static void Game_OnUpdate(EventArgs args)
+        private static void CrystalScar(EventArgs args)
         {
-            Defensive.Execute();
-            Offensive.Execute();
-            Consumables.Execute();
+            Maps.Summoner.Items.Defensive.Execute();
+            Maps.Summoner.Items.Offensive.Execute();
+            Maps.Summoner.Items.Consumables.Execute();
+
+            SummonerSpells.Initialize.Execute();
+        }
+
+        private static void TwistedTreeline(EventArgs args)
+        {
+            Maps.Summoner.Items.Defensive.Execute();
+            Maps.Summoner.Items.Offensive.Execute();
+            Maps.Summoner.Items.Consumables.Execute();
+
+            SummonerSpells.Initialize.Execute();
+        }
+
+        private static void SummonerRift(EventArgs args)
+        {
+            Maps.Summoner.Items.Defensive.Execute();
+            Maps.Summoner.Items.Offensive.Execute();
+            Maps.Summoner.Items.Consumables.Execute();
+
+            SummonerSpells.Initialize.Execute();
+        }
+
+        private static void HowlingAbyss(EventArgs args)
+        {
+            Maps.Summoner.Items.Defensive.Execute();
+            Maps.Summoner.Items.Offensive.Execute();
+            Maps.Summoner.Items.Consumables.Execute();
 
             SummonerSpells.Initialize.Execute();
         }

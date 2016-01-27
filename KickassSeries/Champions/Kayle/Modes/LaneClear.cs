@@ -22,19 +22,16 @@ namespace KickassSeries.Champions.Kayle.Modes
 
             if (minion == null) return;
 
-            if (W.IsReady() && Settings.UseW)
-            {
-                W.Cast(Player.Instance.Position.Extend(minion.Position, W.Range).To3D());
-            }
-
-            if (E.IsReady() && minion.IsValidTarget(E.Range) && Settings.UseE)
-            {
-                E.Cast(minion);
-            }
+            if (Player.Instance.ManaPercent < Settings.LaneMana) return;
 
             if (Q.IsReady() && minion.IsValidTarget(Q.Range) && Settings.UseQ)
             {
                 Q.Cast(minion);
+            }
+
+            if (E.IsReady() && minion.IsValidTarget(E.Range) && Settings.UseE)
+            {
+                E.Cast();
             }
         }
     }

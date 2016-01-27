@@ -14,22 +14,19 @@ namespace KickassSeries.Champions.Kayle.Modes
 
         public override void Execute()
         {
-            var target = TargetSelector.GetTarget(Q.Range, DamageType.Physical);
-            if (target == null || target.IsZombie) return;
+            var target = TargetSelector.GetTarget(Q.Range, DamageType.Magical);
+            if (target == null || target.IsZombie || target.HasUndyingBuff()) return;
 
-            if (W.IsReady() && Settings.UseW)
-            {
-                W.Cast(Player.Instance.Position.Extend(target.Position, W.Range).To3D());
-            }
-
-            if (E.IsReady() && target.IsValidTarget(E.Range) && Settings.UseE)
-            {
-                E.Cast(target);
-            }
+            if (Player.Instance.ManaPercent < Settings.ManaHarass)return;
 
             if (Q.IsReady() && target.IsValidTarget(Q.Range) && Settings.UseQ)
             {
                 Q.Cast(target);
+            }
+
+            if (E.IsReady() && target.IsValidTarget(E.Range) && Settings.UseE)
+            {
+                E.Cast();
             }
         }
     }

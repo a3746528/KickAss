@@ -12,10 +12,10 @@ namespace KickassSeries.Champions.Kayle.Modes
 
         public override void Execute()
         {
-            var target = TargetSelector.GetTarget(Q.Range, DamageType.Magical);
-            if (Player.Instance.HealthPercent <= 25 && target.IsValidTarget(E.Range))
+            var target = TargetSelector.GetTarget(W.Range, DamageType.Magical);
+            if (Player.Instance.HealthPercent <= 35 && target.IsValidTarget(W.Range))
             {
-                E.Cast(target);
+                W.Cast(Player.Instance);
             }
         }
     }

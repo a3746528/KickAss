@@ -296,8 +296,8 @@ namespace KickassSeries.Champions.Lux
                     _antiGapCloserSpell = MiscMenu.Add("gapcloserQ", new CheckBox("Use Q to antigapcloser spells ?"));
                     _miscMana = MiscMenu.Add("miscMana", new Slider("Min mana to use gapcloser/interrupt spells ?", 20));
                     MiscMenu.AddGroupLabel("KillSteal Settings");
-                    _killStealR = MiscMenu.Add("killstealQ", new CheckBox("Use Q to KS ?"));
-                    _killStealR = MiscMenu.Add("killstealE", new CheckBox("Use E to KS ?"));
+                    _killStealQ = MiscMenu.Add("killstealQ", new CheckBox("Use Q to KS ?"));
+                    _killStealE = MiscMenu.Add("killstealE", new CheckBox("Use E to KS ?"));
                     _killStealR = MiscMenu.Add("killstealR", new CheckBox("Use R to KS ?"));
                     _ksMana = MiscMenu.Add("killstealMana", new Slider("Min mana to use KillSteal spells ?", 15));
                     MiscMenu.AddGroupLabel("W Settings");

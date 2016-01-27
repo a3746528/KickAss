@@ -1,7 +1,8 @@
 ﻿using EloBuddy;
+
 // ReSharper disable once ConvertIfStatementToReturnStatement
 
-namespace KickassSeries.Activator.Items
+namespace KickassSeries.Activator.Maps.Summoner.Items
 {
     internal static class Extensions
     {

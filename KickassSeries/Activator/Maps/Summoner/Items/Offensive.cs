@@ -2,11 +2,10 @@
 using System.Linq;
 using EloBuddy;
 using EloBuddy.SDK;
-
 using Settings = KickassSeries.Activator.Config.Types.OffensiveItems;
 using Misc = KickassSeries.Activator.Config.Types.Settings;
 
-namespace KickassSeries.Activator.Items
+namespace KickassSeries.Activator.Maps.Summoner.Items
 {
     // ReSharper disable once ClassNeverInstantiated.Global
     public sealed class Offensive : Ids
