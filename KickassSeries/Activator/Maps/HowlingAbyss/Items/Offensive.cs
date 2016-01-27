@@ -5,7 +5,7 @@ using EloBuddy.SDK;
 using Settings = KickassSeries.Activator.Config.Types.OffensiveItems;
 using Misc = KickassSeries.Activator.Config.Types.Settings;
 
-namespace KickassSeries.Activator.Maps.Summoner.Items
+namespace KickassSeries.Activator.Maps.HowlingAbyss.Items
 {
     // ReSharper disable once ClassNeverInstantiated.Global
     public sealed class Offensive : Ids

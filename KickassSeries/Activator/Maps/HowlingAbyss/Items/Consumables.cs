@@ -4,7 +4,7 @@ using EloBuddy.SDK;
 using Misc = KickassSeries.Activator.Config.Types.Settings;
 using Settings = KickassSeries.Activator.Config.Types.ConsumablesItems;
 
-namespace KickassSeries.Activator.Maps.Summoner.Items
+namespace KickassSeries.Activator.Maps.HowlingAbyss.Items
 {
     // ReSharper disable once ClassNeverInstantiated.Global
 

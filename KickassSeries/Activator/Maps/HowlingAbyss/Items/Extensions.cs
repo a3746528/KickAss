@@ -2,7 +2,7 @@
 
 // ReSharper disable once ConvertIfStatementToReturnStatement
 
-namespace KickassSeries.Activator.Maps.Summoner.Items
+namespace KickassSeries.Activator.Maps.HowlingAbyss.Items
 {
     internal static class Extensions
     {

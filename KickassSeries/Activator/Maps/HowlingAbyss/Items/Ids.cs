@@ -1,7 +1,7 @@
 ﻿using EloBuddy;
 using EloBuddy.SDK;
 
-namespace KickassSeries.Activator.Maps.Summoner.Items
+namespace KickassSeries.Activator.Maps.HowlingAbyss.Items
 {
     public abstract class Ids
     {

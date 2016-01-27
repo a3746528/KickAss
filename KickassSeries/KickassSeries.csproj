@@ -67,7 +67,22 @@
     <Compile Include="Activator\DMGHandler\DamageHandle.cs" />
     <Compile Include="Activator\DMGHandler\DangerousSpells.cs" />
     <Compile Include="Activator\EventsManager.cs" />
+    <Compile Include="Activator\Maps\CrystalScar\Items\Consumables.cs" />
+    <Compile Include="Activator\Maps\CrystalScar\Items\Defensive.cs" />
+    <Compile Include="Activator\Maps\CrystalScar\Items\Extensions.cs" />
+    <Compile Include="Activator\Maps\CrystalScar\Items\Ids.cs" />
+    <Compile Include="Activator\Maps\CrystalScar\Items\Offensive.cs" />
+    <Compile Include="Activator\Maps\HowlingAbyss\Items\Consumables.cs" />
+    <Compile Include="Activator\Maps\HowlingAbyss\Items\Defensive.cs" />
+    <Compile Include="Activator\Maps\HowlingAbyss\Items\Extensions.cs" />
+    <Compile Include="Activator\Maps\HowlingAbyss\Items\Ids.cs" />
+    <Compile Include="Activator\Maps\HowlingAbyss\Items\Offensive.cs" />
     <Compile Include="Activator\Maps\Summoner\Items\Extensions.cs" />
+    <Compile Include="Activator\Maps\Twistedtreeline\Items\Consumables.cs" />
+    <Compile Include="Activator\Maps\Twistedtreeline\Items\Defensive.cs" />
+    <Compile Include="Activator\Maps\Twistedtreeline\Items\Extensions.cs" />
+    <Compile Include="Activator\Maps\Twistedtreeline\Items\Ids.cs" />
+    <Compile Include="Activator\Maps\Twistedtreeline\Items\Offensive.cs" />
     <Compile Include="Activator\SummonerSpells\Extensions.cs" />
     <Compile Include="Activator\Maps\Summoner\Items\Consumables.cs" />
     <Compile Include="Activator\Maps\Summoner\Items\Defensive.cs" />
@@ -2063,9 +2078,7 @@
     <None Include="Resources\SummonerClairvoyance.png" />
     <Content Include="Ultilities\ToDo.txt" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Activator\Maps\TwistedTreeLines\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

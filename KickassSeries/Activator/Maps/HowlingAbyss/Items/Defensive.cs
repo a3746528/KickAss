@@ -6,7 +6,7 @@ using KickassSeries.Activator.DMGHandler;
 using Misc = KickassSeries.Activator.Config.Types.Settings;
 using Settings = KickassSeries.Activator.Config.Types.DeffensiveItems;
 
-namespace KickassSeries.Activator.Maps.Summoner.Items
+namespace KickassSeries.Activator.Maps.HowlingAbyss.Items
 {
     // ReSharper disable once ClassNeverInstantiated.Global
     internal class Defensive : Ids
