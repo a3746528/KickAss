@@ -55,7 +55,14 @@ namespace KickassSeries.Champions.Lux.Modes
                 if (targetR.Health <= SpellDamage.GetRealDamage(SpellSlot.R, targetR) &&
                     !targetR.IsInAutoAttackRange(Player.Instance) && targetR.Health > 150)
                 {
-                    R.Cast(R.GetPrediction(targetR).CastPosition);
+                    if (targetR.HasBuffOfType(BuffType.Snare) || targetR.HasBuffOfType(BuffType.Stun))
+                    {
+                        R.Cast(targetR.Position);
+                    }
+                    else
+                    {
+                        R.Cast(R.GetPrediction(targetR).CastPosition);
+                    }
                 }
             }
         }
