@@ -346,7 +346,7 @@ namespace KickassSeries.Activator.Maps.Summoner
                     _useTalisman = DefensiveMenu.Add("useTalisman", new CheckBox("Use Talisman?"));
                     _myHPTalisman = DefensiveMenu.Add("useTalismanMyHP",
                         new Slider("Use Talisman When My Health hits {0}%", 30));
-
+                    /*
                     DefensiveMenu.AddGroupLabel("Mikael(to heal)");
                     _useMikaelHeal = DefensiveMenu.Add("useMikael", new CheckBox("Use Mikael(to heal)?"));
                     _allyHPMikaelHeal = DefensiveMenu.Add("useMikaelAllyHP",
@@ -369,6 +369,7 @@ namespace KickassSeries.Activator.Maps.Summoner
                     _useTalisman = DefensiveMenu.Add("useTalisman", new CheckBox("Use Talisman?"));
                     _myHPTalisman = DefensiveMenu.Add("useTalismanMyHP",
                         new Slider("Use Talisman When My Health is lower than ({0}%)", 30));
+                        */
                 }
 
                 public static void Initialize()

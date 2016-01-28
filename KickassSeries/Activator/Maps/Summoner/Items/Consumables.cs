@@ -1,8 +1,9 @@
 ﻿using System;
 using EloBuddy;
 using EloBuddy.SDK;
-using Misc = KickassSeries.Activator.Maps.Twistedtreeline.Config.Types.Settings;
-using Settings = KickassSeries.Activator.Maps.Twistedtreeline.Config.Types.ConsumablesItems;
+
+using Misc = KickassSeries.Activator.Maps.Summoner.Config.Types.Settings;
+using Settings = KickassSeries.Activator.Maps.Summoner.Config.Types.ConsumablesItems;
 
 namespace KickassSeries.Activator.Maps.Summoner.Items
 {

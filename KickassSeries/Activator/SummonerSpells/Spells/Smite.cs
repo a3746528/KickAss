@@ -2,10 +2,10 @@
 using System.Linq;
 using EloBuddy;
 using EloBuddy.SDK;
-using EloBuddy.SDK.Menu;
 using EloBuddy.SDK.Menu.Values;
-using KickassSeries.Activator.Maps.Twistedtreeline;
-using Settings = KickassSeries.Activator.Maps.Twistedtreeline.Config.Types.SummonerSpells;
+
+using KickassSeries.Activator.Maps.Summoner;
+using Settings = KickassSeries.Activator.Maps.Summoner.Config.Types.SummonerSpells;
 
 namespace KickassSeries.Activator.SummonerSpells.Spells
 {

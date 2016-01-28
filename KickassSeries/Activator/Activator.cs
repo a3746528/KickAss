@@ -9,8 +9,6 @@ namespace KickassSeries.Activator
         public static int lastUsed;
         public static void Init()
         {
-            SummonerSpells.Initialize.Init();
-
             DamageHandler.Initialize();
 
             EventsManager.Initialize();
@@ -18,22 +16,24 @@ namespace KickassSeries.Activator
             switch (Game.MapId)
             {
                 case GameMapId.CrystalScar:
-                    Game.OnUpdate += CrystalScar;
-                    Maps.CrystalScar.Config.Initialize();
+                    //Game.OnUpdate += CrystalScar;
+                    //Maps.CrystalScar.Config.Initialize();
                     break;
                 case GameMapId.TwistedTreeline:
-                    Game.OnUpdate += TwistedTreeline;
-                    Maps.Twistedtreeline.Config.Initialize();
+                    //Game.OnUpdate += TwistedTreeline;
+                    //Maps.Twistedtreeline.Config.Initialize();
                     break;
                 case GameMapId.SummonersRift:
-                    Game.OnUpdate += SummonerRift;
-                    Maps.Summoner.Config.Initialize();
+                    //Game.OnUpdate += SummonerRift;
+                    //Maps.Summoner.Config.Initialize();
                     break;
                 case GameMapId.HowlingAbyss:
-                    Game.OnUpdate += HowlingAbyss;
-                    Maps.HowlingAbyss.Config.Initialize();
+                    //Game.OnUpdate += HowlingAbyss;
+                    //Maps.HowlingAbyss.Config.Initialize();
                     break;
             }
+
+            SummonerSpells.Initialize.Init();
         }
 
         private static void CrystalScar(EventArgs args)
