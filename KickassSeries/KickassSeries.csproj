@@ -102,6 +102,7 @@
     <Compile Include="Activator\SummonerSpells\Spells\Exhaust.cs" />
     <Compile Include="Activator\SummonerSpells\Spells\Ghost.cs" />
     <Compile Include="Activator\SummonerSpells\Spells\Heal.cs" />
+    <Compile Include="Activator\SummonerSpells\Spells\Ignite.cs" />
     <Compile Include="Activator\SummonerSpells\Spells\Smite.cs" />
     <Compile Include="Champions\Aatrox\Aatrox.cs" />
     <Compile Include="Champions\Aatrox\Config.cs" />
@@ -145,6 +146,8 @@
     <Compile Include="Champions\Cassiopeia\SpellDamage.cs" />
     <Compile Include="Champions\Cassiopeia\SpellManager.cs" />
     <Compile Include="Champions\Corki\DamageIndicator.cs" />
+    <Compile Include="Champions\zzDMGHandler\DamageHandle.cs" />
+    <Compile Include="Champions\zzDMGHandler\DangerousSpells.cs" />
     <Compile Include="Champions\Ekko\Config.cs" />
     <Compile Include="Champions\Ekko\DamageIndicator.cs" />
     <Compile Include="Champions\Ekko\Ekko.cs" />
