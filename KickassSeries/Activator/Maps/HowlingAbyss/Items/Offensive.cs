@@ -2,8 +2,8 @@
 using System.Linq;
 using EloBuddy;
 using EloBuddy.SDK;
-using Settings = KickassSeries.Activator.Config.Types.OffensiveItems;
-using Misc = KickassSeries.Activator.Config.Types.Settings;
+using Settings = KickassSeries.Activator.Maps.Twistedtreeline.Config.Types.OffensiveItems;
+using Misc = KickassSeries.Activator.Maps.Twistedtreeline.Config.Types.Settings;
 
 namespace KickassSeries.Activator.Maps.HowlingAbyss.Items
 {

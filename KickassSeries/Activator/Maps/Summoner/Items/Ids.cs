@@ -8,13 +8,12 @@ namespace KickassSeries.Activator.Maps.Summoner.Items
         #region Consumables
         protected static readonly Item HealthPotion = new Item(2003);
         protected static readonly Item ElixirOfIron = new Item(ItemId.Elixir_of_Iron);
-        protected static readonly Item ElixirOfRuin = new Item(ItemId.Elixir_of_Ruin);
         protected static readonly Item ElixirOfSorcery = new Item(ItemId.Elixir_of_Sorcery);
         protected static readonly Item ElixirOfWrath = new Item(ItemId.Elixir_of_Wrath);
-        protected static readonly Item Biscuit = new Item(2010);
-        protected static readonly Item HuntersPotion = new Item(2032);
-        protected static readonly Item CorruptingPotion = new Item(2033); 
-        protected static readonly Item RefilablePotion = new Item(2031);
+        protected static readonly Item Biscuit = new Item(ItemId.Total_Biscuit_of_Rejuvenation);
+        protected static readonly Item HuntersPotion = new Item(ItemId.Hunters_Potion);
+        protected static readonly Item CorruptingPotion = new Item(ItemId.Corrupting_Potion); 
+        protected static readonly Item RefillablePotion = new Item(ItemId.Refillable_Potion);
         #endregion Consumables
 
         #region Offensive
@@ -22,10 +21,10 @@ namespace KickassSeries.Activator.Maps.Summoner.Items
         protected static readonly Item BladeOfTheRuinedKing = new Item(ItemId.Blade_of_the_Ruined_King, 550f);
         protected static readonly Item Hydra = new Item(ItemId.Ravenous_Hydra_Melee_Only, 250f);
         protected static readonly Item Tiamat = new Item(ItemId.Tiamat_Melee_Only, 250f);
-        protected static readonly Item TitanicHydra = new Item(3053, Player.Instance.GetAutoAttackRange());
+        protected static readonly Item TitanicHydra = new Item(ItemId.Titanic_Hydra, Player.Instance.GetAutoAttackRange());
         protected static readonly Item Youmuu = new Item(ItemId.Youmuus_Ghostblade, 600f);
         protected static readonly Item Hextech = new Item(ItemId.Hextech_Gunblade, 700f);
-        protected static readonly Item Muramana = new Item(3042);
+        protected static readonly Item Muramana = new Item(ItemId.Muramana);
         #endregion Offensive
 
         #region Defensive

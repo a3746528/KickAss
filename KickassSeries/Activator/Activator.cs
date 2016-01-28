@@ -9,10 +9,6 @@ namespace KickassSeries.Activator
         public static int lastUsed;
         public static void Init()
         {
-            Config.Initialize();
-
-            
-
             SummonerSpells.Initialize.Init();
 
             DamageHandler.Initialize();
@@ -23,15 +19,19 @@ namespace KickassSeries.Activator
             {
                 case GameMapId.CrystalScar:
                     Game.OnUpdate += CrystalScar;
+                    Maps.CrystalScar.Config.Initialize();
                     break;
                 case GameMapId.TwistedTreeline:
                     Game.OnUpdate += TwistedTreeline;
+                    Maps.Twistedtreeline.Config.Initialize();
                     break;
                 case GameMapId.SummonersRift:
                     Game.OnUpdate += SummonerRift;
+                    Maps.Summoner.Config.Initialize();
                     break;
                 case GameMapId.HowlingAbyss:
                     Game.OnUpdate += HowlingAbyss;
+                    Maps.HowlingAbyss.Config.Initialize();
                     break;
             }
         }

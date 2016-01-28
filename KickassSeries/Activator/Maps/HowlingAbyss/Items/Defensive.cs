@@ -3,8 +3,8 @@ using System.Linq;
 using EloBuddy;
 using EloBuddy.SDK;
 using KickassSeries.Activator.DMGHandler;
-using Misc = KickassSeries.Activator.Config.Types.Settings;
-using Settings = KickassSeries.Activator.Config.Types.DeffensiveItems;
+using Misc = KickassSeries.Activator.Maps.Twistedtreeline.Config.Types.Settings;
+using Settings = KickassSeries.Activator.Maps.Twistedtreeline.Config.Types.DeffensiveItems;
 
 namespace KickassSeries.Activator.Maps.HowlingAbyss.Items
 {

@@ -6,7 +6,7 @@ using EloBuddy.SDK.Menu.Values;
 // ReSharper disable UnusedMember.Global
 // ReSharper disable MemberHidesStaticFromOuterClass
 
-namespace KickassSeries.Activator
+namespace KickassSeries.Activator.Maps.Twistedtreeline
 {
     internal static class Config
     {

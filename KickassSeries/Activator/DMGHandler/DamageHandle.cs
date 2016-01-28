@@ -2,8 +2,8 @@
 using EloBuddy;
 using EloBuddy.SDK;
 using EloBuddy.SDK.Menu.Values;
-
-using Settings = KickassSeries.Activator.Config.Types.Settings;
+using KickassSeries.Activator.Maps.Twistedtreeline;
+using Settings = KickassSeries.Activator.Maps.Twistedtreeline.Config.Types.Settings;
 
 namespace KickassSeries.Activator.DMGHandler
 {

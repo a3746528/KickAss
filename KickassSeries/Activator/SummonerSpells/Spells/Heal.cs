@@ -4,8 +4,8 @@ using EloBuddy;
 using EloBuddy.SDK;
 using KickassSeries.Activator.DMGHandler;
 
-using Misc = KickassSeries.Activator.Config.Types.Settings;
-using Settings = KickassSeries.Activator.Config.Types.SummonerSpells;
+using Misc = KickassSeries.Activator.Maps.Twistedtreeline.Config.Types.Settings;
+using Settings = KickassSeries.Activator.Maps.Twistedtreeline.Config.Types.SummonerSpells;
 
 namespace KickassSeries.Activator.SummonerSpells.Spells
 {

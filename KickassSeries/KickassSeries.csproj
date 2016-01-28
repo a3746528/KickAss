@@ -63,21 +63,24 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Activator\Activator.cs" />
-    <Compile Include="Activator\Config.cs" />
     <Compile Include="Activator\DMGHandler\DamageHandle.cs" />
     <Compile Include="Activator\DMGHandler\DangerousSpells.cs" />
     <Compile Include="Activator\EventsManager.cs" />
+    <Compile Include="Activator\Maps\CrystalScar\Config.cs" />
     <Compile Include="Activator\Maps\CrystalScar\Items\Consumables.cs" />
     <Compile Include="Activator\Maps\CrystalScar\Items\Defensive.cs" />
     <Compile Include="Activator\Maps\CrystalScar\Items\Extensions.cs" />
     <Compile Include="Activator\Maps\CrystalScar\Items\Ids.cs" />
     <Compile Include="Activator\Maps\CrystalScar\Items\Offensive.cs" />
+    <Compile Include="Activator\Maps\HowlingAbyss\Config.cs" />
     <Compile Include="Activator\Maps\HowlingAbyss\Items\Consumables.cs" />
     <Compile Include="Activator\Maps\HowlingAbyss\Items\Defensive.cs" />
     <Compile Include="Activator\Maps\HowlingAbyss\Items\Extensions.cs" />
     <Compile Include="Activator\Maps\HowlingAbyss\Items\Ids.cs" />
     <Compile Include="Activator\Maps\HowlingAbyss\Items\Offensive.cs" />
+    <Compile Include="Activator\Maps\Summoner\Config.cs" />
     <Compile Include="Activator\Maps\Summoner\Items\Extensions.cs" />
+    <Compile Include="Activator\Maps\Twistedtreeline\Config.cs" />
     <Compile Include="Activator\Maps\Twistedtreeline\Items\Consumables.cs" />
     <Compile Include="Activator\Maps\Twistedtreeline\Items\Defensive.cs" />
     <Compile Include="Activator\Maps\Twistedtreeline\Items\Extensions.cs" />
