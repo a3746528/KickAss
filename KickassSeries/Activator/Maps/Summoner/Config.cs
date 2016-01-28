@@ -353,9 +353,9 @@ namespace KickassSeries.Activator.Maps.Summoner
                         new Slider("Use Mikael(to heal) When Ally Health is lower than {0}%", 10));
 
                     DefensiveMenu.AddGroupLabel("Solari");
-                    _useTalisman = DefensiveMenu.Add("useTalisman", new CheckBox("Use Talisman?"));
-                    _myHPTalisman = DefensiveMenu.Add("useTalismanMyHP",
-                        new Slider("Use Talisman When My Health is lower than {0}%", 30));
+                    _useTalisman = DefensiveMenu.Add("useSolari", new CheckBox("Use Solari?"));
+                    _myHPTalisman = DefensiveMenu.Add("useSolariMyHP",
+                        new Slider("Use Solari When Ally Health is lower than {0}%", 30));
 
                     DefensiveMenu.AddGroupLabel("Randuin");
                     _useTalisman = DefensiveMenu.Add("useTalisman", new CheckBox("Use Talisman?"));
