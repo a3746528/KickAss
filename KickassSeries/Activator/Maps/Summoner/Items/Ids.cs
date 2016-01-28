@@ -32,7 +32,7 @@ namespace KickassSeries.Activator.Maps.Summoner.Items
         protected static readonly Item Seraph = new Item(ItemId.Seraphs_Embrace);
         protected static readonly Item FaceOfTheMountain = new Item(ItemId.Face_of_the_Mountain);
         protected static readonly Item Talisman = new Item(ItemId.Talisman_of_Ascension);
-        protected static readonly Item Mikael = new Item(ItemId.Mikaels_Crucible);
+        protected static readonly Item Mikael = new Item(ItemId.Mikaels_Crucible, 750f);
         protected static readonly Item Solari = new Item(ItemId.Locket_of_the_Iron_Solari);
         protected static readonly Item Ohm = new Item(ItemId.Ohmwrecker);
         protected static readonly Item Randuin = new Item(ItemId.Randuins_Omen, 500f);

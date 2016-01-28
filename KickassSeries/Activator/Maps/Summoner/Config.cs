@@ -58,7 +58,7 @@ namespace KickassSeries.Activator.Maps.Summoner
 
             public static class OffensiveItems
             {
-                private static readonly CheckBox UseMuramana;
+                
                 private static readonly CheckBox UseFrostQueen;
 
                 #region Bilgewater
@@ -186,6 +186,29 @@ namespace KickassSeries.Activator.Maps.Summoner
 
                 #endregion Hextech
 
+                #region Manamune
+
+                private static readonly CheckBox _useManamune;
+                private static readonly Slider _targetHPManamune;
+                private static readonly Slider _myManaManamune;
+
+                public static bool Manamune
+                {
+                    get { return _useManamune.CurrentValue; }
+                }
+
+                public static int ManamuneTargetHP
+                {
+                    get { return _targetHPManamune.CurrentValue; }
+                }
+
+                public static int ManamuneMana
+                {
+                    get { return _myManaManamune.CurrentValue; }
+                }
+
+                #endregion Manamune
+
 
                 #region Offensive Menu
 
@@ -228,7 +251,14 @@ namespace KickassSeries.Activator.Maps.Summoner
                     UseHextech = OffensiveMenu.Add("useHextech", new CheckBox("Use Hextech ?"));
                     TargetHpHextech = OffensiveMenu.Add("useHextechTargetHP",
                         new Slider("Use Hextech When Target`s Health is lower than ({0}%)", 80));
-                   
+
+                    OffensiveMenu.AddGroupLabel("Manamune");
+                    _useManamune = OffensiveMenu.Add("useManamune", new CheckBox("Use Manamune ?"));
+                    _targetHPManamune = OffensiveMenu.Add("useManamuneTargetHP",
+                        new Slider("Use Manamune When Target`s Health is lower than ({0}%)", 80));
+                    _myManaManamune = OffensiveMenu.Add("useManamuneManamine",
+                        new Slider("Use Manamune When mana is greater than ({0}%)", 30));
+
                 }
 
                 #endregion Offensive Menu

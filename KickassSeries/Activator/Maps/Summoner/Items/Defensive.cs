@@ -76,30 +76,35 @@ namespace KickassSeries.Activator.Maps.Summoner.Items
 
             if (!Player.Instance.HasCCs()) return;
 
-            if (!Player.Instance.HasCC()) return;
-
             if (DerbishBlade.IsReady() && DerbishBlade.IsOwned() && Settings.DerbishBlade)
             {
-                DerbishBlade.Cast();
+                Core.DelayAction(() => DerbishBlade.Cast(), Settings.CleanseDelay);
                 Activator.lastUsed = Environment.TickCount + 1500;
             }
 
             if (Mercurial.IsReady() && Mercurial.IsOwned() && Settings.Mercurial)
             {
-                Mercurial.Cast();
+                Core.DelayAction(() => Mercurial.Cast(), Settings.CleanseDelay);
                 Activator.lastUsed = Environment.TickCount + 1500;
             }
 
             if (QuickSilver.IsReady() && QuickSilver.IsOwned() && Settings.QuickSilver)
             {
-                QuickSilver.Cast();
+                Core.DelayAction(() => QuickSilver.Cast(), Settings.CleanseDelay);
                 Activator.lastUsed = Environment.TickCount + 1500;
             }
 
+            var ally = EntityManager.Heroes.Allies.FirstOrDefault(a => a.IsValidTarget(Mikael.Range));
+            if(ally == null) return;
+            if(!ally.HasCCs()) return;
+
+            if (Mikael.IsReady() && Mikael.IsOwned() && Settings.MikaelCleanse)
+            {
+                Core.DelayAction(() => Mikael.Cast(ally), Settings.CleanseDelay);
+                Activator.lastUsed = Environment.TickCount + 1500;
+            }
             #endregion Self
         }
-
-        
     }
 }
 
