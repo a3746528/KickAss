@@ -32,12 +32,18 @@ namespace KickassSeries.Champions.Lux.Modes
             if (R.IsReady() && Settings.UseR)
             {
                 var targetR = TargetSelector.GetTarget(R.Range, DamageType.Magical);
+                if(targetR == null)return;
 
-                if (targetR != null && Settings.UseRSnared
-                ? target.HasBuffOfType(BuffType.Snare)
-                : target.IsValidTarget(R.Range))
+                if (target.IsValidTarget(R.Range) && Settings.UseRSnared? target.HasBuffOfType(BuffType.Snare): target.IsValidTarget(R.Range))
                 {
-                    R.Cast(R.GetPrediction(targetR).CastPosition);
+                    if (targetR.HasBuffOfType(BuffType.Snare) || targetR.HasBuffOfType(BuffType.Stun))
+                    {
+                        R.Cast(targetR.Position);
+                    }
+                    else
+                    {
+                        R.Cast(R.GetPrediction(targetR).CastPosition);
+                    }
                 }
             }
         }

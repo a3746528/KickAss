@@ -195,39 +195,39 @@ namespace KickassSeries.Activator.Maps.Summoner
                     OffensiveMenu.AddGroupLabel("Bilgewater Cutlass");
                     UseBilgewater = OffensiveMenu.Add("useBilgewater", new CheckBox("Use Bilgewater Cutlass ?"));
                     TargetHpBilgewater = OffensiveMenu.Add("useBilgewaterTargetHP",
-                        new Slider("Use Bilgewater Cutlass When Target`s Health hits X%", 80));
+                        new Slider("Use Bilgewater Cutlass When Target`s Health is lower than ({0}%)", 80));
 
                     OffensiveMenu.AddGroupLabel("Blade Of The Ruined King");
                     UseBlade = OffensiveMenu.Add("useBlade", new CheckBox("Use Blade Of The Ruined King ?"));
                     MyHpBlade = OffensiveMenu.Add("useBladeMyHP",
                         new Slider("Use Blade Of The Ruined King When My Health hits X%", 80));
                     TargetHpBlade = OffensiveMenu.Add("useBladeTargetHP",
-                        new Slider("Use Blade Of The Ruined King When Target`s Health hits X%", 80));
+                        new Slider("Use Blade Of The Ruined King When Target`s Health is lower than ({0}%)", 80));
 
                     OffensiveMenu.AddGroupLabel("Tiamat");
                     UseTiamat = OffensiveMenu.Add("useTiamat", new CheckBox("Use Tiamat ?"));
                     TargetHpTiamat = OffensiveMenu.Add("useTiamatTargetHP",
-                        new Slider("Use Tiamat When Target`s Health hits X%", 80));
+                        new Slider("Use Tiamat When Target`s Health is lower than ({0}%)", 80));
 
                     OffensiveMenu.AddGroupLabel("Ravenous Hydra");
                     UseHydra = OffensiveMenu.Add("useHydra", new CheckBox("Use Ravenous Hydra ?"));
                     TargetHpHydra = OffensiveMenu.Add("useHydraTargetHP",
-                        new Slider("Use Ravenous Hydra When Target`s Health hits X%", 80));
+                        new Slider("Use Ravenous Hydra When Target`s Health is lower than ({0}%)", 80));
 
                     OffensiveMenu.AddGroupLabel("Titanic Hydra");
                     UseTitanicHydra = OffensiveMenu.Add("useTitanic", new CheckBox("Use Titanic Hydra ?"));
                     TargetHpTitanicHydra = OffensiveMenu.Add("useTitanicTargetHP",
-                        new Slider("Use Titanic Hydra When Target`s Health hits X%", 80));
+                        new Slider("Use Titanic Hydra When Target`s Health is lower than ({0}%)", 80));
 
                     OffensiveMenu.AddGroupLabel("Youmuu");
                     UseYoumuu = OffensiveMenu.Add("useYoumuu ", new CheckBox("Use Youmuu ?"));
                     TargetHpYoumuu = OffensiveMenu.Add("useYoumuuTargetHP",
-                        new Slider("Use Youmuu  When Target`s Health hits X%", 80));
+                        new Slider("Use Youmuu  When Target`s Health is lower than ({0}%)", 80));
 
                     OffensiveMenu.AddGroupLabel("Hextech");
                     UseHextech = OffensiveMenu.Add("useHextech", new CheckBox("Use Hextech ?"));
                     TargetHpHextech = OffensiveMenu.Add("useHextechTargetHP",
-                        new Slider("Use Hextech When Target`s Health hits X%", 80));
+                        new Slider("Use Hextech When Target`s Health is lower than ({0}%)", 80));
                    
                 }
 
@@ -308,6 +308,23 @@ namespace KickassSeries.Activator.Maps.Summoner
 
                 #endregion Talisman
 
+                #region Mikael(to heal)
+
+                private static readonly CheckBox _useMikaelHeal;
+                private static readonly Slider _allyHPMikaelHeal;
+
+                public static bool UseMikaelHeal
+                {
+                    get { return _useMikaelHeal.CurrentValue; }
+                }
+
+                public static int AllyHPMikaelHeal
+                {
+                    get { return _allyHPMikaelHeal.CurrentValue; }
+                }
+
+                #endregion Mikael(to heal)
+
                 static DeffensiveItems()
                 {
                     DefensiveMenu.AddGroupLabel("Zhonyas");
@@ -318,17 +335,40 @@ namespace KickassSeries.Activator.Maps.Summoner
                     DefensiveMenu.AddGroupLabel("Archengel Staff");
                     _useArchengelStaff = DefensiveMenu.Add("useArchengelStaff", new CheckBox("Use ArchengelStaff ?"));
                     _myHPFaceOfTheMountain = DefensiveMenu.Add("useArchengelStaffMyHP",
-                        new Slider("Use ArchengelStaff When My Health hits {0}%", 30));
+                        new Slider("Use ArchengelStaff When My Health is lower than {0}%", 30));
 
                     DefensiveMenu.AddGroupLabel("Face Of The Mountain");
                     _useFaceOfTheMountain = DefensiveMenu.Add("useFaceOfTheMountain", new CheckBox("Use ArchengelStaff ?"));
                     _myHPFaceOfTheMountain = DefensiveMenu.Add("useFaceOfTheMountainMyHP",
-                        new Slider("Use Face Of The Mountain When My Health hits {0}%", 30));
+                        new Slider("Use Face Of The Mountain When My Health is lower than {0}%", 30));
 
                     DefensiveMenu.AddGroupLabel("Talisman");
                     _useTalisman = DefensiveMenu.Add("useTalisman", new CheckBox("Use Talisman?"));
                     _myHPTalisman = DefensiveMenu.Add("useTalismanMyHP",
                         new Slider("Use Talisman When My Health hits {0}%", 30));
+
+                    DefensiveMenu.AddGroupLabel("Mikael(to heal)");
+                    _useMikaelHeal = DefensiveMenu.Add("useMikael", new CheckBox("Use Mikael(to heal)?"));
+                    _allyHPMikaelHeal = DefensiveMenu.Add("useMikaelAllyHP",
+                        new Slider("Use Mikael(to heal) When Ally Health is lower than {0}%", 10));
+
+                    DefensiveMenu.AddGroupLabel("Solari");
+                    _useTalisman = DefensiveMenu.Add("useTalisman", new CheckBox("Use Talisman?"));
+                    _myHPTalisman = DefensiveMenu.Add("useTalismanMyHP",
+                        new Slider("Use Talisman When My Health is lower than {0}%", 30));
+
+                    DefensiveMenu.AddGroupLabel("Randuin");
+                    _useTalisman = DefensiveMenu.Add("useTalisman", new CheckBox("Use Talisman?"));
+                    _myHPTalisman = DefensiveMenu.Add("useTalismanMyHP",
+                        new Slider("Use Talisman When My Health is lower than {0}%", 30));
+
+                    DefensiveMenu.AddGroupLabel("Cleanse Settings");
+                    _useTalisman = DefensiveMenu.Add("useTalisman", new CheckBox("Use Talisman?"));
+                    _useTalisman = DefensiveMenu.Add("useTalisman", new CheckBox("Use Talisman?"));
+                    _useTalisman = DefensiveMenu.Add("useTalisman", new CheckBox("Use Talisman?"));
+                    _useTalisman = DefensiveMenu.Add("useTalisman", new CheckBox("Use Talisman?"));
+                    _myHPTalisman = DefensiveMenu.Add("useTalismanMyHP",
+                        new Slider("Use Talisman When My Health is lower than ({0}%)", 30));
                 }
 
                 public static void Initialize()

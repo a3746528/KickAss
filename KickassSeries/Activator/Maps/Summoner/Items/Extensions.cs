@@ -6,6 +6,13 @@ namespace KickassSeries.Activator.Maps.Summoner.Items
 {
     internal static class Extensions
     {
+        public static bool CCed(this AIHeroClient target)
+        {
+
+            return false;
+        }
+
+
         public static bool HasCC(this AIHeroClient target)
         {          
             if (target.HasBuffOfType(BuffType.Polymorph) || target.HasBuffOfType(BuffType.Taunt) || target.HasBuffOfType(BuffType.Charm) || target.HasBuffOfType(BuffType.Stun) ||
