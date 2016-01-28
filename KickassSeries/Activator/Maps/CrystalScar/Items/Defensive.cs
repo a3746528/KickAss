@@ -2,7 +2,7 @@
 using System.Linq;
 using EloBuddy;
 using EloBuddy.SDK;
-using KickassSeries.Activator.DMGHandler;
+using KickassSeries.Activator.Maps.Twistedtreeline.DMGHandler;
 using Misc = KickassSeries.Activator.Maps.Twistedtreeline.Config.Types.Settings;
 using Settings = KickassSeries.Activator.Maps.Twistedtreeline.Config.Types.DeffensiveItems;
 
@@ -17,15 +17,15 @@ namespace KickassSeries.Activator.Maps.CrystalScar.Items
                 Activator.lastUsed >= Environment.TickCount) return;
             #region Self
 
-            if (Zhonyas.IsReady() && Zhonyas.IsOwned() && Player.Instance.InDanger(Settings.ZhonyasMyHp) && Settings.Zhonyas)
+            if (Wooglet.IsReady() && Wooglet.IsOwned() && Player.Instance.InDanger(Settings.ZhonyasMyHp) && Settings.Zhonyas)
             {
-                Zhonyas.Cast();
+                Wooglet.Cast();
                 Activator.lastUsed = Environment.TickCount + 1500;
             }
 
-            if (ArchengelStaff.IsReady() && ArchengelStaff.IsOwned() && Player.Instance.InDanger(Settings.MYHPArchengelStaff) && Settings.UseArchengelStaff)
+            if (Seraph.IsReady() && Seraph.IsOwned() && Player.Instance.InDanger(Settings.MYHPArchengelStaff) && Settings.UseArchengelStaff)
             {
-                ArchengelStaff.Cast();
+                Seraph.Cast();
                 Activator.lastUsed = Environment.TickCount + 1500;
             }
 
@@ -42,7 +42,7 @@ namespace KickassSeries.Activator.Maps.CrystalScar.Items
                 Activator.lastUsed = Environment.TickCount + 1500;
             }
 
-            if (Mikael.IsReady() && Player.Instance.HasCC() && Mikael.IsOwned() && Player.Instance.InDanger(30))
+            if (Mikael.IsReady() && Player.Instance.HasCCs() && Mikael.IsOwned() && Player.Instance.InDanger(30))
             {
                 Mikael.Cast(Player.Instance);
                 Activator.lastUsed = Environment.TickCount + 1500;
@@ -73,7 +73,7 @@ namespace KickassSeries.Activator.Maps.CrystalScar.Items
 
             //CC
 
-            if (!Player.Instance.HasCC()) return;
+            if (!Player.Instance.HasCCs()) return;
 
             if (DerbishBlade.IsReady() && DerbishBlade.IsOwned())
             {

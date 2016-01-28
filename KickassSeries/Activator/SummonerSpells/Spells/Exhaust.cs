@@ -2,7 +2,7 @@
 using System.Linq;
 using EloBuddy;
 using EloBuddy.SDK;
-using KickassSeries.Activator.DMGHandler;
+using KickassSeries.Activator.Maps.Twistedtreeline.DMGHandler;
 
 namespace KickassSeries.Activator.SummonerSpells.Spells
 {

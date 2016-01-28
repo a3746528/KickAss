@@ -1,6 +1,6 @@
 ﻿using EloBuddy;
 using EloBuddy.SDK;
-using KickassSeries.Activator.DMGHandler;
+using KickassSeries.Activator.Maps.Twistedtreeline.DMGHandler;
 using Settings = KickassSeries.Champions.Akali.Config.Modes.Combo;
 
 namespace KickassSeries.Champions.Akali.Modes

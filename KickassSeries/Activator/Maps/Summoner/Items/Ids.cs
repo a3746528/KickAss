@@ -6,7 +6,7 @@ namespace KickassSeries.Activator.Maps.Summoner.Items
     public abstract class Ids
     {
         #region Consumables
-        protected static readonly Item HealthPotion = new Item(2003);
+        protected static readonly Item HealthPotion = new Item(ItemId.Health_Potion);
         protected static readonly Item ElixirOfIron = new Item(ItemId.Elixir_of_Iron);
         protected static readonly Item ElixirOfSorcery = new Item(ItemId.Elixir_of_Sorcery);
         protected static readonly Item ElixirOfWrath = new Item(ItemId.Elixir_of_Wrath);
@@ -24,12 +24,12 @@ namespace KickassSeries.Activator.Maps.Summoner.Items
         protected static readonly Item TitanicHydra = new Item(ItemId.Titanic_Hydra, Player.Instance.GetAutoAttackRange());
         protected static readonly Item Youmuu = new Item(ItemId.Youmuus_Ghostblade, 600f);
         protected static readonly Item Hextech = new Item(ItemId.Hextech_Gunblade, 700f);
-        protected static readonly Item Muramana = new Item(ItemId.Muramana);
+        protected static readonly Item Manamune = new Item(ItemId.Manamune);
         #endregion Offensive
 
         #region Defensive
         protected static readonly Item Zhonyas = new Item(ItemId.Zhonyas_Hourglass);
-        protected static readonly Item ArchengelStaff = new Item(3003);
+        protected static readonly Item Seraph = new Item(ItemId.Seraphs_Embrace);
         protected static readonly Item FaceOfTheMountain = new Item(ItemId.Face_of_the_Mountain);
         protected static readonly Item Talisman = new Item(ItemId.Talisman_of_Ascension);
         protected static readonly Item Mikael = new Item(ItemId.Mikaels_Crucible);

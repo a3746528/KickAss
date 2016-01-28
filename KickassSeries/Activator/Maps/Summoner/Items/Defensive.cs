@@ -2,7 +2,7 @@
 using System.Linq;
 using EloBuddy;
 using EloBuddy.SDK;
-using KickassSeries.Activator.DMGHandler;
+using KickassSeries.Activator.Maps.Summoner.DMGHandler;
 
 using Misc = KickassSeries.Activator.Maps.Summoner.Config.Types.Settings;
 using Settings = KickassSeries.Activator.Maps.Summoner.Config.Types.DeffensiveItems;
@@ -24,9 +24,9 @@ namespace KickassSeries.Activator.Maps.Summoner.Items
                 Activator.lastUsed = Environment.TickCount + 1500;
             }
 
-            if (ArchengelStaff.IsReady() && ArchengelStaff.IsOwned() && Player.Instance.InDanger(Settings.MYHPArchengelStaff) && Settings.UseArchengelStaff)
+            if (Seraph.IsReady() && Seraph.IsOwned() && Player.Instance.InDanger(Settings.MYHPArchengelStaff) && Settings.UseArchengelStaff)
             {
-                ArchengelStaff.Cast();
+                Seraph.Cast();
                 Activator.lastUsed = Environment.TickCount + 1500;
             }
 
@@ -43,7 +43,7 @@ namespace KickassSeries.Activator.Maps.Summoner.Items
                 Activator.lastUsed = Environment.TickCount + 1500;
             }
 
-            if (Mikael.IsReady() && Player.Instance.HasCC() && Mikael.IsOwned() && Player.Instance.InDanger(30))
+            if (Mikael.IsReady() && Player.Instance.HasCCs() && Mikael.IsOwned() && Player.Instance.InDanger(30))
             {
                 Mikael.Cast(Player.Instance);
                 Activator.lastUsed = Environment.TickCount + 1500;
@@ -74,21 +74,23 @@ namespace KickassSeries.Activator.Maps.Summoner.Items
 
             //CC
 
+            if (!Player.Instance.HasCCs()) return;
+
             if (!Player.Instance.HasCC()) return;
 
-            if (DerbishBlade.IsReady() && DerbishBlade.IsOwned())
+            if (DerbishBlade.IsReady() && DerbishBlade.IsOwned() && Settings.DerbishBlade)
             {
                 DerbishBlade.Cast();
                 Activator.lastUsed = Environment.TickCount + 1500;
             }
 
-            if (Mercurial.IsReady() && Mercurial.IsOwned())
+            if (Mercurial.IsReady() && Mercurial.IsOwned() && Settings.Mercurial)
             {
                 Mercurial.Cast();
                 Activator.lastUsed = Environment.TickCount + 1500;
             }
 
-            if (QuickSilver.IsReady() && QuickSilver.IsOwned())
+            if (QuickSilver.IsReady() && QuickSilver.IsOwned() && Settings.QuickSilver)
             {
                 QuickSilver.Cast();
                 Activator.lastUsed = Environment.TickCount + 1500;
@@ -96,6 +98,8 @@ namespace KickassSeries.Activator.Maps.Summoner.Items
 
             #endregion Self
         }
+
+        
     }
 }
 

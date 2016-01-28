@@ -10,7 +10,7 @@ namespace KickassSeries.Activator.Maps.Twistedtreeline
 {
     internal static class Config
     {
-        private const string MenuName = "KA Activator";
+        private const string MenuName = "KA Activator: TT";
 
         private static readonly Menu Menu;
 
@@ -195,40 +195,40 @@ namespace KickassSeries.Activator.Maps.Twistedtreeline
                     OffensiveMenu.AddGroupLabel("Bilgewater Cutlass");
                     UseBilgewater = OffensiveMenu.Add("useBilgewater", new CheckBox("Use Bilgewater Cutlass ?"));
                     TargetHpBilgewater = OffensiveMenu.Add("useBilgewaterTargetHP",
-                        new Slider("Use Bilgewater Cutlass When Target`s Health hits X%", 80));
+                        new Slider("Use Bilgewater Cutlass When Target`s Health is lower than ({0}%)", 80));
 
                     OffensiveMenu.AddGroupLabel("Blade Of The Ruined King");
                     UseBlade = OffensiveMenu.Add("useBlade", new CheckBox("Use Blade Of The Ruined King ?"));
                     MyHpBlade = OffensiveMenu.Add("useBladeMyHP",
                         new Slider("Use Blade Of The Ruined King When My Health hits X%", 80));
                     TargetHpBlade = OffensiveMenu.Add("useBladeTargetHP",
-                        new Slider("Use Blade Of The Ruined King When Target`s Health hits X%", 80));
+                        new Slider("Use Blade Of The Ruined King When Target`s Health is lower than ({0}%)", 80));
 
                     OffensiveMenu.AddGroupLabel("Tiamat");
                     UseTiamat = OffensiveMenu.Add("useTiamat", new CheckBox("Use Tiamat ?"));
                     TargetHpTiamat = OffensiveMenu.Add("useTiamatTargetHP",
-                        new Slider("Use Tiamat When Target`s Health hits X%", 80));
+                        new Slider("Use Tiamat When Target`s Health is lower than ({0}%)", 80));
 
                     OffensiveMenu.AddGroupLabel("Ravenous Hydra");
                     UseHydra = OffensiveMenu.Add("useHydra", new CheckBox("Use Ravenous Hydra ?"));
                     TargetHpHydra = OffensiveMenu.Add("useHydraTargetHP",
-                        new Slider("Use Ravenous Hydra When Target`s Health hits X%", 80));
+                        new Slider("Use Ravenous Hydra When Target`s Health is lower than ({0}%)", 80));
 
                     OffensiveMenu.AddGroupLabel("Titanic Hydra");
                     UseTitanicHydra = OffensiveMenu.Add("useTitanic", new CheckBox("Use Titanic Hydra ?"));
                     TargetHpTitanicHydra = OffensiveMenu.Add("useTitanicTargetHP",
-                        new Slider("Use Titanic Hydra When Target`s Health hits X%", 80));
+                        new Slider("Use Titanic Hydra When Target`s Health is lower than ({0}%)", 80));
 
                     OffensiveMenu.AddGroupLabel("Youmuu");
                     UseYoumuu = OffensiveMenu.Add("useYoumuu ", new CheckBox("Use Youmuu ?"));
                     TargetHpYoumuu = OffensiveMenu.Add("useYoumuuTargetHP",
-                        new Slider("Use Youmuu  When Target`s Health hits X%", 80));
+                        new Slider("Use Youmuu  When Target`s Health is lower than ({0}%)", 80));
 
                     OffensiveMenu.AddGroupLabel("Hextech");
                     UseHextech = OffensiveMenu.Add("useHextech", new CheckBox("Use Hextech ?"));
                     TargetHpHextech = OffensiveMenu.Add("useHextechTargetHP",
-                        new Slider("Use Hextech When Target`s Health hits X%", 80));
-                   
+                        new Slider("Use Hextech When Target`s Health is lower than ({0}%)", 80));
+
                 }
 
                 #endregion Offensive Menu
@@ -308,6 +308,129 @@ namespace KickassSeries.Activator.Maps.Twistedtreeline
 
                 #endregion Talisman
 
+                #region Mikael(to heal)
+
+                private static readonly CheckBox _useMikaelHeal;
+                private static readonly Slider _allyHPMikaelHeal;
+
+                public static bool UseMikaelHeal
+                {
+                    get { return _useMikaelHeal.CurrentValue; }
+                }
+
+                public static int AllyHPMikaelHeal
+                {
+                    get { return _allyHPMikaelHeal.CurrentValue; }
+                }
+
+                #endregion Mikael(to heal)
+
+                #region Cleanse
+                //Items
+                private static readonly CheckBox _useDerbishBlade;
+                public static bool DerbishBlade
+                {
+                    get { return _useDerbishBlade.CurrentValue; }
+                }
+
+                private static readonly CheckBox _useMercurial;
+                public static bool Mercurial
+                {
+                    get { return _useMercurial.CurrentValue; }
+                }
+
+                private static readonly CheckBox _useQuickSilver;
+                public static bool QuickSilver
+                {
+                    get { return _useQuickSilver.CurrentValue; }
+                }
+
+                private static readonly CheckBox _useMikaelCleanse;
+                public static bool MikaelCleanse
+                {
+                    get { return _useMikaelCleanse.CurrentValue; }
+                }
+                //Settings
+                private static readonly Slider _useCleanseHP;
+                public static int CleanseHP
+                {
+                    get { return _useCleanseHP.CurrentValue; }
+                }
+
+                private static readonly Slider _useCleanseDelay;
+                public static int CleanseDelay
+                {
+                    get { return _useCleanseDelay.CurrentValue; }
+                }
+                //CCs
+                private static readonly CheckBox _useForPolymorphs;
+                public static bool Polymorphs
+                {
+                    get { return _useForPolymorphs.CurrentValue; }
+                }
+
+                private static readonly CheckBox _useForSnares;
+                public static bool Snares
+                {
+                    get { return _useForSnares.CurrentValue; }
+                }
+
+                private static readonly CheckBox _useForTaunts;
+                public static bool Taunts
+                {
+                    get { return _useForTaunts.CurrentValue; }
+                }
+
+                private static readonly CheckBox _useForSilences;
+                public static bool Silences
+                {
+                    get { return _useForSilences.CurrentValue; }
+                }
+
+                private static readonly CheckBox _useForCharms;
+                public static bool Charms
+                {
+                    get { return _useForCharms.CurrentValue; }
+                }
+
+                private static readonly CheckBox _useForStuns;
+                public static bool Stuns
+                {
+                    get { return _useForStuns.CurrentValue; }
+                }
+
+                private static readonly CheckBox _useForBlinds;
+                public static bool Blinds
+                {
+                    get { return _useForBlinds.CurrentValue; }
+                }
+
+                private static readonly CheckBox _useForFears;
+                public static bool Fears
+                {
+                    get { return _useForFears.CurrentValue; }
+                }
+                //Special Cases
+                private static readonly CheckBox _useCleanseZedUlt;
+                public static bool ZedUlt
+                {
+                    get { return _useCleanseZedUlt.CurrentValue; }
+                }
+
+                private static readonly CheckBox _useCleanseVladUlt;
+                public static bool VladUlt
+                {
+                    get { return _useCleanseVladUlt.CurrentValue; }
+                }
+
+                private static readonly CheckBox _useCleanseMordeUlt;
+                public static bool MordeUlt
+                {
+                    get { return _useCleanseMordeUlt.CurrentValue; }
+                }
+
+                #endregion Cleanse
+
                 static DeffensiveItems()
                 {
                     DefensiveMenu.AddGroupLabel("Zhonyas");
@@ -315,29 +438,70 @@ namespace KickassSeries.Activator.Maps.Twistedtreeline
                     HpZhonyas = DefensiveMenu.Add("useZhonyasrMyHP",
                         new Slider("Use Zhonyas When My Health hits {0}%", 20));
 
-                    DefensiveMenu.AddGroupLabel("Archengel Staff");
-                    _useArchengelStaff = DefensiveMenu.Add("useArchengelStaff", new CheckBox("Use ArchengelStaff ?"));
-                    _myHPFaceOfTheMountain = DefensiveMenu.Add("useArchengelStaffMyHP",
-                        new Slider("Use ArchengelStaff When My Health hits {0}%", 30));
+                    DefensiveMenu.AddGroupLabel("Seraph");
+                    _useArchengelStaff = DefensiveMenu.Add("useSeraph", new CheckBox("Use Seraph ?"));
+                    _myHPFaceOfTheMountain = DefensiveMenu.Add("useSeraphMyHP",
+                        new Slider("Use Seraph When My Health is lower than {0}%", 30));
 
                     DefensiveMenu.AddGroupLabel("Face Of The Mountain");
-                    _useFaceOfTheMountain = DefensiveMenu.Add("useFaceOfTheMountain", new CheckBox("Use ArchengelStaff ?"));
+                    _useFaceOfTheMountain = DefensiveMenu.Add("useFaceOfTheMountain", new CheckBox("Use Face Of The Mountain ?"));
                     _myHPFaceOfTheMountain = DefensiveMenu.Add("useFaceOfTheMountainMyHP",
-                        new Slider("Use Face Of The Mountain When My Health hits {0}%", 30));
+                        new Slider("Use Face Of The Mountain When My Health is lower than {0}%", 30));
 
                     DefensiveMenu.AddGroupLabel("Talisman");
                     _useTalisman = DefensiveMenu.Add("useTalisman", new CheckBox("Use Talisman?"));
                     _myHPTalisman = DefensiveMenu.Add("useTalismanMyHP",
                         new Slider("Use Talisman When My Health hits {0}%", 30));
+
+                    DefensiveMenu.AddGroupLabel("Mikael(to heal)");
+                    _useMikaelHeal = DefensiveMenu.Add("useMikael", new CheckBox("Use Mikael(to heal) ?"));
+                    _allyHPMikaelHeal = DefensiveMenu.Add("useMikaelAllyHP",
+                        new Slider("Use Mikael(to heal) When Ally Health is lower than {0}%", 10));
+
+                    DefensiveMenu.AddGroupLabel("Solari");
+                    _useTalisman = DefensiveMenu.Add("useSolari", new CheckBox("Use Solari ?"));
+                    _myHPTalisman = DefensiveMenu.Add("useSolariMyHP",
+                        new Slider("Use Solari When Ally Health is lower than {0}%", 30));
+
+                    DefensiveMenu.AddGroupLabel("Randuin");
+                    _useTalisman = DefensiveMenu.Add("useRanduin", new CheckBox("Use Randuin ?"));
+                    _myHPTalisman = DefensiveMenu.Add("useRanduinEnemiesCount",
+                        new Slider("Use Randuin When there are at least ({0}) enemies in range", 2, 1, 5));
+
+                    DefensiveMenu.AddGroupLabel("Cleanse Settings");
+                    _useDerbishBlade = DefensiveMenu.Add("useDerbishBlade", new CheckBox("Use DerbishBlade?"));
+                    _useMercurial = DefensiveMenu.Add("useMercurial", new CheckBox("Use Mercurial?"));
+                    _useQuickSilver = DefensiveMenu.Add("useQuickSilver", new CheckBox("Use QuickSilver?"));
+                    _useMikaelCleanse = DefensiveMenu.Add("useMikaelCleanse", new CheckBox("Use Mikael(To Cleanse)?"));
+                    _useCleanseHP = DefensiveMenu.Add("useCleanseHP",
+                        new Slider("Use Cleanse items When Health is lower than ({0}%)", 30));
+                    _useCleanseDelay = DefensiveMenu.Add("useCleanseDelay",
+                        new Slider("Delay yo use the cleanse items({0} MS)", 100, 0, 500));
+                    DefensiveMenu.AddSeparator(1);
+                    DefensiveMenu.AddLabel("What kind of CC to use the items");
+                    _useForPolymorphs = DefensiveMenu.Add("usePolymorph", new CheckBox("Cleanse Polymorphs ?"));
+                    _useForSnares = DefensiveMenu.Add("useSnare", new CheckBox("Cleanse Snares ?", false));
+                    _useForTaunts = DefensiveMenu.Add("useTaunt", new CheckBox("Cleanse Taunts ?"));
+                    _useForSilences = DefensiveMenu.Add("useSilence", new CheckBox("Cleanse Silences ?"));
+                    _useForCharms = DefensiveMenu.Add("useCharm", new CheckBox("Cleanse Charms ?"));
+                    _useForStuns = DefensiveMenu.Add("useStun", new CheckBox("Cleanse Stuns ?"));
+                    _useForBlinds = DefensiveMenu.Add("useBlind", new CheckBox("Cleanse Blinds ?"));
+                    _useForFears = DefensiveMenu.Add("useFear", new CheckBox("Cleanse Fears ?"));
+                    DefensiveMenu.AddSeparator(1);
+                    DefensiveMenu.AddLabel("Special cases to use the items");
+                    _useCleanseZedUlt = DefensiveMenu.Add("useCCZedUlt", new CheckBox("Cleanse Zed Ultimate ?"));
+                    _useCleanseVladUlt = DefensiveMenu.Add("useCCVladmirUlt", new CheckBox("Cleanse Vladmir Ultimate ?"));
+                    _useCleanseMordeUlt = DefensiveMenu.Add("useCCMordekaiserUlt", new CheckBox("Cleanse Mordekaiser Ultimate ?"));
+
                 }
 
                 public static void Initialize()
                 {
                 }
-                
-                }
 
-                public static class ConsumablesItems
+            }
+
+            public static class ConsumablesItems
             {
                 #region HP Pot
 
@@ -424,7 +588,6 @@ namespace KickassSeries.Activator.Maps.Twistedtreeline
                 private static readonly CheckBox UseHunter;
                 private static readonly Slider MinHealthHunter;
                 private static readonly Slider MinManaHunter;
-                private static readonly CheckBox UseHunterMinionWillDie;
 
                 public static bool UseHunters
                 {
@@ -439,11 +602,6 @@ namespace KickassSeries.Activator.Maps.Twistedtreeline
                 public static int MinHunterMp
                 {
                     get { return MinManaHunter.CurrentValue; }
-                }
-
-                public static bool UseHuntersMinionWillDie
-                {
-                    get { return UseHunterMinionWillDie.CurrentValue; }
                 }
 
                 #endregion Hunter`s
@@ -476,8 +634,6 @@ namespace KickassSeries.Activator.Maps.Twistedtreeline
                     MinHealthHunter = ConsumablesMenu.Add("minhpHunter",
                         new Slider("Min Health to use Hunter`s Potion", 30));
                     MinManaHunter = ConsumablesMenu.Add("minmpHunter", new Slider("Min Mana to use Hunter`s Potion", 30));
-                    UseHunterMinionWillDie = ConsumablesMenu.Add("useHunterMinionWillDie",
-                        new CheckBox("Use Hunter`s Potion when jungle minion will die ?"));
                 }
 
                 public static void Initialize()
@@ -522,7 +678,7 @@ namespace KickassSeries.Activator.Maps.Twistedtreeline
                 {
                     get { return _useHeal.CurrentValue; }
                 }
-                
+
                 public static int HealHealth
                 {
                     get { return _healHealth.CurrentValue; }
@@ -549,7 +705,7 @@ namespace KickassSeries.Activator.Maps.Twistedtreeline
                 {
                     get { return _useBarrier.CurrentValue; }
                 }
-                
+
                 public static int BarrierHealth
                 {
                     get { return _healthBarrier.CurrentValue; }
@@ -705,7 +861,7 @@ namespace KickassSeries.Activator.Maps.Twistedtreeline
                     SettingsMenu.AddGroupLabel("Dangerous Spells");
                     foreach (var spell in DMGHandler.DangerousSpells.Spells.Where(x => EntityManager.Heroes.Enemies.Any(b => b.Hero == x.Hero)))
                     {
-                        SettingsMenu.Add(spell.Hero.ToString() + spell.Slot,new CheckBox(spell.Hero + " - " + spell.Slot + ".", spell.DefaultValue));
+                        SettingsMenu.Add(spell.Hero.ToString() + spell.Slot, new CheckBox(spell.Hero + " - " + spell.Slot + ".", spell.DefaultValue));
                     }
                 }
 

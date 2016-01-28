@@ -2,7 +2,7 @@
 using System.Linq;
 using EloBuddy;
 using EloBuddy.SDK;
-using KickassSeries.Activator.DMGHandler;
+using KickassSeries.Activator.Maps.Twistedtreeline.DMGHandler;
 using Misc = KickassSeries.Activator.Maps.Twistedtreeline.Config.Types.Settings;
 using Settings = KickassSeries.Activator.Maps.Twistedtreeline.Config.Types.DeffensiveItems;
 
@@ -42,7 +42,7 @@ namespace KickassSeries.Activator.Maps.Twistedtreeline.Items
                 Activator.lastUsed = Environment.TickCount + 1500;
             }
 
-            if (Mikael.IsReady() && Player.Instance.HasCC() && Mikael.IsOwned() && Player.Instance.InDanger(30))
+            if (Mikael.IsReady() && Player.Instance.HasCCs() && Mikael.IsOwned() && Player.Instance.InDanger(30))
             {
                 Mikael.Cast(Player.Instance);
                 Activator.lastUsed = Environment.TickCount + 1500;
@@ -73,7 +73,7 @@ namespace KickassSeries.Activator.Maps.Twistedtreeline.Items
 
             //CC
 
-            if (!Player.Instance.HasCC()) return;
+            if (!Player.Instance.HasCCs()) return;
 
             if (DerbishBlade.IsReady() && DerbishBlade.IsOwned())
             {

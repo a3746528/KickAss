@@ -1,6 +1,6 @@
 ﻿using System;
 using EloBuddy;
-using KickassSeries.Activator.DMGHandler;
+using KickassSeries.Activator.Maps.Twistedtreeline.DMGHandler;
 
 namespace KickassSeries.Activator
 {
@@ -16,20 +16,20 @@ namespace KickassSeries.Activator
             switch (Game.MapId)
             {
                 case GameMapId.CrystalScar:
-                    //Game.OnUpdate += CrystalScar;
                     //Maps.CrystalScar.Config.Initialize();
+                    //Game.OnUpdate += CrystalScar;
                     break;
                 case GameMapId.TwistedTreeline:
-                    //Game.OnUpdate += TwistedTreeline;
                     //Maps.Twistedtreeline.Config.Initialize();
+                    //Game.OnUpdate += TwistedTreeline;
                     break;
                 case GameMapId.SummonersRift:
+                    Maps.Summoner.Config.Initialize();
                     //Game.OnUpdate += SummonerRift;
-                    //Maps.Summoner.Config.Initialize();
                     break;
                 case GameMapId.HowlingAbyss:
-                    //Game.OnUpdate += HowlingAbyss;
                     //Maps.HowlingAbyss.Config.Initialize();
+                    //Game.OnUpdate += HowlingAbyss;
                     break;
             }
 

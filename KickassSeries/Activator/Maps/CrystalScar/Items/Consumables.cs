@@ -50,14 +50,6 @@ namespace KickassSeries.Activator.Maps.CrystalScar.Items
                     }
                 }
 
-                if (Settings.UseHunters && HuntersPotion.IsOwned())
-                {
-                    if (Player.Instance.ManaPercent < Settings.MinHunterMp && Player.Instance.HealthPercent < Settings.MinHunterHp && !Player.Instance.HasBuff("ItemCrystalFlaskJungle"))
-                    {
-                        HuntersPotion.Cast();
-                    }
-                }
-
                 LastRun = Environment.TickCount + 1000;
             }
         }
