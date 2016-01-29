@@ -91,21 +91,19 @@ namespace KickassSeries.Activator.Maps.SummonersRift.Items
 
             //CC
 
-            if (!Player.Instance.HasCCs()) return;
-
-            if (DerbishBlade.IsReady() && DerbishBlade.IsOwned() && Settings.DerbishBlade)
+            if (DerbishBlade.IsReady() && DerbishBlade.IsOwned() && Settings.DerbishBlade && Player.Instance.HasCCs())
             {
                 Core.DelayAction(() => DerbishBlade.Cast(), Settings.CleanseDelay);
                 Activator.lastUsed = Environment.TickCount + 1500;
             }
 
-            if (Mercurial.IsReady() && Mercurial.IsOwned() && Settings.Mercurial)
+            if (Mercurial.IsReady() && Mercurial.IsOwned() && Settings.Mercurial && Player.Instance.HasCCs())
             {
                 Core.DelayAction(() => Mercurial.Cast(), Settings.CleanseDelay);
                 Activator.lastUsed = Environment.TickCount + 1500;
             }
 
-            if (QuickSilver.IsReady() && QuickSilver.IsOwned() && Settings.QuickSilver)
+            if (QuickSilver.IsReady() && QuickSilver.IsOwned() && Settings.QuickSilver && Player.Instance.HasCCs())
             {
                 Core.DelayAction(() => QuickSilver.Cast(), Settings.CleanseDelay);
                 Activator.lastUsed = Environment.TickCount + 1500;

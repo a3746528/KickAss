@@ -531,10 +531,10 @@ namespace KickassSeries.Activator.Maps.CrystalScar
 
                 static DeffensiveItems()
                 {
-                    DefensiveMenu.AddGroupLabel("Zhonyas");
-                    UseZhonyas = DefensiveMenu.Add("useZhonyas", new CheckBox("Use Zhonyas ?"));
+                    DefensiveMenu.AddGroupLabel("Wooglet");
+                    UseZhonyas = DefensiveMenu.Add("useZhonyas", new CheckBox("Use Wooglet ?"));
                     HpZhonyas = DefensiveMenu.Add("useZhonyasrMyHP",
-                        new Slider("Use Zhonyas When My Health hits {0}%", 20));
+                        new Slider("Use Wooglet When My Health hits {0}%", 20));
 
                     DefensiveMenu.AddGroupLabel("Seraph");
                     _useSeraph = DefensiveMenu.Add("useSeraph", new CheckBox("Use Seraph ?"));

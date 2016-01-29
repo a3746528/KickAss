@@ -90,21 +90,19 @@ namespace KickassSeries.Activator.Maps.Twistedtreeline.Items
 
             //CC
 
-            if (!Summoner.Items.Extensions.HasCCs(Player.Instance)) return;
-
-            if (DerbishBlade.IsReady() && DerbishBlade.IsOwned() && Settings.DerbishBlade)
+            if (DerbishBlade.IsReady() && DerbishBlade.IsOwned() && Settings.DerbishBlade && Player.Instance.HasCCs())
             {
                 Core.DelayAction(() => DerbishBlade.Cast(), Settings.CleanseDelay);
                 Activator.lastUsed = Environment.TickCount + 1500;
             }
 
-            if (Mercurial.IsReady() && Mercurial.IsOwned() && Settings.Mercurial)
+            if (Mercurial.IsReady() && Mercurial.IsOwned() && Settings.Mercurial && Player.Instance.HasCCs())
             {
                 Core.DelayAction(() => Mercurial.Cast(), Settings.CleanseDelay);
                 Activator.lastUsed = Environment.TickCount + 1500;
             }
 
-            if (QuickSilver.IsReady() && QuickSilver.IsOwned() && Settings.QuickSilver)
+            if (QuickSilver.IsReady() && QuickSilver.IsOwned() && Settings.QuickSilver && Player.Instance.HasCCs())
             {
                 Core.DelayAction(() => QuickSilver.Cast(), Settings.CleanseDelay);
                 Activator.lastUsed = Environment.TickCount + 1500;
@@ -112,7 +110,7 @@ namespace KickassSeries.Activator.Maps.Twistedtreeline.Items
 
             var ally = EntityManager.Heroes.Allies.FirstOrDefault(a => a.IsValidTarget(Mikael.Range));
             if (ally == null) return;
-            if (!Summoner.Items.Extensions.HasCCs(ally)) return;
+            if (!ally.HasCCs()) return;
 
             if (Mikael.IsReady() && Mikael.IsOwned() && Settings.MikaelCleanse)
             {

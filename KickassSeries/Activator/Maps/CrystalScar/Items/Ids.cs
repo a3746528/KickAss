@@ -24,12 +24,12 @@ namespace KickassSeries.Activator.Maps.CrystalScar.Items
         protected static readonly Item TitanicHydra = new Item(ItemId.Titanic_Hydra, Player.Instance.GetAutoAttackRange());
         protected static readonly Item Youmuu = new Item(ItemId.Youmuus_Ghostblade, 600f);
         protected static readonly Item Hextech = new Item(ItemId.Hextech_Gunblade, 700f);
-        protected static readonly Item Manamune = new Item(ItemId.Manamune);
+        protected static readonly Item Manamune = new Item(ItemId.Manamune_Crystal_Scar);
         protected static readonly Item FrostQueen = new Item(ItemId.Frost_Queens_Claim, 1000f);
         #endregion Offensive
 
         #region Defensive
-        protected static readonly Item Zhonyas = new Item(ItemId.Zhonyas_Hourglass);
+        protected static readonly Item Wooglet = new Item(ItemId.Wooglets_Witchcap);
         protected static readonly Item Seraph = new Item(ItemId.Seraphs_Embrace);
         protected static readonly Item FaceOfTheMountain = new Item(ItemId.Face_of_the_Mountain);
         protected static readonly Item Talisman = new Item(ItemId.Talisman_of_Ascension);

@@ -19,10 +19,10 @@ namespace KickassSeries.Activator.Maps.CrystalScar.Items
 
             #region Self
 
-            if (Zhonyas.IsReady() && Zhonyas.IsOwned() && Player.Instance.InDanger(Settings.ZhonyasMyHp) &&
+            if (Wooglet.IsReady() && Wooglet.IsOwned() && Player.Instance.InDanger(Settings.ZhonyasMyHp) &&
                 Settings.Zhonyas)
             {
-                Zhonyas.Cast();
+                Wooglet.Cast();
                 Activator.lastUsed = Environment.TickCount + 1500;
             }
 
@@ -90,21 +90,19 @@ namespace KickassSeries.Activator.Maps.CrystalScar.Items
 
             //CC
 
-            if (!Player.Instance.HasCCs()) return;
-
-            if (DerbishBlade.IsReady() && DerbishBlade.IsOwned() && Settings.DerbishBlade)
+            if (DerbishBlade.IsReady() && DerbishBlade.IsOwned() && Settings.DerbishBlade && Player.Instance.HasCCs())
             {
                 Core.DelayAction(() => DerbishBlade.Cast(), Settings.CleanseDelay);
                 Activator.lastUsed = Environment.TickCount + 1500;
             }
 
-            if (Mercurial.IsReady() && Mercurial.IsOwned() && Settings.Mercurial)
+            if (Mercurial.IsReady() && Mercurial.IsOwned() && Settings.Mercurial && Player.Instance.HasCCs())
             {
                 Core.DelayAction(() => Mercurial.Cast(), Settings.CleanseDelay);
                 Activator.lastUsed = Environment.TickCount + 1500;
             }
 
-            if (QuickSilver.IsReady() && QuickSilver.IsOwned() && Settings.QuickSilver)
+            if (QuickSilver.IsReady() && QuickSilver.IsOwned() && Settings.QuickSilver && Player.Instance.HasCCs())
             {
                 Core.DelayAction(() => QuickSilver.Cast(), Settings.CleanseDelay);
                 Activator.lastUsed = Environment.TickCount + 1500;

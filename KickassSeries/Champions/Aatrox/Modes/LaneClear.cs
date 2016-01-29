@@ -31,7 +31,7 @@ namespace KickassSeries.Champions.Aatrox.Modes
             if (E.IsReady() && laneminion.IsValidTarget(E.Range) && Settings.UseE)
             {
 
-                Q.Cast(laneminion);
+                E.Cast(laneminion);
             }
         }
     }
