@@ -1,8 +1,9 @@
 ﻿using System;
 using EloBuddy;
 using EloBuddy.SDK;
-using Misc = KickassSeries.Activator.Maps.Twistedtreeline.Config.Types.Settings;
-using Settings = KickassSeries.Activator.Maps.Twistedtreeline.Config.Types.ConsumablesItems;
+
+using Settings = KickassSeries.Activator.Maps.HowlingAbyss.Config.Types.ConsumablesItems;
+using Misc = KickassSeries.Activator.Maps.HowlingAbyss.Config.Types.Settings;
 
 namespace KickassSeries.Activator.Maps.HowlingAbyss.Items
 {
@@ -34,11 +35,11 @@ namespace KickassSeries.Activator.Maps.HowlingAbyss.Items
                     }
                 }
 
-                if (Settings.UseRefillPOT && RefilablePotion.IsOwned())
+                if (Settings.UseRefillPOT && RefillablePotion.IsOwned())
                 {
                     if (Player.Instance.HealthPercent <= Settings.MinRefillHp && !Player.Instance.HasBuff("ItemCrystalFlask"))
                     {
-                        RefilablePotion.Cast();
+                        RefillablePotion.Cast();
                     }
                 }
 

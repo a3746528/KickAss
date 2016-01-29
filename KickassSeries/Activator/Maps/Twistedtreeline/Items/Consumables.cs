@@ -8,7 +8,7 @@ namespace KickassSeries.Activator.Maps.Twistedtreeline.Items
 {
     // ReSharper disable once ClassNeverInstantiated.Global
 
-    public sealed class Consumables : Ids
+    public sealed class Consumables : SummonersRift.Items.Ids
     {
         private static int LastRun;
 
@@ -34,11 +34,11 @@ namespace KickassSeries.Activator.Maps.Twistedtreeline.Items
                     }
                 }
 
-                if (Settings.UseRefillPOT && RefilablePotion.IsOwned())
+                if (Settings.UseRefillPOT && RefillablePotion.IsOwned())
                 {
                     if (Player.Instance.HealthPercent <= Settings.MinRefillHp && !Player.Instance.HasBuff("ItemCrystalFlask"))
                     {
-                        RefilablePotion.Cast();
+                        RefillablePotion.Cast();
                     }
                 }
 

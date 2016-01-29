@@ -2,7 +2,8 @@
 using EloBuddy;
 using EloBuddy.SDK;
 using EloBuddy.SDK.Menu.Values;
-using Settings = KickassSeries.Activator.Maps.Summoner.Config.Types.Settings;
+
+using Settings = KickassSeries.Activator.Maps.HowlingAbyss.Config.Types.Settings;
 
 namespace KickassSeries.Activator.Maps.HowlingAbyss.DMGHandler
 {
@@ -42,7 +43,7 @@ namespace KickassSeries.Activator.Maps.HowlingAbyss.DMGHandler
                 DangerousSpells.Spells.FirstOrDefault(
                     x =>
                         x.Hero == hero.Hero && args.Slot == x.Slot &&
-                        Summoner.Config.Types.SettingsMenu[x.Hero.ToString() + x.Slot].Cast<CheckBox>().CurrentValue);
+                        Config.Types.SettingsMenu[x.Hero.ToString() + x.Slot].Cast<CheckBox>().CurrentValue);
             //SkilShot
             if (args.Target == null)
             {

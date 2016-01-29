@@ -2,8 +2,8 @@
 using EloBuddy;
 using EloBuddy.SDK;
 using EloBuddy.SDK.Menu.Values;
+using KickassSeries.Activator.NoMenuDMGHandler;
 
-using KickassSeries.Champions.zzDMGHandler;
 using Settings = KickassSeries.Champions.Kayle.Config.Modes.Misc;
 
 namespace KickassSeries.Champions.Kayle.Modes

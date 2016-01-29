@@ -43,7 +43,7 @@ namespace KickassSeries.Activator.Maps.CrystalScar.DMGHandler
                 DangerousSpells.Spells.FirstOrDefault(
                     x =>
                         x.Hero == hero.Hero && args.Slot == x.Slot &&
-                        Summoner.Config.Types.SettingsMenu[x.Hero.ToString() + x.Slot].Cast<CheckBox>().CurrentValue);
+                        Config.Types.SettingsMenu[x.Hero.ToString() + x.Slot].Cast<CheckBox>().CurrentValue);
             //SkilShot
             if (args.Target == null)
             {

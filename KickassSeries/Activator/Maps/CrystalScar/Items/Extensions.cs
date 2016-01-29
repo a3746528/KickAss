@@ -1,4 +1,5 @@
 ﻿using EloBuddy;
+
 using Settings = KickassSeries.Activator.Maps.CrystalScar.Config.Types.DeffensiveItems;
 
 // ReSharper disable once ConvertIfStatementToReturnStatement

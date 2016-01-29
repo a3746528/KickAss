@@ -2,8 +2,9 @@
 using System.Linq;
 using EloBuddy;
 using EloBuddy.SDK;
-using Settings = KickassSeries.Activator.Maps.Twistedtreeline.Config.Types.OffensiveItems;
-using Misc = KickassSeries.Activator.Maps.Twistedtreeline.Config.Types.Settings;
+
+using Settings = KickassSeries.Activator.Maps.HowlingAbyss.Config.Types.OffensiveItems;
+using Misc = KickassSeries.Activator.Maps.HowlingAbyss.Config.Types.Settings;
 
 namespace KickassSeries.Activator.Maps.HowlingAbyss.Items
 {
@@ -12,9 +13,19 @@ namespace KickassSeries.Activator.Maps.HowlingAbyss.Items
     {
         public static void Execute()
         {
-            if (Activator.lastUsed > Environment.TickCount) return;
-
             var target = TargetSelector.GetTarget(1000, DamageType.Mixed);
+
+            if (target == null)
+            {
+                var manamune = Player.Instance.Spellbook.Spells.FirstOrDefault(s => s.Name.ToLower().Contains("manamune"));
+
+                if (manamune != null && manamune.ToggleState == 2)
+                {
+                    Manamune.Cast();
+                }
+            }
+
+            if (Activator.lastUsed > Environment.TickCount) return;
 
             if (target != null && !Player.Instance.IsRecalling() &&
                 (Orbwalker.ActiveModesFlags.HasFlag(Orbwalker.ActiveModes.Combo) ||
@@ -93,6 +104,18 @@ namespace KickassSeries.Activator.Maps.HowlingAbyss.Items
                     {
                         Hextech.Cast(target);
                         Activator.lastUsed = Environment.TickCount + Misc.DelayBetweenOff;
+                    }
+                }
+
+                if (Settings.Manamune && Manamune.IsOwned() && Manamune.IsReady() && target.IsValidTarget(Manamune.Range))
+                {
+                    if (target.HealthPercent < Settings.ManamuneTargetHP && Player.Instance.ManaPercent > Settings.ManamuneMana)
+                    {
+                        var manamune = Player.Instance.Spellbook.Spells.FirstOrDefault(s => s.Name.ToLower().Contains("manamune"));
+                        if (manamune != null && manamune.ToggleState == 1)
+                        {
+                            Manamune.Cast();
+                        }
                     }
                 }
             }

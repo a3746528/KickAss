@@ -1,8 +1,9 @@
 ﻿using System;
 using EloBuddy;
 using EloBuddy.SDK;
-using Misc = KickassSeries.Activator.Maps.Twistedtreeline.Config.Types.Settings;
-using Settings = KickassSeries.Activator.Maps.Twistedtreeline.Config.Types.ConsumablesItems;
+
+using Misc = KickassSeries.Activator.Maps.CrystalScar.Config.Types.Settings;
+using Settings = KickassSeries.Activator.Maps.CrystalScar.Config.Types.ConsumablesItems;
 
 namespace KickassSeries.Activator.Maps.CrystalScar.Items
 {
@@ -34,11 +35,11 @@ namespace KickassSeries.Activator.Maps.CrystalScar.Items
                     }
                 }
 
-                if (Settings.UseRefillPOT && RefilablePotion.IsOwned())
+                if (Settings.UseRefillPOT && RefillablePotion.IsOwned())
                 {
                     if (Player.Instance.HealthPercent <= Settings.MinRefillHp && !Player.Instance.HasBuff("ItemCrystalFlask"))
                     {
-                        RefilablePotion.Cast();
+                        RefillablePotion.Cast();
                     }
                 }
 
@@ -47,6 +48,14 @@ namespace KickassSeries.Activator.Maps.CrystalScar.Items
                     if (Player.Instance.ManaPercent < Settings.MinCorruptMp && Player.Instance.HealthPercent < Settings.MinCorruptHp && !Player.Instance.HasBuff("ItemDarkCrystalFlask"))
                     {
                         CorruptingPotion.Cast();
+                    }
+                }
+
+                if (Settings.UseHunters && HuntersPotion.IsOwned())
+                {
+                    if (Player.Instance.ManaPercent < Settings.MinHunterMp && Player.Instance.HealthPercent < Settings.MinHunterHp && !Player.Instance.HasBuff("ItemCrystalFlaskJungle"))
+                    {
+                        HuntersPotion.Cast();
                     }
                 }
 

@@ -58,9 +58,6 @@ namespace KickassSeries.Activator.Maps.HowlingAbyss
 
             public static class OffensiveItems
             {
-                private static readonly CheckBox UseMuramana;
-                private static readonly CheckBox UseFrostQueen;
-
                 #region Bilgewater
 
                 private static readonly CheckBox UseBilgewater;
@@ -186,6 +183,44 @@ namespace KickassSeries.Activator.Maps.HowlingAbyss
 
                 #endregion Hextech
 
+                #region Manamune
+
+                private static readonly CheckBox _useManamune;
+                private static readonly Slider _targetHPManamune;
+                private static readonly Slider _myManaManamune;
+
+                public static bool Manamune
+                {
+                    get { return _useManamune.CurrentValue; }
+                }
+
+                public static int ManamuneTargetHP
+                {
+                    get { return _targetHPManamune.CurrentValue; }
+                }
+
+                public static int ManamuneMana
+                {
+                    get { return _myManaManamune.CurrentValue; }
+                }
+
+                #endregion Manamune
+
+                #region FrostQueen
+                private static readonly CheckBox _useFrostQueen;
+                private static readonly Slider _targetHPFrostQueen;
+
+                public static bool FrostQueen
+                {
+                    get { return _useFrostQueen.CurrentValue; }
+                }
+
+                public static int TargetHPFrostQueen
+                {
+                    get { return _targetHPFrostQueen.CurrentValue; }
+                }
+
+                #endregion FrostQueen
 
                 #region Offensive Menu
 
@@ -229,6 +264,18 @@ namespace KickassSeries.Activator.Maps.HowlingAbyss
                     TargetHpHextech = OffensiveMenu.Add("useHextechTargetHP",
                         new Slider("Use Hextech When Target`s Health is lower than ({0}%)", 80));
 
+                    OffensiveMenu.AddGroupLabel("Manamune");
+                    _useManamune = OffensiveMenu.Add("useManamune", new CheckBox("Use Manamune ?"));
+                    _targetHPManamune = OffensiveMenu.Add("useManamuneTargetHP",
+                        new Slider("Use Manamune When Target`s Health is lower than ({0}%)", 80));
+                    _myManaManamune = OffensiveMenu.Add("useManamuneManamine",
+                        new Slider("Use Manamune When mana is greater than ({0}%)", 30));
+
+                    OffensiveMenu.AddGroupLabel("FrostQueen");
+                    _useFrostQueen = OffensiveMenu.Add("useFrostQueen", new CheckBox("Use FrostQueen ?"));
+                    _targetHPFrostQueen = OffensiveMenu.Add("useFrostQueenTargetHP",
+                        new Slider("Use Manamune When Target`s Health is lower than ({0}%)", 80));
+
                 }
 
                 #endregion Offensive Menu
@@ -257,36 +304,36 @@ namespace KickassSeries.Activator.Maps.HowlingAbyss
 
                 #endregion Zhonyas
 
-                #region ArchengelStaff
+                #region Seraph
 
-                private static readonly CheckBox _useArchengelStaff;
-                private static readonly Slider _myHPArchengelStaff;
+                private static readonly CheckBox _useSeraph;
+                private static readonly Slider _myHPSeraph;
 
-                public static bool UseArchengelStaff
+                public static bool UseSeraph
                 {
-                    get { return _useArchengelStaff.CurrentValue; }
+                    get { return _useSeraph.CurrentValue; }
                 }
 
-                public static int MYHPArchengelStaff
+                public static int MYHPSeraph
                 {
-                    get { return _myHPArchengelStaff.CurrentValue; }
+                    get { return _myHPSeraph.CurrentValue; }
                 }
 
-                #endregion ArchengelStaff
+                #endregion Seraph
 
                 #region FaceOfTheMountain
 
                 private static readonly CheckBox _useFaceOfTheMountain;
-                private static readonly Slider _myHPFaceOfTheMountain;
+                private static readonly Slider _AllyHPFaceOfTheMountain;
 
                 public static bool UseFaceOfTheMountain
                 {
                     get { return _useFaceOfTheMountain.CurrentValue; }
                 }
 
-                public static int MYHPFaceOfTheMountain
+                public static int AllyHPFaceOfTheMountain
                 {
-                    get { return _myHPFaceOfTheMountain.CurrentValue; }
+                    get { return _AllyHPFaceOfTheMountain.CurrentValue; }
                 }
 
                 #endregion FaceOfTheMountain
@@ -324,6 +371,57 @@ namespace KickassSeries.Activator.Maps.HowlingAbyss
                 }
 
                 #endregion Mikael(to heal)
+
+                #region Solari
+
+                private static readonly CheckBox _useSolari;
+                private static readonly Slider _allyHealthSolari;
+
+                public static bool Solari
+                {
+                    get { return _useSolari.CurrentValue; }
+                }
+
+                public static int AllyHealthSolari
+                {
+                    get { return _allyHealthSolari.CurrentValue; }
+                }
+
+                #endregion Solari
+
+                #region Randuin
+
+                private static readonly CheckBox _useRanduin;
+                private static readonly Slider _enemyCountRanduin;
+
+                public static bool Randuin
+                {
+                    get { return _useRanduin.CurrentValue; }
+                }
+
+                public static int EnemiesCountRanduin
+                {
+                    get { return _enemyCountRanduin.CurrentValue; }
+                }
+
+                #endregion Randuin
+
+                #region Ohm
+
+                private static readonly CheckBox _useOhm;
+                private static readonly Slider _healthOhm;
+
+                public static bool Ohm
+                {
+                    get { return _useOhm.CurrentValue; }
+                }
+
+                public static int OhmHealth
+                {
+                    get { return _healthOhm.CurrentValue; }
+                }
+
+                #endregion Ohm
 
                 #region Cleanse
                 //Items
@@ -439,34 +537,39 @@ namespace KickassSeries.Activator.Maps.HowlingAbyss
                         new Slider("Use Zhonyas When My Health hits {0}%", 20));
 
                     DefensiveMenu.AddGroupLabel("Seraph");
-                    _useArchengelStaff = DefensiveMenu.Add("useSeraph", new CheckBox("Use Seraph ?"));
-                    _myHPFaceOfTheMountain = DefensiveMenu.Add("useSeraphMyHP",
+                    _useSeraph = DefensiveMenu.Add("useSeraph", new CheckBox("Use Seraph ?"));
+                    _myHPSeraph = DefensiveMenu.Add("useSeraphMyHP",
                         new Slider("Use Seraph When My Health is lower than {0}%", 30));
 
                     DefensiveMenu.AddGroupLabel("Face Of The Mountain");
                     _useFaceOfTheMountain = DefensiveMenu.Add("useFaceOfTheMountain", new CheckBox("Use Face Of The Mountain ?"));
-                    _myHPFaceOfTheMountain = DefensiveMenu.Add("useFaceOfTheMountainMyHP",
-                        new Slider("Use Face Of The Mountain When My Health is lower than {0}%", 30));
+                    _AllyHPFaceOfTheMountain = DefensiveMenu.Add("useFaceOfTheMountainMyHP",
+                        new Slider("Use Face Of The Mountain When Ally Health is lower than {0}%", 30));
 
                     DefensiveMenu.AddGroupLabel("Talisman");
                     _useTalisman = DefensiveMenu.Add("useTalisman", new CheckBox("Use Talisman?"));
                     _myHPTalisman = DefensiveMenu.Add("useTalismanMyHP",
                         new Slider("Use Talisman When My Health hits {0}%", 30));
-
+                    
                     DefensiveMenu.AddGroupLabel("Mikael(to heal)");
                     _useMikaelHeal = DefensiveMenu.Add("useMikael", new CheckBox("Use Mikael(to heal) ?"));
                     _allyHPMikaelHeal = DefensiveMenu.Add("useMikaelAllyHP",
                         new Slider("Use Mikael(to heal) When Ally Health is lower than {0}%", 10));
 
                     DefensiveMenu.AddGroupLabel("Solari");
-                    _useTalisman = DefensiveMenu.Add("useSolari", new CheckBox("Use Solari ?"));
-                    _myHPTalisman = DefensiveMenu.Add("useSolariMyHP",
+                    _useSolari = DefensiveMenu.Add("useSolari", new CheckBox("Use Solari ?"));
+                    _allyHealthSolari = DefensiveMenu.Add("useSolariMyHP",
                         new Slider("Use Solari When Ally Health is lower than {0}%", 30));
 
                     DefensiveMenu.AddGroupLabel("Randuin");
-                    _useTalisman = DefensiveMenu.Add("useRanduin", new CheckBox("Use Randuin ?"));
-                    _myHPTalisman = DefensiveMenu.Add("useRanduinEnemiesCount",
-                        new Slider("Use Randuin When there are at least ({0}) enemies in range", 2, 1, 5));
+                    _useRanduin = DefensiveMenu.Add("useRanduin", new CheckBox("Use Randuin ?"));
+                    _enemyCountRanduin = DefensiveMenu.Add("useRanduinEnemiesCount",
+                        new Slider("Use Randuin When there are at least ({0}) enemies in range", 2,1,5));
+
+                    DefensiveMenu.AddGroupLabel("Ohm");
+                    _useOhm = DefensiveMenu.Add("useOhm", new CheckBox("Use Ohm ?"));
+                    _healthOhm = DefensiveMenu.Add("useOhmMyHP",
+                        new Slider("Use Ohm When Ally Health is lower than {0}% and towers is targetting you", 30));
 
                     DefensiveMenu.AddGroupLabel("Cleanse Settings");
                     _useDerbishBlade = DefensiveMenu.Add("useDerbishBlade", new CheckBox("Use DerbishBlade?"));
@@ -476,9 +579,9 @@ namespace KickassSeries.Activator.Maps.HowlingAbyss
                     _useCleanseHP = DefensiveMenu.Add("useCleanseHP",
                         new Slider("Use Cleanse items When Health is lower than ({0}%)", 30));
                     _useCleanseDelay = DefensiveMenu.Add("useCleanseDelay",
-                        new Slider("Delay yo use the cleanse items({0} MS)", 100, 0, 500));
+                        new Slider("Delay yo use the cleanse items({0} MS)", 100,0,500));
                     DefensiveMenu.AddSeparator(1);
-                    DefensiveMenu.AddLabel("What kind of CC to use the items");
+                    DefensiveMenu.AddLabel("What kind to CC to use the items");
                     _useForPolymorphs = DefensiveMenu.Add("usePolymorph", new CheckBox("Cleanse Polymorphs ?"));
                     _useForSnares = DefensiveMenu.Add("useSnare", new CheckBox("Cleanse Snares ?", false));
                     _useForTaunts = DefensiveMenu.Add("useTaunt", new CheckBox("Cleanse Taunts ?"));
@@ -498,10 +601,10 @@ namespace KickassSeries.Activator.Maps.HowlingAbyss
                 public static void Initialize()
                 {
                 }
+                
+                }
 
-            }
-
-            public static class ConsumablesItems
+                public static class ConsumablesItems
             {
                 #region HP Pot
 
@@ -678,7 +781,7 @@ namespace KickassSeries.Activator.Maps.HowlingAbyss
                 {
                     get { return _useHeal.CurrentValue; }
                 }
-
+                
                 public static int HealHealth
                 {
                     get { return _healHealth.CurrentValue; }
@@ -705,7 +808,7 @@ namespace KickassSeries.Activator.Maps.HowlingAbyss
                 {
                     get { return _useBarrier.CurrentValue; }
                 }
-
+                
                 public static int BarrierHealth
                 {
                     get { return _healthBarrier.CurrentValue; }
@@ -861,7 +964,7 @@ namespace KickassSeries.Activator.Maps.HowlingAbyss
                     SettingsMenu.AddGroupLabel("Dangerous Spells");
                     foreach (var spell in DMGHandler.DangerousSpells.Spells.Where(x => EntityManager.Heroes.Enemies.Any(b => b.Hero == x.Hero)))
                     {
-                        SettingsMenu.Add(spell.Hero.ToString() + spell.Slot, new CheckBox(spell.Hero + " - " + spell.Slot + ".", spell.DefaultValue));
+                        SettingsMenu.Add(spell.Hero.ToString() + spell.Slot,new CheckBox(spell.Hero + " - " + spell.Slot + ".", spell.DefaultValue));
                     }
                 }
 

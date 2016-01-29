@@ -5,7 +5,8 @@ using EloBuddy.SDK;
 using EloBuddy.SDK.Menu.Values;
 
 using KickassSeries.Activator.Maps.Summoner;
-using Settings = KickassSeries.Activator.Maps.Summoner.Config.Types.SummonerSpells;
+using KickassSeries.Activator.Maps.SummonersRift;
+using Settings = KickassSeries.Activator.Maps.SummonersRift.Config.Types.SummonerSpells;
 
 namespace KickassSeries.Activator.SummonerSpells.Spells
 {

@@ -3,35 +3,33 @@ using System.Linq;
 using EloBuddy;
 using EloBuddy.SDK;
 using KickassSeries.Activator.Maps.Twistedtreeline.DMGHandler;
+
 using Misc = KickassSeries.Activator.Maps.Twistedtreeline.Config.Types.Settings;
 using Settings = KickassSeries.Activator.Maps.Twistedtreeline.Config.Types.DeffensiveItems;
 
 namespace KickassSeries.Activator.Maps.Twistedtreeline.Items
 {
     // ReSharper disable once ClassNeverInstantiated.Global
-    internal class Defensive : Ids
+    internal class Defensive : SummonersRift.Items.Ids
     {
         public static void Execute()
         {
             if (Player.Instance.IsInShopRange() || Player.Instance.CountAlliesInRange(Misc.RangeEnemy) < Misc.EnemyCount ||
                 Activator.lastUsed >= Environment.TickCount) return;
+
             #region Self
 
-            if (Zhonyas.IsReady() && Zhonyas.IsOwned() && Player.Instance.InDanger(Settings.ZhonyasMyHp) && Settings.Zhonyas)
+            if (Zhonyas.IsReady() && Zhonyas.IsOwned() && Player.Instance.InDanger(Settings.ZhonyasMyHp) &&
+                Settings.Zhonyas)
             {
                 Zhonyas.Cast();
                 Activator.lastUsed = Environment.TickCount + 1500;
             }
 
-            if (ArchengelStaff.IsReady() && ArchengelStaff.IsOwned() && Player.Instance.InDanger(Settings.MYHPArchengelStaff) && Settings.UseArchengelStaff)
+            if (Seraph.IsReady() && Seraph.IsOwned() && Player.Instance.InDanger(Settings.MYHPSeraph) &&
+                Settings.UseSeraph)
             {
-                ArchengelStaff.Cast();
-                Activator.lastUsed = Environment.TickCount + 1500;
-            }
-
-            if (FaceOfTheMountain.IsReady() && FaceOfTheMountain.IsOwned() && Player.Instance.InDanger(30))
-            {
-                FaceOfTheMountain.Cast(Player.Instance);
+                Seraph.Cast();
                 Activator.lastUsed = Environment.TickCount + 1500;
             }
 
@@ -42,54 +40,83 @@ namespace KickassSeries.Activator.Maps.Twistedtreeline.Items
                 Activator.lastUsed = Environment.TickCount + 1500;
             }
 
-            if (Mikael.IsReady() && Player.Instance.HasCCs() && Mikael.IsOwned() && Player.Instance.InDanger(30))
-            {
-                Mikael.Cast(Player.Instance);
-                Activator.lastUsed = Environment.TickCount + 1500;
-            }
-
-            if (Solari.IsReady() && Solari.IsOwned() && Player.Instance.InDanger(30))
-            {
-                Solari.Cast();
-                Activator.lastUsed = Environment.TickCount + 1500;
-            }
-
-            if (Ohm.IsReady() && Ohm.IsOwned() && Player.Instance.InDanger(30))
-            {
-                var turret = EntityManager.Turrets.Enemies.FirstOrDefault(t => t.IsAttackingPlayer);
-                if (turret != null)
-                {
-                    Ohm.Cast(turret);
-                    Activator.lastUsed = Environment.TickCount + 1500;
-                }
-            }
-
             if (Randuin.IsReady() && Player.Instance.CountEnemiesInRange(Randuin.Range) >= 2 && Randuin.IsOwned() &&
                 Player.Instance.InDanger(30))
             {
                 Randuin.Cast();
-                Activator.lastUsed = Environment.TickCount + 1500;
+                Activator.lastUsed = Environment.TickCount + 500;
+            }
+            //Allies
+            if (FaceOfTheMountain.IsReady() && FaceOfTheMountain.IsOwned())
+            {
+                var allyFace = EntityManager.Heroes.Allies.FirstOrDefault(a => a.InDanger(Settings.AllyHPFaceOfTheMountain));
+                if(allyFace != null)
+                {
+                    FaceOfTheMountain.Cast(allyFace);
+                    Activator.lastUsed = Environment.TickCount + 500;
+                }
+            }
+
+            if (Mikael.IsReady() && Summoner.Items.Extensions.HasCCs(Player.Instance) && Mikael.IsOwned())
+            {
+                var allyMikael = EntityManager.Heroes.Allies.FirstOrDefault(a => a.InDanger(Settings.AllyHPMikaelHeal));
+                if (allyMikael != null)
+                {
+                    Mikael.Cast(allyMikael);
+                    Activator.lastUsed = Environment.TickCount + 500;
+                }
+            }
+
+            if (Solari.IsReady() && Solari.IsOwned())
+            {
+                var allySolari = EntityManager.Heroes.Allies.FirstOrDefault(a => a.InDanger(Settings.AllyHealthSolari));
+                if (allySolari != null)
+                {
+                    Solari.Cast();
+                    Activator.lastUsed = Environment.TickCount + 1500;
+                }
+            }
+
+            if (Ohm.IsReady() && Ohm.IsOwned())
+            {
+                var turret = EntityManager.Turrets.Enemies.FirstOrDefault(t => t.IsAttackingPlayer);
+                var allyFace = EntityManager.Heroes.Allies.FirstOrDefault(a => a.InDanger(Settings.OhmHealth));
+                if (allyFace != null && turret != null)
+                {
+                    Ohm.Cast(turret);
+                    Activator.lastUsed = Environment.TickCount + 500;
+                }
             }
 
             //CC
 
-            if (!Player.Instance.HasCCs()) return;
+            if (!Summoner.Items.Extensions.HasCCs(Player.Instance)) return;
 
-            if (DerbishBlade.IsReady() && DerbishBlade.IsOwned())
+            if (DerbishBlade.IsReady() && DerbishBlade.IsOwned() && Settings.DerbishBlade)
             {
-                DerbishBlade.Cast();
+                Core.DelayAction(() => DerbishBlade.Cast(), Settings.CleanseDelay);
                 Activator.lastUsed = Environment.TickCount + 1500;
             }
 
-            if (Mercurial.IsReady() && Mercurial.IsOwned())
+            if (Mercurial.IsReady() && Mercurial.IsOwned() && Settings.Mercurial)
             {
-                Mercurial.Cast();
+                Core.DelayAction(() => Mercurial.Cast(), Settings.CleanseDelay);
                 Activator.lastUsed = Environment.TickCount + 1500;
             }
 
-            if (QuickSilver.IsReady() && QuickSilver.IsOwned())
+            if (QuickSilver.IsReady() && QuickSilver.IsOwned() && Settings.QuickSilver)
             {
-                QuickSilver.Cast();
+                Core.DelayAction(() => QuickSilver.Cast(), Settings.CleanseDelay);
+                Activator.lastUsed = Environment.TickCount + 1500;
+            }
+
+            var ally = EntityManager.Heroes.Allies.FirstOrDefault(a => a.IsValidTarget(Mikael.Range));
+            if (ally == null) return;
+            if (!Summoner.Items.Extensions.HasCCs(ally)) return;
+
+            if (Mikael.IsReady() && Mikael.IsOwned() && Settings.MikaelCleanse)
+            {
+                Core.DelayAction(() => Mikael.Cast(ally), Settings.CleanseDelay);
                 Activator.lastUsed = Environment.TickCount + 1500;
             }
 
