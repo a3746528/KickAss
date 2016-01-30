@@ -40,6 +40,7 @@ namespace KickassSeries.Champions.Lux
 
                 FarmMenu = Menu.AddSubMenu("::FarmMenu::");
                 LaneClear.Initialize();
+                JungleClear.Initialize();
                 LastHit.Initialize();
 
                 MiscMenu = Menu.AddSubMenu("::Misc::");
@@ -186,6 +187,41 @@ namespace KickassSeries.Champions.Lux
                 }
             }
 
+            public static class JungleClear
+            {
+                private static readonly CheckBox _useQ;
+                private static readonly CheckBox _useE;
+                private static readonly Slider _laneMana;
+
+                public static bool UseQ
+                {
+                    get { return _useQ.CurrentValue; }
+                }
+
+                public static bool UseE
+                {
+                    get { return _useE.CurrentValue; }
+                }
+
+                public static int LaneMana
+                {
+                    get { return _laneMana.CurrentValue; }
+                }
+
+                static JungleClear()
+                {
+                    FarmMenu.AddGroupLabel("JungleClear Spells:");
+                    _useQ = FarmMenu.Add("jungleclearQ", new CheckBox("Use Q on Laneclear ?"));
+                    _useE = FarmMenu.Add("jungleclearE", new CheckBox("Use E on Laneclear ?"));
+                    FarmMenu.AddGroupLabel("JungleClear Settings:");
+                    _laneMana = FarmMenu.Add("junglelaneMana", new Slider("It will only cast any jungleclear spell if the mana is greater than ({0}).", 30));
+                }
+
+                public static void Initialize()
+                {
+                }
+            }
+
             public static class LastHit
             {
                 private static readonly CheckBox _useQ;
@@ -242,6 +278,12 @@ namespace KickassSeries.Champions.Lux
                 //W Settings
                 private static readonly CheckBox _wDefense;
                 private static readonly Slider _wMana;
+                //JungleSteal Settings
+                private static readonly CheckBox _jugSteal;
+                private static readonly CheckBox _jugStealBlue;
+                private static readonly CheckBox _jugStealRed;
+                private static readonly CheckBox _jugStealDragon;
+                private static readonly CheckBox _jugStealBaron;
 
                 public static bool InterruptSpell
                 {
@@ -287,6 +329,27 @@ namespace KickassSeries.Champions.Lux
                 {
                     get { return _wMana.CurrentValue; }
                 }
+                //JungleSteal Settings
+                public static bool JungleSteal
+                {
+                    get { return _jugSteal.CurrentValue; }
+                }
+                public static bool JungleStealBlue
+                {
+                    get { return _jugStealBlue.CurrentValue; }
+                }
+                public static bool JungleStealRed
+                {
+                    get { return _jugStealRed.CurrentValue; }
+                }
+                public static bool JungleStealDrag
+                {
+                    get { return _jugStealDragon.CurrentValue; }
+                }
+                public static bool JungleStealBaron
+                {
+                    get { return _jugStealBaron.CurrentValue; }
+                }
 
                 static Misc()
                 {
@@ -303,6 +366,13 @@ namespace KickassSeries.Champions.Lux
                     MiscMenu.AddGroupLabel("W Settings");
                     _wDefense = MiscMenu.Add("safetyW", new CheckBox("Use W when the player is receiving a spell ?"));
                     _wMana = MiscMenu.Add("wMana", new Slider("Min mana to use KillSteal spells ?", 10));
+                    MiscMenu.AddGroupLabel("JungleStea; Settings");
+                    _jugSteal = MiscMenu.Add("jungleSteal", new CheckBox("JungleSteal using R ?"));
+                    MiscMenu.AddSeparator(1);
+                    _jugStealBlue = MiscMenu.Add("junglestealBlue", new CheckBox("JungleSteal Blue ?"));
+                    _jugStealRed = MiscMenu.Add("junglestealRed", new CheckBox("JungleSteal Red ?"));
+                    _jugStealDragon = MiscMenu.Add("junglestealDrag", new CheckBox("JungleSteal Dragon ?"));
+                    _jugStealBaron = MiscMenu.Add("junglestealBaron", new CheckBox("JungleSteal Baron ?"));
                 }
 
                 public static void Initialize()

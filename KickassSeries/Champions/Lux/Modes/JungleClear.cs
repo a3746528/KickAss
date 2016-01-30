@@ -1,7 +1,7 @@
 ﻿using System.Linq;
 using EloBuddy.SDK;
 
-using Settings = KickassSeries.Champions.Lux.Config.Modes.LaneClear;
+using Settings = KickassSeries.Champions.Lux.Config.Modes.JungleClear;
 
 namespace KickassSeries.Champions.Lux.Modes
 {

@@ -1,8 +1,6 @@
 ﻿using System.Linq;
 using EloBuddy;
 using EloBuddy.SDK;
-using EloBuddy.SDK.Menu.Values;
-using KickassSeries.Activator.Maps.SummonersRift;
 
 namespace KickassSeries.Activator.NoMenuDMGHandler
 {
@@ -40,8 +38,7 @@ namespace KickassSeries.Activator.NoMenuDMGHandler
             var dangerousspell =
                 DangerousSpells.Spells.FirstOrDefault(
                     x =>
-                        x.Hero == hero.Hero && args.Slot == x.Slot &&
-                        Config.Types.SettingsMenu[x.Hero.ToString() + x.Slot].Cast<CheckBox>().CurrentValue);
+                        x.Hero == hero.Hero && args.Slot == x.Slot);
             //SkilShot
             if (args.Target == null)
             {

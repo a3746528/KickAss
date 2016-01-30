@@ -29,7 +29,7 @@ namespace KickassSeries.Activator.Maps.Twistedtreeline.Items
         #endregion Offensive
 
         #region Defensive
-        protected static readonly Item Zhonyas = new Item(ItemId.Zhonyas_Hourglass);
+        protected static readonly Item Zhonyas = new Item(ItemId.Wooglets_Witchcap);
         protected static readonly Item Seraph = new Item(ItemId.Seraphs_Embrace);
         protected static readonly Item FaceOfTheMountain = new Item(ItemId.Face_of_the_Mountain);
         protected static readonly Item Talisman = new Item(ItemId.Talisman_of_Ascension);

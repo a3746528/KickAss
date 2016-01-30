@@ -29,15 +29,20 @@ namespace KickassSeries.Champions.Lux.Modes
             }
 
             var minions =
-               EntityManager.MinionsAndMonsters.GetLaneMinions(EntityManager.UnitTeam.Enemy,
-                   Player.Instance.Position, E.Range, false).ToArray();
+                           EntityManager.MinionsAndMonsters.GetLaneMinions(EntityManager.UnitTeam.Enemy,
+                               Player.Instance.Position, E.Range, false).ToArray();
             if (minions.Length == 0) return;
 
-            var location = EntityManager.MinionsAndMonsters.GetCircularFarmLocation(minions, E.Width, (int)E.Range);
+            var farmLocation = Prediction.Position.PredictCircularMissileAoe(minions, E.Range, E.Width,
+                E.CastDelay, E.Speed).OrderByDescending(r => r.GetCollisionObjects<Obj_AI_Minion>().Length).FirstOrDefault();
 
-            if (Settings.UseE && Settings.LaneMana <= Player.Instance.ManaPercent && location.HitNumber >= Settings.ECount)
+            if (farmLocation != null && Settings.UseE && Settings.LaneMana <= Player.Instance.ManaPercent)
             {
-                E.Cast(location.CastPosition);
+                var predictedMinion = farmLocation.GetCollisionObjects<Obj_AI_Minion>();
+                if (predictedMinion.Length >= Settings.ECount)
+                {
+                    E.Cast(farmLocation.CastPosition);
+                }
             }
         }
     }
