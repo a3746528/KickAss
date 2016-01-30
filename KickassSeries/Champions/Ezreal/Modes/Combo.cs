@@ -19,13 +19,6 @@ namespace KickassSeries.Champions.Ezreal.Modes
             var target = TargetSelector.GetTarget(Q.Range, DamageType.Physical);
             if (target == null || target.IsZombie) return;
 
-            if (Settings.UseE && E.IsReady() && Player.Instance.CountEnemiesInRange(800) == 1 &&
-                Player.Instance.ManaPercent >= 60 ||
-                target.HealthPercent <= 20 && Player.Instance.HealthPercent > target.HealthPercent + 10)
-            {
-                E.Cast(Player.Instance.Position.Extend(Game.CursorPos, E.Range).To3D());
-            }
-
             if (Settings.UseQ && Q.IsReady() && target.IsValidTarget(Q.Range) &&
                 !target.IsInRange(Player.Instance, Player.Instance.GetAutoAttackRange()))
             {
@@ -50,35 +43,14 @@ namespace KickassSeries.Champions.Ezreal.Modes
                 W.Cast(target);
             }
 
-            if (Settings.UseR && R.IsReady() && Player.Instance.CountEnemiesInRange(SpellManager.W.Range) <= 2)
+            if (Settings.UseR && R.IsReady() && target.IsValidTarget(R.Range))
             {
-                var heroes = EntityManager.Heroes.Enemies;
-                foreach (
-                    var hero in
-                        EntityManager.Heroes.Enemies.Where(
-                            hero => !hero.IsDead && hero.IsVisible && hero.IsInRange(Player.Instance, R.Range)))
-                {
-                    var collision = new List<AIHeroClient>();
-                    collision.Clear();
-                    foreach (
-                        var colliHero in
-                            heroes.Where(
-                                colliHero => !colliHero.IsDead && colliHero.IsVisible && colliHero.IsInRange(hero, 3000))
-                        )
-                    {
-                        if (Prediction.Position.Collision.LinearMissileCollision(colliHero,
-                            Player.Instance.Position.To2D(), Player.Instance.Position.Extend(hero.Position.To2D(), 1500),
-                            SpellManager.R.Speed, SpellManager.R.Width, SpellManager.R.CastDelay))
-                        {
-                            collision.Add(colliHero);
-                        }
-                        if (collision.Count >= Settings.MinR)
-                        {
-                            R.Cast(hero);
-                        }
-                    }
-                }
+                var enemies = EntityManager.Heroes.Enemies.Where(e => e.IsValidTarget(R.Range)).ToArray();
+                if(enemies.Length == 0)return;
+
+                
             }
+
         }
     }
 }

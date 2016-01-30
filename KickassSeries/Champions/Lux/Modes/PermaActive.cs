@@ -3,7 +3,7 @@ using EloBuddy;
 using EloBuddy.SDK;
 
 using Settings = KickassSeries.Champions.Lux.Config.Modes.Misc;
-using DMG = KickassSeries.Activator.Maps.Twistedtreeline.DMGHandler.DamageHandler;
+using DMG = KickassSeries.Activator.NoMenuDMGHandler.DamageHandler;
 
 namespace KickassSeries.Champions.Lux.Modes
 {
