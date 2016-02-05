@@ -12,11 +12,6 @@ namespace KickassSeries.Champions.Syndra.Modes
 
         public override void Execute()
         {
-            var target = TargetSelector.GetTarget(Q.Range, DamageType.Magical);
-            if (Player.Instance.HealthPercent <= 25 && target.IsValidTarget(E.Range))
-            {
-                E.Cast(target);
-            }
         }
     }
 }

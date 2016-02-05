@@ -11,7 +11,7 @@
     <AssemblyName>KickassSeries</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <OutputPath>bin\Debug</OutputPath>
+    <OutputPath>bin\Debug\</OutputPath>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>x86</PlatformTarget>
@@ -222,6 +222,7 @@
     <Compile Include="Champions\Riven\Modes\PermaActive.cs" />
     <Compile Include="Champions\Riven\SpellDamage.cs" />
     <Compile Include="Champions\Riven\SpellManager.cs" />
+    <Compile Include="Champions\Syndra\Functions.cs" />
     <Compile Include="Champions\Teemo\FileHandler.cs" />
     <Compile Include="Champions\Teemo\ShroomTables.cs" />
     <Compile Include="Champions\Viktor\Config.cs" />

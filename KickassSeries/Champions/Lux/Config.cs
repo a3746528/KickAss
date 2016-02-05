@@ -365,12 +365,12 @@ namespace KickassSeries.Champions.Lux
                     _ksMana = MiscMenu.Add("killstealMana", new Slider("Min mana to use KillSteal spells ?", 15));
                     MiscMenu.AddGroupLabel("W Settings");
                     _wDefense = MiscMenu.Add("safetyW", new CheckBox("Use W when the player is receiving a spell ?"));
-                    _wMana = MiscMenu.Add("wMana", new Slider("Min mana to use KillSteal spells ?", 10));
+                    _wMana = MiscMenu.Add("wMana", new Slider("Min mana to use W ?", 10));
                     MiscMenu.AddGroupLabel("JungleStea; Settings");
                     _jugSteal = MiscMenu.Add("jungleSteal", new CheckBox("JungleSteal using R ?"));
                     MiscMenu.AddSeparator(1);
                     _jugStealBlue = MiscMenu.Add("junglestealBlue", new CheckBox("JungleSteal Blue ?"));
-                    _jugStealRed = MiscMenu.Add("junglestealRed", new CheckBox("JungleSteal Red ?"));
+                    _jugStealRed = MiscMenu.Add("junglestealRed", new CheckBox("JungleSteal Red ?", false));
                     _jugStealDragon = MiscMenu.Add("junglestealDrag", new CheckBox("JungleSteal Dragon ?"));
                     _jugStealBaron = MiscMenu.Add("junglestealBaron", new CheckBox("JungleSteal Baron ?"));
                 }

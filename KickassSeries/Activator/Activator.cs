@@ -9,6 +9,7 @@ namespace KickassSeries.Activator
         public static void Init()
         {
             EventsManager.Initialize();
+            NoMenuDMGHandler.DamageHandler.Initialize();
 
             switch (Game.MapId)
             {

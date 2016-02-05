@@ -17,9 +17,9 @@ namespace KickassSeries.Champions.Syndra.Modes
             var target = TargetSelector.GetTarget(Q.Range, DamageType.Physical);
             if (target == null || target.IsZombie) return;
 
-            if (W.IsReady() && Settings.UseW)
+            if (Q.IsReady() && target.IsValidTarget(Q.Range) && Settings.UseQ)
             {
-                W.Cast(Player.Instance.Position.Extend(target.Position, W.Range).To3D());
+                Q.Cast(target);
             }
 
             if (E.IsReady() && target.IsValidTarget(E.Range) && Settings.UseE)
@@ -27,9 +27,9 @@ namespace KickassSeries.Champions.Syndra.Modes
                 E.Cast(target);
             }
 
-            if (Q.IsReady() && target.IsValidTarget(Q.Range) && Settings.UseQ)
+            if (W.IsReady() && Settings.UseW)
             {
-                Q.Cast(target);
+                W.Cast(target);
             }
         }
     }

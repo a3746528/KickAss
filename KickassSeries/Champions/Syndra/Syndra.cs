@@ -1,7 +1,7 @@
 ﻿using System;
 using EloBuddy;
 using EloBuddy.SDK.Rendering;
-
+using SharpDX;
 using Settings = KickassSeries.Champions.Syndra.Config.Modes.Draw;
 
 namespace KickassSeries.Champions.Syndra
@@ -21,6 +21,8 @@ namespace KickassSeries.Champions.Syndra
 
         private static void OnDraw(EventArgs args)
         {
+            Circle.Draw(Color.DeepPink, 100, 6f, Functions.GrabWPost(true));
+
             if (Settings.DrawQ && Settings.DrawReady ? SpellManager.Q.IsReady() : Settings.DrawQ)
             {
                 Circle.Draw(Settings.QColor, SpellManager.Q.Range, 1f, Player.Instance);

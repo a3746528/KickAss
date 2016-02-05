@@ -22,19 +22,19 @@ namespace KickassSeries.Champions.Syndra.Modes
 
             if (jgminion == null)return;
 
+            if (Q.IsReady() && jgminion.IsValidTarget(Q.Range) && Settings.UseQ)
+            {
+                Q.Cast(jgminion);
+            }
+
             if (W.IsReady() && Settings.UseW)
             {
-                W.Cast(Player.Instance.Position.Extend(jgminion.Position, W.Range).To3D());
+                W.Cast(jgminion);
             }
 
             if (E.IsReady() && jgminion.IsValidTarget(E.Range) && Settings.UseE)
             {
                 E.Cast(jgminion);
-            }
-
-            if (Q.IsReady() && jgminion.IsValidTarget(Q.Range) && Settings.UseQ)
-            {
-                Q.Cast(jgminion);
             }
         }
     }
