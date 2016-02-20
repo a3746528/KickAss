@@ -31,16 +31,6 @@ namespace KickassSeries.Ultilities
             return position.To3D().Randomize(min, max).To2D();
         }
 
-        public static bool IsWall(this Vector3 position)
-        {
-            return NavMesh.GetCollisionFlags(position).HasFlag(CollisionFlags.Wall);
-        }
-
-        public static bool IsWall(this Vector2 position)
-        {
-            return position.To3D().IsWall();
-        }
-
         public static bool IsBuilding(this Vector3 position)
         {
             return NavMesh.GetCollisionFlags(position).HasFlag(CollisionFlags.Building);
